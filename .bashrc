@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-=======
-export XDG_CONFIG_HOME=~/.config
->>>>>>> origin/master
 GOPATH=~/go
 function _update_ps1() {
     PS1="$($GOPATH/bin/powerline-go -error $? -newline -modules venv,ssh,cwd,perms,git,hg,jobs,exit,root)"
@@ -129,7 +124,7 @@ if ! shopt -oq posix; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export PATH="$PATH":/home/liquid-system/.local/bin
+export PATH="$PATH":~/.local/bin
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.9/site-packages/
 export DISPLAY=`hostname`.mshome.net:0.0
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
