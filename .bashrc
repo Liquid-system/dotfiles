@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+export XDG_CONFIG_HOME=~/.config
+>>>>>>> origin/master
 GOPATH=~/go
 function _update_ps1() {
     PS1="$($GOPATH/bin/powerline-go -error $? -newline -modules venv,ssh,cwd,perms,git,hg,jobs,exit,root)"
