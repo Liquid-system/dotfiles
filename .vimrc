@@ -1,7 +1,6 @@
 set number
 inoremap <silent> jj <ESC>
-colorscheme iceberg
-set background=dark
+set termguicolors
 " ファイルタイプ検出を有効にする
 filetype on
 set wildmenu
@@ -14,13 +13,14 @@ augroup vimrc
     autocmd FileType c,cpp,java  setl cindent
     autocmd FileType c,cpp,java  setl expandtab tabstop=4 shiftwidth=4 softtabstop=4 shiftround
 augroup END
+
 if has('vim_starting')
-    " 挿入モード時に非点滅の縦棒タイプのカーソル
-    let &t_SI .= "\e[6 q"
-    " ノーマルモード時に非点滅縦棒タイプのカーソル
-    let &t_EI .= "\e[6 q"
-    " 置換モード時に非点滅の下線タイプのカーソル
-    let &t_SR .= "\e[4 q"
+  " 挿入モード時に非点滅の縦棒タイプのカーソル
+  let &t_SI .= "\e[6 q"
+  " ノーマルモード時に非点滅縦棒タイプのカーソル
+  let &t_EI .= "\e[6 q"
+  " 置換モード時に非点滅の下線タイプのカーソル
+  let &t_SR .= "\e[4 q"
 endif
 
 imap <C-k> <Up>
@@ -32,7 +32,11 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 set mouse=a
 set virtualedit=onemore
-set clipboard=unnamed,autoselect
+if has('nvim')
+  set clipboard=unnamed
+else
+  set clipboard=unnamed,autoselect
+endif
 set showmode
 nnoremap gr :tabprevious
 set wildmenu
@@ -54,6 +58,10 @@ if &term =~ "xterm"
     cnoremap <special> <Esc>[200~ <nop>
     cnoremap <special> <Esc>[201~ <nop>
 endif
+
+let g:python3_host_prog= '/usr/local/bin/python-3.9.6/bin/python3'
+let g:python_host_prog='/usr/bin/python2'
+
 "defx
 nnoremap <silent>sf :<C-u>Defx -listed -resume
       \ -columns=indent:mark:icon:icons:filename:git:size
@@ -96,6 +104,7 @@ call dein#add('jiangmiao/auto-pairs')
 call dein#add('christoomey/vim-tmux-navigator')
 call dein#add('preservim/nerdtree')
 call dein#add('cocopon/iceberg.vim')
+call dein#add('arcticicestudio/nord-vim')
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('prabirshrestha/asyncomplete.vim')
 call dein#add('prabirshrestha/asyncomplete-lsp.vim')
@@ -103,7 +112,7 @@ call dein#add('mattn/vim-lsp-settings')
 
 set ambiwidth=double
 set encoding=UTF-8
-
+colorscheme nord
 
 " Required
 
@@ -127,7 +136,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 "lightline
 set laststatus=2
 let g:lightline = {
-        \ 'colorscheme':'iceberg',
+        \ 'colorscheme':'nord',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
@@ -195,6 +204,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 let g:asyncomplete_popup_delay = 200
 autocmd BufWritePre <buffer> LspDocumentFormatSync
+let g:lsp_diagnostics_echo_cursor = 1
 " Required:
 filetype plugin indent on
 syntax enable
@@ -205,7 +215,7 @@ if len(s:removed_plugins) > 0
   call dein#recache_runtimepath()
 endif
 
-  if dein#check_install()
+if dein#check_install()
   call dein#install()
 endif
 
