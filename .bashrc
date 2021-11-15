@@ -1,5 +1,5 @@
-export XDG_CONFIG_HOME=~/.config
-GOPATH=/home/liquid-system/go
+
+GOPATH=~/go
 function _update_ps1() {
     PS1="$($GOPATH/bin/powerline-go -error $? -newline -modules venv,ssh,cwd,perms,git,hg,jobs,exit,root)"
 }
