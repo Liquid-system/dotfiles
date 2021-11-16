@@ -125,11 +125,9 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH="$PATH":~/.local/bin
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3.9/site-packages/
 export DISPLAY=`hostname`.mshome.net:0.0
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 . "$HOME/.cargo/env"
-
 export NVM_DIR="$HOME/.config/nvm"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
