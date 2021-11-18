@@ -30,6 +30,7 @@ imap <C-l> <Right>
 set fenc=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
+language messages C
 set mouse=a
 set virtualedit=onemore
 if has('nvim')
@@ -109,6 +110,11 @@ call dein#add('prabirshrestha/vim-lsp')
 call dein#add('prabirshrestha/asyncomplete.vim')
 call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 call dein#add('mattn/vim-lsp-settings')
+call dein#add('vim-denops/denops.vim')
+call dein#add('vim-skk/denops-skkeleton.vim')
+call dein#add('Shougo/ddc.vim')
+call dein#add('Shougo/ddc-matcher_head')
+call dein#add('Shougo/ddc-sorter_rank')
 
 set ambiwidth=double
 set encoding=UTF-8
@@ -208,6 +214,27 @@ let g:lsp_diagnostics_echo_cursor = 1
 " Required:
 filetype plugin indent on
 syntax enable
+
+"skk
+imap <C-j> <Plug>(skkeleton-toggle)
+cmap <C-j> <Plug>(skkeleton-toggle)
+
+call skkeleton#config({
+\'eggLikeNewline':v:true
+\})
+let skk_large_jisyo = '~/SKK-JISYO.L'
+call ddc#custom#patch_global('sources', ['skkeleton'])
+call ddc#custom#patch_global('sourceOptions', {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \     'sorters': ['sorter_rank']
+    \   },
+    \   'skkeleton': {
+    \     'mark': 'skkeleton',
+    \     'matchers': ['skkeleton'],
+    \     'sorters': []
+    \   },
+    \ })
 
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
