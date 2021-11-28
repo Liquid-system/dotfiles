@@ -14,3 +14,5 @@ alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_q
 . "$HOME/.cargo/env"
 PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}"
 
+
+export PATH="$HOME/.poetry/bin:$PATH"
