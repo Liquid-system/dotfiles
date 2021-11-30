@@ -1,4 +1,5 @@
-export PATH=~/.npm-global/bin:$PATH
+export PATH=$PATH:~/.npm-global/bin
+export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/tig
 export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
