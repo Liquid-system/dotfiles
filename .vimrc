@@ -1,6 +1,15 @@
 set number
 inoremap <silent> jj <ESC>
 set termguicolors
+
+"logを見る:Profileコマンドの設定
+command! Profile call s:command_profile()
+function! s:command_profile() abort
+  profile start ~/profile.txt
+  profile func *
+  profile file *
+endfunction
+
 " ファイルタイプ検出を有効にする
 filetype on
 set wildmenu
@@ -63,13 +72,6 @@ endif
 let g:python3_host_prog= '/usr/local/bin/python-3.9.6/bin/python3'
 let g:python_host_prog='/usr/bin/python2'
 
-"defx
-nnoremap <silent>sf :<C-u>Defx -listed -resume
-      \ -columns=indent:mark:icon:icons:filename:git:size
-      \ -buffer-name=tab`tabpagenr()`
-      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
-
 "dein
 if &compatible
   set nocompatible " Be iMproved
@@ -90,20 +92,19 @@ if !has('nvim')
 endif
 
 " Add or remove your plugins here like this:
+
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('altercation/vim-colors-solarized')
 call dein#add('itchyny/lightline.vim')
 call dein#add('twitvim/twitvim')
-call dein#add('w0ng/vim-hybrid')
-call dein#add('junegunn/fzf', { 'build': './install' })
 call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
 call dein#add('sheerun/vim-polyglot')
-call dein#add('ryanoasis/vim-devicons')
 call dein#add('jiangmiao/auto-pairs')
-call dein#add('christoomey/vim-tmux-navigator')
-call dein#add('preservim/nerdtree')
+call dein#add('lambdalisue/fern.vim')
+call dein#add('lambdalisue/nerdfont.vim')
+call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
+call dein#add('lambdalisue/glyph-palette.vim')
+call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('cocopon/iceberg.vim')
 call dein#add('arcticicestudio/nord-vim')
 call dein#add('prabirshrestha/vim-lsp')
@@ -111,33 +112,24 @@ call dein#add('prabirshrestha/asyncomplete.vim')
 call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 call dein#add('mattn/vim-lsp-settings')
 call dein#add('vim-denops/denops.vim')
-call dein#add('vim-skk/denops-skkeleton.vim')
-call dein#add('Shougo/ddc.vim')
-call dein#add('Shougo/ddc-matcher_head')
-call dein#add('Shougo/ddc-sorter_rank')
 
-set ambiwidth=double
-set encoding=UTF-8
 colorscheme nord
 
 " Required
 
 call dein#end()
-"nerdtree
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:webdevicons_enable_nerdtree = 1
-let NERDTreeWinSize=18
-let g:NERDTreeLimitedSyntax = 1
-" Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in')  | NERDTree | endif
 
+"fern
+let g:fern#renderer = "nerdfont"
+let g:fern#default_hidden=1
+nnoremap <silent> <Leader>ee :<C-u>Fern <C-r>=<SID>smart_path()<CR><CR>
 
-" Start NERDTree when Vim starts with a directory argument.
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+"icon
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
 
 "lightline
 set laststatus=2
@@ -210,31 +202,10 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 let g:asyncomplete_popup_delay = 200
 autocmd BufWritePre <buffer> LspDocumentFormatSync
-let g:lsp_diagnostics_echo_cursor = 1
+
 " Required:
 filetype plugin indent on
 syntax enable
-
-"skk
-imap <C-j> <Plug>(skkeleton-toggle)
-cmap <C-j> <Plug>(skkeleton-toggle)
-
-call skkeleton#config({
-\'eggLikeNewline':v:true
-\})
-let skk_large_jisyo = '~/SKK-JISYO.L'
-call ddc#custom#patch_global('sources', ['skkeleton'])
-call ddc#custom#patch_global('sourceOptions', {
-    \   '_': {
-    \     'matchers': ['matcher_head'],
-    \     'sorters': ['sorter_rank']
-    \   },
-    \   'skkeleton': {
-    \     'mark': 'skkeleton',
-    \     'matchers': ['skkeleton'],
-    \     'sorters': []
-    \   },
-    \ })
 
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
