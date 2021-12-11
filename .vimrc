@@ -53,21 +53,7 @@ set wildmenu
 set wildmode=full
 set belloff=all
 set ambiwidth=double
-if &term =~ "xterm"
-    let &t_ti .= "\e[?2004h"
-    let &t_te .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
 
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-    cnoremap <special> <Esc>[200~ <nop>
-    cnoremap <special> <Esc>[201~ <nop>
-endif
 
 let g:python3_host_prog= '/usr/local/bin/python-3.9.6/bin/python3'
 let g:python_host_prog='/usr/bin/python2'
@@ -96,7 +82,6 @@ endif
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('itchyny/lightline.vim')
-call dein#add('twitvim/twitvim')
 call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 call dein#add('sheerun/vim-polyglot')
 call dein#add('jiangmiao/auto-pairs')
@@ -111,7 +96,6 @@ call dein#add('prabirshrestha/vim-lsp')
 call dein#add('prabirshrestha/asyncomplete.vim')
 call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 call dein#add('mattn/vim-lsp-settings')
-call dein#add('vim-denops/denops.vim')
 
 colorscheme nord
 
@@ -201,6 +185,9 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 let g:asyncomplete_popup_delay = 200
+
+let g:lsp_log_verbose = 1
+
 autocmd BufWritePre <buffer> LspDocumentFormatSync
 
 " Required:
@@ -216,5 +203,3 @@ endif
 if dein#check_install()
   call dein#install()
 endif
-
-

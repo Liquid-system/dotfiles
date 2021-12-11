@@ -1,0 +1,714 @@
+{
+    //================================================================================================================
+    //key map for vim
+    //keybinding.jsonと違いキーの組み合わせで処理待ちが発生しない
+    //keyのデフォルトキーを使い,キー操作を定義したくても
+    //デフォルトのコマンドが有効になる。(例えば、sh→0にしたくてもsのコマンドが有効になっている)
+    //Leaderキーを入力後のコマンドは無視されているので、極力Leaderを活用するようにする。
+    //beforeは必ず定義しなければならないが、afterまたはcommandsでコマンドを呼び出せる。whenによる操作も可能っぽい
+    //================================================================================================================
+    //nmap
+    "vim.normalModeKeyBindings": [
+        // {"before": ["s"],"after"               : [""]},                                             //unmap?
+    ],
+    //nnoremap
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "J"
+            ],
+            "after": [
+                "1",
+                "0",
+                "j"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "1",
+                "0",
+                "k"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "<Leader>",
+                "h"
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<Leader>",
+                "j"
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<Leader>",
+                "k"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "<Leader>",
+                "l"
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        }, //window移動
+        {
+            "before": [
+                "]"
+            ],
+            "commands": [
+                {
+                    "command": "C_Cpp.PeekDeclaration"
+                }
+            ],
+            "when": [
+                "editorLangId == c"
+            ]
+        }, //宣言を見る c専用
+        {
+            "before": [
+                "["
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.peekDefinition"
+                }
+            ]
+        }, //定義を見る
+        {
+            "before": [
+                "<Leader>",
+                "s"
+            ],
+            "commands": [
+                ":split"
+            ]
+        }, //水平に開く
+        {
+            "before": [
+                "<Leader>",
+                "v"
+            ],
+            "commands": [
+                ":vsplit"
+            ]
+        }, //水平にを閉じる
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        }, //インデント調整(repeat可能)
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }, //インデント調整(repeat可能)
+        {
+            "before": [
+                "<Leader>",
+                "u"
+            ],
+            "after": [
+                "g",
+                "t"
+            ]
+        }, //tab移動
+        {
+            "before": [
+                "<Leader>",
+                "y"
+            ],
+            "after": [
+                "g",
+                "T"
+            ]
+        }, //tab移動
+        {
+            "before": [
+                "<Leader>",
+                "x"
+            ],
+            "commands": [
+                ":q!"
+            ]
+        }, //tabを閉じる
+        {
+            "before": [
+                "<Leader>",
+                "q"
+            ],
+            "commands": [
+                ":qa!"
+            ]
+        }, //すべてを閉じる
+        {
+            "before": [
+                "<Leader>",
+                "w"
+            ],
+            "commands": [
+                ":wa"
+            ]
+        }, //すべてを保存
+        {
+            "before": [
+                "<Leader>",
+                "o"
+            ],
+            "after": [
+                "o",
+                "<ESC>"
+            ]
+        }, //空の行を挿入
+        {
+            "before": [
+                "<Leader>",
+                "O"
+            ],
+            "after": [
+                "O",
+                "<ESC>"
+            ]
+        }, //空の行を挿入
+        {
+            "before": [
+                "<Leader>",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        }, //コメント
+        {
+            "before": [
+                "<Leader>",
+                ":"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands"
+                }
+            ]
+        }, //コマンドパレット
+        {
+            "before": [
+                "<Leader>",
+                ";"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen"
+                }
+            ]
+        }, //ファイル検索
+        {
+            "before": [
+                "<CR>"
+            ],
+            "after": [
+                "G"
+            ]
+        }, //最終行へ
+        {
+            "before": [
+                "<BS>"
+            ],
+            "after": [
+                "g",
+                "g"
+            ]
+        }, //先頭行へ
+        // 検索結果を画面中央に
+        {
+            "before": [
+                "n"
+            ],
+            "after": [
+                "n",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "N"
+            ],
+            "after": [
+                "N",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "*"
+            ],
+            "after": [
+                "*",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "#"
+            ],
+            "after": [
+                "#",
+                "z",
+                "z"
+            ]
+        },
+        //Surround
+        {
+            "before": [
+                "s"
+            ],
+            "after": [
+                "y",
+                "s"
+            ]
+        }, //surround add
+        //easy motion
+        {
+            "before": [
+                "f"
+            ],
+            "after": [
+                "<Leader>",
+                "<Leader>",
+                "2",
+                "s"
+            ]
+        }, //easymotion 2s
+        //Multi-Cursor Mode
+        //prefix Ctrl 
+        {
+            "before": [
+                "<C-n>",
+            ],
+            "after": [
+                "g",
+                "b"
+            ]
+        }, //選択した文字に対して増やす    
+        {
+            "before": [
+                "<C-k>",
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertCursorAbove"
+                }
+            ]
+        }, //シンボルをリネーム(mulchipulcursor)   
+        {
+            "before": [
+                "<C-j>",
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertCursorBelow"
+                }
+            ]
+        }, //シンボルをリネーム(mulchipulcursor)   
+        //外部プラグイン呼び出し
+        {
+            "before": [
+                "<Leader>",
+                "@"
+            ],
+            "commands": [
+                {
+                    "command": "markdown-preview-enhanced.openPreviewToTheSide"
+                }
+            ]
+        }, //markdownで開く
+    ],
+    //insert mode
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }, //jjでノーマルモードに戻る
+        {
+            "before": [
+                ";",
+                ";"
+            ],
+            "commands": [
+                "editor.action.triggerSuggest"
+            ]
+        }, //;;でサジェストの起動に使う
+        {
+            "before": [
+                "v",
+                "L"
+            ],
+            "after": [
+                "$",
+                "h"
+            ]
+        }, //端に移動
+        // {"before": ["<C-h>"],"after"    : ["0"]},                                                     //端に移動
+        // {"before": ["<C-l>"],"after"    : ["$","h"]},                                                 //端に移動
+    ],
+    // Visual Mode
+    "vim.visualModeKeyBindingsNonRecursive": [
+        //vを押した直後はvのコマンドが残っているので注意
+        //visualmode後にすぐ実行したいものは、二重で定義する。
+        {
+            "before": [
+                "J"
+            ],
+            "after": [
+                "1",
+                "0",
+                "j"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "v",
+                "J"
+            ],
+            "after": [
+                "1",
+                "0",
+                "j"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "K"
+            ],
+            "after": [
+                "1",
+                "0",
+                "k"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "v",
+                "K"
+            ],
+            "after": [
+                "1",
+                "0",
+                "k"
+            ]
+        }, //移動を早める
+        {
+            "before": [
+                "v"
+            ],
+            "after": [
+                "a",
+                "f"
+            ]
+        }, //拡大選択
+        {
+            "before": [
+                "v",
+                "v"
+            ],
+            "after": [
+                "a",
+                "f"
+            ]
+        }, //拡大選択
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$",
+                "h"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "v",
+                "H"
+            ],
+            "after": [
+                "0"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                "v",
+                "L"
+            ],
+            "after": [
+                "$",
+                "h"
+            ]
+        }, //端に移動
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        }, //インデント調整(repeat可能)
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        }, //インデント調整(repeat可能)
+        {
+            "before": [
+                "<Leader>",
+                ":"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.showCommands"
+                }
+            ]
+        }, //コマンドパレット
+        {
+            "before": [
+                "<Leader>",
+                ";"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.quickOpen"
+                }
+            ]
+        }, //ファイル検索
+        {
+            "before": [
+                "<Leader>",
+                "c"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.commentLine"
+                }
+            ]
+        }, //コメント
+        //Multi-Cursor Mode
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "after": [
+                "g",
+                "b"
+            ]
+        }, //選択した文字に対して増やす 
+        {
+            "before": [
+                "<C-l>",
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertCursorAtEndOfEachLineSelected"
+                }
+            ]
+        }, //行末尾にカーソルを出す
+        //外部プラグイン呼び出し
+        {
+            "before": [
+                "<Leader>",
+                "b"
+            ],
+            "commands": [
+                {
+                    "command": "alignment.align"
+                }
+            ]
+        }, //揃える
+        {
+            "before": [
+                "<Leader>",
+                "v"
+            ],
+            "commands": [
+                {
+                    "command": "extension.commentaligner"
+                }
+            ]
+        }, //コメントを揃える
+    ],
+    //vimではなくvscode側のキーを有効にする
+    "vim.handleKeys": {
+        "<C-a>": false, //全選択
+        "<C-f>": false, //検索
+        "<C-h>": false, //置換
+    },
+    "python.linting.flake8Args": [
+        "--ignore=E501"
+    ],
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {
+        "terminal.background": "#1C2023",
+        "terminal.foreground": "#C7CCD1",
+        "terminalCursor.background": "#C7CCD1",
+        "terminalCursor.foreground": "#C7CCD1",
+        "terminal.ansiBlack": "#1C2023",
+        "terminal.ansiBlue": "#AE95C7",
+        "terminal.ansiBrightBlack": "#747C84",
+        "terminal.ansiBrightBlue": "#AE95C7",
+        "terminal.ansiBrightCyan": "#95AEC7",
+        "terminal.ansiBrightGreen": "#95C7AE",
+        "terminal.ansiBrightMagenta": "#C795AE",
+        "terminal.ansiBrightRed": "#C7AE95",
+        "terminal.ansiBrightWhite": "#F3F4F5",
+        "terminal.ansiBrightYellow": "#AEC795",
+        "terminal.ansiCyan": "#95AEC7",
+        "terminal.ansiGreen": "#95C7AE",
+        "terminal.ansiMagenta": "#C795AE",
+        "terminal.ansiRed": "#C7AE95",
+        "terminal.ansiWhite": "#C7CCD1",
+        "terminal.ansiYellow": "#AEC795"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "redhat.telemetry.enabled": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.previewFlutterUiGuides": true,
+    "workbench.colorTheme": "Nord",
+    "workbench.startupEditor": "none",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.fontSize": 25,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-bash",
+            "path": [
+                "D:\\GitBash\\Git\\bin\\bash.exe"
+            ],
+        },
+        "Git bash": {
+            "path": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git bash",
+    "terminal.integrated.cursorStyle": "line",
+    "vim.useSystemClipboard": true,
+    "vim.cursorStylePerMode.normal": "line",
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.leader": "<space>",
+    "python.defaultInterpreterPath": "D:\\python\\python.exe",
+    "python.languageServer": "Pylance",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontFamily": "Cica",
+    "git.autofetch": true,
+    "python.showStartPage": false,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "C_Cpp.updateChannel": "Insiders",
+    "editor.minimap.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "cmake.configureOnOpen": true,
+    "discord.smallImage": "{app_name}",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "explorer.confirmDelete": false,
+    "terminal.integrated.fontFamily": "Cica",
+    "terminal.integrated.fontSize": 23,
+    "gitlens.defaultDateStyle": "absolute",
+    "gitlens.codeLens.enabled": false,
+    "editor.formatOnPaste": true,
+    "workbench.panel.defaultLocation": "right"
+}
