@@ -129,6 +129,7 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+ZSH_DISABLE_COMPFIX="true"
 #zshプラグイン
 source ~/.zplug/init.zsh
 
