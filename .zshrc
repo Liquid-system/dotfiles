@@ -16,6 +16,10 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
+# 重複を記録しない
+setopt hist_ignore_dups
+# ヒストリに追加されるコマンド行が古いものと同じなら古いものを削除
+setopt hist_ignore_all_dups
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -150,7 +154,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
