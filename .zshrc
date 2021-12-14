@@ -20,7 +20,7 @@ bindkey -e
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
-
+setopt share_history
 # automatically change directory when dir name is typed
 setopt auto_cd
 # コマンド訂正
@@ -130,8 +130,14 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 ZSH_DISABLE_COMPFIX="true"
+
 #zshプラグイン
 source ~/.zplug/init.zsh
+
+# コマンドを種類ごとに色付け
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+# 入力途中に候補をうっすら表示
+zplug "zsh-users/zsh-autosuggestions"
 #フォントを白源にするhttps://github.com/yuru7/HackGen
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
