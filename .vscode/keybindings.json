@@ -33,19 +33,19 @@
     {
         "key": "ctrl+j",
         "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen",
+        "when": "inQuickOpen"
     },
     {
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenSelectPrevious",
-        "when": "inQuickOpen ",
+        "when": "inQuickOpen "
     },
     //editorじゃない時の操作(editorではvscodevimのコマンドが有効になる)
     //tabを閉じる
     {
         "key": "space x",
         "command": "workbench.action.closeActiveEditor",
-        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus",
+        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus"
     },
     //tabを進める
     {
@@ -57,13 +57,13 @@
     {
         "key": "space y",
         "command": "workbench.action.previousEditor",
-        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus",
+        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus"
     },
     //markdownのpreviewから戻る
     {
         "key": "space h",
         "command": "workbench.action.focusPreviousGroup",
-        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus",
+        "when": "!editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen && !sideBarFocus && !panelFocus"
     },
     //コマンドパレットを開く
     {
@@ -198,7 +198,7 @@
     /* -------------------------------------------------------------------------- */
     //パネルから戻る
     {
-        "key": "space k",
+        "key": "ctrl+k",
         "command": "workbench.action.focusLastEditorGroup",
         "when": "panelFocus && !editorTextFocus && !editorHasSelection && !editorHasMultipleSelections && !inQuickOpen"
     },
@@ -223,5 +223,5 @@
     {
         "key": "ctrl+space q",
         "command": "workbench.actions.view.problems"
-    },
+    }
 ]
