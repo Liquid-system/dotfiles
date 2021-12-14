@@ -132,7 +132,7 @@ load-nvmrc
 ZSH_DISABLE_COMPFIX="true"
 #zshプラグイン
 source ~/.zplug/init.zsh
-
+#フォントを白源にするhttps://github.com/yuru7/HackGen
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Install plugins if there are plugins that have not been installed
