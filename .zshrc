@@ -1,3 +1,6 @@
+alias pip='python3.9 -m pip'
+# gh
+eval "$(gh completion -s zsh)"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,6 +8,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 # Set up the prompt
 
 autoload -Uz promptinit
@@ -102,13 +106,13 @@ fi
 case "${OSTYPE}" in
 darwin*)
   alias ls ="ls -G"
+  alias la="ls -aG"
   alias ll="ls -lG"
-  alias la="ls -laG"
   ;;
   linux*)
-  alias ls='ls --color'
-  alias ll='ls -l --color'
-  alias la='ls -la --color'
+  alias ll='ls -alF'
+  alias la='ls -A'
+  alias l='ls -CF'
   ;;
 esac
 
@@ -116,10 +120,9 @@ export DISPLAY=`hostname`.mshome.net:0.0
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 
 . "$HOME/.cargo/env"
-
 # This loads nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
