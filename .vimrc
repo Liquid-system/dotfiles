@@ -61,14 +61,14 @@ let g:fern#renderer#default#root_symbol = "┬ "
 let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
-
+let g:fern#renderer = "nerdfont"
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=20<CR>
 augroup my-glyph-palette
   autocmd! *
   autocmd FileType fern call glyph_palette#apply()
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
-let g:fern#renderer = "nerdfont"
 " lsp
 inoremap <expr> <C-j>   pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr> <C-k>   pumvisible() ? "<Up>" : "<C-k>"
