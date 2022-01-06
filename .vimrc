@@ -1,5 +1,6 @@
 set number
 inoremap <silent> jj <ESC>
+let mapleader = "\<space>"
 language messages C
 set termguicolors
 " ファイルタイプ検出を有効にする
@@ -62,7 +63,37 @@ let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
 let g:fern#renderer = "nerdfont"
+function! s:init_fern() abort
+  nmap <buffer><expr>
+      \ <Plug>(fern-my-expand-or-collapse)
+      \ fern#smart#leaf(
+      \   "\<Plug>(fern-action-collapse)",
+      \   "\<Plug>(fern-action-expand)",
+      \   "\<Plug>(fern-action-collapse)",
+      \ )
+
+  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
+endfunction
+
+function! s:init_fern() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-expand-or-enter)
+        \ fern#smart#drawer(
+        \   "\<Plug>(fern-open-or-expand)",
+        \   "\<Plug>(fern-open-or-enter)",
+        \ )
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-collapse-or-leave)
+        \ fern#smart#drawer(
+        \   "\<Plug>(fern-action-collapse)",
+        \   "\<Plug>(fern-action-leave)",
+        \ )
+  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-enter)
+  nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
+endfunction
+
 nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=20<CR>
+
 augroup my-glyph-palette
   autocmd! *
   autocmd FileType fern call glyph_palette#apply()

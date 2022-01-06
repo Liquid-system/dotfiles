@@ -1,4 +1,24 @@
+export PATH=$PATH:~/.npm-global/bin
+export PATH=$PATH:~/.yarn/bin
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/tig
+export LIBGL_ALWAYS_INDIRECT=1
+export PATH=$PATH:/usr/local/go/bin
+export PATH=~/go/bin:$PATH
+export PATH=$PATH:~/.local/bin
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+export PATH="$HOME/.poetry/bin:$PATH"
+
+alias clang++='clang++ -std=c++17 -stdlib=libc++ -Wall -Wextra -g -fsanitize=undefined -D_GLIBCXX_DEBUG'
+alias clang='clang -Weverything -Werror -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-padded'
+alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 alias pip='python3.9 -m pip'
+alias cl='clear'
+
+. "$HOME/.cargo/env"
+PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}"
+
 # gh
 eval "$(gh completion -s zsh)"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -16,9 +36,6 @@ promptinit
 prompt adam1
 
 setopt histignorealldups sharehistory
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
 
 # 重複を記録しない
 setopt hist_ignore_dups
@@ -117,7 +134,6 @@ darwin*)
 esac
 
 export DISPLAY=`hostname`.mshome.net:0.0
-alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 
 . "$HOME/.cargo/env"
 # This loads nvm
@@ -170,3 +186,8 @@ zplug load
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+#zshrcの自動コンパイル
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
+fi
