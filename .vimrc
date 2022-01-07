@@ -1,24 +1,80 @@
 set number
 inoremap <silent> jj <ESC>
 let mapleader = "\<space>"
+" 英語表示
 language messages C
+" カラースキーム
 set termguicolors
 " ファイルタイプ検出を有効にする
 filetype on
-imap <C-h> <Left>
-imap <C-l> <Right>
+" Windowsでパスの区切り文字をスラッシュで扱う
+set shellslash
+" 対応する括弧やブレースを表示
+set showmatch matchtime=1
+" コメントの色を水色
+hi Comment ctermfg=3
+" yでコピーした時にクリップボードに入る
+set guioptions+=a
+" 対応する括弧を強調表示
+set showmatch
+" スワップファイルを作成しない
+set noswapfile
+
 set fenc=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 set mouse=a
 set virtualedit=onemore
+set shiftwidth=4
+set showmode
+" 検索系
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+" 検索時に最後まで行ったら最初に戻る
+set wrapscan
+" 検索語をハイライト表示
+set hlsearch
+" tabで補完
+set nocompatible
+" コマンドラインの補完
+set wildmode=list:longest
+" vimからファイルを開くときにタブを表示する
+set wildmenu wildmode=list:full
+" インサートモード中でも移動する
+imap <C-h> <Left>
+imap <C-l> <Right>
+" ヤンクした内容が上書きされないようにする
+noremap PP "0p
+noremap x "_x
+" 一行のみコマンドの実行
+nnoremap <Leader>i :!
+nnoremap <silent> <Leader>s :term<CR>
 if has('nvim')
   set clipboard=unnamed
 else
   set clipboard=unnamed,autoselect
 endif
-set showmode
-nnoremap gr :tabprevious
+" 編集箇所のカーソルを記憶
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif
+" 画面間でのカーソルの移動
+nnoremap <Leader>l <C-w>l
+nnoremap <Leader>h <C-w>h
+" タブの移動
+nnoremap <silent> gr :tabprevious<CR>
 
 " Required:
 " Add the dein installation directory into runtimepath
@@ -36,6 +92,7 @@ endif
 
 " Add or remove your plugins here like this:
 
+call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('jiangmiao/auto-pairs')
@@ -43,6 +100,7 @@ call dein#add('lambdalisue/nerdfont.vim')
 call dein#add('cocopon/iceberg.vim')
 call dein#add('joshdick/onedark.vim')
 call dein#add('arcticicestudio/nord-vim')
+call dein#add('preservim/nerdcommenter')
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('mattn/vim-lsp-settings')
 call dein#add('prabirshrestha/asyncomplete.vim')
@@ -92,7 +150,37 @@ function! s:init_fern() abort
   nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
 endfunction
 
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=20<CR>
+function! s:fern_preview_init() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-preview-or-nop)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:edit)\<C-w>p",
+        \   "",
+        \ )
+  nmap <buffer><expr> j
+        \ fern#smart#drawer(
+        \   "j\<Plug>(fern-my-preview-or-nop)",
+        \   "j",
+        \ )
+  nmap <buffer><expr> k
+        \ fern#smart#drawer(
+        \   "k\<Plug>(fern-my-preview-or-nop)",
+        \   "k",
+        \ )
+endfunction
+
+augroup my-fern-preview
+  autocmd! *
+  autocmd FileType fern call s:fern_preview_init()
+augroup END
+
+" You need this otherwise you cannot switch modified buffer
+set hidden
+" 隠しファイルを表示する
+let g:fern#default_hidden=1
+
+nnoremap <silent> <C-n> :Fern . -drawer -reveal=% -width=20 -toggle<CR>
+nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=20 -toggle<CR>
 
 augroup my-glyph-palette
   autocmd! *
@@ -100,11 +188,14 @@ augroup my-glyph-palette
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
+
 " lsp
 inoremap <expr> <C-j>   pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr> <C-k>   pumvisible() ? "<Up>" : "<C-k>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
+nnoremap <silent> <Leader>f :LspDocumentFormat<CR>
+nnoremap <silent> <Leader>q :LspHover<CR>
+nnoremap <silent> <Leader>d :LspPeekDefinition<CR>
 "lightline
 set laststatus=2
 let g:lightline = {
@@ -171,13 +262,20 @@ let g:dein#auto_recache = 1
 
 " Required:
 filetype plugin indent on
-
+" Needcommenter
+let g:NERDDefaultAlign='left'
+let g:NERDCreateDefaultMappings = 0
+nmap <Leader>c <Plug>NERDCommenterToggle
+vmap <Leader>c <Plug>NERDCommenterToggle
+nmap <Leader>a <Plug>NERDCommenterAppend
+" 自動リムーブ
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
   call map(s:removed_plugins, "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
 
+" If you want to install not installed plugins on startup.
 if dein#check_install()
   call dein#install()
 endif
