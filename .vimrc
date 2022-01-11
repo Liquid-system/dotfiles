@@ -103,6 +103,7 @@ endif
 
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
+call dein#add('itchyny/vim-gitbranch')
 call dein#add('tpope/vim-surround')
 call dein#add('preservim/nerdcommenter')
 call dein#add('sheerun/vim-polyglot')
@@ -229,9 +230,10 @@ let g:lightline = {
         \ 'colorscheme ':'nord',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
+        \   'left': [ [ 'mode', 'paste' ],['gitbranch', 'fugitive', 'filename' ] ]
         \ },
         \ 'component_function': {
+        \   'gitbranch': 'gitbranch#name',
         \   'modified': 'LightlineModified',
         \   'readonly': 'LightlineReadonly',
         \   'fugitive': 'LightlineFugitive',
