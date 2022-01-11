@@ -1,3 +1,11 @@
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
+    " ノーマルモード時に非点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[2 q"
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+endif
 set number
 inoremap <silent> jj <ESC>
 let mapleader = "\<space>"
@@ -25,6 +33,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 set mouse=a
 set virtualedit=onemore
+set tabstop=4
 set shiftwidth=4
 set showmode
 " 検索系
@@ -94,13 +103,15 @@ endif
 
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
+call dein#add('tpope/vim-surround')
+call dein#add('preservim/nerdcommenter')
 call dein#add('sheerun/vim-polyglot')
+call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
 call dein#add('cocopon/iceberg.vim')
 call dein#add('joshdick/onedark.vim')
 call dein#add('arcticicestudio/nord-vim')
-call dein#add('preservim/nerdcommenter')
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('mattn/vim-lsp-settings')
 call dein#add('prabirshrestha/asyncomplete.vim')
@@ -109,11 +120,28 @@ call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
+call dein#add('rhysd/vim-clang-format')
+call dein#add('kana/vim-operator-user')
 
 " Required
 
 call dein#end()
 
+" フォーマッタ
+" map to <Leader>f in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><silent><Leader>f :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><silent><Leader>f :ClangFormat<CR>
+let g:clang_format#style_options = {
+    \ "BasedOnStyle" : "Google",
+    \ "AccessModifierOffset" : -4,
+    \ "AllowShortIfStatementsOnASingleLine" : "true",
+    \ "IndentWidth": 4}
+" python3
+autocmd FileType py nnoremap <buffer><silent><Leader>f :!yapf %<CR>
+autocmd FileType py vnoremap <buffer><silent><Leader>f :!yapf %<CR>
+
+" rainbow
+let g:rainbow_active = 1
 "Fern
 let g:fern#renderer#default#leading = "│"
 let g:fern#renderer#default#root_symbol = "┬ "
@@ -193,12 +221,12 @@ augroup END
 inoremap <expr> <C-j>   pumvisible() ? "<Down>" : "<C-j>"
 inoremap <expr> <C-k>   pumvisible() ? "<Up>" : "<C-k>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-nnoremap <silent> <Leader>f :LspDocumentFormat<CR>
 nnoremap <silent> <Leader>q :LspHover<CR>
 nnoremap <silent> <Leader>d :LspPeekDefinition<CR>
 "lightline
 set laststatus=2
 let g:lightline = {
+        \ 'colorscheme ':'nord',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ],[ 'fugitive', 'filename' ] ]
@@ -262,12 +290,14 @@ let g:dein#auto_recache = 1
 
 " Required:
 filetype plugin indent on
+
 " Needcommenter
 let g:NERDDefaultAlign='left'
 let g:NERDCreateDefaultMappings = 0
 nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 nmap <Leader>a <Plug>NERDCommenterAppend
+
 " 自動リムーブ
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
