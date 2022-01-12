@@ -1,6 +1,7 @@
 export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/.pypy3/bin
 export PATH=$PATH:~/tig
 export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
@@ -19,6 +20,8 @@ alias cl='clear'
 . "$HOME/.cargo/env"
 PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}"
 
+# GUI
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 # gh
 eval "$(gh completion -s zsh)"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.

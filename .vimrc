@@ -82,6 +82,8 @@ endif
 " 画面間でのカーソルの移動
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
+" カーソルを中央に持っていく
+nnoremap n zz
 " タブの移動
 nnoremap <silent> gr :tabprevious<CR>
 
@@ -103,7 +105,6 @@ endif
 
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
-call dein#add('itchyny/vim-gitbranch')
 call dein#add('tpope/vim-surround')
 call dein#add('preservim/nerdcommenter')
 call dein#add('sheerun/vim-polyglot')
@@ -124,6 +125,7 @@ call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 
+
 " Required
 
 call dein#end()
@@ -138,9 +140,8 @@ let g:clang_format#style_options = {
     \ "AllowShortIfStatementsOnASingleLine" : "true",
     \ "IndentWidth": 4}
 " python3
-autocmd FileType py nnoremap <buffer><silent><Leader>f :!yapf %<CR>
-autocmd FileType py vnoremap <buffer><silent><Leader>f :!yapf %<CR>
-
+autocmd FileType python nnoremap <buffer><silent><Leader>f :!black %<CR>
+autocmd FileType python vnoremap <buffer><silent><Leader>f :!black %<CR>
 " rainbow
 let g:rainbow_active = 1
 "Fern
@@ -230,10 +231,9 @@ let g:lightline = {
         \ 'colorscheme ':'nord',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],['gitbranch', 'fugitive', 'filename' ] ]
+        \   'left': [ [ 'mode', 'paste' ],[ 'fugitive','filename' ] ]
         \ },
         \ 'component_function': {
-        \   'gitbranch': 'gitbranch#name',
         \   'modified': 'LightlineModified',
         \   'readonly': 'LightlineReadonly',
         \   'fugitive': 'LightlineFugitive',
@@ -264,7 +264,7 @@ endfunction
 
 function! LightlineFugitive()
   if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-    return fugitive#head()
+   return fugitive#head()
   else
     return ''
   endif
@@ -301,6 +301,7 @@ vmap <Leader>c <Plug>NERDCommenterToggle
 nmap <Leader>a <Plug>NERDCommenterAppend
 
 " 自動リムーブ
+call map(dein#check_clean(), "delete(v:val, 'rf')")
 let s:removed_plugins = dein#check_clean()
 if len(s:removed_plugins) > 0
   call map(s:removed_plugins, "delete(v:val, 'rf')")
