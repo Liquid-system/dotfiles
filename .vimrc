@@ -116,12 +116,14 @@ call dein#add('joshdick/onedark.vim')
 call dein#add('arcticicestudio/nord-vim')
 call dein#add('prabirshrestha/vim-lsp')
 call dein#add('mattn/vim-lsp-settings')
+call dein#add('dense-analysis/ale')
 call dein#add('prabirshrestha/asyncomplete.vim')
 call dein#add('prabirshrestha/asyncomplete-lsp.vim')
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
+call dein#add('sf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 
@@ -131,7 +133,9 @@ call dein#add('kana/vim-operator-user')
 call dein#end()
 
 " フォーマッタ
-" map to <Leader>f in C++ code
+nnoremap <buffer><silent><Leader>lf :LspDocumentFormat<CR>
+
+ " map to <Leader>f in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><silent><Leader>f :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><silent><Leader>f :ClangFormat<CR>
 let g:clang_format#style_options = {
@@ -139,9 +143,11 @@ let g:clang_format#style_options = {
     \ "AccessModifierOffset" : -4,
     \ "AllowShortIfStatementsOnASingleLine" : "true",
     \ "IndentWidth": 4}
-" python3
-autocmd FileType python nnoremap <buffer><silent><Leader>f :!black %<CR>
-autocmd FileType python vnoremap <buffer><silent><Leader>f :!black %<CR>
+
+  " python3
+autocmd FileType python nnoremap <buffer><silent><Leader>f :Black<CR>
+autocmd FileType python vnoremap <buffer><silent><Leader>f :Black<CR>
+
 " rainbow
 let g:rainbow_active = 1
 "Fern
@@ -225,6 +231,18 @@ inoremap <expr> <C-k>   pumvisible() ? "<Up>" : "<C-k>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 nnoremap <silent> <Leader>q :LspHover<CR>
 nnoremap <silent> <Leader>d :LspPeekDefinition<CR>
+nmap <buffer> gs <plug>(lsp-document-symbol-search)
+nnoremap <buffer> <expr> B lsp#scroll(+4)
+nnoremap <buffer> <expr> F lsp#scroll(-4)
+let g:lsp_settings = {
+\   'pyls-all': {
+\     'workspace_config': {
+\       'pyls': {
+\         'configurationSources': ['flake8']
+\       }
+\     }
+\   },
+\}
 "lightline
 set laststatus=2
 let g:lightline = {

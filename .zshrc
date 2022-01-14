@@ -53,6 +53,10 @@ setopt share_history
 setopt auto_cd
 # コマンド訂正
 setopt correct
+# viキーバインドにする
+set -o vi
+# jjで抜ける
+bindkey "jj" vi-cmd-mode
 # Use modern completion system
 autoload -Uz compinit
 compinit
