@@ -8,6 +8,12 @@ if has('vim_starting')
 endif
 set number
 inoremap <silent> jj <ESC>
+" 表示行と論理行を入れ替える
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+" leaderキーの設定
 let mapleader = "\<space>"
 " 英語表示
 language messages C
@@ -123,7 +129,7 @@ call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('sf/black')
+call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 
