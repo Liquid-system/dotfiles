@@ -48,12 +48,11 @@ set formatoptions-=ro
 " マウス
 set mouse=a
 
+" ファイルエンコーディング
 set fenc=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
+" スペースの追加
 set virtualedit=onemore
-set tabstop=4
-set shiftwidth=4
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
@@ -78,9 +77,13 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 " ヤンクした内容が上書きされないようにする
 noremap PP "0p
-" xで削除した時はヤンクしない
+" コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
+vnoremap dd "_dd
+nnoremap dd "_dd
+vnoremap diw "_diw
+nnoremap diw "_diw
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
 nnoremap <silent> <Leader>s :term<CR>
