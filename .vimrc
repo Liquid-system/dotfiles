@@ -12,6 +12,7 @@ if has('nvim')
 endif
 set number
 set title
+syntax on
 set encoding=utf-8
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
@@ -48,12 +49,11 @@ set formatoptions-=ro
 " マウス
 set mouse=a
 
+" ファイルエンコーディング
 set fenc=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
+" スペースの追加
 set virtualedit=onemore
-set tabstop=4
-set shiftwidth=4
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
@@ -78,9 +78,13 @@ imap <C-h> <Left>
 imap <C-l> <Right>
 " ヤンクした内容が上書きされないようにする
 noremap PP "0p
-" xで削除した時はヤンクしない
+" コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
+vnoremap dd "_dd
+nnoremap dd "_dd
+vnoremap diw "_diw
+nnoremap diw "_diw
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
 nnoremap <silent> <Leader>s :term<CR>
@@ -165,7 +169,6 @@ call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
 call dein#add('prettier/vim-prettier', {'build': 'npm install'})
-call dein#add('twitvim/twitvim')
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
 call dein#add('vim-test/vim-test')
@@ -296,7 +299,7 @@ nmap <silent><Leader>d <Plug>(coc-definition)
 nmap <silent><Leader>y <Plug>(coc-type-definition)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent>K :call <SID>show_documentation()<CR>
 j
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -433,16 +436,6 @@ nmap <Leader>c <Plug>NERDCommenterToggle
 vmap <Leader>c <Plug>NERDCommenterToggle
 nmap <Leader>a <Plug>NERDCommenterAppend
 
-" twitvim
-let twitvim_count = 60
-nnoremap <Leader>tw :<C-u>PosttoTwitter<CR>
-inoremap <Leader>tw :<C-u>PosttoTwitter<CR>
-nnoremap <Leader>tl :<C-u>FriendsTwitter<CR>
-inoremap <Leader>tl :<C-u>FriendsTwitter<CR>
-nnoremap <Leader>tn :<C-u>NextTwitter<CR>
-inoremap <Leader>tn :<C-u>NextTwitter<CR>
-nnoremap <Leader>tp :<C-u>PreviousTwitter<CR>
-
 " devdocs.vim
 nmap <Leader>K <Plug>(devdocs-under-cursor)
 " autosave
@@ -466,6 +459,9 @@ augroup switch_auto_save
   au BufEnter * call s:auto_save_detect()
 augroup END
 
+" colorscheme
+colorscheme dogrun
+
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 let s:removed_plugins = dein#check_clean()
@@ -473,9 +469,6 @@ if len(s:removed_plugins) > 0
   call map(s:removed_plugins, "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
-" colorscheme
-syntax on
-colorscheme dogrun
 " If you want to install not installed plugins on startup.
 let g:dein#auto_recache = 1
 if dein#check_install()
