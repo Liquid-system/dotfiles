@@ -73,6 +73,10 @@ set wildmode=list:longest
 set wildmenu wildmode=list:full
 " キーの待ち時間設定
 set timeoutlen=250
+" 空白をスペース4文分にする
+set shiftwidth=4
+" タブを4文字分にする
+set tabstop=4
 " インサートモード中でも移動する
 imap <C-h> <Left>
 imap <C-l> <Right>
@@ -81,10 +85,13 @@ noremap PP "0p
 " コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
-vnoremap dd "_dd
-nnoremap dd "_dd
-vnoremap diw "_diw
-nnoremap diw "_diw
+vnoremap df "_dd
+nnoremap df "_dd
+" コピペ時の自動インデント
+nnoremap p ]p
+nnoremap P ]P
+nnoremap ]p p
+nnoremap ]P P
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
 nnoremap <silent> <Leader>s :term<CR>
@@ -135,7 +142,8 @@ tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 
-" Required
+" dein
+" Quick start
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -150,7 +158,6 @@ if !has('nvim')
 endif
 
 " Add or remove your plugins here like this:
-
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
@@ -173,6 +180,8 @@ call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
 call dein#add('vim-test/vim-test')
 call dein#add('liuchengxu/vista.vim')
+call dein#add('tpope/vim-fugitive')
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 " カラースキーム
 call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
@@ -332,8 +341,8 @@ let g:lightline = {
         \ 'colorscheme':'dogrun',
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],[ 'readonly','fugitive','filename' ] ],
-        \   'right':[['percent'],['fileformat'],['fileencoding'],['filetype'],['method'],['cocstatus']]
+        \   'left': [ ['mode','paste' ],['readonly','fugitive','filename'],['method']],
+        \   'right':[['percent'],['fileformat'],['fileencoding'],['filetype'],['cocstatus']]
         \ },
         \ 'component_function': {
         \   'modified': 'LightlineModified',
@@ -395,37 +404,24 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
-
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" Use autocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
 " ctags
 nnoremap <silent><Leader>v :Vista!!<CR>
-let g:vista_sidebar_width = 35
-" How each level is indented and what to prepend.
+let g:vista_sidebar_width = 38
+" How each level is indented and what to prepend.g:vista#renderer#ctags
 " This could make the display more compact or more spacious.
-" e.g., more compact: ["▸ ", ""]
-" Note: this option only works for the kind renderer, not the tree renderer.
+let g:vista#renderer#ctags = "kind"
+let g:vista_echo_cursor = 0
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-
 " Executive used when opening vista sidebar without specifying it.
 " See all the avaliable executives via `:echo g:vista#executives`.
 let g:vista_default_executive = 'ctags'
-
 " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
 let g:vista#renderer#enable_icon = 1
-
-" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
-let g:vista#renderer#icons = {
-\   "function": "\uf794",
-\  }
-let g:dein#auto_recache = 1
-
 " Required:
 filetype plugin indent on
 
@@ -459,6 +455,11 @@ augroup switch_auto_save
   au BufEnter * call s:auto_save_detect()
 augroup END
 
+" gitcommitのスペルcheck自動有効化
+augroup GitSpellCheck
+autocmd!
+autocmd FileType gitcommit setlocal spell
+augroup END
 " colorscheme
 colorscheme dogrun
 
