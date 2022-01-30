@@ -92,6 +92,9 @@ nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
+" 半画面上下
+nnoremap <Leader>u <C-u> 
+nnoremap <Leader>d <C-d>
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
 nnoremap <silent> <Leader>s :term<CR>
@@ -161,6 +164,7 @@ endif
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
+call dein#add('easymotion/vim-easymotion')
 call dein#add('preservim/nerdcommenter')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('luochen1990/rainbow')
@@ -171,7 +175,6 @@ call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('yuki-yano/fern-preview.vim')
 call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
@@ -189,6 +192,21 @@ call dein#add('wadackel/vim-dogrun')
 
 call dein#end()
 
+" easymotion
+" s{char}{char} to move to {char}{char}
+nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+map <Leader><Leader>l <Plug>(easymotion-lineforward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
 nnoremap <buffer><silent><Leader>lf :LspDocumentFormat<CR>
 
@@ -244,18 +262,28 @@ function! s:init_fern() abort
   nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
 endfunction
 
-function! s:fern_settings() abort
-  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
-  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
-  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
-  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
-  nmap <silent> <buffer> <expr> <Plug>(fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
-  nmap <silent> <buffer> q <Plug>(fern-quit-or-close-preview)
+function! s:fern_preview_init() abort
+nmap <buffer><expr>
+      \ <Plug>(fern-my-preview-or-nop)
+      \ fern#smart#leaf(
+      \   "\<Plug>(fern-action-open:edit)\<C-w>p",
+      \   "",
+      \ )
+nmap <buffer><expr> j
+      \ fern#smart#drawer(
+      \   "j\<Plug>(fern-my-preview-or-nop)",
+      \   "j",
+      \ )
+nmap <buffer><expr> k
+      \ fern#smart#drawer(
+      \   "k\<Plug>(fern-my-preview-or-nop)",
+      \   "k",
+      \ )
 endfunction
 
-augroup fern-settings
-  autocmd!
-  autocmd FileType fern call s:fern_settings()
+augroup my-fern-preview
+autocmd! *
+autocmd FileType fern call s:fern_preview_init()
 augroup END
 
 " You need this otherwise you cannot switch modified buffer
@@ -304,7 +332,7 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " GoTo code navigation.
-nmap <silent><Leader>d <Plug>(coc-definition)
+nmap <silent><Leader>q <Plug>(coc-definition)
 nmap <silent><Leader>y <Plug>(coc-type-definition)
 
 " Use K to show documentation in preview window.
