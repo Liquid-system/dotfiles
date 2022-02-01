@@ -1,0 +1,1 @@
+/home/liquid_system/.config/nvim/init.vim
