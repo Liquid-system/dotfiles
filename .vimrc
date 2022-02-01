@@ -7,7 +7,7 @@ if has('vim_starting')
     let &t_SR .= "\e[4 q"
 endif
 if has('nvim')
-  " 置換の時の設
+  " 置換の時の設定
   set inccommand=split
 endif
 set number
@@ -97,7 +97,6 @@ nnoremap <Leader>u <C-u>
 nnoremap <Leader>d <C-d>
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
-nnoremap <silent> <Leader>s :term<CR>
 " クリップボード
 if has('nvim')
   set clipboard=unnamed
@@ -166,7 +165,7 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('preservim/nerdcommenter')
-call dein#add('sheerun/vim-polyglot')
+call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
 call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
@@ -188,6 +187,9 @@ call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 " カラースキーム
 call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
+call dein#add('mhartington/oceanic-next')
+call dein#add('tomasiser/vim-code-dark')
+call dein#add("rafamadriz/neon")
 " Required
 
 call dein#end()
@@ -196,9 +198,8 @@ call dein#end()
 " s{char}{char} to move to {char}{char}
 nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
 " Move to line
-map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
-" Move to word
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 map <Leader><Leader>l <Plug>(easymotion-lineforward)
@@ -489,7 +490,8 @@ autocmd!
 autocmd FileType gitcommit setlocal spell
 augroup END
 " colorscheme
-colorscheme dogrun
+syntax enable
+colorscheme neon
 
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
