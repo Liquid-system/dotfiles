@@ -143,7 +143,9 @@ nnoremap n zz
 tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
-
+"terminal設定
+tnoremap <Esc> <C-\><C-n>
+command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
 " dein
 " Quick start
 " Add the dein installation directory into runtimepath
