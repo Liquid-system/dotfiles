@@ -48,7 +48,6 @@ set noswapfile
 set formatoptions-=ro
 " マウス
 set mouse=a
-
 " ファイルエンコーディング
 set fenc=utf-8
 set fileformats=unix,dos,mac
@@ -63,8 +62,12 @@ set smartcase
 set incsearch
 " 検索時に最後まで行ったら最初に戻る
 set wrapscan
-" 検索語をハイライト表示
+" 検索語をハイライト非表示
 set hlsearch
+""ESC キーを押したら消えるようにする
+nnoremap <silent><ESC><ESC> :nohl<CR>
+" 括弧をハイライト表示
+set showmatch
 " tabで補完
 set nocompatible
 " コマンドラインの補完
@@ -197,6 +200,8 @@ call dein#add("rafamadriz/neon")
 call dein#end()
 
 " easymotion
+map f <Plug>(easymotion-bd-fl)
+map t <Plug>(easymotion-bd-tl)
 " s{char}{char} to move to {char}{char}
 nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
 " Move to line
@@ -209,9 +214,10 @@ map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><Leader>h <Plug>(easymotion-linebackward)
 
+" smartcase
+let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
-nnoremap <buffer><silent><Leader>lf :LspDocumentFormat<CR>
 
 " map to <Leader>f in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer><silent><Leader>f :<C-u>ClangFormat<CR>
@@ -305,7 +311,6 @@ augroup END
 
 
 "lsp
-autocmd CursorHold * silent call CocActionAsync('highlight')
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 "Use <C-j> and <C-k> to navigate the completion list:
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
