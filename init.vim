@@ -68,6 +68,8 @@ set hlsearch
 nnoremap <silent><ESC><ESC> :nohl<CR>
 " 括弧をハイライト表示
 set showmatch
+" 括弧秒数を調整
+set matchtime=1
 " tabで補完
 set nocompatible
 " コマンドラインの補完
@@ -98,8 +100,8 @@ nnoremap ]P P
 " 半画面上下
 nnoremap <Leader>u <C-u> 
 nnoremap <Leader>d <C-d>
-" 一行のみコマンドの実行
-nnoremap <Leader>i :!
+" terminalの起動
+nnoremap <Leader>s :T <CR> 
 " クリップボード
 if has('nvim')
 set clipboard=unnamed
@@ -148,7 +150,9 @@ nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 "terminal設定
 tnoremap <Esc> <C-\><C-n>
-command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
+command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
+" 常にインサートモードでterminalを開く
+autocmd TermOpen * startinsert
 " dein
 " Quick start
 " Add the dein installation directory into runtimepath
@@ -447,7 +451,7 @@ set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 " ctags
 nnoremap <silent><Leader>v :Vista!!<CR>
-let g:vista_sidebar_width = 38
+let g:vista_sidebar_width = 30
 " How each level is indented and what to prepend.g:vista#renderer#ctags
 " This could make the display more compact or more spacious.
 let g:vista#renderer#ctags = "kind"
