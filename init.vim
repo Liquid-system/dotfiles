@@ -82,6 +82,9 @@ set timeoutlen=250
 set shiftwidth=4
 " タブを4文字分にする
 set tabstop=4
+"インデント
+set cindent
+set autoindent
 " インサートモード中でも移動する
 imap <C-h> <Left>
 imap <C-l> <Right>
@@ -172,7 +175,9 @@ endif
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
+call dein#add('lukas-reineke/indent-blankline.nvim')
 call dein#add('easymotion/vim-easymotion')
+call dein#add('matze/vim-move')
 call dein#add('preservim/nerdcommenter')
 call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
 call dein#add('luochen1990/rainbow')
@@ -186,6 +191,7 @@ call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
+call dein#add('mhartington/formatter.nvim')
 call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
@@ -198,6 +204,7 @@ call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
 call dein#add('mhartington/oceanic-next')
 call dein#add('tomasiser/vim-code-dark')
+call dein#add('bluz71/vim-nightfly-guicolors')
 call dein#add("rafamadriz/neon")
 " Required
 
@@ -222,16 +229,8 @@ map <Leader><Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
-
-" map to <Leader>f in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><silent><Leader>f :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><silent><Leader>f :ClangFormat<CR>
-let g:clang_format#style_options = {
-\ "BasedOnStyle" : "Google",
-\ "AccessModifierOffset" : -4,
-\ "AllowShortIfStatementsOnASingleLine" : "true",
-\ "IndentWidth": 4}
-
+command! -nargs=0 Format :call CocActionAsync('format')
+nmap <silent> <space>f <Plug>(coc-format)
 " python3
 autocmd FileType python nnoremap <buffer><silent><Leader>f :Black<CR>
 autocmd FileType python vnoremap <buffer><silent><Leader>f :Black<CR>
@@ -315,6 +314,8 @@ augroup END
 
 
 "lsp
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 "Use <C-j> and <C-k> to navigate the completion list:
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -476,6 +477,15 @@ nmap <Leader>a <Plug>NERDCommenterAppend
 nmap <Leader>K <Plug>(devdocs-under-cursor)
 " treesitter設定
 lua <<EOF
+vim.opt.list = true
+vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+	space_char_blankline = " ",
+	show_current_context = true,
+	show_current_context_start = true,
+}
 require'nvim-treesitter.configs'.setup {
 highlight = {
   enable = true,  -- syntax highlightを有効にする
@@ -511,7 +521,9 @@ autocmd FileType gitcommit setlocal spell
 augroup END
 " colorscheme
 syntax enable
-colorscheme neon
+" Vimscript initialization file
+let g:nightflyItalics = 0
+colorscheme nightfly
 
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
