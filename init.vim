@@ -124,6 +124,18 @@ autocmd BufReadPost *
 augroup END
 endif
 
+" 印字不可能文字を16進数で表示
+set display=uhex
+"バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin ファイルを開くと発動します）
+augroup BinaryXXD
+  autocmd!
+  autocmd BufReadPre  *.bin let &binary =1
+  autocmd BufReadPost * if &binary | silent %!xxd -g 1
+  autocmd BufReadPost * set ft=xxd | endif
+  autocmd BufWritePre * if &binary | %!xxd -r | endif
+  autocmd BufWritePost * if &binary | silent %!xxd -g 1
+  autocmd BufWritePost * set nomod | endif
+augroup END
 " 不要なデフォルトプラグインの停止
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
@@ -184,6 +196,7 @@ call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+call dein#add('simeji/winresizer')
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
@@ -191,7 +204,6 @@ call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
-call dein#add('mhartington/formatter.nvim')
 call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
@@ -231,9 +243,6 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <silent> <space>f <Plug>(coc-format)
-" python3
-autocmd FileType python nnoremap <buffer><silent><Leader>f :Black<CR>
-autocmd FileType python vnoremap <buffer><silent><Leader>f :Black<CR>
 
 " javascript
 autocmd FileType javascript nnoremap <buffer><silent><Leader>f :PrettierAsync<CR>
@@ -304,7 +313,7 @@ set hidden
 let g:fern#default_hidden=1
 
 nnoremap <silent> <C-n> :Fern . -drawer -reveal=% -width=17 -toggle<CR>
-nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=17 -toggle<CR>
+nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=23 -toggle<CR>
 
 augroup my-glyph-palette
 autocmd! *
@@ -312,10 +321,11 @@ autocmd FileType fern call glyph_palette#apply()
 autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
+"リサイズ設定
+let g:winresizer_start_key ='<C-s>'
+let g:winresizer_vert_resize = 1
 
 "lsp
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 "Use <C-j> and <C-k> to navigate the completion list:
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -345,8 +355,10 @@ endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 						  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " GoTo code navigation.
-nmap <silent><Leader>q <Plug>(coc-definition)
-nmap <silent><Leader>y <Plug>(coc-type-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent>K :call <SID>show_documentation()<CR>
@@ -364,6 +376,8 @@ endfunction
 "エラージャンプ
 nmap <silent><Leader>ej <Plug>(coc-diagnostic-next-error)
 nmap <silent><Leader>ek <Plug>(coc-diagnostic-prev-error)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 " Remap <C-f> and <C-b> for scroll float windows/popups.
@@ -375,6 +389,11 @@ inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float
 vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " lightline
 set laststatus=2
