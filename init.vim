@@ -30,6 +30,8 @@ let mapleader = "\<space>"
 language messages C
 " カラースキーム
 set termguicolors
+"コードの色分け
+syntax on 
 " ファイルタイプ検出を有効にする
 filetype on
 " Windowsでパスの区切り文字をスラッシュで扱う
@@ -93,8 +95,6 @@ noremap PP "0p
 " コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
-vnoremap df "_dd
-nnoremap df "_dd
 " コピペ時の自動インデント
 nnoremap p ]p
 nnoremap P ]P
@@ -166,6 +166,10 @@ nnoremap <silent> th :tabprevious<CR>
 "terminal設定
 tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
+
+"Use <C-j> and <C-k> to navigate the completion list:
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " 常にインサートモードでterminalを開く
 autocmd TermOpen * startinsert
 " dein
@@ -186,7 +190,7 @@ endif
 " Add or remove your plugins here like this:
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
-call dein#add('tpope/vim-surround')
+call dein#add('machakann/vim-sandwich')
 call dein#add('lukas-reineke/indent-blankline.nvim')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('matze/vim-move')
@@ -196,6 +200,7 @@ call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+call dein#add('mattn/emmet-vim')
 call dein#add('simeji/winresizer')
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
@@ -211,6 +216,10 @@ call dein#add('vim-test/vim-test')
 call dein#add('liuchengxu/vista.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+call dein#add('vim-denops/denops.vim')
+call dein#add('vim-skk/skkeleton')
+call dein#add('higashi000/opensiv3d.vim')
+
 " カラースキーム
 call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
@@ -228,10 +237,10 @@ map t <Plug>(easymotion-bd-tl)
 " s{char}{char} to move to {char}{char}
 nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+map <Leader><Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader><Leader>l <Plug>(easymotion-overwin-line)
+map  <Leader><Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader><Leader>w <Plug>(easymotion-overwin-w)
 map <Leader><Leader>l <Plug>(easymotion-lineforward)
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
@@ -251,6 +260,28 @@ autocmd FileType javascript vnoremap <buffer><silent><Leader>f :PrettierAsync<CR
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 " rainbow
 let g:rainbow_active = 1
+" emmet
+let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<Leader>'
+autocmd FileType html,css EmmetInstall
+let g:user_emmet_settings = {
+\  'variables' : {
+\    'lang' : "ja"
+\  },
+\  'indentation' : '  ',
+\  'html' : {
+\    'snippets' : {
+\      'html:5': "<!DOCTYPE html>\n"
+\        ."<html lang=\"${lang}\">\n"
+\        ."<head>\n"
+\        ."\t<meta charset=\"${charset}\">\n"
+\        ."\t<title></title>\n"
+\        ."</head>\n"
+\        ."<body>\n\t${child}|\n</body>\n"
+\        ."</html>",
+\    }
+\  }
+\}
 "Fern
 let g:fern#renderer#default#leading = "│"
 let g:fern#renderer#default#root_symbol = "┬ "
@@ -325,11 +356,29 @@ augroup END
 let g:winresizer_start_key ='<C-s>'
 let g:winresizer_vert_resize = 1
 
+
+" skk
+call skkeleton#config({
+\'globalJisyo': '~/.skk/SKK-JISYO.L',
+\'tabCompletion':v:false,
+\'eggLikeNewline':v:true
+\})
+call skkeleton#register_kanatable('rom', {
+\ 'jj': 'escape',
+\ 'kk':'henkanBackward',
+\ 'z,': ['―', ''],
+\ "z\<Space>": ["\u3000", ''],
+\ })
+imap sk <plug>(skkeleton-enable)
+cmap sk <plug>(skkeleton-enable)
+  " coc.nvimの例
+augroup skkeleton-coc
+  autocmd!
+  autocmd User skkeleton-enable-pre let b:coc_suggest_disable = v:true
+  autocmd User skkeleton-disable-pre let b:coc_suggest_disable = v:false
+augroup END
 "lsp
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-"Use <C-j> and <C-k> to navigate the completion list:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -498,7 +547,6 @@ nmap <Leader>K <Plug>(devdocs-under-cursor)
 lua <<EOF
 vim.opt.list = true
 vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
 
 require("indent_blankline").setup {
 	space_char_blankline = " ",
@@ -508,8 +556,10 @@ require("indent_blankline").setup {
 require'nvim-treesitter.configs'.setup {
 highlight = {
   enable = true,  -- syntax highlightを有効にする
+  custom_captures = {
+		  ["punctuation.bracket"] = "",
+		  ["constructor"]         = "",},
 },
-ensure_installed = 'maintained' 
 }
 EOF
 " autosave

@@ -7,11 +7,9 @@ export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 export PATH="$HOME/.poetry/bin:$PATH"
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
+export PATH=$PATH:~/flutter/bin
+
 fpath+=~/.zfunc
 
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
@@ -19,6 +17,7 @@ alias pip='python3.9 -m pip'
 alias cl='clear'
 alias vim='nvim'
 alias n='nvim'
+function open() { cmd.exe /c start $(wslpath -w $1) }
 
 . "$HOME/.cargo/env"
 PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}"
@@ -201,3 +200,12 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fix_wsl2_interop() {
+for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
+	if [[ -e "/run/WSL/${i}_interop" ]]; then
+		export WSL_INTEROP=/run/WSL/${i}_interop
+	fi
+done
+}
+
