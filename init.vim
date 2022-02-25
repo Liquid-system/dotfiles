@@ -209,7 +209,6 @@ call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('psf/black')
 call dein#add('rhysd/vim-clang-format')
 call dein#add('kana/vim-operator-user')
-call dein#add('prettier/vim-prettier', {'build': 'npm install'})
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
 call dein#add('vim-test/vim-test')
@@ -227,6 +226,7 @@ call dein#add('mhartington/oceanic-next')
 call dein#add('tomasiser/vim-code-dark')
 call dein#add('bluz71/vim-nightfly-guicolors')
 call dein#add("rafamadriz/neon")
+call dein#add('morhetz/gruvbox')
 " Required
 
 call dein#end()
@@ -253,9 +253,6 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 command! -nargs=0 Format :call CocActionAsync('format')
 nmap <silent> <space>f <Plug>(coc-format)
 
-" javascript
-autocmd FileType javascript nnoremap <buffer><silent><Leader>f :PrettierAsync<CR>
-autocmd FileType javascript vnoremap <buffer><silent><Leader>f :PrettierAsync<CR>
 "typescript
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 " rainbow
@@ -408,7 +405,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
 " Use K to show documentation in preview window.
 nnoremap <silent>K :call <SID>show_documentation()<CR>
 j
@@ -440,6 +436,9 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 endif
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" easymotion対策
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd silent! CocEnable
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
@@ -451,7 +450,7 @@ let g:lightline = {
 	\ 'mode_map': {'c': 'NORMAL'},
 	\ 'active': {
 	\   'left': [ ['mode','paste' ],['readonly','fugitive','filename'],['method']],
-	\   'right':[['percent'],['fileformat'],['fileencoding'],['filetype'],['cocstatus']]
+	\   'right':[['percent'],['fileformat'],['fileencoding'],['filetype']]
 	\ },
 	\ 'component_function': {
 	\   'modified': 'LightlineModified',
@@ -463,7 +462,6 @@ let g:lightline = {
 	\   'fileencoding': 'LightlineFileencoding',
 	\   'mode': 'LightlineMode', 
 	\   'method': 'NearestMethodOrFunction',
-	\   'cocstatus': 'coc#status'
 	\ }
 	\ }
 
@@ -592,7 +590,7 @@ augroup END
 syntax enable
 " Vimscript initialization file
 let g:nightflyItalics = 0
-colorscheme nightfly
+colorscheme gruvbox
 
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
