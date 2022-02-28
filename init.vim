@@ -167,9 +167,9 @@ nnoremap <silent> th :tabprevious<CR>
 tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
 
-"Use <C-j> and <C-k> to navigate the completion list:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"Use J and K to navigate the completion list:
+inoremap <expr> J pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> K pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " 常にインサートモードでterminalを開く
 autocmd TermOpen * startinsert
 " dein
@@ -196,6 +196,7 @@ call dein#add('easymotion/vim-easymotion')
 call dein#add('matze/vim-move')
 call dein#add('preservim/nerdcommenter')
 call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+call dein#add('p00f/nvim-ts-rainbow')
 call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
@@ -207,8 +208,6 @@ call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
 call dein#add('psf/black')
-call dein#add('rhysd/vim-clang-format')
-call dein#add('kana/vim-operator-user')
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
 call dein#add('vim-test/vim-test')
@@ -542,22 +541,22 @@ nmap <Leader>a <Plug>NERDCommenterAppend
 " devdocs.vim
 nmap <Leader>K <Plug>(devdocs-under-cursor)
 " treesitter設定
-lua <<EOF
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
-
+lua << EOF
+vim.cmd[[augroup rainbow]]
+vim.cmd[[	au BufEnter *     hi      TSPunctBracket NONE]]
+vim.cmd[[	au BufEnter *     hi link TSPunctBracket nonexistenthl]]
+vim.cmd[[	au BufEnter *.lua hi      TSConstructor  NONE]]
+vim.cmd[[	au BufEnter *.lua hi link TSConstructor  nonexistenthl]]
+vim.cmd[[augroup END]]
 require("indent_blankline").setup {
-	space_char_blankline = " ",
-	show_current_context = true,
-	show_current_context_start = true,
+space_char_blankline = " ",
+show_current_context = true,
+show_current_context_start = true,
 }
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup {
 highlight = {
   enable = true,  -- syntax highlightを有効にする
-  custom_captures = {
-		  ["punctuation.bracket"] = "",
-		  ["constructor"]         = "",},
-},
+}
 }
 EOF
 " autosave
