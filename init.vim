@@ -168,8 +168,8 @@ tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
 
 "Use J and K to navigate the completion list:
-inoremap <expr> J pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> K pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " 常にインサートモードでterminalを開く
 autocmd TermOpen * startinsert
 " dein

@@ -9,6 +9,10 @@ export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$PATH:~/flutter/bin
+CPPFLAGS="-I/opt/gtk/include"
+LDFLAGS="-L/opt/gtk/lib"
+PKG_CONFIG_PATH="/opt/gtk/lib/pkgconfig"
+export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 
 fpath+=~/.zfunc
 
@@ -123,22 +127,27 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+if [[ $(command -v exa) ]]; then
+	alias e='exa --icons'
+	alias l=e
+	alias ls=e
+fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-case "${OSTYPE}" in
-darwin*)
-  alias ls ="ls -G"
-  alias la="ls -aG"
-  alias ll="ls -lG"
-  ;;
-  linux*)
-  alias ll='ls -alF'
-  alias la='ls -A'
-  alias l='ls -CF'
-  ;;
-esac
+#case "${OSTYPE}" in
+#darwin*)
+#  alias ls ="ls -G"
+#  alias la="ls -aG"
+#  alias ll="ls -lG"
+#  ;;
+#  linux*)
+#  alias ll='ls -alF'
+#  alias la='ls -A'
+#  alias l='ls -CF'
+#  ;;
+#esac
 
 export DISPLAY=`hostname`.mshome.net:0.0
 
