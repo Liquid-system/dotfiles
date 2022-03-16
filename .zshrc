@@ -189,6 +189,11 @@ zplug "zsh-users/zsh-autosuggestions"
 #フォントを白源にするhttps://github.com/yuru7/HackGen
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
+#ヒストリで補完する
+ZSH_AUTOSUGGEST_STRATEGY=history
+#zsh補完を無効化する
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="rm *"
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -217,4 +222,19 @@ for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
 	fi
 done
 }
+zshaddhistory() {
+local line=${1%%$'\n'}
+local cmd=${line%% *}
 
+# 以下の条件をすべて満たすものだけをヒストリに追加する
+[[ ${#line} -ge 5
+	&& ${cmd} != (l|l[sal])
+	&& ${cmd} != (c|cd)
+	&& ${cmd} != (m|man)
+]]
+}
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)":0
+else
+export DISPLAY=127.0.0.1:0
+fi
