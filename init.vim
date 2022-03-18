@@ -157,7 +157,7 @@ nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
-" カーソルを中央に持っていく
+" 中央に持っていく
 nnoremap n zz
 " タブの移動
 tabnext
@@ -166,10 +166,6 @@ nnoremap <silent> th :tabprevious<CR>
 "terminal設定
 tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
-
-"Use J and K to navigate the completion list:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " 常にインサートモードでterminalを開く
 autocmd TermOpen * startinsert
 " dein
@@ -196,11 +192,17 @@ call dein#add('easymotion/vim-easymotion')
 call dein#add('matze/vim-move')
 call dein#add('preservim/nerdcommenter')
 call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
+call dein#add('neovim/nvim-lspconfig')
+call dein#add('williamboman/nvim-lsp-installer')
+call dein#add('hrsh7th/cmp-nvim-lsp')
+call dein#add('hrsh7th/cmp-buffer')
+call dein#add('hrsh7th/cmp-path')
+call dein#add('hrsh7th/nvim-cmp')
+call dein#add('mortepau/codicons.nvim')
 call dein#add('p00f/nvim-ts-rainbow')
 call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
-call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('mattn/emmet-vim')
 call dein#add('simeji/winresizer')
 call dein#add('lambdalisue/fern.vim')
@@ -230,6 +232,7 @@ call dein#add('morhetz/gruvbox')
 
 call dein#end()
 
+
 " easymotion
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
@@ -249,7 +252,6 @@ map <Leader><Leader>h <Plug>(easymotion-linebackward)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
-command! -nargs=0 Format :call CocActionAsync('format')
 nmap <silent> <space>f <Plug>(coc-format)
 
 "typescript
@@ -389,59 +391,9 @@ let col = col('.') - 1
 return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-if has('nvim')
-inoremap <silent><expr>;; coc#refresh()
-else
-inoremap <silent><expr> <c-@> coc#refresh()
-endif
+
+
 " Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-						  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Use K to show documentation in preview window.
-nnoremap <silent>K :call <SID>show_documentation()<CR>
-j
-function! s:show_documentation()
-if (index(['vim','help'], &filetype) >= 0)
-execute 'h '.expand('<cword>')
-elseif (coc#rpc#ready())
-call CocActionAsync('doHover')
-else
-execute '!' . &keywordprg . " " . expand('<cword>')
-endif
-endfunction
-
-"エラージャンプ
-nmap <silent><Leader>ej <Plug>(coc-diagnostic-next-error)
-nmap <silent><Leader>ek <Plug>(coc-diagnostic-prev-error)
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-" easymotion対策
-autocmd User EasyMotionPromptBegin silent! CocDisable
-autocmd User EasyMotionPromptEnd silent! CocEnable
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-
 " lightline
 set laststatus=2
 let g:lightline = {
@@ -540,25 +492,123 @@ nmap <Leader>a <Plug>NERDCommenterAppend
 
 " devdocs.vim
 nmap <Leader>K <Plug>(devdocs-under-cursor)
-" treesitter設定
+" lua設定
 lua << EOF
-vim.cmd[[augroup rainbow]]
-vim.cmd[[	au BufEnter *     hi      TSPunctBracket NONE]]
-vim.cmd[[	au BufEnter *     hi link TSPunctBracket nonexistenthl]]
-vim.cmd[[	au BufEnter *.lua hi      TSConstructor  NONE]]
-vim.cmd[[	au BufEnter *.lua hi link TSConstructor  nonexistenthl]]
-vim.cmd[[augroup END]]
-require("indent_blankline").setup {
-space_char_blankline = " ",
-show_current_context = true,
-show_current_context_start = true,
-}
-require("nvim-treesitter.configs").setup {
-highlight = {
-  enable = true,  -- syntax highlightを有効にする
-}
-}
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+	local opts = {}
+	opts.on_attach = on_attach
+
+	server:setup(opts)
+end)
+ -- Setup nvim-cmp.
+local cmp = require'cmp'
+vim.opt.completeopt = "menu,menuone,noselect"
+-- lsp_installer.on_server_readyに追加
+cmp.setup({
+  snippet = {
+	-- REQUIRED - you must specify a snippet engine
+	expand = function(args)
+	  vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+	  -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+	  -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+	  -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+	end,
+  },
+  mapping = {
+	['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+	['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+	['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+	['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+	['<C-e>'] = cmp.mapping({
+	  i = cmp.mapping.abort(),
+	  c = cmp.mapping.close(),
+	}),
+	['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	['<C-j>'] = function(fallback)
+	if cmp.visible() then
+	  cmp.select_next_item()
+	elseif luasnip.expand_or_jumpable() then
+	  luasnip.expand_or_jump()
+	else
+	  fallback()
+	end
+  end,
+  ['<C-k>'] = function(fallback)
+	if cmp.visible() then
+	  cmp.select_prev_item()
+	elseif luasnip.jumpable(-1) then
+	  luasnip.jump(-1)
+	else
+	  fallback()
+	end
+  end,
+  },
+  sources = cmp.config.sources({
+	{ name = 'nvim_lsp' },
+	{ name = 'vsnip' }, -- For vsnip users.
+	-- { name = 'luasnip' }, -- For luasnip users.
+	-- { name = 'ultisnips' }, -- For ultisnips users.
+	-- { name = 'snippy' }, -- For snippy users.
+  }, {
+	{ name = 'buffer' },
+  })
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+	{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+  }, {
+	{ name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+	{ name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+	{ name = 'path' }
+  }, {
+	{ name = 'cmdline' }
+  })
+})
+ -- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 EOF
+
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save while in insert mode
