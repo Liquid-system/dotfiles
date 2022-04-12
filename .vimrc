@@ -302,9 +302,6 @@ augroup my-glyph-palette
 augroup END
 
 
-"lsp
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 "Use <C-j> and <C-k> to navigate the completion list:
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"

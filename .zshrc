@@ -9,6 +9,7 @@ export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$PATH:~/flutter/bin
+export LIBGL_ALWAYS_INDIRECT=0
 CPPFLAGS="-I/opt/gtk/include"
 LDFLAGS="-L/opt/gtk/lib"
 PKG_CONFIG_PATH="/opt/gtk/lib/pkgconfig"
@@ -139,7 +140,7 @@ fi
 #case "${OSTYPE}" in
 #darwin*)
 #  alias ls ="ls -G"
-#  alias la="ls -aG"
+  alias la="ls -aG"
 #  alias ll="ls -lG"
 #  ;;
 #  linux*)
@@ -184,8 +185,6 @@ source ~/.zplug/init.zsh
 
 # コマンドを種類ごとに色付け
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# 入力途中に候補をうっすら表示
-zplug "zsh-users/zsh-autosuggestions"
 #フォントを白源にするhttps://github.com/yuru7/HackGen
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
@@ -238,3 +237,4 @@ export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)":0
 else
 export DISPLAY=127.0.0.1:0
 fi
+export COLORTERM=truecolor

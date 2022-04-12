@@ -12,7 +12,6 @@ set inccommand=split
 endif
 set number
 set title
-syntax on
 set encoding=utf-8
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
@@ -31,7 +30,7 @@ language messages C
 " カラースキーム
 set termguicolors
 "コードの色分け
-syntax on 
+syntax on
 " ファイルタイプ検出を有効にする
 filetype on
 " Windowsでパスの区切り文字をスラッシュで扱う
@@ -101,10 +100,10 @@ nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
 " 半画面上下
-nnoremap <Leader>u <C-u> 
+nnoremap <Leader>u <C-u>
 nnoremap <Leader>d <C-d>
 " terminalの起動
-nnoremap <Leader>s :T <CR> 
+nnoremap <Leader>s :T <CR>
 " クリップボード
 if has('nvim')
 set clipboard=unnamed
@@ -199,7 +198,6 @@ call dein#add('hrsh7th/cmp-buffer')
 call dein#add('hrsh7th/cmp-path')
 call dein#add('hrsh7th/nvim-cmp')
 call dein#add('mortepau/codicons.nvim')
-call dein#add('p00f/nvim-ts-rainbow')
 call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
@@ -228,6 +226,7 @@ call dein#add('tomasiser/vim-code-dark')
 call dein#add('bluz71/vim-nightfly-guicolors')
 call dein#add("rafamadriz/neon")
 call dein#add('morhetz/gruvbox')
+call dein#add('folke/tokyonight.nvim')
 " Required
 
 call dein#end()
@@ -393,7 +392,6 @@ endfunction
 
 
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
 " lightline
 set laststatus=2
 let g:lightline = {
@@ -411,7 +409,7 @@ let g:lightline = {
 	\   'fileformat': 'LightlineFileformat',
 	\   'filetype': 'LightlineFiletype',
 	\   'fileencoding': 'LightlineFileencoding',
-	\   'mode': 'LightlineMode', 
+	\   'mode': 'LightlineMode',
 	\   'method': 'NearestMethodOrFunction',
 	\ }
 	\ }
@@ -494,6 +492,10 @@ nmap <Leader>a <Plug>NERDCommenterAppend
 nmap <Leader>K <Plug>(devdocs-under-cursor)
 " lua設定
 lua << EOF
+
+vim.cmd 'set termguicolors'
+vim.cmd 'syntax on'
+-- lsp_installer.on_server_readyに追加
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -508,9 +510,9 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -584,7 +586,7 @@ cmp.setup({
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-	{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+	{ name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
   }, {
 	{ name = 'buffer' },
   })
@@ -607,8 +609,26 @@ cmp.setup.cmdline(':', {
 })
  -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+cmp.setup({
+   view = {
+	  entries = "native" -- can be "custom", "wildmenu" or "native"
+   }
+})
+cmp.setup {
+  formatting = {
+	format = function(entry, vim_item)
+	  vim_item.abbr = ' ' .. vim_item.abbr
+	  vim_item.menu = (vim_item.menu or '') .. ' '
+	  return vim_item
+	end
+  }
+}
+cmp.setup {
+completion = {
+  completeopt = 'menu,menuone,noinsert'
+}
+}
 EOF
-
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save while in insert mode
@@ -639,8 +659,7 @@ augroup END
 syntax enable
 " Vimscript initialization file
 let g:nightflyItalics = 0
-colorscheme gruvbox
-
+colorscheme tokyonight
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 let s:removed_plugins = dein#check_clean()
