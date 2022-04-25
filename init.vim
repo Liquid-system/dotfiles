@@ -494,6 +494,12 @@ nmap <Leader>K <Plug>(devdocs-under-cursor)
 " lua設定
 lua << EOF
 
+vim.g.neon_style = "default"
+vim.g.neon_italic_comment = false
+vim.g.neon_italic_keyword = false
+vim.g.neon_italic_function = false
+vim.g.neon_transparent = true
+vim.cmd[[colorscheme neon]]
 vim.cmd 'set termguicolors'
 vim.cmd 'syntax on'
 -- lsp_installer.on_server_readyに追加
@@ -511,9 +517,9 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
@@ -658,9 +664,6 @@ autocmd FileType gitcommit setlocal spell
 augroup END
 " colorscheme
 syntax enable
-" Vimscript initialization file
-let g:nightflyItalics = 0
-colorscheme tokyonight
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")
 let s:removed_plugins = dein#check_clean()
