@@ -197,6 +197,7 @@ call dein#add('hrsh7th/cmp-nvim-lsp')
 call dein#add('hrsh7th/cmp-buffer')
 call dein#add('hrsh7th/cmp-path')
 call dein#add('hrsh7th/nvim-cmp')
+call dein#add('hrsh7th/cmp-nvim-lsp-signature-help')
 call dein#add('mortepau/codicons.nvim')
 call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
@@ -623,10 +624,10 @@ cmp.setup {
 	end
   }
 }
-cmp.setup {
-completion = {
-  completeopt = 'menu,menuone,noinsert'
-}
+require'cmp'.setup {
+  sources = {
+	{ name = 'nvim_lsp_signature_help' }
+  }
 }
 EOF
 " autosave
