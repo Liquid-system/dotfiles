@@ -1,15 +1,4 @@
-if has('vim_starting')
-" 挿入モード時に非点滅の縦棒タイプのカーソル
-let &t_SI .= "\e[6 q"
-" ノーマルモード時に非点滅のブロックタイプのカーソル
-let &t_EI .= "\e[2 q"
-" 置換モード時に非点滅の下線タイプのカーソル
-let &t_SR .= "\e[4 q"
-endif
-if has('nvim')
-" 置換の時の設定
 set inccommand=split
-endif
 set number
 set title
 set encoding=utf-8
@@ -167,7 +156,7 @@ tnoremap <Esc> <C-\><C-n>
 command! -nargs=* T split | wincmd j | resize 8 | terminal <args>
 " 常にインサートモードでterminalを開く
 autocmd TermOpen * startinsert
-
+let g:vimsyn_embed = 'l'
 " dein
 " Quick start
 " Add the dein installation directory into runtimepath
@@ -199,6 +188,7 @@ call dein#add('hrsh7th/cmp-buffer')
 call dein#add('hrsh7th/cmp-path')
 call dein#add('hrsh7th/nvim-cmp')
 call dein#add('hrsh7th/cmp-nvim-lsp-signature-help')
+call dein#add('hrsh7th/cmp-nvim-lua')
 call dein#add('onsails/lspkind.nvim')
 call dein#add('mortepau/codicons.nvim')
 call dein#add('luochen1990/rainbow')
@@ -210,17 +200,12 @@ call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('psf/black')
 call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
-call dein#add('vim-test/vim-test')
 call dein#add('liuchengxu/vista.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-call dein#add('vim-denops/denops.vim')
-call dein#add('vim-skk/skkeleton')
-call dein#add('higashi000/opensiv3d.vim')
-
+call dein#add('numToStr/FTerm.nvim')
 " カラースキーム
 call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
@@ -234,7 +219,8 @@ call dein#add('folke/tokyonight.nvim')
 
 call dein#end()
 
-
+" vimsandwitch
+runtime macros/sandwich/keymap/surround.vim
 " easymotion
 map f <Plug>(easymotion-bd-fl)
 map t <Plug>(easymotion-bd-tl)
@@ -253,8 +239,6 @@ map <Leader><Leader>h <Plug>(easymotion-linebackward)
 " smartcase
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-" フォーマッタ
-nmap <silent> <space>f <Plug>(coc-format)
 
 "typescript
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
@@ -355,21 +339,6 @@ augroup END
 "リサイズ設定
 let g:winresizer_start_key ='<C-s>'
 let g:winresizer_vert_resize = 1
-
-" skk
-call skkeleton#config({
-\'globalJisyo': '~/.skk/SKK-JISYO.L',
-\'tabCompletion':v:false,
-\'eggLikeNewline':v:true
-\})
-call skkeleton#register_kanatable('rom', {
-\ 'jj': 'escape',
-\ 'kk':'henkanBackward',
-\ 'z,': ['―', ''],
-\ "z\<Space>": ["\u3000", ''],
-\ })
-imap sk <plug>(skkeleton-enable)
-cmap sk <plug>(skkeleton-enable)
 
 " lightline
 set laststatus=2
@@ -503,7 +472,7 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
 end
 local nvim_lsp = require('lspconfig')
 local lsp_installer = require("nvim-lsp-installer")
@@ -575,7 +544,8 @@ cmp.setup {
   sources = {
 	{ name = 'nvim_lsp' },
 	{ name = 'luasnip' },
-	{ name = 'nvim_lsp_signature_help' }
+	{ name = 'nvim_lsp_signature_help' },
+	{name = 'nvim_lua'}
   }
 }
 EOF

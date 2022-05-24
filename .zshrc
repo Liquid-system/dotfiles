@@ -10,13 +10,9 @@ export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$PATH:~/flutter/bin
 export LIBGL_ALWAYS_INDIRECT=0
-CPPFLAGS="-I/opt/gtk/include"
-LDFLAGS="-L/opt/gtk/lib"
-PKG_CONFIG_PATH="/opt/gtk/lib/pkgconfig"
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 
 fpath+=~/.zfunc
-
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
 alias pip='python3.9 -m pip'
 alias cl='clear'
@@ -238,3 +234,5 @@ else
 export DISPLAY=127.0.0.1:0
 fi
 export COLORTERM=truecolor
+
+alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
