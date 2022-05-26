@@ -125,7 +125,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 if [[ $(command -v exa) ]]; then
-	alias e='exa --icons'
+	alias e='exa --icons --colour=always'
 	alias l=e
 	alias ls=e
 fi
