@@ -167,6 +167,7 @@ call dein#add('liuchengxu/vista.vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 call dein#add('numToStr/FTerm.nvim')
+call dein#add('psf/black',{'on_ft':'python'})
 " カラースキーム
 call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
@@ -185,6 +186,8 @@ if dein#check_install()
 call dein#install()
 endif
 
+" Required:
+filetype plugin indent on
 " colorscheme
 syntax enable
 " ファイルの読み込み
@@ -204,4 +207,3 @@ if len(s:removed_plugins) > 0
 call map(s:removed_plugins, "delete(v:val, 'rf')")
 call dein#recache_runtimepath()
 endif
-
