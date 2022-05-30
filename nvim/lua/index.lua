@@ -1,3 +1,5 @@
 require('term')
 require('color')
-require('lsp')
+require('lsp.cmp')
+require('lsp.keys')
+require('lsp.servers')
