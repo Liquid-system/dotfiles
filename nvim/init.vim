@@ -124,67 +124,68 @@ tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 
-" dein
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+" plug
 " Required:
-call dein#begin('~/.cache/dein')
-
-" Let dein manage dein
-call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-
+call jetpack#begin()
 " Add or remove your plugins here like this:
-call dein#add('vim-jp/vimdoc-ja')
-call dein#add('itchyny/lightline.vim')
-call dein#add('machakann/vim-sandwich')
-call dein#add('lukas-reineke/indent-blankline.nvim')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('matze/vim-move')
-call dein#add('preservim/nerdcommenter')
-call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
-call dein#add('neovim/nvim-lspconfig')
-call dein#add('williamboman/nvim-lsp-installer')
-call dein#add('hrsh7th/cmp-nvim-lsp')
-call dein#add('hrsh7th/cmp-buffer')
-call dein#add('hrsh7th/cmp-path')
-call dein#add('hrsh7th/nvim-cmp')
-call dein#add('hrsh7th/cmp-nvim-lsp-signature-help')
-call dein#add('hrsh7th/cmp-nvim-lua')
-call dein#add('onsails/lspkind.nvim')
-call dein#add('mortepau/codicons.nvim')
-call dein#add('luochen1990/rainbow')
-call dein#add('jiangmiao/auto-pairs')
-call dein#add('lambdalisue/nerdfont.vim')
-call dein#add('mattn/emmet-vim')
-call dein#add('simeji/winresizer')
-call dein#add('lambdalisue/fern.vim')
-call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
-call dein#add('lambdalisue/glyph-palette.vim')
-call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('rhysd/devdocs.vim')
-call dein#add('vim-scripts/vim-auto-save')
-call dein#add('liuchengxu/vista.vim')
-call dein#add('tpope/vim-fugitive')
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-call dein#add('numToStr/FTerm.nvim')
+call jetpack#add('tani/vim-jetpack')
+call jetpack#add('vim-jp/vimdoc-ja')
+call jetpack#add('itchyny/lightline.vim')
+call jetpack#add('machakann/vim-sandwich')
+call jetpack#add('lukas-reineke/indent-blankline.nvim')
+call jetpack#add('easymotion/vim-easymotion')
+call jetpack#add('matze/vim-move')
+call jetpack#add('preservim/nerdcommenter')
+call jetpack#add('nvim-treesitter/nvim-treesitter')
+call jetpack#add('neovim/nvim-lspconfig')
+call jetpack#add('williamboman/nvim-lsp-installer')
+call jetpack#add('hrsh7th/cmp-nvim-lsp')
+call jetpack#add('hrsh7th/cmp-buffer')
+call jetpack#add('hrsh7th/cmp-path')
+call jetpack#add('hrsh7th/nvim-cmp')
+call jetpack#add('hrsh7th/cmp-nvim-lsp-signature-help')
+call jetpack#add('hrsh7th/cmp-nvim-lua')
+call jetpack#add('onsails/lspkind.nvim')
+call jetpack#add('mortepau/codicons.nvim')
+call jetpack#add('luochen1990/rainbow')
+call jetpack#add('jiangmiao/auto-pairs')
+call jetpack#add('lambdalisue/nerdfont.vim')
+call jetpack#add('mattn/emmet-vim')
+call jetpack#add('simeji/winresizer')
+call jetpack#add('lambdalisue/fern.vim')
+call jetpack#add('lambdalisue/fern-renderer-nerdfont.vim')
+call jetpack#add('lambdalisue/glyph-palette.vim')
+call jetpack#add('lambdalisue/fern-hijack.vim')
+call jetpack#add('rhysd/devdocs.vim')
+call jetpack#add('vim-scripts/vim-auto-save')
+call jetpack#add('liuchengxu/vista.vim')
+call jetpack#add('tpope/vim-fugitive')
+call jetpack#add('junegunn/fzf')
+call jetpack#add('numToStr/FTerm.nvim')
+"フォーマッタ
+call jetpack#add('psf/black')
 " カラースキーム
-call dein#add('joshdick/onedark.vim')
-call dein#add('wadackel/vim-dogrun')
-call dein#add('mhartington/oceanic-next')
-call dein#add('tomasiser/vim-code-dark')
-call dein#add('bluz71/vim-nightfly-guicolors')
-call dein#add("rafamadriz/neon")
-call dein#add('morhetz/gruvbox')
-call dein#add('folke/tokyonight.nvim')
+call jetpack#add('joshdick/onedark.vim')
+call jetpack#add('wadackel/vim-dogrun')
+call jetpack#add('mhartington/oceanic-next')
+call jetpack#add('tomasiser/vim-code-dark')
+call jetpack#add('bluz71/vim-nightfly-guicolors')
+call jetpack#add("rafamadriz/neon")
+call jetpack#add('morhetz/gruvbox')
+call jetpack#add('folke/tokyonight.nvim')
 
-call dein#end()
+call jetpack#end()
 
 " If you want to install not installed plugins on startup.
-let g:dein#auto_recache = 1
-if dein#check_install()
-call dein#install()
+for name in jetpack#names()
+if !jetpack#tap(name)
+  call jetpack#sync()
+  break
 endif
+endfor
 
+" Required:
+filetype plugin indent on
 " colorscheme
 syntax enable
 " ファイルの読み込み
@@ -196,12 +197,3 @@ autocmd BufRead,BufNewFile *.ts set filetype=typescript
 lua << EOF
 require('index')
 EOF
-
-" 自動リムーブ
-call map(dein#check_clean(), "delete(v:val, 'rf')")
-let s:removed_plugins = dein#check_clean()
-if len(s:removed_plugins) > 0
-call map(s:removed_plugins, "delete(v:val, 'rf')")
-call dein#recache_runtimepath()
-endif
-
