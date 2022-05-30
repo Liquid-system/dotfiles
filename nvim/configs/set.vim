@@ -58,8 +58,6 @@ set tabstop=4
 "インデント
 set cindent
 set autoindent
-" help設定
-set keywordprg=:help
 "コードの色分け
 syntax on
 " ファイルタイプ検出を有効にする
