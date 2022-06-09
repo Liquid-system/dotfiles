@@ -58,6 +58,11 @@ nnoremap <silent> th :tabprevious<CR>
 
 " plug
 " Required:
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/jetpack.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/jetpack.vim --create-dirs  https://raw.githubusercontent.com/tani/vim-jetpack/master/autoload/jetpack.vim'
+  autocmd VimEnter * JetpackSync | source $MYVIMRC
+endif
 call jetpack#begin()
 " Add or remove your plugins here like this:
 call jetpack#add('tani/vim-jetpack')
@@ -68,7 +73,8 @@ call jetpack#add('lukas-reineke/indent-blankline.nvim')
 call jetpack#add('easymotion/vim-easymotion')
 call jetpack#add('matze/vim-move')
 call jetpack#add('preservim/nerdcommenter')
-call jetpack#add('nvim-treesitter/nvim-treesitter')
+call jetpack#add('nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate'})
+call jetpack#add('p00f/nvim-ts-rainbow.git')
 call jetpack#add('neovim/nvim-lspconfig')
 call jetpack#add('williamboman/nvim-lsp-installer')
 call jetpack#add('hrsh7th/cmp-nvim-lsp')
@@ -79,7 +85,6 @@ call jetpack#add('hrsh7th/cmp-nvim-lsp-signature-help')
 call jetpack#add('hrsh7th/cmp-nvim-lua')
 call jetpack#add('onsails/lspkind.nvim')
 call jetpack#add('mortepau/codicons.nvim')
-call jetpack#add('luochen1990/rainbow')
 call jetpack#add('jiangmiao/auto-pairs')
 call jetpack#add('lambdalisue/nerdfont.vim')
 call jetpack#add('mattn/emmet-vim')
@@ -92,10 +97,11 @@ call jetpack#add('rhysd/devdocs.vim')
 call jetpack#add('vim-scripts/vim-auto-save')
 call jetpack#add('liuchengxu/vista.vim')
 call jetpack#add('tpope/vim-fugitive')
-call jetpack#add('junegunn/fzf')
 call jetpack#add('numToStr/FTerm.nvim')
+call jetpack#add('junegunn/fzf', { 'do': {-> fzf#install()} })
 "フォーマッタ
 call jetpack#add('psf/black')
+call jetpack#add('editorconfig/editorconfig-vim')
 " カラースキーム
 call jetpack#add('joshdick/onedark.vim')
 call jetpack#add('wadackel/vim-dogrun')
@@ -129,3 +135,10 @@ autocmd BufRead,BufNewFile *.ts set filetype=typescript
 lua << EOF
 require('index')
 EOF
+
+for name in jetpack#names()
+if !jetpack#tap(name)
+  call jetpack#sync()
+  break
+endif
+endfor
