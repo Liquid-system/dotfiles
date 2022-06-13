@@ -51,10 +51,10 @@ set wildmode=list:longest
 set wildmenu wildmode=list:full
 " キーの待ち時間設定
 set timeoutlen=250
-" 空白をスペース4文分にする
-set shiftwidth=4
-" タブを4文字分にする
-set tabstop=4
+" 空白をスペース2文分にする
+set shiftwidth=2
+" タブを2文字分にする
+set tabstop=2
 "インデント
 set cindent
 set autoindent
