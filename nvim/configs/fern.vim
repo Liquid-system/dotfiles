@@ -59,8 +59,7 @@ set hidden
 " 隠しファイルを表示する
 let g:fern#default_hidden=1
 
-nnoremap <silent> <C-n> :Fern . -drawer -reveal=% -width=17 -toggle<CR>
-nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=23 -toggle<CR>
+nnoremap <silent><Leader>n :Fern . -drawer -reveal=% -width=23 -toggle<CR>
 
 augroup my-glyph-palette
 autocmd! *

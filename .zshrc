@@ -11,6 +11,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$PATH:~/flutter/bin
 export LIBGL_ALWAYS_INDIRECT=0
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
@@ -54,6 +56,8 @@ HISTFILE=~/.zsh_history
 setopt share_history
 # automatically change directory when dir name is typed
 setopt auto_cd
+#grep
+setopt +o nomatch 
 # コマンド訂正
 setopt correct
 # jjで抜ける

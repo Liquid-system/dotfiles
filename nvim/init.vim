@@ -25,11 +25,6 @@ nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
-" 半画面上下
-nnoremap <Leader>u <C-u>
-nnoremap <Leader>d <C-d>
-" terminalの起動
-nnoremap <Leader>s :T <CR>
 
 " 編集箇所のカーソルを記憶
 if has("autocmd")
@@ -56,76 +51,11 @@ tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 
-" plug
-" Required:
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/jetpack.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/jetpack.vim --create-dirs  https://raw.githubusercontent.com/tani/vim-jetpack/master/autoload/jetpack.vim'
-  autocmd VimEnter * JetpackSync | source $MYVIMRC
-endif
-call jetpack#begin()
-" Add or remove your plugins here like this:
-call jetpack#add('tani/vim-jetpack')
-call jetpack#add('vim-jp/vimdoc-ja')
-call jetpack#add('itchyny/lightline.vim')
-call jetpack#add('machakann/vim-sandwich')
-call jetpack#add('lukas-reineke/indent-blankline.nvim')
-call jetpack#add('matze/vim-move')
-call jetpack#add('preservim/nerdcommenter')
-call jetpack#add('phaazon/hop.nvim')
-" treesitter
-call jetpack#add('nvim-treesitter/nvim-treesitter',{'do': ':TSUpdate'})
-call jetpack#add('nvim-treesitter/nvim-treesitter-context')
-call jetpack#add('p00f/nvim-ts-rainbow.git')
-" lsp
-call jetpack#add('neovim/nvim-lspconfig')
-call jetpack#add('williamboman/nvim-lsp-installer')
-call jetpack#add('hrsh7th/cmp-nvim-lsp')
-call jetpack#add('hrsh7th/cmp-buffer')
-call jetpack#add('hrsh7th/cmp-path')
-call jetpack#add('hrsh7th/nvim-cmp')
-call jetpack#add('hrsh7th/cmp-nvim-lsp-signature-help')
-call jetpack#add('hrsh7th/cmp-nvim-lua')
-call jetpack#add('onsails/lspkind.nvim')
-call jetpack#add('mortepau/codicons.nvim')
-call jetpack#add('folke/trouble.nvim')
-call jetpack#add('jiangmiao/auto-pairs')
-call jetpack#add('lambdalisue/nerdfont.vim')
-call jetpack#add('mattn/emmet-vim')
-call jetpack#add('j-hui/fidget.nvim')
-" ファイラー
-call jetpack#add('lambdalisue/fern.vim')
-call jetpack#add('lambdalisue/fern-renderer-nerdfont.vim')
-call jetpack#add('lambdalisue/glyph-palette.vim')
-call jetpack#add('lambdalisue/fern-hijack.vim')
-
-call jetpack#add('rhysd/devdocs.vim')
-call jetpack#add('vim-scripts/vim-auto-save')
-call jetpack#add('liuchengxu/vista.vim')
-call jetpack#add('tpope/vim-fugitive')
-call jetpack#add('numToStr/FTerm.nvim')
-call jetpack#add('junegunn/fzf', { 'do': {-> fzf#install()} })
-"フォーマッタ
-call jetpack#add('editorconfig/editorconfig-vim')
-" カラースキーム
-call jetpack#add('joshdick/onedark.vim')
-call jetpack#add('wadackel/vim-dogrun')
-call jetpack#add('mhartington/oceanic-next')
-call jetpack#add('tomasiser/vim-code-dark')
-call jetpack#add('bluz71/vim-nightfly-guicolors')
-call jetpack#add("rafamadriz/neon")
-call jetpack#add('morhetz/gruvbox')
-call jetpack#add('folke/tokyonight.nvim')
-
-call jetpack#end()
-
-" If you want to install not installed plugins on startup.
-for name in jetpack#names()
-if !jetpack#tap(name)
-  call jetpack#sync()
-  break
-endif
-endfor
+" lua
+lua << EOF
+require('plugins')
+require('index')
+EOF
 
 " Required:
 filetype plugin indent on
@@ -136,14 +66,19 @@ runtime! configs/*.vim
 "typescript
 autocmd BufRead,BufNewFile *.ts set filetype=typescript
 
-" lua設定
-lua << EOF
-require('index')
-EOF
-
-for name in jetpack#names()
-if !jetpack#tap(name)
-  call jetpack#sync()
-  break
-endif
-endfor
+" 不要なデフォルトプラグインの停止
+let g:loaded_gzip              = 1
+let g:loaded_tar               = 1
+let g:loaded_tarPlugin         = 1
+let g:loaded_zip               = 1
+let g:loaded_zipPlugin         = 1
+let g:loaded_rrhelper          = 1
+let g:loaded_2html_plugin      = 1
+let g:loaded_vimball           = 1
+let g:loaded_vimballPlugin     = 2
+let g:loaded_getscript         = 1
+let g:loaded_getscriptPlugin   = 1
+let g:loaded_netrw             = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_netrwSettings     = 1
+let g:loaded_netrwFileHandlers = 1

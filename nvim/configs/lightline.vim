@@ -10,7 +10,6 @@ let g:lightline = {
 	\ 'component_function': {
 	\   'modified': 'LightlineModified',
 	\   'readonly': 'LightlineReadonly',
-	\   'fugitive': 'LightlineFugitive',
 	\   'filename': 'LightlineFilename',
 	\   'fileformat': 'LightlineFileformat',
 	\   'filetype': 'LightlineFiletype',
@@ -35,14 +34,6 @@ return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
 	\  &ft == 'vimshell' ? vimshell#get_status_string() :
 	\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
 	\ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-return fugitive#head()
-else
-return ''
-endif
 endfunction
 
 function! LightlineFileformat()
