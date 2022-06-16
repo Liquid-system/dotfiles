@@ -1,9 +1,6 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-require('packer').startup(function(use)
+vim.cmd('runtime */jetpack.vim')
+require('jetpack').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
 	use { 'vim-jp/vimdoc-ja' }
 	use { 'itchyny/lightline.vim' }
