@@ -51,12 +51,13 @@ tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 
+let g:jetpack#optimization=2
 " lua
 lua << EOF
-require('plugins')
 require('index')
 EOF
 
+let g:winresizer_start_key = '<C-s>'
 " Required:
 filetype plugin indent on
 " colorscheme
@@ -82,3 +83,10 @@ let g:loaded_netrw             = 1
 let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
+
+for name in jetpack#names()
+if !jetpack#tap(name)
+  call jetpack#sync()
+  break
+endif
+endfor

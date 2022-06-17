@@ -58,8 +58,6 @@ set tabstop=2
 "インデント
 set cindent
 set autoindent
-"コードの色分け
-syntax on
 " ファイルタイプ検出を有効にする
 filetype on
 " クリップボード
