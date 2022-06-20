@@ -57,7 +57,6 @@ lua << EOF
 require('index')
 EOF
 
-let g:winresizer_start_key = '<C-s>'
 " Required:
 filetype plugin indent on
 " colorscheme

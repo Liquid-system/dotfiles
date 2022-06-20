@@ -4,15 +4,18 @@ require('jetpack').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
 	use { 'vim-jp/vimdoc-ja' }
 	use { 'nathom/filetype.nvim' }
+	use {'nvim-lua/plenary.nvim'}
 	--アイコン
 	use { 'kyazdani42/nvim-web-devicons' }
 	use { 'onsails/lspkind.nvim' }
 
+	--見た目
+    use {'goolord/alpha-nvim'}
 	use { 'machakann/vim-sandwich' }
 	use { 'phaazon/hop.nvim' }
 	use { 'nvim-lualine/lualine.nvim' }
 	--treesitter
-	use { 'nvim-treesitter/nvim-treesitter', run =':TSUpdate'}
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use { 'nvim-treesitter/nvim-treesitter-context' }
 	use { 'p00f/nvim-ts-rainbow' }
 	--lsp
@@ -32,12 +35,12 @@ require('jetpack').startup(function(use)
 	--コメント
 	use { 'numToStr/Comment.nvim' }
 
-	use { 'segeljakt/vim-silicon' ,on = 'Silicon'}
+	--ユーティリティ
+	use {'nvim-telescope/telescope.nvim'}
+	use { 'segeljakt/vim-silicon', on = 'Silicon' }
 	use { 'rhysd/devdocs.vim' }
 	use { 'vim-scripts/vim-auto-save' }
-	use { 'liuchengxu/vista.vim' }
 	use { 'numToStr/FTerm.nvim' }
-	use { 'simeji/winresizer'}
 	--フォーマッタ
 	use { 'editorconfig/editorconfig-vim' }
 
@@ -45,15 +48,16 @@ require('jetpack').startup(function(use)
 	use { 'lambdalisue/fern.vim' }
 	use { 'lambdalisue/fern-renderer-nerdfont.vim' }
 	use { 'lambdalisue/glyph-palette.vim' }
-	use { 'lambdalisue/fern-hijack.vim' }
 	use { 'lambdalisue/nerdfont.vim' }
+	--マーク
+	use {'MattesGroeger/vim-bookmarks'}
 	--カラースキーム
 	use { 'joshdick/onedark.vim' }
 	use { 'wadackel/vim-dogrun' }
 	use { 'mhartington/oceanic-next' }
 	use { 'tomasiser/vim-code-dark' }
 	use { 'bluz71/vim-nightfly-guicolors' }
-	use { "rafamadriz/neon" }
+	use { 'rafamadriz/neon' }
 	use { 'morhetz/gruvbox' }
 	use { 'folke/tokyonight.nvim' }
 end)

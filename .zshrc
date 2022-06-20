@@ -23,7 +23,7 @@ alias n='nvim'
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
 . "$HOME/.cargo/env"
-PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}"
+export PYTHONPATH=${PYTHONPATH}:~/.local/lib/python3.9/site-packages/
 
 # GUI
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
