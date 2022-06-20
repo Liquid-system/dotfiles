@@ -2,6 +2,9 @@
 local lspkind = require('lspkind')
 local cmp = require 'cmp'
 cmp.setup {
+	completion = {
+	completeopt = 'menu,menuone,noinsert'
+  },
 	snippet = { expand = function() end },
 	formatting = {
 		format = lspkind.cmp_format({

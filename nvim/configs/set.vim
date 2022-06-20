@@ -47,6 +47,8 @@ set matchtime=1
 set nocompatible
 " コマンドラインの補完
 set wildmode=list:longest
+" cmp 設定
+set completeopt=menu,menuone,noselect
 " vimからファイルを開くときにタブを表示する
 set wildmenu wildmode=list:full
 " キーの待ち時間設定

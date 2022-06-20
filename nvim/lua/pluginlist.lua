@@ -31,11 +31,11 @@ require('jetpack').startup(function(use)
 	use { 'mattn/emmet-vim', ft = 'html' }
 	use { 'j-hui/fidget.nvim' }
 	use { 'mattn/efm-langserver' }
-	use { 'jiangmiao/auto-pairs' }
 	--コメント
 	use { 'numToStr/Comment.nvim' }
 
 	--ユーティリティ
+	use {'cohama/lexima.vim'}
 	use {'nvim-telescope/telescope.nvim'}
 	use { 'segeljakt/vim-silicon', on = 'Silicon' }
 	use { 'rhysd/devdocs.vim' }
