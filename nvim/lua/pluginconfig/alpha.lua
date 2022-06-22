@@ -19,7 +19,6 @@ dashboard.section.header.val = {
 
 -- Set menu
 dashboard.section.buttons.val = {
-	dashboard.button("SPC n", "  > Open directory"),
 	dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
 	dashboard.button("f", "  > Find file", "<cmd>lua require('telescope.builtin').find_files()<cr>"),
 	dashboard.button("t", "  Find Text", ":Telescope live_grep <CR>"),

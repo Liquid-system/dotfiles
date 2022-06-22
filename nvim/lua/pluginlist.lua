@@ -32,8 +32,7 @@ require('jetpack').startup(function(use)
 	use { 'j-hui/fidget.nvim' }
 	use { 'mattn/efm-langserver' }
 	--コメント
-	use { 'numToStr/Comment.nvim' }
-
+	use { 'b3nj5m1n/kommentary'}
 	--ユーティリティ
 	use {'cohama/lexima.vim'}
 	use {'nvim-telescope/telescope.nvim'}
@@ -49,6 +48,7 @@ require('jetpack').startup(function(use)
 	use { 'lambdalisue/fern-renderer-nerdfont.vim' }
 	use { 'lambdalisue/glyph-palette.vim' }
 	use { 'lambdalisue/nerdfont.vim' }
+	--バッファ
 	--マーク
 	use {'MattesGroeger/vim-bookmarks'}
 	--カラースキーム
