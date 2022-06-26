@@ -16,14 +16,12 @@ export PATH=$PATH:$GOPATH/bin
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
-alias pip='python3.9 -m pip'
 alias cl='clear'
 alias vim='nvim'
 alias n='nvim'
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
 . "$HOME/.cargo/env"
-export PYTHONPATH=${PYTHONPATH}:~/.local/lib/python3.9/site-packages/
 
 # GUI
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
@@ -57,7 +55,7 @@ setopt share_history
 # automatically change directory when dir name is typed
 setopt auto_cd
 #grep
-setopt +o nomatch 
+setopt +o nomatch
 # コマンド訂正
 setopt correct
 # jjで抜ける

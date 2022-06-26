@@ -50,19 +50,19 @@ nnoremap n zz
 tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
-
-let g:jetpack#optimization=2
 " lua
 lua << EOF
 require('index')
 EOF
 
+" cmp色
 highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
 highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
 highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
 highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+let g:jetpack#optimization=2
 " Required:
 filetype plugin indent on
 " colorscheme

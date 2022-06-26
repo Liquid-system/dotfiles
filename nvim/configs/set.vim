@@ -64,3 +64,9 @@ set autoindent
 filetype on
 " クリップボード
 set clipboard=unnamed
+" cmp
+set completeopt=menu,menuone,noselect
+" 折り畳みを有効
+set wrap
+" 短形選択で自由に移動する
+set virtualedit=all
