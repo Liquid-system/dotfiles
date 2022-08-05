@@ -27,6 +27,7 @@ require('lualine').setup {
 				always_visible = false, -- Show diagnostics even if there are none.
 			}
 		},
+
 		lualine_x = { 'encoding', 'filetype', 'fileformat' },
 		lualine_z = {
 			{ 'location', separator = { right = '' }, left_padding = 2 },

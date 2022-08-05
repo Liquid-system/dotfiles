@@ -1,6 +1,4 @@
-require("nvim-lsp-installer").setup {}
 -- Completion Setup--
-
 local lspkind = require('lspkind')
 local cmp = require 'cmp'
 cmp.setup {
