@@ -30,6 +30,7 @@ require('jetpack').startup(function(use)
 	use { 'hrsh7th/cmp-nvim-lua' }
 	use { 'folke/trouble.nvim' }
 	use { 'glepnir/lspsaga.nvim', branch = 'main' }
+	use { 'folke/lua-dev.nvim' }
 	use { 'mattn/emmet-vim', ft = 'html' }
 	--スニペット
 	-- use {'L3MON4D3/LuaSnip'}
@@ -42,7 +43,6 @@ require('jetpack').startup(function(use)
 	use { 'cohama/lexima.vim' }
 	use { 'nvim-telescope/telescope.nvim' }
 	use { 'segeljakt/vim-silicon', on = 'Silicon' }
-	use { 'rhysd/devdocs.vim' }
 	use { 'vim-scripts/vim-auto-save' }
 	use { 'numToStr/FTerm.nvim' }
 	--フォーマッタ
