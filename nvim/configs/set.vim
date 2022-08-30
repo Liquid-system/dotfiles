@@ -70,3 +70,6 @@ set completeopt=menu,menuone,noselect
 set wrap
 " 短形選択で自由に移動する
 set virtualedit=all
+" treesitterの折り畳み
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()

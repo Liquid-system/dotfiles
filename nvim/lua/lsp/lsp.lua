@@ -1,41 +1,54 @@
 -- 1. LSP Sever management
 require('mason').setup()
+local keymap = vim.keymap.set
+-- See `:help vim.lsp.*` for documentation on any of the below functions
 local function on_attach(client, bufnr)
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set('n', '<space>wl', function()
+	keymap('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	keymap('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	keymap('n', 'gd', vim.lsp.buf.definition, bufopts)
+	keymap('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	keymap('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	keymap('n', '<space>wl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
-	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-	vim.keymap.set("n", "K", require("lspsaga.hover").render_hover_doc,
-		{ silent = true }, bufopts)
-	local action = require("lspsaga.action")
-	-- scroll down hover doc or scroll in definition preview
-	vim.keymap.set("n", "<C-f>", function()
-		action.smart_scroll_with_saga(1)
+	keymap('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+	keymap('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+	keymap('n', 'gr', vim.lsp.buf.references, bufopts)
+	keymap('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+	keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	--saga
+	local saga = require('lspsaga')
+	saga.init_lsp_saga()
+	-- Lsp finder find the symbol definition implement reference
+	-- when you use action in finder like open vsplit then you can
+	-- use <C-t> to jump back
+	keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+	keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+	keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+	keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+	keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+	keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+	keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+	-- Diagnsotic jump can use `<c-o>` to jump back
+	keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+	keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+	-- Only jump to error
+	keymap("n", "[E", function()
+		require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
 	end, { silent = true })
-	-- scroll up hover doc
-	vim.keymap.set("n", "<C-b>", function()
-		action.smart_scroll_with_saga(-1)
+	keymap("n", "]E", function()
+		require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 	end, { silent = true })
-	vim.keymap.set('n', '<C-k>', require("lspsaga.signaturehelp").signature_help,
-		{ silent = true, noremap = true }, bufopts)
+	keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+	keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspconfig = require('lspconfig')
 
 for _, server in ipairs { "clangd", "pylsp", "rust_analyzer", "cmake", "cssls", "eslint", "gopls", "graphql", "html",
-	"jsonls", "zls" } do
+	"jsonls", "zls", "dockerls", "eslint" } do
 	lspconfig[server].setup {
 		on_attach = on_attach,
 		capabilities = capabilities,

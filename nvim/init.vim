@@ -2,6 +2,10 @@
 language messages C
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
+" 背景を透明にする
+autocmd ColorScheme * highlight Normal guibg=NONE
+" Foldの適用
+autocmd BufReadPost,FileReadPost * normal zR
 " 表示行と論理行を入れ替える
 nnoremap k gk
 nnoremap gk k
