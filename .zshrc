@@ -161,7 +161,6 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 #フォントを白源にするhttps://github.com/yuru7/HackGen
 zplug "romkatv/powerlevel10k", as:theme, depth:1
-
 #ヒストリで補完する
 ZSH_AUTOSUGGEST_STRATEGY=history
 #zsh補完を無効化する

@@ -39,6 +39,7 @@ require('jetpack').startup(function(use)
 	use { 'preservim/nerdcommenter' }
 	--移動
 	use { 'phaazon/hop.nvim' }
+	use { 'christoomey/vim-tmux-navigator' }
 	--ユーティリティ
 	use { 'cohama/lexima.vim' }
 	use { 'nvim-telescope/telescope.nvim' }
