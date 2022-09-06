@@ -93,7 +93,7 @@ nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
 " 半画面上下
-nnoremap <Leader>u <C-u> 
+nnoremap <Leader>u <C-u>
 nnoremap <Leader>d <C-d>
 " 一行のみコマンドの実行
 nnoremap <Leader>i :!
@@ -165,31 +165,15 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('preservim/nerdcommenter')
-call dein#add('nvim-treesitter/nvim-treesitter', {'hook_post_update': 'TSUpdate'})
-call dein#add('luochen1990/rainbow')
 call dein#add('jiangmiao/auto-pairs')
 call dein#add('lambdalisue/nerdfont.vim')
-call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
 call dein#add('lambdalisue/glyph-palette.vim')
 call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('psf/black')
-call dein#add('rhysd/vim-clang-format')
-call dein#add('kana/vim-operator-user')
-call dein#add('prettier/vim-prettier', {'build': 'npm install'})
-call dein#add('rhysd/devdocs.vim')
 call dein#add('vim-scripts/vim-auto-save')
-call dein#add('vim-test/vim-test')
-call dein#add('liuchengxu/vista.vim')
-call dein#add('tpope/vim-fugitive')
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 " カラースキーム
-call dein#add('joshdick/onedark.vim')
 call dein#add('wadackel/vim-dogrun')
-call dein#add('mhartington/oceanic-next')
-call dein#add('tomasiser/vim-code-dark')
-call dein#add("rafamadriz/neon")
 " Required
 
 call dein#end()
@@ -378,7 +362,7 @@ let g:lightline = {
         \   'fileformat': 'LightlineFileformat',
         \   'filetype': 'LightlineFiletype',
         \   'fileencoding': 'LightlineFileencoding',
-        \   'mode': 'LightlineMode', 
+        \   'mode': 'LightlineMode',
         \   'method': 'NearestMethodOrFunction',
         \   'cocstatus': 'coc#status'
         \ }
@@ -430,24 +414,6 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
-" By default vista.vim never run if you don't call it explicitly.
-"
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" ctags
-nnoremap <silent><Leader>v :Vista!!<CR>
-let g:vista_sidebar_width = 38
-" How each level is indented and what to prepend.g:vista#renderer#ctags
-" This could make the display more compact or more spacious.
-let g:vista#renderer#ctags = "kind"
-let g:vista_echo_cursor = 0
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" Executive used when opening vista sidebar without specifying it.
-" See all the avaliable executives via `:echo g:vista#executives`.
-let g:vista_default_executive = 'ctags'
-" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
-let g:vista#renderer#enable_icon = 1
 " Required:
 filetype plugin indent on
 
@@ -488,7 +454,7 @@ autocmd FileType gitcommit setlocal spell
 augroup END
 " colorscheme
 syntax enable
-colorscheme neon
+colorscheme dogrun
 
 " 自動リムーブ
 call map(dein#check_clean(), "delete(v:val, 'rf')")

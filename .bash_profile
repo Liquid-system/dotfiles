@@ -18,3 +18,5 @@ PYTHONPATH="/home/liquid-system/.local/lib/python3.9/site-packages:${PYTHONPATH}
 
 
 export PATH="$HOME/.poetry/bin:$PATH"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

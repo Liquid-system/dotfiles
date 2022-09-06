@@ -8,16 +8,16 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
-export PATH=$PATH:~/flutter/bin
 export LIBGL_ALWAYS_INDIRECT=0
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
+export PATH=$PATH:~/.zig
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:~/lua-language-server/bin/
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
 alias cl='clear'
-alias vim='nvim'
 alias n='nvim'
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
@@ -151,30 +151,6 @@ fi
 export DISPLAY=`hostname`.mshome.net:0.0
 
 . "$HOME/.cargo/env"
-# This loads nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
 
 ZSH_DISABLE_COMPFIX="true"
 
@@ -238,3 +214,5 @@ fi
 export COLORTERM=truecolor
 
 alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

@@ -13,7 +13,7 @@ require('jetpack').startup(function(use)
 	use { 'machakann/vim-sandwich' }
 	use { 'nvim-lualine/lualine.nvim' }
 	--treesitter
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use { 'nvim-treesitter/nvim-treesitter' }
 	use { 'nvim-treesitter/nvim-treesitter-context' }
 	--括弧の色
 	use { 'p00f/nvim-ts-rainbow' }
