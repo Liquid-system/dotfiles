@@ -41,8 +41,6 @@ opt.hlsearch = true
 opt.showmatch = true
 -- 括弧秒数を調整
 opt.matchtime = 1
--- コマンドラインの補完
-opt.wildmode = 'longest,list'
 -- cmp 設定
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
