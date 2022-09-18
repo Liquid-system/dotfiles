@@ -14,7 +14,7 @@
 
 local M = {}
 local keymap = vim.keymap.set
-local default_opts = { silent = true}
+local default_opts = { silent = true }
 
 -- jjでノーマルモードへ移行
 keymap("i", "jj", "<ESC>", default_opts)
@@ -56,7 +56,7 @@ keymap("n", "<Leader>l", "<C-w>l", default_opts)
 -- タブの移動
 
 --ESC2回で点滅が消える
-keymap("n","<ESC><ESC>",":nohl<CR>",default_opts)
+keymap("n", "<ESC><ESC>", ":nohl<CR>", default_opts)
 
 -- lspの設定
 M.on_attach = function(client, bufnr)
@@ -74,6 +74,7 @@ M.on_attach = function(client, bufnr)
 	keymap('n', 'gr', vim.lsp.buf.references, bufopts)
 	keymap('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 	keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	keymap('n', 'K', vim.lsp.buf.hover, bufopts)
 	--saga
 	local saga = require('lspsaga')
 	saga.init_lsp_saga()
@@ -98,7 +99,7 @@ M.on_attach = function(client, bufnr)
 		require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 	end, { silent = true })
 	keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
-	keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+	--keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 end
 
 return M

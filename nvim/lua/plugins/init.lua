@@ -95,10 +95,10 @@ require('packer').startup(function(use)
 	--マーク
 	use { 'chentoast/marks.nvim' }
 	--カラースキーム
-	use { 'wadackel/vim-dogrun' }
-	use { 'rafamadriz/neon',
+	use { 'folke/tokyonight.nvim',
 		config = function()
-			require("plugins.neon")
-		end, }
+			require("plugins.colorScheme.tokyonight")
+		end }
+	use { 'wadackel/vim-dogrun' }
 
 end)
