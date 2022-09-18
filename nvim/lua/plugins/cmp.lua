@@ -4,8 +4,6 @@ if not present then
 	return
 end
 
-vim.opt.completeopt = "menuone,noselect"
-
 local function border(hl_name)
 	return {
 		{ "╭", hl_name },
@@ -86,13 +84,31 @@ local options = {
 			"s",
 		}),
 	},
-	sources = {
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp' },
 		{ name = "luasnip" },
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-	},
+	}),
 }
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = 'buffer' }
+	}
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
+	})
+})
 
 cmp.setup(options)

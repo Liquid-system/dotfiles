@@ -43,17 +43,23 @@ require('packer').startup(function(use)
 			require('plugins.lspconfig')
 		end }
 	-- cmp
-	use { 'hrsh7th/cmp-nvim-lsp' }
-	use { 'hrsh7th/cmp-buffer' }
-	use { 'hrsh7th/cmp-path' }
+
 	use { 'hrsh7th/nvim-cmp',
 		config = function()
 			require "plugins.cmp"
 		end, }
+	use { 'hrsh7th/cmp-nvim-lsp',
+		config = function()
+			require('plugins.cmp')
+			require('plugins.lspconfig')
+		end, }
+	use { 'hrsh7th/cmp-buffer' }
+	use { 'hrsh7th/cmp-path' }
 	use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
 	use { 'hrsh7th/cmp-nvim-lua' }
-	use { 'saadparwaiz1/cmp_luasnip' }
+	use { 'hrsh7th/cmp-cmdline' }
 	--スニペット
+	use { 'saadparwaiz1/cmp_luasnip' }
 	use { 'rafamadriz/friendly-snippets',
 		event = "InsertEnter", }
 
@@ -69,10 +75,11 @@ require('packer').startup(function(use)
 	use { 'mattn/emmet-vim', ft = 'html' }
 	--コメント
 	use {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end}
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
 	--移動
 	use { 'phaazon/hop.nvim',
 		config = function()
