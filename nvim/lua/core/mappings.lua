@@ -1,15 +1,15 @@
 --[[
 '' (an empty string)	mapmode-nvo	Normal, Visual, Select, Operator-pending
-'n'	 Normal	:nmap
-'v'	 Visual and Select
-'s'	 Select	:smap
-'x'	 Visual	:xmap
-'o'	 Operator-pending
-'!'	 Insert and Command-line
-'i'	 Insert	:imap
-'l'	 Insert, Command-line, Lang-Arg
-'c'	 Command-line
-'t'	 Terminal
+'n' Normal	:nmap
+'v' Visual and Select
+'s' Select	:smap
+'x' Visual	:xmap
+'o' Operator-pending
+'!' Insert and Command-line
+'i' Insert	:imap
+'l' Insert, Command-line, Lang-Arg
+'c' Command-line
+'t' Terminal
 --]]
 
 local M = {}
@@ -57,6 +57,16 @@ keymap("n", "<Leader>l", "<C-w>l", default_opts)
 
 --ESC2回で点滅が消える
 keymap("n", "<ESC><ESC>", ":nohl<CR>", default_opts)
+
+--コメント
+keymap("n", "<Leader>/",
+	function()
+		require("Comment.api").toggle.linewise.current()
+	end, default_opts)
+keymap("v", "<Leader>/",
+	function()
+		require("Comment.api").toggle.linewise.current()
+	end, default_opts)
 
 -- lspの設定
 M.on_attach = function(client, bufnr)

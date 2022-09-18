@@ -68,8 +68,11 @@ require('packer').startup(function(use)
 	use { 'folke/lua-dev.nvim' }
 	use { 'mattn/emmet-vim', ft = 'html' }
 	--コメント
-	use { 'b3nj5m1n/kommentary' }
-	use { 'preservim/nerdcommenter' }
+	use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end}
 	--移動
 	use { 'phaazon/hop.nvim',
 		config = function()
