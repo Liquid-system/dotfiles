@@ -84,14 +84,14 @@ local options = {
 			"s",
 		}),
 	},
-	sources = cmp.config.sources({
+	sources = {
 		{ name = 'nvim_lsp' },
 		{ name = "luasnip" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-	}),
+	},
 }
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
@@ -104,11 +104,11 @@ cmp.setup.cmdline('/', {
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
+	sources = {
 		{ name = 'path' }
 	}, {
 		{ name = 'cmdline' }
-	})
+	}
 })
 
 cmp.setup(options)

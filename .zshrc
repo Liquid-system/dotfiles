@@ -13,7 +13,7 @@ export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:~/.zig
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/lua-language-server/bin/
+export PATH=$PATH:~/lua-language-server/bin
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'

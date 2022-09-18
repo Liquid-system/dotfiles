@@ -6,6 +6,8 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
+local on_attach = require('core.mappings').on_attach
+
 capabilities.textDocument.completion.completionItem = {
 	documentationFormat = { "markdown", "plaintext" },
 	snippetSupport = true,
@@ -45,13 +47,13 @@ local servers = {
 
 for _, server in ipairs(servers) do
 	lspconfig[server].setup {
-		on_attach = require('core.mappings').on_attach,
+		on_attach = on_attach,
 		capabilities = capabilities,
 	}
 end
 --nodeとdenoのコンフリクトの解決
 lspconfig.tsserver.setup {
-	on_attach = require('core.mappings').on_attach,
+	on_attach = on_attach,
 	capabilities = capabilities,
 	root_dir = lspconfig.util.root_pattern("package.json")
 }
@@ -64,11 +66,10 @@ lspconfig.tsserver.setup {
 --}
 
 local luadev = require("lua-dev").setup({
-	lspconfig = {
-		on_attach = require('core.mappings').on_attach,
-		capabilities = capabilities,
-		cmd = { "lua-language-server" }
-	},
+lspconfig = {
+	on_attach = require('core.mappings').on_attach,
+	capabilities = capabilities,
+	cmd = { "lua-language-server" }
+},
 })
 lspconfig.sumneko_lua.setup(luadev)
-

@@ -73,6 +73,12 @@ require('packer').startup(function(use)
 	use { 'glepnir/lspsaga.nvim', branch = 'main' }
 	use { 'folke/lua-dev.nvim' }
 	use { 'mattn/emmet-vim', ft = 'html' }
+
+	--リンター
+	use { 'jose-elias-alvarez/null-ls.nvim',
+		config = function()
+			require("plugins.null-ls")
+		end, }
 	--コメント
 	use {
 		'numToStr/Comment.nvim',
