@@ -14,7 +14,7 @@ local sources = {
 	--clang
 	b.diagnostics.clang_check,
 	--CMake
-    --b.diagnostics.cmake_lint,
+	--b.diagnostics.cmake_lint,
 	b.formatting.cmake_format,
 	-- markdown
 	b.formatting.markdownlint,
@@ -28,12 +28,13 @@ local sources = {
 	--CSS
 	b.formatting.stylelint,
 	--Prettier
-    --b.formatting.prettier,
-    --sql
+	--b.formatting.prettier,
+	--sql
 	b.formatting.sql_formatter
 }
 
 null_ls.setup {
 	debug = true,
 	sources = sources,
+	on_attach = require('core.mappings').on_attach,
 }
