@@ -14,16 +14,17 @@ require('packer').startup(function(use)
 		config = function()
 			require("plugins.alpha")
 		end }
-	use { 'machakann/vim-sandwich' }
 	use { 'nvim-lualine/lualine.nvim',
 		config = function()
 			require('plugins.lualine')
-		end }
+		end, }
+
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
 		config = function()
 			require("plugins.treesitter")
-		end }
+		end, }
+
 	use { 'nvim-treesitter/nvim-treesitter-context' }
 	--括弧の色
 	use { 'p00f/nvim-ts-rainbow' }
@@ -41,9 +42,9 @@ require('packer').startup(function(use)
 	use { 'neovim/nvim-lspconfig',
 		config = function()
 			require('plugins.lspconfig')
-		end }
-	-- cmp
+		end, }
 
+	-- cmp
 	use { 'hrsh7th/nvim-cmp',
 		config = function()
 			require "plugins.cmp"
@@ -64,8 +65,8 @@ require('packer').startup(function(use)
 		event = "InsertEnter", }
 
 	use { 'L3MON4D3/LuaSnip',
-		wants = "friendly-snippets",
-	}
+		wants = "friendly-snippets", }
+
 	use { 'folke/trouble.nvim',
 		config = function()
 			require("plugins.trouble")
@@ -78,7 +79,9 @@ require('packer').startup(function(use)
 	use { 'jose-elias-alvarez/null-ls.nvim',
 		config = function()
 			require("plugins.null-ls")
-		end, }
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
+	}
 	--コメント
 	use {
 		'numToStr/Comment.nvim',
@@ -87,12 +90,14 @@ require('packer').startup(function(use)
 		end
 	}
 	--移動
+	use { 'machakann/vim-sandwich' }
 	use { 'phaazon/hop.nvim',
 		config = function()
 			require("plugins.hop")
 		end
 	}
 	use { 'christoomey/vim-tmux-navigator' }
+
 	--ユーティリティ
 	use { 'cohama/lexima.vim' }
 	use { 'nvim-telescope/telescope.nvim' }
@@ -108,6 +113,11 @@ require('packer').startup(function(use)
 	use { 'lambdalisue/glyph-palette.vim' }
 	use { 'lambdalisue/nerdfont.vim' }
 	--バッファ
+	-- リサイズ
+	use { 'simeji/winresizer',
+		config = function()
+			require("plugins.winresizer")
+		end }
 	--マーク
 	use { 'chentoast/marks.nvim' }
 	--カラースキーム
@@ -116,5 +126,4 @@ require('packer').startup(function(use)
 			require("plugins.colorScheme.tokyonight")
 		end }
 	use { 'wadackel/vim-dogrun' }
-
 end)

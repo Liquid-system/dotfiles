@@ -56,14 +56,13 @@ local servers = {
 	"rust_analyzer",
 	"cmake",
 	"cssls",
-	"eslint",
+	--"eslint",
 	"gopls",
 	"graphql",
 	"html",
 	"jsonls",
 	"zls",
 	"dockerls",
-	"eslint"
 }
 
 for _, server in ipairs(servers) do

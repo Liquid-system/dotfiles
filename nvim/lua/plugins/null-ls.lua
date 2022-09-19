@@ -9,15 +9,28 @@ local b = null_ls.builtins
 local sources = {
 	-- Lua
 	b.formatting.stylua,
-
+	--python3
+	b.formatting.isort,
+	--clang
+	b.diagnostics.clang_check,
+	--CMake
+    --b.diagnostics.cmake_lint,
+	b.formatting.cmake_format,
 	-- markdown
 	b.formatting.markdownlint,
-
 	-- go
 	b.formatting.goimports,
-
 	--javascript
-	b.diagnostics.eslint
+	--b.diagnostics.eslint,
+	--b.code_actions.eslint,
+	--yaml
+	b.formatting.yamlfmt,
+	--CSS
+	b.formatting.stylelint,
+	--Prettier
+    --b.formatting.prettier,
+    --sql
+	b.formatting.sql_formatter
 }
 
 null_ls.setup {

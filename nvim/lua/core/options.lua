@@ -24,8 +24,6 @@ opt.mouse = "a"
 -- ファイルエンコーディング
 opt.fenc = "utf-8"
 opt.fileformats = { "unix", "dos", "mac" }
--- スペースの追加
---opt.virtualedit = "onemore"
 
 -- 検索系
 -- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -46,10 +44,20 @@ opt.matchtime = 1
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
+--タブ入力時に空白を展開
+opt.expandtab = true
 -- 空白をスペース2文分にする
 opt.shiftwidth = 2
--- タブを2文字分にする
-opt.tabstop = 2
+-- 制御文字を表示
+opt.list = true
+-- 制御文字をカスタマイズ
+opt.listchars.tab = "»-"
+opt.listchars.trail = "-"
+opt.listchars.eol = "↲"
+opt.listchars.extends = "»"
+opt.listchars.precedes = "«"
+opt.listchars.nbsp = "%"
+
 -- インデント
 opt.cindent = true
 opt.autoindent = true
@@ -59,7 +67,6 @@ opt.linebreak = true
 --opt.filetype=true
 -- クリップボード
 opt.clipboard = "unnamed"
-
 -- 折り畳みを有効
 opt.wrap = true
 -- 仮想編集を有効
