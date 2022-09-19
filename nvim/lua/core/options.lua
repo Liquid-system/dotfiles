@@ -25,7 +25,8 @@ opt.mouse = "a"
 opt.fenc = "utf-8"
 opt.fileformats = { "unix", "dos", "mac" }
 -- スペースの追加
-opt.virtualedit = "onemore"
+--opt.virtualedit = "onemore"
+
 -- 検索系
 -- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 opt.ignorecase = true
@@ -52,6 +53,8 @@ opt.tabstop = 2
 -- インデント
 opt.cindent = true
 opt.autoindent = true
+--行の改行を防ぐ
+opt.linebreak = true
 -- ファイルタイプ検出を有効にする
 --opt.filetype=true
 -- クリップボード
@@ -59,8 +62,8 @@ opt.clipboard = "unnamed"
 
 -- 折り畳みを有効
 opt.wrap = true
--- 短形選択で自由に移動する
-opt.virtualedit = "all"
+-- 仮想編集を有効
+opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
