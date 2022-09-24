@@ -21,10 +21,10 @@ keymap("i", "jj", "<ESC>", default_opts)
 -- leaderキーをspaceに変更
 vim.g.mapleader = " "
 -- 表示行と論理行を入れ替える
---keymap("n", "k", "gk", default_opts)
---keymap("n", "gk", "k", default_opts)
---keymap("n", "j", "gj", default_opts)
---keymap("n", "gj", "j", default_opts)
+keymap("n", "k", "gk", default_opts)
+keymap("n", "gk", "k", default_opts)
+keymap("n", "j", "gj", default_opts)
+keymap("n", "gj", "j", default_opts)
 
 -- ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
 keymap("v", "<", "<gv", default_opts)
@@ -65,7 +65,7 @@ keymap("n", "<Leader>/",
 	end, default_opts)
 keymap("v", "<Leader>/",
 	function()
-		require("Comment.api").toggle.linewise.current()
+		require("Comment.api").toggle.blockwise.current(vim.fn.visualmode())
 	end, default_opts)
 
 -- lspの設定

@@ -8,7 +8,6 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
 export PATH="$HOME/.poetry/bin:$PATH"
-export LIBGL_ALWAYS_INDIRECT=0
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:~/.zig
@@ -18,14 +17,11 @@ export TMUX_TMPDIR=/tmp
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
-alias cl='clear'
 alias n='nvim'
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
 . "$HOME/.cargo/env"
 
-# GUI
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 # gh
 eval "$(gh completion -s zsh)"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -149,7 +145,7 @@ fi
 #  ;;
 #esac
 
-export DISPLAY=`hostname`.mshome.net:0.0
+# export DISPLAY=`hostname`.mshome.net:0.0
 
 . "$HOME/.cargo/env"
 
@@ -206,11 +202,7 @@ local cmd=${line%% *}
 	&& ${cmd} != (m|man)
 ]]
 }
-if [[ $(grep -i Microsoft /proc/version) ]]; then
-export DISPLAY="$(awk '/nameserver/ { print $2 }' < /etc/resolv.conf)":0
-else
-export DISPLAY=127.0.0.1:0
-fi
+
 export COLORTERM=truecolor
 
 alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake

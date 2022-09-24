@@ -19,7 +19,7 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
 -- ファイルを開いた時に、カーソルの場所を復元する
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 	pattern = { "*" },
 	callback = function()
 		vim.api.nvim_exec('silent! normal! g`"zv', false)

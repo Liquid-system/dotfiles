@@ -19,6 +19,8 @@ require('packer').startup(function(use)
 			require('plugins.lualine')
 		end, }
 
+
+
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
 		config = function()
@@ -104,6 +106,7 @@ require('packer').startup(function(use)
 	use { 'segeljakt/vim-silicon', cmd = { 'Silicon' } }
 	use { 'vim-scripts/vim-auto-save' }
 	use { 'numToStr/FTerm.nvim' }
+
 	--フォーマッタ
 	use { 'editorconfig/editorconfig-vim' }
 

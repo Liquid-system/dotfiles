@@ -8,7 +8,7 @@ local b = null_ls.builtins
 
 local sources = {
 	-- Lua
-	b.formatting.stylua,
+	-- b.formatting.stylua,
 	--python3
 	b.formatting.isort,
 	--clang
@@ -32,7 +32,7 @@ local sources = {
 	--sql
 	b.formatting.sql_formatter
 }
-
+--
 null_ls.setup {
 	debug = true,
 	sources = sources,
