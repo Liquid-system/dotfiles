@@ -4,12 +4,18 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim', opt = true } -- bootstrap
 	use { 'vim-jp/vimdoc-ja' }
+	use {
+		"lewis6991/impatient.nvim",
+		config = function()
+			require('impatient')
+		end
+	}
 	use { 'nathom/filetype.nvim' }
 	use { 'nvim-lua/plenary.nvim' }
 	--アイコン
 	use { 'NvChad/ui' }
 	use { 'kyazdani42/nvim-web-devicons' }
-	--見た目
+	--ui
 	use { 'goolord/alpha-nvim',
 		config = function()
 			require("plugins.alpha")
@@ -18,8 +24,6 @@ require('packer').startup(function(use)
 		config = function()
 			require('plugins.lualine')
 		end, }
-
-
 
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
@@ -37,25 +41,31 @@ require('packer').startup(function(use)
 	--lsp
 	use { 'williamboman/mason.nvim',
 		config = function()
-			require('plugins.mason')
+			require('plugins.lsp.mason')
 		end, }
 	use { 'williamboman/mason-lspconfig.nvim' }
 
 	use { 'neovim/nvim-lspconfig',
 		config = function()
-			require('plugins.lspconfig')
+			require('plugins.lsp.lspconfig')
 		end, }
 
 	-- cmp
 	use { 'hrsh7th/nvim-cmp',
 		config = function()
-			require "plugins.cmp"
-		end, }
-	use { 'hrsh7th/cmp-nvim-lsp',
-		config = function()
-			require('plugins.cmp')
-			require('plugins.lspconfig')
-		end, }
+			require('plugins.lsp.cmp')
+		end,
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-nvim-lsp-signature-help',
+			'hrsh7th/cmp-nvim-lua',
+			'hrsh7th/cmp-cmdline',
+			'saadparwaiz1/cmp_luasnip'
+		}
+	}
+	use { 'hrsh7th/cmp-nvim-lsp' }
 	use { 'hrsh7th/cmp-buffer' }
 	use { 'hrsh7th/cmp-path' }
 	use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
@@ -63,24 +73,22 @@ require('packer').startup(function(use)
 	use { 'hrsh7th/cmp-cmdline' }
 	--スニペット
 	use { 'saadparwaiz1/cmp_luasnip' }
-	use { 'rafamadriz/friendly-snippets',
-		event = "InsertEnter", }
-
 	use { 'L3MON4D3/LuaSnip',
-		wants = "friendly-snippets", }
+		event = "InsertEnter",
+		config = function()
+			require("plugins.snippets")
+		end, }
 
 	use { 'folke/trouble.nvim',
 		config = function()
 			require("plugins.trouble")
 		end, }
 	use { 'glepnir/lspsaga.nvim', branch = 'main' }
-	use { 'folke/lua-dev.nvim' }
-	use { 'mattn/emmet-vim', ft = 'html' }
-
+	use { 'folke/lua-dev.nvim', ft = 'lua' }
 	--リンター
 	use { 'jose-elias-alvarez/null-ls.nvim',
 		config = function()
-			require("plugins.null-ls")
+			require("plugins.lsp.null-ls")
 		end,
 		requires = { "nvim-lua/plenary.nvim" },
 	}

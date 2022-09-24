@@ -25,4 +25,5 @@ vim.api.nvim_create_autocmd({ "Colorscheme" }, {
 		vim.api.nvim_exec('silent! normal! g`"zv', false)
 	end,
 })
+require("core.mappings")
 require("core.options")

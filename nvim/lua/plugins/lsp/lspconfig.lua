@@ -1,10 +1,7 @@
 -- See `:help vim.lsp.*` for documentation on any of the below functions
-
-local lspconfig = require('lspconfig')
-
-
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = require('core.mappings').on_attach
 
@@ -64,6 +61,7 @@ local servers = {
 	"zls",
 	"dockerls",
 }
+local lspconfig = require('lspconfig')
 
 for _, server in ipairs(servers) do
 	lspconfig[server].setup {
@@ -86,10 +84,10 @@ lspconfig.tsserver.setup {
 --}
 
 local luadev = require("lua-dev").setup({
-lspconfig = {
-	on_attach = require('core.mappings').on_attach,
-	capabilities = capabilities,
-	cmd = { "lua-language-server" }
-},
+	lspconfig = {
+		on_attach = require('core.mappings').on_attach,
+		capabilities = capabilities,
+		cmd = { "lua-language-server" }
+	},
 })
 lspconfig.sumneko_lua.setup(luadev)
