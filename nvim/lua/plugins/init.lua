@@ -25,13 +25,26 @@ require('packer').startup(function(use)
 			require('plugins.lualine')
 		end, }
 
+	use { 'akinsho/bufferline.nvim',
+		tag = "v2.*",
+		requires = 'kyazdani42/nvim-web-devicons', config = function()
+			require("bufferline").setup {
+				options = {
+					diagnostics = "nvim_lsp"
+				},
+			}
+		end }
+
+
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
 		config = function()
 			require("plugins.treesitter")
 		end, }
 
-	use { 'nvim-treesitter/nvim-treesitter-context' }
+	use { 'nvim-treesitter/nvim-treesitter-context',
+		run = ':TSUpdate' }
+	use { "windwp/nvim-ts-autotag" }
 	--括弧の色
 	use { 'p00f/nvim-ts-rainbow' }
 	use { 'lukas-reineke/indent-blankline.nvim',
@@ -48,6 +61,12 @@ require('packer').startup(function(use)
 	use { 'neovim/nvim-lspconfig',
 		config = function()
 			require('plugins.lsp.lspconfig')
+		end, }
+
+	use { 'glepnir/lspsaga.nvim',
+		branch = 'main',
+		config = function()
+			require("plugins.lsp.saga")
 		end, }
 
 	-- cmp
@@ -83,8 +102,7 @@ require('packer').startup(function(use)
 		config = function()
 			require("plugins.trouble")
 		end, }
-	use { 'glepnir/lspsaga.nvim', branch = 'main' }
-	use { 'folke/lua-dev.nvim', ft = 'lua' }
+	use { 'folke/lua-dev.nvim', }
 	--リンター
 	use { 'jose-elias-alvarez/null-ls.nvim',
 		config = function()
@@ -93,12 +111,7 @@ require('packer').startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	}
 	--コメント
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+	use { 'numToStr/Comment.nvim', }
 	--移動
 	use { 'machakann/vim-sandwich' }
 	use { 'phaazon/hop.nvim',
@@ -123,6 +136,7 @@ require('packer').startup(function(use)
 	use { 'lambdalisue/fern-renderer-nerdfont.vim' }
 	use { 'lambdalisue/glyph-palette.vim' }
 	use { 'lambdalisue/nerdfont.vim' }
+	use { 'yuki-yano/fern-preview.vim' }
 	--バッファ
 	-- リサイズ
 	use { 'simeji/winresizer',

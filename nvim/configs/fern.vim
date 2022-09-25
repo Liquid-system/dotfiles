@@ -5,6 +5,8 @@ let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
 let g:fern#renderer = "nerdfont"
+let g:fern#previewmode=0
+
 function! s:init_fern() abort
 nmap <buffer><expr>
   \ <Plug>(fern-my-expand-or-collapse)
@@ -30,6 +32,7 @@ nmap <buffer><nowait> l <Plug>(fern-my-expand-or-enter)
 nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
 endfunction
 
+
 function! s:fern_preview_init() abort
 nmap <buffer><expr>
   \ <Plug>(fern-my-preview-or-nop)
@@ -54,8 +57,6 @@ autocmd! *
 autocmd FileType fern call s:fern_preview_init()
 augroup END
 
-" You need this otherwise you cannot switch modified buffer
-set hidden
 " 隠しファイルを表示する
 let g:fern#default_hidden=1
 

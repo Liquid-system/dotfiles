@@ -60,7 +60,6 @@ opt.listchars.nbsp = "%"
 
 -- インデント
 opt.cindent = true
-opt.autoindent = true
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする

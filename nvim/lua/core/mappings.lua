@@ -53,6 +53,10 @@ keymap("n", "<Leader>k", "<C-w>k", default_opts)
 keymap("n", "<Leader>h", "<C-w>h", default_opts)
 keymap("n", "<Leader>l", "<C-w>l", default_opts)
 
+--　タブライン
+vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', default_opts)
+vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>',default_opts)
+
 -- タブの移動
 
 --ESC2回で点滅が消える
@@ -64,8 +68,12 @@ keymap("n", "<Leader>/",
 		require("Comment.api").toggle.linewise.current()
 	end, default_opts)
 keymap("v", "<Leader>/",
-	function()
-		require("Comment.api").toggle.blockwise.current(vim.fn.visualmode())
+    function()
+		local esc = vim.api.nvim_replace_termcodes(
+			'<ESC>', true, false, true
+		)
+		vim.api.nvim_feedkeys(esc, 'nx', false)
+		require("Comment.api").toggle.blockwise(vim.fn.visualmode())
 	end, default_opts)
 
 -- lspの設定
@@ -85,31 +93,6 @@ M.on_attach = function(client, bufnr)
 	keymap('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 	keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	keymap('n', 'K', vim.lsp.buf.hover, bufopts)
-	--saga
-	local saga = require('lspsaga')
-	saga.init_lsp_saga()
-	-- Lsp finder find the symbol definition implement reference
-	-- when you use action in finder like open vsplit then you can
-	-- use <C-t> to jump back
-	keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-	keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-	keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
-	keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
-	keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
-	keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-	keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
-	-- Diagnsotic jump can use `<c-o>` to jump back
-	keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
-	keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
-	-- Only jump to error
-	keymap("n", "[E", function()
-		require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
-	end, { silent = true })
-	keymap("n", "]E", function()
-		require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
-	end, { silent = true })
-	keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
-	--keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 end
 
 return M
