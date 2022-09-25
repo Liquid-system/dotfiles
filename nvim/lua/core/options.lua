@@ -12,7 +12,7 @@ opt.showmatch.matchtime = 1
 -- yでコピーした時にクリップボードに入る
 --opt.guioptions:append("a")
 -- クリップボード設定
-opt.clipboard:append{'unnamedplus'}
+vim.g.clipboard = 'clipboard'
 -- 対応する括弧を強調表示
 opt.showmatch = true
 -- スワップファイルを作成しない

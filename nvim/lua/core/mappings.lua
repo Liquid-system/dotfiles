@@ -53,27 +53,19 @@ keymap("n", "<Leader>k", "<C-w>k", default_opts)
 keymap("n", "<Leader>h", "<C-w>h", default_opts)
 keymap("n", "<Leader>l", "<C-w>l", default_opts)
 
---　タブライン
-vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', default_opts)
-vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>',default_opts)
+-- タブライン
+keymap('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', default_opts)
+keymap('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', default_opts)
 
 -- タブの移動
-
+keymap("n", "<leader>e", "<Cmd>TroubleToggle<CR>", default_opts)
 --ESC2回で点滅が消える
-keymap("n", "<ESC><ESC>", ":nohl<CR>", default_opts)
+keymap("n", "<ESC><ESC>", "<Cmd>nohl<CR>", default_opts)
 
 --コメント
 keymap("n", "<Leader>/",
 	function()
 		require("Comment.api").toggle.linewise.current()
-	end, default_opts)
-keymap("v", "<Leader>/",
-    function()
-		local esc = vim.api.nvim_replace_termcodes(
-			'<ESC>', true, false, true
-		)
-		vim.api.nvim_feedkeys(esc, 'nx', false)
-		require("Comment.api").toggle.blockwise(vim.fn.visualmode())
 	end, default_opts)
 
 -- lspの設定
@@ -94,5 +86,33 @@ M.on_attach = function(client, bufnr)
 	keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	keymap('n', 'K', vim.lsp.buf.hover, bufopts)
 end
+
+--lspsaga
+-- Lsp finder find the symbol definition implement reference
+keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+-- Diagnsotic jump can use `<c-o>` to jump back
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+-- Only jump to error
+keymap("n", "[E", function()
+	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, { silent = true })
+keymap("n", "]E", function()
+	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, { silent = true })
+keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+--keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+-- Float terminal
+keymap("n", "<leader>i", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+-- if you want pass somc cli command into terminal you can do like this
+-- close floaterm
+keymap("t", "<leader>i", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
 
 return M

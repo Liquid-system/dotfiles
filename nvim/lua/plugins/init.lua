@@ -1,11 +1,11 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
+
 require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim', opt = true } -- bootstrap
 	use { 'vim-jp/vimdoc-ja' }
-	use {
-		"lewis6991/impatient.nvim",
+	use { "lewis6991/impatient.nvim",
 		config = function()
 			require('impatient')
 		end
@@ -24,17 +24,13 @@ require('packer').startup(function(use)
 		config = function()
 			require('plugins.lualine')
 		end, }
-
-	use { 'akinsho/bufferline.nvim',
-		tag = "v2.*",
-		requires = 'kyazdani42/nvim-web-devicons', config = function()
-			require("bufferline").setup {
-				options = {
-					diagnostics = "nvim_lsp"
-				},
-			}
-		end }
-
+	-- using packer.nvim
+--	use { 'akinsho/bufferline.nvim',
+--		tag = "v2.*",
+--		requires = 'kyazdani42/nvim-web-devicons',
+--		config = function()
+--			require("plugins.bufferline")
+--		end, }
 
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
@@ -126,7 +122,6 @@ require('packer').startup(function(use)
 	use { 'nvim-telescope/telescope.nvim' }
 	use { 'segeljakt/vim-silicon', cmd = { 'Silicon' } }
 	use { 'vim-scripts/vim-auto-save' }
-	use { 'numToStr/FTerm.nvim' }
 
 	--フォーマッタ
 	use { 'editorconfig/editorconfig-vim' }
@@ -136,7 +131,7 @@ require('packer').startup(function(use)
 	use { 'lambdalisue/fern-renderer-nerdfont.vim' }
 	use { 'lambdalisue/glyph-palette.vim' }
 	use { 'lambdalisue/nerdfont.vim' }
-	use { 'yuki-yano/fern-preview.vim' }
+
 	--バッファ
 	-- リサイズ
 	use { 'simeji/winresizer',
@@ -144,11 +139,12 @@ require('packer').startup(function(use)
 			require("plugins.winresizer")
 		end }
 	--マーク
-	use { 'chentoast/marks.nvim' }
+
 	--カラースキーム
 	use { 'folke/tokyonight.nvim',
 		config = function()
 			require("plugins.colorScheme.tokyonight")
 		end }
 	use { 'wadackel/vim-dogrun' }
+
 end)
