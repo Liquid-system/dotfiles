@@ -1,10 +1,8 @@
 export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/tig
 export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
-export PATH=~/go/bin:$PATH
 export PATH=$PATH:~/.local/bin
 
 if [[ -f ~/.bashrc ]] ; then

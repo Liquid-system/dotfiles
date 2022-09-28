@@ -25,12 +25,12 @@ require('packer').startup(function(use)
 			require('plugins.lualine')
 		end, }
 	-- using packer.nvim
---	use { 'akinsho/bufferline.nvim',
---		tag = "v2.*",
---		requires = 'kyazdani42/nvim-web-devicons',
---		config = function()
---			require("plugins.bufferline")
---		end, }
+	use { 'akinsho/bufferline.nvim',
+		tag = "v2.*",
+		requires = 'kyazdani42/nvim-web-devicons',
+		config = function()
+			require("plugins.bufferline")
+		end, }
 
 	--treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
@@ -124,8 +124,8 @@ require('packer').startup(function(use)
 	use { 'vim-scripts/vim-auto-save' }
 
 	--フォーマッタ
-	use { 'editorconfig/editorconfig-vim' }
-
+	use { 'editorconfig/editorconfig-vim',
+		ft = "editorconfig" }
 	--ファイラ―
 	use { 'lambdalisue/fern.vim', branch = 'main' }
 	use { 'lambdalisue/fern-renderer-nerdfont.vim' }
