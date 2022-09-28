@@ -94,7 +94,6 @@ export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.pypy3/bin
-export PATH=$PATH:~/tig
 export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
@@ -110,6 +109,9 @@ export TMUX_TMPDIR=/tmp
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
 alias n='nvim'
+alias cxx='g++ -std=c++17 -Wall -O2 '
+alias cxxg='g++ -std=c++17 -Wall -O2 -g -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover -D_GLIBCXX_DEBUG'
+
 function open() { cmd.exe /c start $(wslpath -w $1) }
 
 . "$HOME/.cargo/env"
