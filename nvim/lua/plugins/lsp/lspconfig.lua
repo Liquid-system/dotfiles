@@ -49,7 +49,8 @@ end
 
 local servers = {
   "clangd",
-  "pylsp",
+  "pyright",
+  "pyre",
   "rust_analyzer",
   "cmake",
   "cssls",

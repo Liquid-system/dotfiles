@@ -12,7 +12,7 @@ opt.showmatch.matchtime = 1
 -- yでコピーした時にクリップボードに入る
 --opt.guioptions:append("a")
 -- クリップボード設定
-vim.g.clipboard = 'clipboard'
+opt.clipboard:append({ unnamedeplus = true })
 -- 対応する括弧を強調表示
 opt.showmatch = true
 -- スワップファイルを作成しない
@@ -45,9 +45,13 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
 --タブ入力時に空白を展開
-opt.expandtab = true
+--opt.expandtab = true
 -- 空白をスペース2文分にする
-opt.shiftwidth = 2
+opt.tabstop = 8
+opt.shiftwidth = 8
+-- インデント
+opt.cindent = true
+
 -- 制御文字を表示
 opt.list = true
 -- 制御文字をカスタマイズ
@@ -58,8 +62,6 @@ opt.listchars.extends = "»"
 opt.listchars.precedes = "«"
 opt.listchars.nbsp = "%"
 
--- インデント
-opt.cindent = true
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする
@@ -77,6 +79,5 @@ opt.wildignore =
 opt.encoding = 'utf-8'
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
-opt.mouse = 'nv'
 -- 英語表示
 vim.api.nvim_command('language messages C')
