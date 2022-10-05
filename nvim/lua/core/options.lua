@@ -46,11 +46,16 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 opt.timeoutlen = 250
 --タブ入力時に空白を展開
 --opt.expandtab = true
--- 空白をスペース2文分にする
-opt.tabstop = 8
-opt.shiftwidth = 8
+-- tab時の見かけのスペース数
+opt.tabstop = 4
+-- 自動的に挿入される量
+opt.shiftwidth = 4
 -- インデント
-opt.cindent = true
+opt.autoindent = true
+opt.smartindent = true
+-- 改行時にtabをスペースに変換
+-- (インサート時に(Ctrl+v)+tabでtab挿入)
+opt.expandtab = true
 
 -- 制御文字を表示
 opt.list = true

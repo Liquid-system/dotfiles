@@ -98,10 +98,9 @@ end
 --lspsaga
 -- Lsp finder find the symbol definition implement reference
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
-keymap("n", "gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 -- Diagnsotic jump can use `<c-o>` to jump back

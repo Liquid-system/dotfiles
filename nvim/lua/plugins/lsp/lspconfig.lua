@@ -48,17 +48,23 @@ for type, icon in pairs(signs) do
 end
 
 local servers = {
+  --C++
   "clangd",
-  "pyright",
-  "pyre",
-  "rust_analyzer",
   "cmake",
+  --python3
+  --"pyright",
+  "pyre",
+  "pylsp",
+  -- Rust
+  "rust_analyzer",
+  --CSS
   "cssls",
   --"eslint",
   "gopls",
   "graphql",
   "html",
   "jsonls",
+  -- zig
   "zls",
   "dockerls",
   --"vimls",
@@ -71,6 +77,7 @@ for _, server in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
 --nodeとdenoのコンフリクトの解決
 lspconfig.tsserver.setup {
   on_attach = on_attach,

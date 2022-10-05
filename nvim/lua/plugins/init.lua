@@ -3,17 +3,16 @@
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function(use)
-  use { 'wbthomason/packer.nvim', opt = true } -- bootstrap
+  use { 'wbthomason/packer.nvim',
+    opt = true } -- bootstrap
   use { 'vim-jp/vimdoc-ja' }
   use { "lewis6991/impatient.nvim",
     config = function()
       require('impatient')
     end
   }
-  use { 'nvim-lua/plenary.nvim' }
   --アイコン
   use { 'NvChad/ui' }
-  use { 'kyazdani42/nvim-web-devicons' }
   --ui
   use { 'goolord/alpha-nvim',
     config = function()
@@ -35,7 +34,8 @@ require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter',
     config = function()
       require("plugins.treesitter")
-        end, }
+    end, }
+
 
   use { "windwp/nvim-ts-autotag" }
   --括弧の色
@@ -45,11 +45,20 @@ require('packer').startup(function(use)
       require('plugins.blankline')
     end }
   --lsp
-  use { 'williamboman/mason.nvim',
-    config = function()
-      require('plugins.lsp.mason')
-    end, }
-  use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim',
+    requires = { 'williamboman/mason.nvim',
+      config = function()
+        require('plugins.lsp.mason')
+      end,
+      cmd = {
+        "Mason",
+        "MasonInstall",
+        "MasonInstallAll",
+        "MasonUninstall",
+        "MasonUninstallAll",
+        "MasonLog",
+      } } }
+
 
   use { 'neovim/nvim-lspconfig',
     config = function()
@@ -63,26 +72,20 @@ require('packer').startup(function(use)
     end, }
 
   -- cmp
+  use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/nvim-cmp',
     config = function()
       require('plugins.lsp.cmp')
     end,
     requires = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-cmdline',
-      'saadparwaiz1/cmp_luasnip'
+      { 'hrsh7th/cmp-buffer', opt = true },
+      { 'hrsh7th/cmp-path', opt = true },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help', opt = true },
+      { 'hrsh7th/cmp-nvim-lua', opt = true },
+      { 'hrsh7th/cmp-cmdline', opt = true },
+      { 'saadparwaiz1/cmp_luasnip', opt = true }
     }
   }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { 'hrsh7th/cmp-cmdline' }
   --スニペット
   use { 'saadparwaiz1/cmp_luasnip' }
   use { 'L3MON4D3/LuaSnip',
@@ -116,8 +119,13 @@ require('packer').startup(function(use)
 
   --ユーティリティ
   use { 'cohama/lexima.vim' }
-  use { 'nvim-telescope/telescope.nvim' }
-  use { 'segeljakt/vim-silicon', cmd = { 'Silicon' } }
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+
+  use { 'segeljakt/vim-silicon', cmd = { 'Silicon' }, opt = true }
   use { 'vim-scripts/vim-auto-save' }
 
   --フォーマッタ
@@ -134,7 +142,9 @@ require('packer').startup(function(use)
   use { 'simeji/winresizer',
     config = function()
       require("plugins.winresizer")
-    end }
+    end,
+    keys = { '<C-s>' } }
+
   --マーク
 
   --カラースキーム
