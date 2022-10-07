@@ -60,13 +60,13 @@ opt.expandtab = true
 -- 制御文字を表示
 opt.list = true
 -- 制御文字をカスタマイズ
-opt.listchars.tab = "»-"
+--[[opt.listchars.tab = "»-"
 opt.listchars.trail = "-"
 opt.listchars.eol = "↲"
 opt.listchars.extends = "»"
 opt.listchars.precedes = "«"
 opt.listchars.nbsp = "%"
-
+]]
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする

@@ -6,8 +6,6 @@ dashboard.section.header.val = {
 	"                                                     ",
 	"                                                     ",
 	"                                                     ",
-	"                                                     ",
-	"                                                     ",
 	"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
 	"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
 	"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
@@ -38,6 +36,8 @@ dashboard.section.footer.val = footer()
 -- Send config to alpha
 alpha.setup(dashboard.opts)
 
-vim.cmd([[
-	autocmd FileType alpha setlocal nofoldenable
-]])
+
+vim.api.nvim_create_autocmd({ 'TermOpen' }, {
+	pattern = 'alpha',
+	command = 'setlocal nofoldenable',
+})

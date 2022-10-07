@@ -15,6 +15,7 @@ require('packer').startup(function(use)
   use { 'NvChad/ui' }
   --ui
   use { 'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require("plugins.alpha")
     end }
@@ -58,7 +59,6 @@ require('packer').startup(function(use)
         "MasonUninstallAll",
         "MasonLog",
       } } }
-
 
   use { 'neovim/nvim-lspconfig',
     config = function()
@@ -151,7 +151,7 @@ require('packer').startup(function(use)
   use { 'folke/tokyonight.nvim',
     config = function()
       require("plugins.colorScheme.tokyonight")
-    end }
-  use { 'wadackel/vim-dogrun' }
+    end, }
+  use { 'wadackel/vim-dogrun', }
 
 end)
