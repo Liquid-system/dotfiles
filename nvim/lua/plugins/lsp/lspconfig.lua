@@ -92,8 +92,6 @@ lspconfig.tsserver.setup {
 --    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 --}
 
-require("lua-dev").setup()
-
 lspconfig.sumneko_lua.setup({
   on_attach = require('core.mappings').on_attach,
   capabilities = capabilities,
@@ -115,6 +113,10 @@ lspconfig.sumneko_lua.setup({
       telemetry = {
         enable = false,
       },
+      completion = {
+        callSnippet = "Replace"
+      }
+
     },
   },
 

@@ -1,3 +1,19 @@
+local disable_plugins = {
+  "netrw",
+  "netrwPlugin",
+  "netrwSettings",
+  "netrwFileHandlers",
+  "loaded_gzip",
+  "loaded_tar",
+  "loaded_tarPlugin",
+  "loaded_zip",
+  "loaded_zipPlugin",
+}
+
+for _, name in ipairs(disable_plugins) do
+  vim.g["loaded_" .. name] = 1
+end
+
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -33,6 +49,7 @@ require('packer').startup(function(use)
 
   --treesitter
   use { 'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
     config = function()
       require("plugins.treesitter")
     end, }
@@ -72,20 +89,18 @@ require('packer').startup(function(use)
     end, }
 
   -- cmp
-  use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/nvim-cmp',
     config = function()
       require('plugins.lsp.cmp')
     end,
-    requires = {
-      { 'hrsh7th/cmp-buffer', opt = true },
-      { 'hrsh7th/cmp-path', opt = true },
-      { 'hrsh7th/cmp-nvim-lsp-signature-help', opt = true },
-      { 'hrsh7th/cmp-nvim-lua', opt = true },
-      { 'hrsh7th/cmp-cmdline', opt = true },
-      { 'saadparwaiz1/cmp_luasnip', opt = true }
-    }
   }
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
+  use { 'hrsh7th/cmp-nvim-lua' }
+  use { 'hrsh7th/cmp-cmdline' }
+
   --スニペット
   use { 'saadparwaiz1/cmp_luasnip' }
   use { 'L3MON4D3/LuaSnip',
@@ -98,7 +113,11 @@ require('packer').startup(function(use)
     config = function()
       require("plugins.trouble")
     end, }
-  use { 'folke/lua-dev.nvim', }
+  use { 'folke/lua-dev.nvim',
+    ft = "lua",
+    config = function()
+      require("lua-dev").setup()
+    end, }
   --リンター
   use { 'jose-elias-alvarez/null-ls.nvim',
     config = function()
@@ -109,12 +128,12 @@ require('packer').startup(function(use)
   --コメント
   use { 'numToStr/Comment.nvim', }
   --移動
-  use { 'machakann/vim-sandwich' }
-  use { 'aznhe21/hop.nvim',
+  --[[use { 'ggandor/leap.nvim',
     config = function()
-      require("plugins.hop")
+      require("plugins.leap")
     end
   }
+  ]]
   use { 'christoomey/vim-tmux-navigator' }
 
   --ユーティリティ

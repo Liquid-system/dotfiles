@@ -17,10 +17,6 @@ WORDCHARS=${WORDCHARS//[\/]}
 # Zim configuration
 # -----------------
 
-# Use degit instead of git as the default tool to install and update modules.
-#zstyle ':zim:zmodule' use 'degit'
-# Module configuration
-
 # Append `../` to your input for each `.` you type after an initial `..`
 #zstyle ':zim:input' double-dot-expand yes
 
@@ -94,7 +90,6 @@ export PATH=$PATH:~/.npm-global/bin
 export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.pypy3/bin
-export LIBGL_ALWAYS_INDIRECT=1
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
 export PATH=$PATH:~/.local/bin
@@ -107,8 +102,6 @@ export PATH=$PATH:~/lua-language-server/bin
 export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-
-export DISPLAY=$(ip route | awk '/^default/{print $3; exit}'):0
 
 fpath+=~/.zfunc
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'

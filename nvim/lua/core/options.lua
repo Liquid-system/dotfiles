@@ -85,4 +85,5 @@ opt.encoding = 'utf-8'
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 英語表示
-vim.api.nvim_command('language messages C')
+vim.api.nvim_command('language messages en_US.UTF-8')
+
