@@ -9,7 +9,6 @@ local disable_plugins = {
   "loaded_zip",
   "loaded_zipPlugin",
 }
-
 for _, name in ipairs(disable_plugins) do
   vim.g["loaded_" .. name] = 1
 end
@@ -54,7 +53,7 @@ require('packer').startup(function(use)
       require("plugins.treesitter")
     end, }
 
-
+  -- htmlのタグ
   use { "windwp/nvim-ts-autotag" }
   --括弧の色
   use { 'p00f/nvim-ts-rainbow' }
@@ -87,7 +86,6 @@ require('packer').startup(function(use)
     config = function()
       require("plugins.lsp.saga")
     end, }
-
   -- cmp
   use { 'hrsh7th/nvim-cmp',
     config = function()
@@ -127,13 +125,6 @@ require('packer').startup(function(use)
   }
   --コメント
   use { 'numToStr/Comment.nvim', }
-  --移動
-  --[[use { 'ggandor/leap.nvim',
-    config = function()
-      require("plugins.leap")
-    end
-  }
-  ]]
   use { 'christoomey/vim-tmux-navigator' }
 
   --ユーティリティ
