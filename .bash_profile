@@ -21,9 +21,6 @@ alias cxx='g++ -std=c++17 -Wall -O2'
 alias cxxg='g++ -std=c++17 -Wall -O2 -g -fsanitize=undefined -D_GLIBCXX_DEBUG'
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 
-
-
-
 export PATH="$HOME/.poetry/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

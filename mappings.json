@@ -1,4 +1,6 @@
 {
   "zimrc": "~/.zimrc",
-  "nvim": "~/.config/nvim"
+  "nvim": "~/.config/nvim",
+  "helix":"~/.config/helix",
+  "zellij":"~/.config/zellij"
 }
