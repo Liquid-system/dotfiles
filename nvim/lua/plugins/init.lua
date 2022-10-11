@@ -12,7 +12,6 @@ local disable_plugins = {
 for _, name in ipairs(disable_plugins) do
 	vim.g["loaded_" .. name] = 1
 end
-
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
 vim.cmd([[packadd packer.nvim]])
@@ -152,10 +151,12 @@ require("packer").startup(function(use)
 	})
 	--コメント
 	use({ "numToStr/Comment.nvim" })
-	use({ "christoomey/vim-tmux-navigator" })
 
 	--ユーティリティ
 	use({ "cohama/lexima.vim" })
+	use({ "machakann/vim-sandwich" })
+	use({ "christoomey/vim-tmux-navigator" })
+
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
@@ -173,7 +174,7 @@ require("packer").startup(function(use)
 		end,
 	})
 	--フォーマッタ
-	use({ "editorconfig/editorconfig-vim", ft = "editorconfig" })
+	use({ "gpanders/editorconfig.nvim", ft = "editorconfig" })
 	--ファイラ―
 	use({ "lambdalisue/fern.vim", branch = "main" })
 	use({ "lambdalisue/fern-renderer-nerdfont.vim" })

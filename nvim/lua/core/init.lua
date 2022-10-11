@@ -1,29 +1,13 @@
---不要なデフォルトプラグインの停止
-vim.g.loaded_gzip = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_getscript = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_logiPat = 1
-vim.g.loaded_rrhelper = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings = 1
-vim.g.loaded_netrwFileHandlers = 1
+if vim.fn.has("persistent_undo") then
+	local target_path = vim.fn.expand("~/.undo/nvim")
+	if not vim.fn.isdirectory(target_path) then
+		vim.fn.mkdir(target_path, "p", 700)
+	end
+	vim.opt.undodir = target_path
+	vim.opt.undofile = true
+end
 
--- ファイルを開いた時に、カーソルの場所を復元する
-vim.api.nvim_create_autocmd({ "Colorscheme" }, {
-	pattern = { "*" },
-	callback = function()
-		vim.api.nvim_exec('silent! normal! g`"zv', false)
-	end,
-})
 require("core.mappings")
 require("core.options")
+require("core.autocmd")
+require("plugins")
