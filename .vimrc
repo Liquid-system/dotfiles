@@ -1,4 +1,4 @@
-if has('vim_starting')
+ has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
     let &t_SI .= "\e[6 q"
     " ノーマルモード時に非点滅のブロックタイプのカーソル
