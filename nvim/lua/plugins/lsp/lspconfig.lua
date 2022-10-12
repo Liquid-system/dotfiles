@@ -62,11 +62,10 @@ local servers = {
 	"gopls",
 	"graphql",
 	"html",
-	"jsonls",
 	-- zig
 	"zls",
 	"dockerls",
-	--"vimls",
+	"vimls",
 }
 local lspconfig = require("lspconfig")
 
@@ -76,6 +75,17 @@ for _, server in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+lspconfig.jsonls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
 
 --nodeとdenoのコンフリクトの解決
 lspconfig.tsserver.setup({

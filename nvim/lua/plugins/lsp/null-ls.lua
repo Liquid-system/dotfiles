@@ -29,14 +29,14 @@ local sources = {
     -- go
     b.formatting.goimports,
     --javascript
-    --b.diagnostics.eslint,
-    --b.code_actions.eslint,
+    b.diagnostics.eslint,
+    b.code_actions.eslint,
     --yaml
     b.formatting.yamlfmt,
     --CSS
     b.formatting.stylelint,
     --Prettier
-    --b.formatting.prettier,
+    b.formatting.prettier,
     --pug
     b.diagnostics.puglint,
     --sql

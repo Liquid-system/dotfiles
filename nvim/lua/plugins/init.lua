@@ -103,6 +103,7 @@ require("packer").startup(function(use)
 			require("plugins.lsp.saga")
 		end,
 	})
+	use({ "b0o/schemastore.nvim" })
 	-- cmp
 	use({
 		"hrsh7th/nvim-cmp",
