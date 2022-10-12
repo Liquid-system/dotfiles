@@ -31,14 +31,14 @@ require("packer").startup(function(use)
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			require("plugins.alpha")
+			require("plugins.ui.alpha")
 		end,
 	})
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		config = function()
-			require("plugins.lualine")
+			require("plugins.ui.lualine")
 		end,
 	})
 	-- using packer.nvim
@@ -47,7 +47,7 @@ require("packer").startup(function(use)
 		tag = "v2.*",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("plugins.bufferline")
+			require("plugins.ui.bufferline")
 		end,
 	})
 
@@ -58,7 +58,7 @@ require("packer").startup(function(use)
 		run = ":TSUpdate",
 		event = "BufReadPost",
 		config = function()
-			require("plugins.treesitter")
+			require("plugins.editor.treesitter")
 		end,
 	})
 
@@ -76,7 +76,7 @@ require("packer").startup(function(use)
 		opt = true,
 		event = "BufReadPost",
 		config = function()
-			require("plugins.blankline")
+			require("plugins.editor.blankline")
 		end,
 	})
 	--lsp
@@ -134,14 +134,18 @@ require("packer").startup(function(use)
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
 		config = function()
-			require("plugins.snippets")
+			require(
+				"luasnip.loaders.from_vscode"
+			).lazy_load({
+				paths = { "./friendly-snippets" }
+			})
 		end,
 	})
 
 	use({
 		"folke/trouble.nvim",
 		config = function()
-			require("plugins.trouble")
+			require("plugins.ui.trouble")
 		end,
 	})
 	use({
@@ -179,7 +183,7 @@ require("packer").startup(function(use)
 		event = "BufEnter",
 		config = function()
 			vim.defer_fn(function()
-				require("plugins.nvim-notify")
+				require("plugins.ui.nvim-notify")
 			end, 2000)
 		end,
 	})
@@ -196,7 +200,7 @@ require("packer").startup(function(use)
 	use({
 		"simeji/winresizer",
 		config = function()
-			require("plugins.winresizer")
+			require("plugins.editor.winresizer")
 		end,
 		keys = { "<C-s>" },
 	})

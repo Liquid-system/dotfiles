@@ -5,18 +5,7 @@ if system('uname -a | grep microsoft') != ''
   augroup END
 endif
 
-let g:clipboard = {
-    \   'name': 'myClipboard',
-    \   'copy': {
-    \      '+': 'win32yank.exe -i',
-    \      '*': 'win32yank.exe -i',
-    \    },
-    \   'paste': {
-    \      '+': 'win32yank.exe -o',
-    \      '*': 'win32yank.exe -o',
-    \   },
-    \   'cache_enabled': 1,
-    \ }
+
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save while in insert mode
