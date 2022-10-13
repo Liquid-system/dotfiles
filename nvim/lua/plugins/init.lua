@@ -164,6 +164,13 @@ require("packer").startup(function(use)
     use({ "cohama/lexima.vim" })
     use({ "machakann/vim-sandwich" })
     use({ "christoomey/vim-tmux-navigator" })
+    use({
+        "j-hui/fidget.nvim",
+        event = "BufEnter",
+        config = function()
+            require("fidget").setup({})
+        end,
+    })
 
     use({
         "nvim-telescope/telescope.nvim",
@@ -172,15 +179,6 @@ require("packer").startup(function(use)
     })
     use({ "segeljakt/vim-silicon", cmd = { "Silicon" }, opt = true })
     use({ "vim-scripts/vim-auto-save" })
-    use({
-        "rcarriga/nvim-notify",
-        event = "BufEnter",
-        config = function()
-            vim.defer_fn(function()
-                require("plugins.ui.nvim-notify")
-            end, 2000)
-        end,
-    })
     --フォーマッタ
     use({ "gpanders/editorconfig.nvim", ft = "editorconfig" })
     --ファイラ―
