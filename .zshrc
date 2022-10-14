@@ -101,6 +101,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:~/lua-language-server/bin
 export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
+export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 case "$OSTYPE" in
@@ -240,4 +241,4 @@ export COLORTERM=truecolor
 
 alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
 export VOLTA_HOME="$HOME/.volta"
-
+export PATH="$VOLTA_HOME/bin:$PATH"

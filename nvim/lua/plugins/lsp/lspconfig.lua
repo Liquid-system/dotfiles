@@ -51,9 +51,9 @@ local servers = {
 	"clangd",
 	"cmake",
 	--python3
-	--"pyright",
-	"pyre",
-	"pylsp",
+	"pyright",
+	--"pyre",
+	--"pylsp",
 	-- Rust
 	"rust_analyzer",
 	--CSS
