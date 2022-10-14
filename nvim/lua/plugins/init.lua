@@ -3,26 +3,29 @@ local disable_plugins = {
     "netrwPlugin",
     "netrwSettings",
     "netrwFileHandlers",
-    "loaded_gzip",
-    "loaded_tar",
-    "loaded_tarPlugin",
-    "loaded_zip",
-    "loaded_zipPlugin",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin"
 }
 for _, name in ipairs(disable_plugins) do
     vim.g["loaded_" .. name] = 1
 end
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
-
+--vim.cmd([[packadd packer.nvim]])
+vim.cmd [[packadd packer.nvim]]
 require("packer").startup(function(use)
-    use({
-        "lewis6991/impatient.nvim",
-        config = function()
-            require("impatient")
-        end,
-    })
+    use({ "lewis6991/impatient.nvim" })
     use({ "wbthomason/packer.nvim", opt = true }) -- bootstrap
     use({ "vim-jp/vimdoc-ja" })
 
@@ -143,10 +146,10 @@ require("packer").startup(function(use)
         end,
     })
     use({
-        "folke/lua-dev.nvim",
+        "folke/neodev.nvim",
         ft = "lua",
         config = function()
-            require("lua-dev").setup()
+            require("neodev").setup()
         end,
     })
     --リンター

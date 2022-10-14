@@ -27,8 +27,8 @@ dashboard.section.buttons.val = {
 --footer
 local function footer()
 	local v = vim.version()
-	local datetime = os.date " %Y-%m-%d   %H:%M:%S"
-	local platform = vim.fn.has "win32" == 1 and "" or ""
+	local datetime = os.date(" %Y-%m-%d   %H:%M:%S")
+	local platform = vim.fn.has("win32") == 1 and "" or ""
 	return string.format("%s v%d.%d.%d %s", datetime, v.major, v.minor, v.patch, platform)
 end
 
@@ -36,8 +36,7 @@ dashboard.section.footer.val = footer()
 -- Send config to alpha
 alpha.setup(dashboard.opts)
 
-
-vim.api.nvim_create_autocmd({ 'TermOpen' }, {
-	pattern = 'alpha',
-	command = 'setlocal nofoldenable',
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+	pattern = "alpha",
+	command = "setlocal nofoldenable",
 })
