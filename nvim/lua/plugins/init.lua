@@ -15,7 +15,7 @@ local disable_plugins = {
     "2html_plugin",
     "logipat",
     "rrhelper",
-    "spellfile_plugin"
+    "spellfile_plugin",
 }
 for _, name in ipairs(disable_plugins) do
     vim.g["loaded_" .. name] = 1
@@ -23,7 +23,7 @@ end
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
 --vim.cmd([[packadd packer.nvim]])
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 require("packer").startup(function(use)
     use({ "lewis6991/impatient.nvim" })
     use({ "wbthomason/packer.nvim", opt = true }) -- bootstrap
@@ -174,13 +174,23 @@ require("packer").startup(function(use)
             require("fidget").setup({})
         end,
     })
-
+    use({
+        "kevinhwang91/nvim-ufo",
+        requires = "kevinhwang91/promise-async",
+        config = function()
+            require("plugins.lsp.nvim-ufo")
+        end
+    })
     use({
         "nvim-telescope/telescope.nvim",
         tag = "0.1.0",
         requires = { { "nvim-lua/plenary.nvim" } },
     })
-    use({ "segeljakt/vim-silicon", cmd = { "Silicon" }, opt = true })
+    use({
+        "segeljakt/vim-silicon",
+        cmd = { "Silicon" },
+        opt = true,
+    })
     use({ "vim-scripts/vim-auto-save" })
     --フォーマッタ
     use({ "gpanders/editorconfig.nvim", ft = "editorconfig" })

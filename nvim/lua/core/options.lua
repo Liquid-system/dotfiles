@@ -1,4 +1,5 @@
 local opt = vim.opt
+
 opt.number = true
 opt.title = true
 -- 検索時の強調表示
@@ -79,12 +80,16 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-'.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
-opt.encoding = 'utf-8'
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 英語表示
-vim.api.nvim_command('language messages en_US.UTF-8')
+vim.api.nvim_command("language messages en_US.UTF-8")
 -- shadafileに書き込まない
 vim.opt.shadafile = "NONE"
-
+--fold
+vim.o.foldcolumn = "1" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
