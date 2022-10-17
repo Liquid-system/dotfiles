@@ -152,6 +152,10 @@ require("packer").startup(function(use)
             require("neodev").setup()
         end,
     })
+    use({
+        "mattn/emmet-vim",
+        fr = "html"
+    })
     --リンター
     use({
         "jose-elias-alvarez/null-ls.nvim",
@@ -164,6 +168,15 @@ require("packer").startup(function(use)
     use({ "numToStr/Comment.nvim" })
 
     --ユーティリティ
+    use({
+        "Pocco81/auto-save.nvim",
+        config = function()
+            require("auto-save").setup {
+                -- your config goes here
+                -- or just leave it empty :)
+            }
+        end,
+    })
     use({ "cohama/lexima.vim" })
     use({ "machakann/vim-sandwich" })
     use({ "christoomey/vim-tmux-navigator" })
@@ -191,9 +204,9 @@ require("packer").startup(function(use)
         cmd = { "Silicon" },
         opt = true,
     })
-    use({ "vim-scripts/vim-auto-save" })
     --フォーマッタ
-    use({ "gpanders/editorconfig.nvim", ft = "editorconfig" })
+    use({ "gpanders/editorconfig.nvim",
+        ft = "editorconfig" })
     --ファイラ―
     use({ "lambdalisue/fern.vim", branch = "main" })
     use({ "lambdalisue/fern-renderer-nerdfont.vim" })

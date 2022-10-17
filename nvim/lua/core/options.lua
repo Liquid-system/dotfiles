@@ -47,11 +47,10 @@ opt.timeoutlen = 250
 --タブ入力時に空白を展開
 --opt.expandtab = true
 -- tab時の見かけのスペース数
-opt.tabstop = 4
+opt.tabstop = 2
 -- 自動的に挿入される量
-opt.shiftwidth = 4
+opt.shiftwidth = 2
 -- インデント
-opt.autoindent = true
 opt.smartindent = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)

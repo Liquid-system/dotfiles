@@ -42,3 +42,4 @@ autocmd! *
 autocmd FileType fern call glyph_palette#apply()
 autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
+let g:user_emmet_leader_key = '<C-d>'

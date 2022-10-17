@@ -13,7 +13,7 @@ if vim.loop.os_uname().sysname == "Darwin" then
 		copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
 		paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
 		cache_enabled = 0,
-    }
+	}
 
 elseif vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
@@ -29,6 +29,15 @@ elseif vim.fn.has("wsl") == 1 then
 		cache_enabled = 0,
 	}
 end
+
+vim.cmd [[
+if system('uname -a | grep microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
+]]
 
 require("core.mappings")
 require("core.options")
