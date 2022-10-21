@@ -79,31 +79,23 @@ require("packer").startup(function(use)
 		end,
 	})
 	--lsp
+	use("williamboman/mason.nvim")
 	use({
 		"williamboman/mason-lspconfig.nvim",
 		requires = {
 			"williamboman/mason.nvim",
-			config = function()
-				require("mason").setup()
-				require("mason-lspconfig").setup({
-					automatic_installation = true,
-				})
-			end,
-			cmd = {
-				"Mason",
-				"MasonInstall",
-				"MasonInstallAll",
-				"MasonUninstall",
-				"MasonUninstallAll",
-				"MasonLog",
-				"LspInstall",
-				"lspUninstall",
-			},
 		},
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup({
+				automatic_installation = true,
+			})
+		end,
 	})
 
 	use({
 		"neovim/nvim-lspconfig",
+		requires = { "williamboman/mason.nvim", "williamboman/mason-lspconfig" },
 		config = function()
 			require("plugins.lsp.lspconfig")
 		end,
