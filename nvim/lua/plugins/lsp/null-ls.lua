@@ -14,9 +14,7 @@ local sources = {
     b.formatting.black,
     b.diagnostics.mypy,
     --clang
-    b.diagnostics.clang_check,
     b.formatting.clang_format,
-    b.diagnostics.cppcheck,
     --rust
     b.formatting.rustfmt,
     --CMake
