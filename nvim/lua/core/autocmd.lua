@@ -11,3 +11,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "/tmp/*" },
   command = "setlocal noundofile"
 })
+
+--インサートmodeで開始するgitcommit
+vim.api.nvim_create_augroup("bufcheck", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = "bufcheck",
+    pattern = { "gitcommit", "gitrebase" },
+    command = "startinsert | 1",
+})

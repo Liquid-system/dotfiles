@@ -185,13 +185,6 @@ require("packer").startup(function(use)
 		end,
 	})
 	use({
-		"kevinhwang91/nvim-ufo",
-		requires = "kevinhwang91/promise-async",
-		config = function()
-			require("plugins.lsp.nvim-ufo")
-		end,
-	})
-	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
 		requires = { { "nvim-lua/plenary.nvim" } },

@@ -36,7 +36,7 @@ nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
 endfunction
 
 
-nnoremap <silent><Leader>n :Fern . -drawer -reveal=% -width=23 -toggle<CR>
+nnoremap <silent><Leader>n :Fern . -drawer -reveal=% -toggle<CR>
 
 augroup my-glyph-palette
 autocmd! *
