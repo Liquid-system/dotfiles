@@ -96,7 +96,6 @@ j = ["extend_line_down", "extend_to_line_bounds"]
 
 # Clipboards
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
-x = ["yank_main_selection_to_clipboard", "delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 Y = ["extend_to_line_bounds", "yank_main_selection_to_clipboard", "goto_line_start", "collapse_selection", "normal_mode"]
 p = "replace_selections_with_clipboard" # No life without this

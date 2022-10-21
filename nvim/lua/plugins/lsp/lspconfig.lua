@@ -50,25 +50,27 @@ for type, icon in pairs(signs) do
 end
 
 local servers = {
-  --C++
-  "clangd",
-  "cmake",
-  --python3
-  --"pyright",
-  "pyre",
-  "pylsp",
-  -- Rust
-  "rust_analyzer",
-  --CSS
-  "cssls",
-  --"eslint",
-  "gopls",
-  "graphql",
-  "html",
-  -- zig
-  "zls",
-  "dockerls",
-  "vimls",
+	--C++
+	"clangd",
+	"cmake",
+	--python3
+	--"pyright",
+	"pyre",
+	"pylsp",
+	-- Rust
+	"rust_analyzer",
+	--CSS
+	"cssls",
+	--"eslint",
+	"gopls",
+	"graphql",
+	"html",
+	-- zig
+	"zls",
+	-- toml
+	"taplo",
+	"dockerls",
+	"vimls",
 }
 local lspconfig = require("lspconfig")
 
