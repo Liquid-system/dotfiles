@@ -18,7 +18,25 @@ function config.dashboard()
 		return string.format("%s v%d.%d.%d %s", datetime, v.major, v.minor, v.patch, platform)
 	end
 
-	db.preview_file_path = vim.env.HOME .. "/.config/nvim/static/neovim.cat"
+	db.custom_header = {
+		"",
+    "",
+		"",
+		" ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
+		" ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
+		" ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
+		" ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
+		" ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
+		" ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
+    "",
+    "",
+    "",
+    footer(),
+    "",
+
+	}
+	--db.preview_command = "ueberzug"
+	--db.preview_file_path = "/home/liquid_system/.dotfile/nvim/static/neovim.cat"
 	db.preview_file_height = 11
 	db.preview_file_width = 70
 	db.preview_file_height = 11
@@ -52,8 +70,6 @@ function config.dashboard()
 			shortcut = "  ",
 			action = "PackerUpdate",
 		},
-
-		{ desc = footer() },
 	}
 end
 

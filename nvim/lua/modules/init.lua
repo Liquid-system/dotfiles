@@ -26,6 +26,7 @@ end
 local uiConf = require("modules.ui.config")
 local cmpConf = require("modules.completion.config")
 local editorConf = require("modules.editor.config")
+local colorConf = require("modules.colorScheme.config")
 
 vim.cmd([[packadd packer.nvim]])
 require("packer").startup(function(use)
@@ -187,9 +188,7 @@ require("packer").startup(function(use)
   --カラースキーム
   use({
     "folke/tokyonight.nvim",
-    config = function()
-      require("modules.colorScheme.tokyonight")
-    end,
+    config = colorConf.tokyonight
   })
   use({ "wadackel/vim-dogrun" })
 end)
