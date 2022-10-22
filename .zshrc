@@ -98,7 +98,6 @@ export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:~/.zig
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:~/lua-language-server/bin
 export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH=$PATH:~/zls

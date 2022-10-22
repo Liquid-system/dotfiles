@@ -20,9 +20,9 @@ db.custom_center = {
   }, ]]
   {
     icon = "  ",
-    desc = "Recently latest session",
+    desc = "Update Plugins          ",
     shortcut = "  ",
-    action = "SessionLoad",
+    action = "PackerUpdate",
   },
   {
     icon = "  ",
