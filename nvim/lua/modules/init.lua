@@ -1,4 +1,4 @@
-local disable_plugins = {
+local disable_modules = {
   "netrw",
   "netrwPlugin",
   "netrwSettings",
@@ -17,12 +17,16 @@ local disable_plugins = {
   "rrhelper",
   "spellfile_plugin",
 }
-for _, name in ipairs(disable_plugins) do
+for _, name in ipairs(disable_modules) do
   vim.g["loaded_" .. name] = 1
 end
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('modules')` from your init.vim
 -- Only required if you have packer configured as `opt`
 --vim.cmd([[packadd packer.nvim]])
+local uiConf = require("modules.ui.config")
+local cmpConf = require("modules.completion.config")
+local editorConf = require("modules.editor.config")
+
 vim.cmd([[packadd packer.nvim]])
 require("packer").startup(function(use)
   use({ "lewis6991/impatient.nvim" })
@@ -33,25 +37,18 @@ require("packer").startup(function(use)
   --ui
   use({
     "glepnir/dashboard-nvim",
-    config = function()
-      require("plugins.ui.dashbord")
-    end,
+    config = uiConf.dashboard
   })
   use({
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    config = function()
-      require("plugins.ui.lualine")
-    end,
+    config = uiConf.lualine
   })
-  -- using packer.nvim
   use({
     "akinsho/bufferline.nvim",
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("plugins.ui.bufferline")
-    end,
+    config = uiConf.bufferline
   })
 
   --treesitter
@@ -60,9 +57,7 @@ require("packer").startup(function(use)
     opt = true,
     run = ":TSUpdate",
     event = "BufReadPost",
-    config = function()
-      require("plugins.editor.treesitter")
-    end,
+    config = editorConf.treesitter
   })
 
   -- htmlのタグ
@@ -74,9 +69,7 @@ require("packer").startup(function(use)
     "lukas-reineke/indent-blankline.nvim",
     opt = true,
     event = "BufReadPost",
-    config = function()
-      require("plugins.editor.blankline")
-    end,
+    config = editorConf.indent_blankline,
   })
   --lsp
   use("williamboman/mason.nvim")
@@ -85,37 +78,26 @@ require("packer").startup(function(use)
     requires = {
       "williamboman/mason.nvim",
     },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        automatic_installation = true,
-      })
-    end,
+    config = cmpConf.mason
   })
 
   use({
     "neovim/nvim-lspconfig",
     requires = { "williamboman/mason.nvim", "williamboman/mason-lspconfig" },
-    config = function()
-      require("plugins.lsp.lspconfig")
-    end,
+    config = cmpConf.lspconfig
   })
 
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
-    config = function()
-      require("plugins.lsp.saga")
-    end,
+    config = cmpConf.saga
   })
   use({ "b0o/schemastore.nvim" })
   -- cmp
   use({
     "hrsh7th/nvim-cmp",
     requires = { "NvChad/ui" },
-    config = function()
-      require("plugins.lsp.cmp")
-    end,
+    config = cmpConf.cmp
   })
   use({ "hrsh7th/cmp-nvim-lsp" })
   use({ "hrsh7th/cmp-buffer" })
@@ -138,9 +120,7 @@ require("packer").startup(function(use)
 
   use({
     "folke/trouble.nvim",
-    config = function()
-      require("plugins.ui.trouble")
-    end,
+    config = uiConf.trouble
   })
   use({
     "folke/neodev.nvim",
@@ -156,9 +136,7 @@ require("packer").startup(function(use)
   --リンター
   use({
     "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      require("plugins.lsp.null-ls")
-    end,
+    config = cmpConf.null_ls,
     requires = { "nvim-lua/plenary.nvim" },
   })
   --コメント
@@ -168,10 +146,7 @@ require("packer").startup(function(use)
   use({
     "Pocco81/auto-save.nvim",
     config = function()
-      require("auto-save").setup({
-        -- your config goes here
-        -- or just leave it empty :)
-      })
+      require("auto-save").setup({})
     end,
   })
   use({ "cohama/lexima.vim" })
@@ -206,19 +181,14 @@ require("packer").startup(function(use)
   -- リサイズ
   use({
     "simeji/winresizer",
-    config = function()
-      require("plugins.editor.winresizer")
-    end,
+    config = editorConf.winresizer,
     keys = { "<C-s>" },
   })
-
-  --マーク
-
   --カラースキーム
   use({
     "folke/tokyonight.nvim",
     config = function()
-      require("plugins.colorScheme.tokyonight")
+      require("modules.colorScheme.tokyonight")
     end,
   })
   use({ "wadackel/vim-dogrun" })

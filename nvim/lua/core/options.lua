@@ -13,7 +13,7 @@ opt.showmatch.matchtime = 1
 -- yでコピーした時にクリップボードに入る
 --opt.guioptions:append("a")
 -- クリップボード設定
-opt.clipboard:append({ unnamedeplus = true })
+opt.clipboard = "unnamedplus"
 -- 対応する括弧を強調表示
 opt.showmatch = true
 -- スワップファイルを作成しない
@@ -79,7 +79,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
@@ -92,3 +92,5 @@ vim.o.foldcolumn = "1" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
