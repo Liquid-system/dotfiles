@@ -1,0 +1,25 @@
+[core]
+	editor = nvim -c \"set fenc=utf-8\"
+	symlinks = true
+    pager = delta
+    autocrlf = input #CRLFを自動変換
+[add.interactive]
+    useBuiltin = false
+[merge]
+    conflictstyle = diff3
+[color]
+    ui = true
+[safe]
+    directory = /home/liquid_system/neovim
+[init]
+    defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
+[include]
+    path = ~/.themes.gitconfig
+    path = ~/.gitconfig.local
+[delta]
+    features = zebra-dark 
+    side-by-side = true
+    navigate = true    # use n and N to move between diff sections
+    light = false 

@@ -45,11 +45,11 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
 --タブ入力時に空白を展開
---opt.expandtab = true
+opt.expandtab = true
 -- tab時の見かけのスペース数
-opt.tabstop = 2
+opt.tabstop = 4
 -- 自動的に挿入される量
-opt.shiftwidth = 2
+opt.shiftwidth = 4
 -- インデント
 opt.smartindent = true
 -- 改行時にtabをスペースに変換
@@ -58,6 +58,13 @@ opt.expandtab = true
 
 -- 制御文字を表示
 opt.list = true
+vim.opt.listchars = {
+	tab = "▸▹┊",
+	trail = "▫",
+	extends = "❯",
+	precedes = "❮",
+}
+
 -- 制御文字をカスタマイズ
 --[[opt.listchars.tab = "»-"
 opt.listchars.trail = "-"
@@ -69,7 +76,6 @@ opt.listchars.nbsp = "%"
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする
---opt.filetype=true
 -- クリップボード
 opt.clipboard = "unnamed"
 -- 折り畳みを有効
