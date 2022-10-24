@@ -58,21 +58,14 @@ opt.expandtab = true
 
 -- 制御文字を表示
 opt.list = true
+-- 制御文字をカスタマイズ
 vim.opt.listchars = {
-	tab = "▸▹┊",
-	trail = "▫",
-	extends = "❯",
-	precedes = "❮",
+    tab = "▸▹┊",
+    trail = "-",
+    extends = "❯",
+    precedes = "❮",
 }
 
--- 制御文字をカスタマイズ
---[[opt.listchars.tab = "»-"
-opt.listchars.trail = "-"
-opt.listchars.eol = "↲"
-opt.listchars.extends = "»"
-opt.listchars.precedes = "«"
-opt.listchars.nbsp = "%"
-]]
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする
@@ -85,7 +78,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
