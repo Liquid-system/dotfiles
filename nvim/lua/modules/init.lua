@@ -165,11 +165,11 @@ require("packer").startup(function(use)
         tag = "0.1.0",
         requires = { { "nvim-lua/plenary.nvim" } },
     })
-    use({
-        "segeljakt/vim-silicon",
-        cmd = { "Silicon" },
-        opt = true,
-    })
+    use {
+        "narutoxy/silicon.lua",
+        requires = { "nvim-lua/plenary.nvim" },
+        config = editorConf.silicon,
+    }
     --フォーマッタ
     use({ "gpanders/editorconfig.nvim", ft = "editorconfig" })
     --ファイラ―

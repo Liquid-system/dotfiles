@@ -1,4 +1,5 @@
 local config = {}
+
 function config.indent_blankline()
     require("indent_blankline").setup({
         space_char_blankline = " ",
@@ -84,6 +85,14 @@ function config.winresizer()
     -- リサイズ設定
     vim.g.winresizer_start_key = "<C-s>"
     vim.g.winresizer_vert_resize = 1
+end
+
+function config.silicon()
+    local keymap = vim.keymap.set
+    require("silicon").setup({})
+    keymap("v", "<Leader>li", function()
+        require("silicon").visualise_api({})
+    end)
 end
 
 return config

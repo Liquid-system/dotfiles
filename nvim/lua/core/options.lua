@@ -44,12 +44,12 @@ opt.matchtime = 1
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
---タブ入力時に空白を展開
-opt.expandtab = true
 -- tab時の見かけのスペース数
 opt.tabstop = 4
 -- 自動的に挿入される量
 opt.shiftwidth = 4
+--タブ入力時に空白を展開
+opt.expandtab = true
 -- インデント
 opt.smartindent = true
 -- 改行時にtabをスペースに変換
@@ -59,6 +59,14 @@ opt.expandtab = true
 -- 制御文字を表示
 opt.list = true
 -- 制御文字をカスタマイズ
+--[[
+tab: タブ
+trail: 行末（行最後の文字から改行まで）の半角スペース
+eol: 改行
+space: 半角スペース
+extends: ウィンドウの幅が狭くて右に省略された文字がある記号
+precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
+nbsp: 不可視のスペース]]
 vim.opt.listchars = {
     tab = "▸▹┊",
     trail = "-",

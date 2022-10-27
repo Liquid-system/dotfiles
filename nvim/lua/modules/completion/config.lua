@@ -173,7 +173,7 @@ function config.lspconfig()
         "clangd",
         "cmake",
         --python3
-        --"pyright",
+        -- "pyright",
         --"pyre",
         "pylsp",
         --CSS
