@@ -67,12 +67,6 @@ space: 半角スペース
 extends: ウィンドウの幅が狭くて右に省略された文字がある記号
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
-vim.opt.listchars = {
-    tab = "▸▹┊",
-    trail = "-",
-    extends = "❯",
-    precedes = "❮",
-}
 
 --行の改行を防ぐ
 opt.linebreak = true
@@ -95,7 +89,7 @@ vim.api.nvim_command("language messages en_US.UTF-8")
 -- shadafileに書き込まない
 vim.opt.shadafile    = "NONE"
 --fold
-opt.foldcolumn     = "1" -- '0' is not bad
+opt.foldcolumn     = "0" -- '0' is not bad
 opt.foldlevel      = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 opt.foldenable     = true
