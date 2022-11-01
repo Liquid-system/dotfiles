@@ -45,7 +45,7 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
 -- tab時の見かけのスペース数
-opt.tabstop = 4
+opt.tabstop = 2
 -- 自動的に挿入される量
 opt.shiftwidth = 4
 --タブ入力時に空白を展開

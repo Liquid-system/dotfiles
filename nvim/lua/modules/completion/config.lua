@@ -212,7 +212,9 @@ function config.lspconfig()
 
     --nodeとdenoのコンフリクトの解決
     lspconfig.tsserver.setup({
-        on_attach = on_attach,
+        on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+        end,
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern("package.json"),
     })

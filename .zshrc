@@ -102,6 +102,14 @@ export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
+#Flutter
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$PATH:$JAVA_HOME/bin
+export PATH=$PATH:~/flutter/bin
+export PATH=$PATH:~/Android/cmdline-tools/latest/bin
+export ANDROID_HOME="$HOME/Android"
+export ANDROID_SDK_ROOT="$ANDROID_SDK_ROOT"
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 case "$OSTYPE" in
     darwin*)
@@ -241,3 +249,10 @@ export COLORTERM=truecolor
 alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

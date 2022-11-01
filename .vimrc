@@ -1,14 +1,10 @@
- has('vim_starting')
+ if has('vim_starting')
     " 挿入モード時に非点滅の縦棒タイプのカーソル
     let &t_SI .= "\e[6 q"
     " ノーマルモード時に非点滅のブロックタイプのカーソル
     let &t_EI .= "\e[2 q"
     " 置換モード時に非点滅の下線タイプのカーソル
     let &t_SR .= "\e[4 q"
-endif
-if has('nvim')
-  " 置換の時の設定
-  set inccommand=split
 endif
 set number
 set title
@@ -92,17 +88,7 @@ nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
-" 半画面上下
-nnoremap <Leader>u <C-u>
-nnoremap <Leader>d <C-d>
-" 一行のみコマンドの実行
-nnoremap <Leader>i :!
-" クリップボード
-if has('nvim')
-  set clipboard=unnamed
-else
-  set clipboard=unnamed,autoselect
-endif
+
 " 編集箇所のカーソルを記憶
 if has("autocmd")
   augroup redhat
@@ -137,8 +123,6 @@ nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
-" カーソルを中央に持っていく
-nnoremap n zz
 " タブの移動
 tabnext
 nnoremap <silent> tl :tabnext<CR>
@@ -195,24 +179,6 @@ let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 " フォーマッタ
 nnoremap <buffer><silent><Leader>lf :LspDocumentFormat<CR>
 
- " map to <Leader>f in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><silent><Leader>f :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><silent><Leader>f :ClangFormat<CR>
-let g:clang_format#style_options = {
-    \ "BasedOnStyle" : "Google",
-    \ "AccessModifierOffset" : -4,
-    \ "AllowShortIfStatementsOnASingleLine" : "true",
-    \ "IndentWidth": 4}
-
- " python3
-autocmd FileType python nnoremap <buffer><silent><Leader>f :Black<CR>
-autocmd FileType python vnoremap <buffer><silent><Leader>f :Black<CR>
-
-" javascript
-autocmd FileType javascript nnoremap <buffer><silent><Leader>f :PrettierAsync<CR>
-autocmd FileType javascript vnoremap <buffer><silent><Leader>f :PrettierAsync<CR>
-"typescript
-autocmd BufRead,BufNewFile *.ts set filetype=typescript
 " rainbow
 let g:rainbow_active = 1
 "Fern
@@ -286,65 +252,6 @@ augroup my-glyph-palette
 augroup END
 
 
-"Use <C-j> and <C-k> to navigate the completion list:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr>;; coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" GoTo code navigation.
-nmap <silent><Leader>q <Plug>(coc-definition)
-nmap <silent><Leader>y <Plug>(coc-type-definition)
-
-" Use K to show documentation in preview window.
-nnoremap <silent>K :call <SID>show_documentation()<CR>
-j
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
-"エラージャンプ
-nmap <silent><Leader>ej <Plug>(coc-diagnostic-next-error)
-nmap <silent><Leader>ek <Plug>(coc-diagnostic-prev-error)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
 " lightline
 set laststatus=2
 let g:lightline = {
@@ -417,15 +324,6 @@ set statusline+=%{NearestMethodOrFunction()}
 " Required:
 filetype plugin indent on
 
-" Needcommenter
-let g:NERDDefaultAlign='left'
-let g:NERDCreateDefaultMappings = 0
-nmap <Leader>c <Plug>NERDCommenterToggle
-vmap <Leader>c <Plug>NERDCommenterToggle
-nmap <Leader>a <Plug>NERDCommenterAppend
-
-" devdocs.vim
-nmap <Leader>K <Plug>(devdocs-under-cursor)
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0 " do not save while in insert mode
