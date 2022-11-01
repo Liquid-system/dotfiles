@@ -212,8 +212,9 @@ function config.lspconfig()
 
     --nodeとdenoのコンフリクトの解決
     lspconfig.tsserver.setup({
-        on_attach = function(client)
+        on_attach = function(client, bufnr)
             client.server_capabilities.documentFormattingProvider = false
+            on_attach()
         end,
         capabilities = capabilities,
         root_dir = lspconfig.util.root_pattern("package.json"),
@@ -251,7 +252,7 @@ function config.lspconfig()
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
     lspconfig.sumneko_lua.setup({
-        on_attach = require("core.mappings").on_attach,
+        on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             Lua = {

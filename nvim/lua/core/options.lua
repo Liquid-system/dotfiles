@@ -93,11 +93,11 @@ opt.termguicolors = true
 -- 英語表示
 vim.api.nvim_command("language messages en_US.UTF-8")
 -- shadafileに書き込まない
-vim.opt.shadafile = "NONE"
+vim.opt.shadafile    = "NONE"
 --fold
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldcolumn     = "1" -- '0' is not bad
+opt.foldlevel      = 99 -- Using ufo provider need a large value, feel free to decrease the value
+opt.foldlevelstart = 99
+opt.foldenable     = true
+opt.foldmethod   = 'expr'
+opt.foldexpr     = 'nvim_treesitter#foldexpr()'
