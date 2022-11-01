@@ -19,7 +19,7 @@ opt.showmatch = true
 -- スワップファイルを作成しない
 opt.swapfile = false
 -- 改行時の自動コメントアウトを無効にする
-opt.formatoptions:remove("ro")
+opt.formatoptions:remove "ro"
 -- マウス
 opt.mouse = "a"
 -- ファイルエンコーディング
@@ -67,7 +67,12 @@ space: 半角スペース
 extends: ウィンドウの幅が狭くて右に省略された文字がある記号
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
-
+vim.opt.listchars = {
+	tab = "▸▹┊",
+	trail = "-",
+	extends = "❯",
+	precedes = "❮",
+}
 --行の改行を防ぐ
 opt.linebreak = true
 -- ファイルタイプ検出を有効にする
@@ -85,7 +90,7 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 英語表示
-vim.api.nvim_command("language messages en_US.UTF-8")
+vim.api.nvim_command "language messages en_US.UTF-8"
 -- shadafileに書き込まない
 vim.opt.shadafile = "NONE"
 --fold
@@ -93,5 +98,5 @@ vim.o.foldcolumn = "0" -- '0' is not bad
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-opt.foldmethod   = 'expr'
-opt.foldexpr     = 'nvim_treesitter#foldexpr()'
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"

@@ -14,7 +14,7 @@
 
 local M = {}
 local keymap = vim.keymap.set
-local default_opts = { silent = true }
+local default_opts = { silent = true, noremap = true }
 
 -- F5でluaを実行
 keymap("n", "<F5>", "<cmd>luafile %<CR>", default_opts)
@@ -58,9 +58,8 @@ keymap("n", "<Leader>l", "<C-w>l", default_opts)
 -- タブライン
 keymap("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", default_opts)
 keymap("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", default_opts)
-
 -- タブの移動
-keymap("n", "<leader>e", "<Cmd>TroubleToggle<CR>", default_opts)
+keymap("n", "<Leader>e", "<Cmd>TroubleToggle<CR>", default_opts)
 --ESC2回で点滅が消える
 keymap("n", "<ESC><ESC>", "<Cmd>nohl<CR>", default_opts)
 
@@ -75,10 +74,9 @@ keymap("x", "<Leader>/", "<Plug>(comment_toggle_blockwise_visual)")
 M.on_attach = function(client, bufnr)
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     local opts = { noremap = true, silent = true }
-    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+    vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     keymap("n", "gD", vim.lsp.buf.declaration, bufopts)
@@ -93,7 +91,7 @@ M.on_attach = function(client, bufnr)
     keymap("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
     keymap("n", "gr", vim.lsp.buf.references, bufopts)
     keymap("n", "<space>f", function()
-        vim.lsp.buf.format({ async = true })
+        vim.lsp.buf.format { async = true }
     end, bufopts)
     keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
     keymap("n", "K", vim.lsp.buf.hover, bufopts)
@@ -112,10 +110,10 @@ keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 -- Only jump to error
 keymap("n", "[E", function()
-    require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic").goto_prev { severity = vim.diagnostic.severity.ERROR }
 end, { silent = true })
 keymap("n", "]E", function()
-    require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+    require("lspsaga.diagnostic").goto_next { severity = vim.diagnostic.severity.ERROR }
 end, { silent = true })
 keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 --keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
