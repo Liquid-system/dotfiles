@@ -80,18 +80,18 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 英語表示
 vim.api.nvim_command("language messages en_US.UTF-8")
 -- shadafileに書き込まない
-vim.opt.shadafile    = "NONE"
+vim.opt.shadafile = "NONE"
 --fold
-opt.foldcolumn     = "0" -- '0' is not bad
-opt.foldlevel      = 99 -- Using ufo provider need a large value, feel free to decrease the value
-opt.foldlevelstart = 99
-opt.foldenable     = true
+vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 opt.foldmethod   = 'expr'
 opt.foldexpr     = 'nvim_treesitter#foldexpr()'
