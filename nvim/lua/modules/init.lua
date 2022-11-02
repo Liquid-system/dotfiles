@@ -144,8 +144,14 @@ require("packer").startup(function(use)
             require("auto-save").setup {}
         end,
     }
+    use {
+        "kylechui/nvim-surround",
+        tag = "*",
+        config = function()
+            require("nvim-surround").setup {}
+        end,
+    }
     use { "cohama/lexima.vim" }
-    use { "machakann/vim-sandwich" }
     use { "christoomey/vim-tmux-navigator" }
     use {
         "j-hui/fidget.nvim",

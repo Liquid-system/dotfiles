@@ -45,7 +45,7 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
 -- tab時の見かけのスペース数
-opt.tabstop = 2
+opt.tabstop = 4
 -- 自動的に挿入される量
 opt.shiftwidth = 4
 --タブ入力時に空白を展開
@@ -68,10 +68,10 @@ extends: ウィンドウの幅が狭くて右に省略された文字がある�
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
 vim.opt.listchars = {
-	tab = "▸▹┊",
-	trail = "-",
-	extends = "❯",
-	precedes = "❮",
+    tab = "▸▹┊",
+    trail = "-",
+    extends = "❯",
+    precedes = "❮",
 }
 --行の改行を防ぐ
 opt.linebreak = true
@@ -85,7 +85,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
