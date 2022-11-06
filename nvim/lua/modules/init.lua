@@ -32,7 +32,7 @@ vim.cmd [[packadd packer.nvim]]
 require("packer").startup(function(use)
     use { "lewis6991/impatient.nvim" }
     use { "wbthomason/packer.nvim", opt = true } -- bootstrap
-    use { "vim-jp/vimdoc-ja" }
+    -- use { "vim-jp/vimdoc-ja" }
     use { "kyazdani42/nvim-web-devicons" }
 
     --ui
@@ -53,9 +53,10 @@ require("packer").startup(function(use)
     }
 
     --treesitter
-    use {
+        use {
         "nvim-treesitter/nvim-treesitter",
         config = editorConf.treesitter,
+        run = ':TSUpdate'
     }
 
     -- htmlのタグ
