@@ -51,7 +51,7 @@ opt.shiftwidth = 4
 --タブ入力時に空白を展開
 opt.expandtab = true
 -- インデント
-opt.smartindent = true
+--opt.autoindent = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)
 opt.expandtab = true

@@ -53,20 +53,30 @@ require("packer").startup(function(use)
     }
 
     --treesitter
-        use {
+    use {
         "nvim-treesitter/nvim-treesitter",
         config = editorConf.treesitter,
-        run = ':TSUpdate'
+        run = ":TSUpdate",
     }
 
     -- htmlのタグ
-    use { "windwp/nvim-ts-autotag" }
+    use {
+        "windwp/nvim-ts-autotag",
+        opt = true,
+        after = "nvim-treesitter",
+    }
     --括弧の色
-    use { "p00f/nvim-ts-rainbow" }
+    use {
+        "p00f/nvim-ts-rainbow",
+        opt = true,
+        after = "nvim-treesitter",
+    }
 
     use {
         "lukas-reineke/indent-blankline.nvim",
         config = editorConf.indent_blankline,
+        opt = true,
+        after = "nvim-treesitter",
     }
     --lsp
     use "williamboman/mason.nvim"

@@ -75,7 +75,7 @@ end
 function config.lualine()
     require("lualine").setup({
         options = {
-            theme = "dracula",
+            theme = "codedark",
             component_separators = "｜",
             section_separators = { left = "", right = "" },
         },
