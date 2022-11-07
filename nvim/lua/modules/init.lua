@@ -40,14 +40,10 @@ require("packer").startup(function(use)
     -- htmlのタグ
     use {
         "windwp/nvim-ts-autotag",
-        opt = true,
-        after = "nvim-treesitter",
     }
     --括弧の色
     use {
         "p00f/nvim-ts-rainbow",
-        opt = true,
-        after = "nvim-treesitter",
     }
 
     use {
