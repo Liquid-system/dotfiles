@@ -122,7 +122,7 @@ function config.lspconfig()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     --capabilities.textDocument.completion.completionItem.snippetSupport = true
-    local on_attach = require("core.mappings").on_attach
+    local on_attach = require("keymap").on_attach
 
     capabilities.textDocument.completion.completionItem = {
         documentationFormat = { "markdown", "plaintext" },
@@ -335,7 +335,7 @@ function config.null_ls()
     null_ls.setup({
         debug = true,
         sources = sources,
-        on_attach = require("core.mappings").on_attach,
+        on_attach = require("keymap").on_attach,
     })
 end
 

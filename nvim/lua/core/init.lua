@@ -7,9 +7,9 @@ if vim.fn.has "persistent_undo" then
     vim.opt.undofile = true
 end
 
-require "core.mappings"
 require "core.options"
 require "core.autocmd"
 require "core.config"
 require "core.disable"
+require "keymap"
 require "modules"
