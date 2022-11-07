@@ -1,15 +1,15 @@
 local config = {}
 
 function config.indent_blankline()
-    require("indent_blankline").setup({
+    require("indent_blankline").setup {
         space_char_blankline = " ",
         show_current_context = true,
         show_current_context_start = true,
-    })
+    }
 end
 
 function config.telescope()
-    require("telescope").setup({
+    require("telescope").setup {
         preview = {
             mime_hook = function(filepath, bufnr, opts)
                 local is_image = function(filepath)
@@ -57,11 +57,11 @@ function config.telescope()
                 },
             },
         },
-    })
+    }
 end
 
 function config.treesitter()
-    require("nvim-treesitter.configs").setup({
+    require("nvim-treesitter.configs").setup {
         highlight = {
             enable = true,
         },
@@ -78,7 +78,13 @@ function config.treesitter()
             max_file_lines = nil, -- Do not enable for files with more than n lines, int
         },
         ensure_installed = "all",
-    })
+    }
+end
+
+function config.better_escape()
+    require("better_escape").setup {
+        mapping = { "jj" },
+    }
 end
 
 function config.winresizer()
@@ -89,9 +95,9 @@ end
 
 function config.silicon()
     local keymap = vim.keymap.set
-    require("silicon").setup({})
+    require("silicon").setup {}
     keymap("v", "<Leader>li", function()
-        require("silicon").visualise_api({})
+        require("silicon").visualise_api {}
     end)
 end
 

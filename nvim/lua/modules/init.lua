@@ -1,25 +1,3 @@
-local disable_modules = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-}
-for _, name in ipairs(disable_modules) do
-    vim.g["loaded_" .. name] = 1
-end
 -- This file can be loaded by calling `lua require('modules')` from your init.vim
 -- Only required if you have packer configured as `opt`
 --vim.cmd([[packadd packer.nvim]])
@@ -150,10 +128,18 @@ require("packer").startup(function(use)
 
     --ユーティリティ
     use {
+        "max397574/better-escape.nvim",
+        config = editorConf.better_escape,
+        opt = true,
+        event = "BufReadPost",
+    }
+    use {
         "Pocco81/auto-save.nvim",
         config = function()
             require("auto-save").setup {}
         end,
+        opt = true,
+        event = "BufReadPost",
     }
     use {
         "kylechui/nvim-surround",
@@ -161,8 +147,14 @@ require("packer").startup(function(use)
         config = function()
             require("nvim-surround").setup {}
         end,
+        opt = true,
+        event = "BufReadPost",
     }
-    use { "cohama/lexima.vim" }
+    use {
+        "cohama/lexima.vim",
+        opt = true,
+        event = "BufReadPost",
+    }
     use { "christoomey/vim-tmux-navigator" }
     use {
         "j-hui/fidget.nvim",
