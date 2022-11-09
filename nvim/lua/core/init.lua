@@ -1,12 +1,6 @@
-if vim.fn.has "persistent_undo" then
-    local target_path = vim.fn.expand "~/.undo/nvim"
-    if not vim.fn.isdirectory(target_path) then
-        vim.fn.mkdir(target_path, "p", 700)
-    end
-    vim.opt.undodir = target_path
-    vim.opt.undofile = true
-end
-
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.python3_host_prog = "/usr/local/bin/python3"
 vim.g.jetpack_copy_method = 'copy'
 
 require "core.autocmd"
