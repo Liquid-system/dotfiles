@@ -1,5 +1,10 @@
--- This file can be loaded by calling `lua require('modules')` from your init.vim
--- Only required if you have packer configured as `opt`
+local fn = vim.fn
+local jetpackfile = fn.stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
+if fn.filereadable(jetpackfile) == 0 then
+	fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
+end
+
 local ui = require "modules.ui.config"
 local lsp = require "modules.completion.config"
 local editor = require "modules.editor.config"
@@ -95,7 +100,7 @@ require("jetpack.packer").startup(function(use)
 	}
 	use {
 		"mattn/emmet-vim",
-		fr = "html",
+		ft = "html",
 	}
 	--リンター
 	use {
@@ -156,7 +161,6 @@ require("jetpack.packer").startup(function(use)
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
 	use { "lambdalisue/glyph-palette.vim" }
 	use { "lambdalisue/nerdfont.vim" }
-
 	--バッファ
 	-- リサイズ
 	use {

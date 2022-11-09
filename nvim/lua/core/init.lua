@@ -7,6 +7,8 @@ if vim.fn.has "persistent_undo" then
     vim.opt.undofile = true
 end
 
+vim.g.jetpack_copy_method = 'copy'
+
 require "core.autocmd"
 require "core.config"
 require "core.disable"
