@@ -5,10 +5,10 @@ if fn.filereadable(jetpackfile) == 0 then
 	fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
 end
 
-local ui = require "modules.ui.config"
-local lsp = require "modules.completion.config"
-local editor = require "modules.editor.config"
-local color = require "modules.colorScheme.config"
+local ui = require "modules.ui"
+local lsp = require "modules.completion"
+local editor = require "modules.editor"
+local color = require "modules.colorScheme"
 
 vim.cmd('packadd vim-jetpack')
 require("jetpack.packer").startup(function(use)
@@ -17,41 +17,7 @@ require("jetpack.packer").startup(function(use)
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "NvChad/ui" }
 	use { "nvim-lua/plenary.nvim" }
-	--ui
-	use {
-		"glepnir/dashboard-nvim",
-		config = ui.dashboard,
-	}
-	use {
-		"nvim-lualine/lualine.nvim",
-		config = ui.lualine,
-	}
-	use {
-		"akinsho/bufferline.nvim",
-		tag = "v3.1.0",
-		config = ui.bufferline,
-	}
-	--treesitter
-	use {
-		"nvim-treesitter/nvim-treesitter",
-		config = editor.treesitter,
-		run = "TSUpdate",
-	}
-	-- htmlのタグ
-	use {
-		"windwp/nvim-ts-autotag",
-	}
-	--括弧の色
-	use {
-		"p00f/nvim-ts-rainbow",
-	}
-	-- インデント
-	use {
-		"lukas-reineke/indent-blankline.nvim",
-		config = editor.indent_blankline,
-		opt = true,
-		after = "nvim-treesitter",
-	}
+
 	--lsp
 	use "williamboman/mason.nvim"
 	use {
@@ -65,7 +31,7 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"glepnir/lspsaga.nvim",
 		branch = "main",
-		config = lsp.saga,
+		config = lsp.lspsaga,
 	}
 	use { "b0o/schemastore.nvim" }
 	-- cmp
@@ -84,16 +50,37 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load {
-				paths = { "./friendly-snippets" },
-			}
-		end,
+		config = lsp.luaship,
 	}
+	--ツール
 	use {
-		"folke/trouble.nvim",
-		config = ui.trouble,
+		"jose-elias-alvarez/null-ls.nvim",
+		config = lsp.null_ls,
 	}
+
+	--editor
+	--treesitter
+	use {
+		"nvim-treesitter/nvim-treesitter",
+		config = editor.treesitter,
+		run = "TSUpdate",
+	}
+	-- インデント
+	use {
+		"lukas-reineke/indent-blankline.nvim",
+		config = editor.indent_blankline,
+		opt = true,
+		after = "nvim-treesitter",
+	}
+	-- htmlのタグ
+	use {
+		"windwp/nvim-ts-autotag",
+	}
+	--括弧の色
+	use {
+		"p00f/nvim-ts-rainbow",
+	}
+
 	use {
 		"folke/neodev.nvim",
 		ft = "lua",
@@ -102,14 +89,8 @@ require("jetpack.packer").startup(function(use)
 		"mattn/emmet-vim",
 		ft = "html",
 	}
-	--リンター
-	use {
-		"jose-elias-alvarez/null-ls.nvim",
-		config = lsp.null_ls,
-	}
 	--コメント
 	use { "numToStr/Comment.nvim" }
-
 	--ユーティリティ
 	use {
 		"max397574/better-escape.nvim",
@@ -119,17 +100,13 @@ require("jetpack.packer").startup(function(use)
 	}
 	use {
 		"Pocco81/auto-save.nvim",
-		config = function()
-			require("auto-save").setup {}
-		end,
+		config = editor.auto_save,
 		opt = true,
 		event = "BufReadPost",
 	}
 	use {
 		"kylechui/nvim-surround",
-		config = function()
-			require("nvim-surround").setup {}
-		end,
+		config = editor.surround,
 		opt = true,
 		event = "BufReadPost",
 	}
@@ -139,20 +116,32 @@ require("jetpack.packer").startup(function(use)
 		event = "BufReadPost",
 	}
 	use { "christoomey/vim-tmux-navigator" }
+	--ui
+	use {
+		"folke/trouble.nvim",
+		config = ui.trouble,
+	}
 	use {
 		"j-hui/fidget.nvim",
 		event = "BufEnter",
-		config = function()
-			require("fidget").setup {}
-		end,
+		config = ui.finget,
+	}
+	use {
+		"glepnir/dashboard-nvim",
+		config = ui.dashboard,
+	}
+	use {
+		"nvim-lualine/lualine.nvim",
+		config = ui.lualine,
+	}
+	use {
+		"akinsho/bufferline.nvim",
+		tag = "v3.1.0",
+		config = ui.bufferline,
 	}
 	use {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
-	}
-	use {
-		"narutoxy/silicon.lua",
-		config = editor.silicon,
 	}
 	--フォーマッタ
 	use { "gpanders/editorconfig.nvim", ft = "editorconfig" }
@@ -161,23 +150,27 @@ require("jetpack.packer").startup(function(use)
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
 	use { "lambdalisue/glyph-palette.vim" }
 	use { "lambdalisue/nerdfont.vim" }
+
 	--バッファ
+	--スクリーンショット
+	use {
+		"narutoxy/silicon.lua",
+		config = editor.silicon,
+	}
 	-- リサイズ
 	use {
 		"simeji/winresizer",
 		config = editor.winresizer,
 		cmd = "WinResizerStartResize",
 	}
+	use {
+		"norcalli/nvim-colorizer.lua",
+		cmd = "ColorizerToggle",
+		config = editor.colorizer,
+	}
 	--カラースキーム
 	use {
 		"folke/tokyonight.nvim",
 		config = color.tokyonight,
-	}
-	use {
-		"norcalli/nvim-colorizer.lua",
-		cmd = "ColorizerToggle",
-		config = function()
-			require("colorizer").setup()
-		end,
 	}
 end)
