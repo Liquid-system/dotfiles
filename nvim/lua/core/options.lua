@@ -100,3 +100,5 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- 行を跨いで移動出来る様にする
+vim.opt.whichwrap = "b,s,h,l,[,],<,>,~"

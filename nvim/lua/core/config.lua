@@ -19,6 +19,7 @@ elseif vim.fn.has("wsl") == 1 then
         },
         cache_enabled = 0,
     }
+    vim.g.python3_host_prog = "/usr/local/bin/python3"
 end
 
 -- undoの永続化

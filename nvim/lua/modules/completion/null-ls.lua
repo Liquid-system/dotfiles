@@ -51,5 +51,7 @@ local sources = {
 null_ls.setup({
   debug = true,
   sources = sources,
-  on_attach = require("keymap").on_attach,
+  on_attach = function(client, buffer)
+    require("core.keymap").on_attach(client, buffer)
+  end,
 })

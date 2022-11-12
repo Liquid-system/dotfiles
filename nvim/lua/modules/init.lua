@@ -17,12 +17,10 @@ require("jetpack.packer").startup(function(use)
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "NvChad/ui" }
 	use { "nvim-lua/plenary.nvim" }
-
 	--lsp
 	use "williamboman/mason.nvim"
 	use {
 		"williamboman/mason-lspconfig.nvim",
-		config = lsp.mason,
 	}
 	use {
 		"neovim/nvim-lspconfig",
@@ -33,7 +31,6 @@ require("jetpack.packer").startup(function(use)
 		branch = "main",
 		config = lsp.lspsaga,
 	}
-	use { "b0o/schemastore.nvim" }
 	-- cmp
 	use {
 		"hrsh7th/nvim-cmp",
@@ -53,11 +50,13 @@ require("jetpack.packer").startup(function(use)
 		config = lsp.luaship,
 	}
 	--ツール
-	use {
+	--[[ {
 		"jose-elias-alvarez/null-ls.nvim",
 		config = lsp.null_ls,
 	}
+	]]
 
+	use { "b0o/schemastore.nvim" }
 	--editor
 	--treesitter
 	use {
@@ -96,24 +95,19 @@ require("jetpack.packer").startup(function(use)
 		"max397574/better-escape.nvim",
 		config = editor.better_escape,
 		opt = true,
-		event = "BufReadPost",
 	}
 	use {
 		"Pocco81/auto-save.nvim",
 		config = editor.auto_save,
 		opt = true,
-		event = "BufReadPost",
 	}
 	use {
 		"kylechui/nvim-surround",
 		config = editor.surround,
 		opt = true,
-		event = "BufReadPost",
 	}
 	use {
 		"cohama/lexima.vim",
-		opt = true,
-		event = "BufReadPost",
 	}
 	use { "christoomey/vim-tmux-navigator" }
 	--ui
@@ -144,7 +138,8 @@ require("jetpack.packer").startup(function(use)
 		tag = "0.1.0",
 	}
 	--フォーマッタ
-	use { "gpanders/editorconfig.nvim", ft = "editorconfig" }
+	use { "gpanders/editorconfig.nvim",
+		ft = "editorconfig" }
 	--ファイラ―
 	use { "lambdalisue/fern.vim", branch = "main" }
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
