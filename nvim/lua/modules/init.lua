@@ -1,19 +1,17 @@
-local fn = vim.fn
-local jetpackfile = fn.stdpath('data') .. '/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
-local jetpackurl = 'https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim'
-if fn.filereadable(jetpackfile) == 0 then
-	fn.system('curl -fsSLo ' .. jetpackfile .. ' --create-dirs ' .. jetpackurl)
-end
-
+vim.g.jetpack_copy_method = 'copy'
 local ui = require "modules.ui"
 local lsp = require "modules.completion"
 local editor = require "modules.editor"
+local command = require "modules.command"
+local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
+--vim.cmd [[packadd packer.nvim]]
 vim.cmd('packadd vim-jetpack')
 require("jetpack.packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
 	use { "tani/vim-jetpack", opt = 1 } -- bootstrap
+	--use { 'wbthomason/packer.nvim', opt = 1 } -- bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "NvChad/ui" }
 	use { "nvim-lua/plenary.nvim" }
@@ -34,14 +32,14 @@ require("jetpack.packer").startup(function(use)
 	-- cmp
 	use {
 		"hrsh7th/nvim-cmp",
-		config = lsp.cmp,
 	}
 	use { "hrsh7th/cmp-nvim-lsp" }
 	use { "hrsh7th/cmp-buffer" }
 	use { "hrsh7th/cmp-path" }
 	use { "hrsh7th/cmp-nvim-lsp-signature-help" }
 	use { "hrsh7th/cmp-nvim-lua" }
-	use { "hrsh7th/cmp-cmdline" }
+	use { "hrsh7th/cmp-cmdline",
+		config = lsp.cmp, }
 	--スニペット
 	use { "saadparwaiz1/cmp_luasnip" }
 	use {
@@ -50,11 +48,10 @@ require("jetpack.packer").startup(function(use)
 		config = lsp.luaship,
 	}
 	--ツール
-	--[[ {
+	use {
 		"jose-elias-alvarez/null-ls.nvim",
 		config = lsp.null_ls,
 	}
-	]]
 
 	use { "b0o/schemastore.nvim" }
 	--editor
@@ -79,13 +76,13 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"p00f/nvim-ts-rainbow",
 	}
-
 	use {
 		"folke/neodev.nvim",
 		ft = "lua",
 	}
 	use {
 		"mattn/emmet-vim",
+		config = tools.emmet,
 		ft = "html",
 	}
 	--コメント
@@ -93,22 +90,17 @@ require("jetpack.packer").startup(function(use)
 	--ユーティリティ
 	use {
 		"max397574/better-escape.nvim",
-		config = editor.better_escape,
-		opt = true,
+		config = tools.better_escape,
 	}
 	use {
 		"Pocco81/auto-save.nvim",
-		config = editor.auto_save,
-		opt = true,
+		config = tools.auto_save,
 	}
 	use {
 		"kylechui/nvim-surround",
-		config = editor.surround,
-		opt = true,
+		config = tools.surround,
 	}
-	use {
-		"cohama/lexima.vim",
-	}
+	use { "cohama/lexima.vim" }
 	use { "christoomey/vim-tmux-navigator" }
 	--ui
 	use {
@@ -150,18 +142,18 @@ require("jetpack.packer").startup(function(use)
 	--スクリーンショット
 	use {
 		"narutoxy/silicon.lua",
-		config = editor.silicon,
+		config = command.silicon,
 	}
 	-- リサイズ
 	use {
 		"simeji/winresizer",
-		config = editor.winresizer,
+		config = command.winresizer,
 		cmd = "WinResizerStartResize",
 	}
 	use {
 		"norcalli/nvim-colorizer.lua",
 		cmd = "ColorizerToggle",
-		config = editor.colorizer,
+		config = command.colorizer,
 	}
 	--カラースキーム
 	use {

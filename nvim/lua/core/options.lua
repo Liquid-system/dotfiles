@@ -1,29 +1,17 @@
 local opt = vim.opt
-
 opt.number = true
 opt.title = true
--- 検索時の強調表示
-opt.inccommand = "split"
--- カラースキーム
-opt.termguicolors = true
--- Windowsでパスの区切り文字をスラッシュで扱う
-opt.shellslash = true
--- 対応する括弧やブレースを表示
-opt.showmatch.matchtime = 1
--- yでコピーした時にクリップボードに入る
---opt.guioptions:append("a")
+opt.inccommand = "split" -- 検索時の強調表示
+opt.termguicolors = true -- カラースキーム
+opt.shellslash = true -- Windowsでパスの区切り文字をスラッシュで扱う
+opt.showmatch.matchtime = 1 -- 対応する括弧やブレースを表示
+--opt.guioptions:append({"a"})
 -- クリップボード設定
-opt.clipboard = "unnamedplus"
--- 対応する括弧を強調表示
-opt.showmatch = true
--- スワップファイルを作成しない
-opt.swapfile = false
--- 改行時の自動コメントアウトを無効にする
-opt.formatoptions:remove "ro"
--- マウス
-opt.mouse = "a"
--- ファイルエンコーディング
-opt.fenc = "utf-8"
+opt.clipboard = "unnamedplus" -- yでコピーした時にクリップボードに入る
+opt.showmatch = true -- 対応する括弧を強調表示
+opt.swapfile = false -- スワップファイルを作成しない
+opt.mouse = "a" -- マウス
+opt.fenc = "utf-8" -- ファイルエンコーディング
 opt.fileformats = { "unix", "dos", "mac" }
 -- 検索系
 -- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -51,7 +39,8 @@ opt.shiftwidth = 4
 --タブ入力時に空白を展開
 opt.expandtab = true
 -- インデント
---opt.autoindent = true
+opt.autoindent = true
+opt.smartindent = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)
 opt.expandtab = true
@@ -75,7 +64,11 @@ vim.opt.listchars = {
 }
 --行の改行を防ぐ
 opt.linebreak = true
--- ファイルタイプ検出を有効にする
+-- ノーマルモードから出るまでの時間を短縮
+vim.opt.ttimeoutlen = 10
+-- 改行時の自動コメントアウトを無効にする
+opt.formatoptions:remove({ "r", "o" })
+opt.formatoptions:append({ "M", "j" })
 -- クリップボード
 opt.clipboard = "unnamed"
 -- 折り畳みを有効
@@ -101,4 +94,4 @@ vim.o.foldenable = true
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- 行を跨いで移動出来る様にする
-vim.opt.whichwrap = "b,s,h,l,[,],<,>,~"
+opt.whichwrap = "b,s,h,l,[,],<,>,~"

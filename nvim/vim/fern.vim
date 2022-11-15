@@ -7,7 +7,6 @@ let g:fern#renderer#default#expanded_symbol = "├┬ "
 let g:fern#renderer = "nerdfont"
 " 隠しファイルを表示する
 let g:fern#default_hidden=1
-let g:user_emmet_leader_key = '<C-d>'
 let g:fern#renderer#nerdfont#indent_markers = 1
 
 function! s:init_fern() abort
