@@ -1,4 +1,4 @@
-vim.g.jetpack_copy_method = 'copy'
+vim.g.jetpack_copy_method = "copy"
 local ui = require "modules.ui"
 local lsp = require "modules.completion"
 local editor = require "modules.editor"
@@ -6,14 +6,15 @@ local command = require "modules.command"
 local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
+
 --vim.cmd [[packadd packer.nvim]]
-vim.cmd('packadd vim-jetpack')
+vim.cmd "packadd vim-jetpack"
 require("jetpack.packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
 	use { "tani/vim-jetpack", opt = 1 } -- bootstrap
 	--use { 'wbthomason/packer.nvim', opt = 1 } -- bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
-	use { "NvChad/ui" }
+	use { "onsails/lspkind.nvim" }
 	use { "nvim-lua/plenary.nvim" }
 	--lsp
 	use "williamboman/mason.nvim"
@@ -38,8 +39,7 @@ require("jetpack.packer").startup(function(use)
 	use { "hrsh7th/cmp-path" }
 	use { "hrsh7th/cmp-nvim-lsp-signature-help" }
 	use { "hrsh7th/cmp-nvim-lua" }
-	use { "hrsh7th/cmp-cmdline",
-		config = lsp.cmp, }
+	use { "hrsh7th/cmp-cmdline", config = lsp.cmp }
 	--スニペット
 	use { "saadparwaiz1/cmp_luasnip" }
 	use {
@@ -53,7 +53,7 @@ require("jetpack.packer").startup(function(use)
 		config = lsp.null_ls,
 	}
 
-	use { "b0o/schemastore.nvim" }
+	use { "b0o/schemastore.nvim", ft = "json" }
 	--editor
 	--treesitter
 	use {
@@ -100,8 +100,8 @@ require("jetpack.packer").startup(function(use)
 		"kylechui/nvim-surround",
 		config = tools.surround,
 	}
-	use { "cohama/lexima.vim" }
-	use { "christoomey/vim-tmux-navigator" }
+	use { "cohama/lexima.vim", event = "InsertEnter" }
+	use { "christoomey/vim-tmux-navigator", opt = true }
 	--ui
 	use {
 		"folke/trouble.nvim",
@@ -128,10 +128,10 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
+		opt = true,
 	}
 	--フォーマッタ
-	use { "gpanders/editorconfig.nvim",
-		ft = "editorconfig" }
+	use { "gpanders/editorconfig.nvim", ft = "editorconfig" }
 	--ファイラ―
 	use { "lambdalisue/fern.vim", branch = "main" }
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
@@ -143,6 +143,7 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"narutoxy/silicon.lua",
 		config = command.silicon,
+		opt = true
 	}
 	-- リサイズ
 	use {
