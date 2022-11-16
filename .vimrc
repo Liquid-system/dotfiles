@@ -1,13 +1,12 @@
  if has('vim_starting')
-    " 挿入モード時に非点滅の縦棒タイプのカーソル
+	 "挿入モード時に非点滅の縦棒タイプのカーソル
     let &t_SI .= "\e[6 q"
-    " ノーマルモード時に非点滅のブロックタイプのカーソル
-    let &t_EI .= "\e[2 q"
-    " 置換モード時に非点滅の下線タイプのカーソル
-    let &t_SR .= "\e[4 q"
+    "置換モード時に非点滅の下線タイプのカーソル
+	let &t_SR .= "\e[4 q"
 endif
 set number
 set title
+set hidden
 syntax on
 set encoding=utf-8
 scriptencoding utf-8
@@ -24,15 +23,14 @@ vnoremap > >gv
 let mapleader = "\<space>"
 " 英語表示
 language messages C
-" カラースキーム
 set termguicolors
-" ファイルタイプ検出を有効にする
 filetype on
 " Windowsでパスの区切り文字をスラッシュで扱う
 set shellslash
 " 対応する括弧やブレースを表示
 set showmatch matchtime=1
 " yでコピーした時にクリップボードに入る
+set clipboard+=unnamed
 set guioptions+=a
 " クリップボード設定
 set clipboard=unnamed
@@ -42,9 +40,9 @@ set showmatch
 set noswapfile
 " 改行時の自動コメントアウトを無効にする
 set formatoptions-=ro
-" マウス
 set mouse=a
-
+" バックスペース
+set backspace=indent,eol,start
 " ファイルエンコーディング
 set fenc=utf-8
 set fileformats=unix,dos,mac
@@ -73,6 +71,10 @@ set timeoutlen=250
 set shiftwidth=4
 " タブを4文字分にする
 set tabstop=4
+" 不要なコメント開始文字削除
+" マルチバイト文字前後のスペース削除
+set fo+=j
+set fo+=M 
 " インサートモード中でも移動する
 imap <C-h> <Left>
 imap <C-l> <Right>
@@ -136,14 +138,8 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 " Required:
 call dein#begin('~/.cache/dein')
 
-" Let dein manage dein
-call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
-endif
-
 " Add or remove your plugins here like this:
+call dein#add('wsdjeg/dein-ui.vim', { "on_cmd" : "DeinUpdate" })
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('itchyny/lightline.vim')
 call dein#add('tpope/vim-surround')
@@ -162,6 +158,13 @@ call dein#add('wadackel/vim-dogrun')
 
 call dein#end()
 
+" NerdCommenter
+" keep cursor column when JK motion
+
+let g:EasyMotion_startofline = 0 
+let g:NERDCreateDefaultMappings = 1
+nmap <Leader>/ <Plug>NERDCommenterToggle
+vmap <Leader>/ <Plug>NERDCommenterSexy
 " easymotion
 " s{char}{char} to move to {char}{char}
 nmap <Leader><Leader>s <Plug>(easymotion-overwin-f2)
@@ -175,19 +178,18 @@ map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><Leader>h <Plug>(easymotion-linebackward)
 
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-" フォーマッタ
-nnoremap <buffer><silent><Leader>lf :LspDocumentFormat<CR>
-
-" rainbow
-let g:rainbow_active = 1
 "Fern
+" 隠しファイルを表示する
+let g:fern#default_hidden=1
 let g:fern#renderer#default#leading = "│"
 let g:fern#renderer#default#root_symbol = "┬ "
 let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
 let g:fern#renderer = "nerdfont"
+"隠しファイルを表示する
+let g:fern#default_hidden=1
+let g:fern#renderer#nerdfont#indent_markers = 1
 function! s:init_fern() abort
   nmap <buffer><expr>
       \ <Plug>(fern-my-expand-or-collapse)
@@ -237,10 +239,6 @@ autocmd! *
 autocmd FileType fern call s:fern_preview_init()
 augroup END
 
-" You need this otherwise you cannot switch modified buffer
-set hidden
-" 隠しファイルを表示する
-let g:fern#default_hidden=1
 
 nnoremap <silent> <C-n> :Fern . -drawer -reveal=% -width=17 -toggle<CR>
 nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=17 -toggle<CR>

@@ -6,13 +6,12 @@ local command = require "modules.command"
 local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
-
---vim.cmd [[packadd packer.nvim]]
+-- vim.cmd [[packadd packer.nvim]]
 vim.cmd "packadd vim-jetpack"
 require("jetpack.packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
 	use { "tani/vim-jetpack", opt = 1 } -- bootstrap
-	--use { 'wbthomason/packer.nvim', opt = 1 } -- bootstrap
+	use { "wbthomason/packer.nvim", opt = 1 } -- bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "onsails/lspkind.nvim" }
 	use { "nvim-lua/plenary.nvim" }
@@ -53,7 +52,7 @@ require("jetpack.packer").startup(function(use)
 		config = lsp.null_ls,
 	}
 
-	use { "b0o/schemastore.nvim", ft = "json" }
+	use { "b0o/schemastore.nvim" }
 	--editor
 	--treesitter
 	use {
@@ -143,7 +142,7 @@ require("jetpack.packer").startup(function(use)
 	use {
 		"narutoxy/silicon.lua",
 		config = command.silicon,
-		opt = true
+		opt = true,
 	}
 	-- リサイズ
 	use {

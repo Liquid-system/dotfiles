@@ -1,0 +1,227 @@
+Extra options: []
+Measured: 100 times
+
+Total Average: 29.039310 msec
+Total Max:     61.757000 msec
+Total Min:     26.052000 msec
+
+  AVERAGE       MAX       MIN
+------------------------------
+15.276110 35.710000 13.836000: /home/liquid_system/.config/nvim/init.lua
+15.065720 35.395000 13.663000: require('core')
+10.878300 27.157000 10.045000: require('modules')
+ 3.119860  6.485000  2.785000: /usr/local/share/nvim/runtime/syntax/syntax.vim
+ 2.797130  6.639000  2.458000: require('impatient')
+ 1.799830  6.653000  1.594000: loading rtp plugins
+ 1.388180  3.909000  1.099000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/nvim-ts-autotag.vim
+ 1.371500  5.070000  1.089000: require('trouble')
+ 1.323470  5.375000  1.080000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_buffer.lua
+ 1.237660  4.632000  0.973000: require('trouble.view')
+ 1.199660  4.880000  0.975000: require('cmp')
+ 1.180700  4.391000  0.933000: require('trouble.renderer')
+ 1.084590  4.067000  0.858000: require('trouble.providers')
+ 1.039190  2.763000  0.811000: require('nvim-ts-autotag')
+ 0.995370  2.679000  0.782000: require('nvim-ts-autotag.internal')
+ 0.988770  4.035000  0.773000: require('cmp.core')
+ 0.904660  2.244000  0.760000: require('vim.filetype')
+ 0.897130  2.619000  0.589000: require('core.keymap')
+ 0.807440  2.029000  0.726000: require('vim.filetype.detect')
+ 0.806890  1.970000  0.731000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/fern_renderer_nerdfont.vim
+ 0.784350  2.889000  0.628000: require('trouble.providers.lsp')
+ 0.751960  1.802000  0.681000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/autoload/fern.vim
+ 0.748160  2.759000  0.597000: require('vim.lsp')
+ 0.644030  3.437000  0.448000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_luasnip.lua
+ 0.619430  1.771000  0.443000: require('nvim-treesitter.ts_utils')
+ 0.589620  3.095000  0.410000: require('cmp_luasnip')
+ 0.556120  2.875000  0.385000: require('vim.lsp.util')
+ 0.482350  2.044000  0.410000: /usr/local/share/nvim/runtime/plugin/rplugin.vim
+ 0.479540  1.219000  0.335000: require('nvim-treesitter.parsers')
+ 0.475900  1.961000  0.352000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/nvim-cmp/plugin/cmp.lua
+ 0.407120  1.655000  0.351000: loading after plugins
+ 0.379410  1.436000  0.233000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/nvim-treesitter/plugin/nvim-treesitter.lua
+ 0.366180  1.361000  0.318000: /usr/local/share/nvim/runtime/plugin/matchit.vim
+ 0.358520  1.321000  0.244000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/Comment.nvim/plugin/Comment.lua
+ 0.355870  2.107000  0.214000: require('vim.lsp.protocol')
+ 0.349120  1.245000  0.205000: require('modules.ui.finget')
+ 0.334130  1.296000  0.167000: require('nvim-treesitter')
+ 0.326530  1.318000  0.234000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/lspsaga.nvim/plugin/lspsaga.lua
+ 0.291290  0.731000  0.200000: require('core.options')
+ 0.262620  0.968000  0.146000: require('vim.treesitter')
+ 0.255100  0.860000  0.181000: require('cmp.utils.str')
+ 0.244350  1.119000  0.199000: BufEnter autocommands
+ 0.238740  1.122000  0.128000: require('nvim-treesitter.configs')
+ 0.234880  0.892000  0.117000: require('vim.diagnostic')
+ 0.232580  0.831000  0.204000: sourcing vimrc file(s)
+ 0.232210  0.995000  0.192000: require('cmp.view')
+ 0.228130  0.869000  0.110000: require('nvim-treesitter.install')
+ 0.223730  0.785000  0.198000: init lua interpreter
+ 0.222120  0.518000  0.192000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/glyph_palette.vim
+ 0.221140  0.742000  0.158000: require('vim.lsp.handlers')
+ 0.208340  0.680000  0.171000: require('cmp.source')
+ 0.193210  0.725000  0.143000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/auto-save.nvim/plugin/auto-save.lua
+ 0.192170  0.726000  0.152000: require('Comment.api')
+ 0.170770  0.688000  0.145000: inits 1
+ 0.168610  0.658000  0.103000: require('fidget')
+ 0.167460  0.650000  0.149000: init highlight
+ 0.161590  0.739000  0.082000: require('nvim-treesitter.query')
+ 0.160780  0.378000  0.145000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/autoload/vital/fern.vim
+ 0.154590  0.645000  0.069000: require('trouble.util')
+ 0.154100  0.422000  0.098000: require('cmp.types')
+ 0.152440  0.391000  0.034000: require('cmp.utils.char')
+ 0.142940  0.689000  0.126000: require('vim._init_packages')
+ 0.141485  0.555000  0.032000: /usr/local/share/nvim/runtime/filetype.lua
+ 0.139750  0.536000  0.104000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/dashboard-nvim/plugin/dashboard.lua
+ 0.127635  0.939000  0.010000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim
+ 0.124220  0.442000  0.110000: /usr/local/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+ 0.115630  0.377000  0.091000: require('cmp.config')
+ 0.113540  0.464000  0.056000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_path.lua
+ 0.112940  0.462000  0.038000: require('trouble.config')
+ 0.112570  0.408000  0.086000: require('auto-save')
+ 0.111900  0.376000  0.058000: require('vim.treesitter.query')
+ 0.108180  0.503000  0.071000: require('vim.lsp.rpc')
+ 0.104060  0.421000  0.055000: require('fidget.log')
+ 0.097240  0.414000  0.085000: /usr/local/share/nvim/runtime/plugin/matchparen.vim
+ 0.096090  0.321000  0.059000: require('vim.lsp.log')
+ 0.095780  0.620000  0.064000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/nvim-lspconfig/plugin/lspconfig.lua
+ 0.091650  0.391000  0.075000: require('cmp_buffer')
+ 0.091630  0.400000  0.064000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua
+ 0.090760  0.288000  0.072000: opening buffers
+ 0.086100  0.318000  0.048000: require('cmp.types.lsp')
+ 0.085850  0.302000  0.066000: require('vim.lsp.buf')
+ 0.081630  0.435000  0.063000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_nvim_lsp.lua
+ 0.081430  0.371000  0.022000: require('nvim-treesitter.info')
+ 0.081330  0.325000  0.060000: require('Comment.utils')
+ 0.080450  0.300000  0.036000: require('cmp_path')
+ 0.078270  0.186000  0.058000: require('core.config')
+ 0.078270  0.386000  0.037000: require('nvim-ts-autotag.utils')
+ 0.076920  0.425000  0.063000: init default mappings
+ 0.074430  0.384000  0.063000: require('vim._editor')
+ 0.069660  0.314000  0.056000: require('cmp_buffer.source')
+ 0.069110  0.316000  0.056000: require('vim.lsp._snippet')
+ 0.069030  0.219000  0.049000: require('fidget.spinners')
+ 0.067270  0.262000  0.051000: require('cmp.utils.feedkeys')
+ 0.064190  0.220000  0.055000: loading packages
+ 0.062770  0.196000  0.029000: require('nvim-treesitter.shell_command_selectors')
+ 0.062520  0.160000  0.054000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/autoload/vital/_fern/Config.vim
+ 0.062380  0.149000  0.054000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/fern.vim
+ 0.061040  0.287000  0.045000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_nvim_lsp_signature_help.lua
+ 0.060650  0.333000  0.040000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/after/plugin/cmp_nvim_lua.lua
+ 0.060320  0.196000  0.048000: require('cmp.entry')
+ 0.060070  0.138000  0.051000: /usr/local/share/nvim/runtime/syntax/synload.vim
+ 0.057680  0.161000  0.034000: require('vim.treesitter.languagetree')
+ 0.057100  0.200000  0.042000: require('cmp_cmdline')
+ 0.056850  0.124000  0.046000: /usr/local/share/nvim/runtime/syntax/nosyntax.vim
+ 0.056660  0.193000  0.043000: require('dashboard')
+ 0.055380  0.181000  0.043000: early init
+ 0.055060  0.329000  0.032000: require('nvim-treesitter.utils')
+ 0.054830  0.184000  0.041000: require('cmp.config.default')
+ 0.054250  0.224000  0.043000: event init
+ 0.052260  0.176000  0.019000: require('vim.treesitter.language')
+ 0.052090  0.195000  0.042000: require('cmp_nvim_lsp')
+ 0.051590  0.180000  0.042000: require('cmp.view.docs_view')
+ 0.050730  0.172000  0.037000: require('vim.lsp.codelens')
+ 0.048870  0.157000  0.035000: require('vim.lsp.diagnostic')
+ 0.047960  0.179000  0.028000: require('vim.shared')
+ 0.047200  0.206000  0.023000: require('nvim-treesitter.tsrange')
+ 0.047100  0.204000  0.034000: require('Comment.ft')
+ 0.046500  0.212000  0.033000: require('vim.lsp.sync')
+ 0.046370  0.219000  0.035000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/nvim-ts-rainbow/plugin/rainbow.vim
+ 0.045490  0.237000  0.035000: require('cmp_buffer.buffer')
+ 0.045160  0.115000  0.038000: /home/liquid_system/.config/nvim/vim/fern.vim
+ 0.044840  0.124000  0.041000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/autoload/glyph_palette/defaults.vim
+ 0.044160  0.102000  0.037000: require('core.autocmd')
+ 0.044060  0.146000  0.033000: require('cmp.utils.keymap')
+ 0.043670  0.167000  0.038000: /usr/local/share/nvim/runtime/plugin/shada.vim
+ 0.042360  0.138000  0.033000: require('cmp.utils.autocmd')
+ 0.040600  0.148000  0.033000: expanding arguments
+ 0.038220  0.140000  0.031000: require('cmp.view.custom_entries_view')
+ 0.037560  0.147000  0.016000: require('nvim-treesitter.caching')
+ 0.037450  0.134000  0.028000: require('cmp.context')
+ 0.036760  0.130000  0.031000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/trouble.nvim/plugin/trouble.vim
+ 0.036390  0.157000  0.025000: require('nvim-treesitter.fold')
+ 0.036100  0.123000  0.026000: require('trouble.providers.diagnostic')
+ 0.035380  0.156000  0.021000: require('trouble.providers.qf')
+ 0.034630  0.143000  0.024000: require('trouble.providers.telescope')
+ 0.034470  0.112000  0.027000: require('cmp.view.wildmenu_entries_view')
+ 0.034320  0.162000  0.023000: require('auto-save.config')
+ 0.034150  0.140000  0.026000: require('dashboard.session')
+ 0.032660  0.106000  0.025000: locale set
+ 0.032550  0.130000  0.024000: require('vim.highlight')
+ 0.032270  0.106000  0.025000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/nvim-web-devicons.vim
+ 0.032230  0.120000  0.023000: require('cmp.utils.api')
+ 0.031850  0.065000  0.023000: require('core.disable')
+ 0.030480  0.170000  0.020000: require('nvim-treesitter.query_predicates')
+ 0.030440  0.156000  0.017000: require('nvim-treesitter.statusline')
+ 0.029940  0.097000  0.025000: inits 2
+ 0.029725  0.120000  0.021000: /usr/local/share/nvim/runtime/ftplugin.vim
+ 0.029310  0.107000  0.023000: require('cmp_nvim_lsp_signature_help')
+ 0.028930  0.142000  0.015000: require('nvim-ts-autotag._log')
+ 0.028630  0.147000  0.021000: require('rainbow')
+ 0.028190  0.100000  0.021000: require('cmp.config.compare')
+ 0.028160  0.089000  0.020000: require('trouble.colors')
+ 0.027700  0.137000  0.022000: require('cmp.view.native_entries_view')
+ 0.027340  0.092000  0.022000: require('cmp.utils.window')
+ 0.027200  0.117000  0.020000: require('cmp.utils.misc')
+ 0.026760  0.087000  0.020000: require('auto-save.utils.colors')
+ 0.026380  0.097000  0.023000: require('vim._meta')
+ 0.026320  0.141000  0.018000: require('cmp_nvim_lua')
+ 0.026000  0.095000  0.018000: require('cmp.config.sources')
+ 0.025650  0.084000  0.020000: require('trouble.text')
+ 0.024890  0.080000  0.020000: require('cmp.config.mapping')
+ 0.024800  0.301000  0.018000: require('modules.ui')
+ 0.024660  0.112000  0.018000: require('cmp.utils.async')
+ 0.024280  0.085000  0.019000: require('trouble.folds')
+ 0.024260  0.090000  0.021000: /usr/local/share/nvim/runtime/plugin/man.vim
+ 0.023890  0.117000  0.018000: require('Comment.config')
+ 0.022760  0.080000  0.018000: require('cmp.view.ghost_text_view')
+ 0.022350  0.098000  0.018000: require('Comment.opfunc')
+ 0.022310  0.077000  0.019000: require('cmp_nvim_lsp.source')
+ 0.022090  0.091000  0.015000: require('cmp.utils.pattern')
+ 0.021940  0.068000  0.016000: require('cmp.types.cmp')
+ 0.021910  0.081000  0.018000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/nvim-treesitter/autoload/nvim_treesitter.vim
+ 0.021800  0.075000  0.018000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/plugin/plenary.vim
+ 0.020900  0.065000  0.015000: require('cmp.matcher')
+ 0.020670  0.088000  0.013000: /usr/local/share/nvim/runtime/plugin/man.lua
+ 0.020510  0.070000  0.016000: require('auto-save.utils.data')
+ 0.020360  0.119000  0.014000: require('auto-save.utils.echo')
+ 0.020230  0.059000  0.013000: require('cmp.types.vim')
+ 0.019920  0.081000  0.017000: require('modules.completion')
+ 0.019910  0.062000  0.015000: require('cmp.utils.highlight')
+ 0.019890  0.076000  0.016000: require('Comment.extra')
+ 0.019845  0.132000  0.016000: /usr/local/share/nvim/runtime/indent.vim
+ 0.019660  0.067000  0.015000: init first window
+ 0.018930  0.139000  0.014000: require('cmp_buffer.timer')
+ 0.018850  0.076000  0.014000: require('cmp.utils.event')
+ 0.017820  0.063000  0.014000: require('cmp.config.window')
+ 0.017580  0.058000  0.013000: require('cmp.utils.debug')
+ 0.017530  0.246000  0.013000: require('modules.editor')
+ 0.017000  0.056000  0.012000: require('cmp.utils.cache')
+ 0.016060  0.060000  0.014000: require('modules.tools')
+ 0.015920  0.052000  0.012000: require('cmp.utils.buffer')
+ 0.015570  0.089000  0.013000: require('modules.command')
+ 0.013900  0.060000  0.012000: /usr/local/share/nvim/runtime/plugin/tutor.vim
+ 0.013670  0.032000  0.012000: /usr/local/share/nvim/runtime/ftplugof.vim
+ 0.013240  0.049000  0.011000: require('modules.colorScheme')
+ 0.012900  0.040000  0.011000: /home/liquid_system/.local/share/nvim/site/pack/jetpack/opt/_/autoload/vital/_fern.vim
+ 0.012420  0.046000  0.011000: /usr/local/share/nvim/runtime/plugin/netrwPlugin.vim
+ 0.012010  0.040000  0.010000: inits 3
+ 0.011620  0.027000  0.010000: /usr/local/share/nvim/runtime/scripts.vim
+ 0.011520  0.043000  0.010000: /usr/local/share/nvim/runtime/plugin/zipPlugin.vim
+ 0.011340  0.041000  0.009000: /usr/local/share/nvim/runtime/plugin/tarPlugin.vim
+ 0.010670  0.044000  0.009000: /usr/local/share/nvim/runtime/plugin/gzip.vim
+ 0.009060  0.060000  0.007000: /usr/local/share/nvim/runtime/filetype.vim
+ 0.008350  0.032000  0.007000: /usr/local/share/nvim/runtime/plugin/spellfile.vim
+ 0.008180  0.029000  0.006000: init default autocommands
+ 0.008140  0.021000  0.007000: /usr/local/share/nvim/runtime/indoff.vim
+ 0.007480  0.042000  0.006000: /usr/local/share/nvim/runtime/plugin/tohtml.vim
+ 0.007320  0.018000  0.005000: clearing screen
+ 0.007050  0.030000  0.006000: /usr/local/share/nvim/runtime/plugin/health.vim
+ 0.006870  0.032000  0.006000: /home/liquid_system/.local/share/nvim/rplugin.vim
+ 0.006440  0.025000  0.005000: window checked
+ 0.005440  0.026000  0.003000: --- NVIM STARTING ---
+ 0.004670  0.017000  0.003000: require('vim.keymap')
+ 0.003960  0.009000  0.003000: require('vim.F')
+ 0.002660  0.009000  0.002000: parsing arguments
+ 0.001920  0.013000  0.001000: editing files in windows
+ 0.001160  0.006000  0.001000: require('jetpack.packer')
+ 0.001080  0.004000  0.001000: reading ShaDa

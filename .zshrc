@@ -102,14 +102,6 @@ export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
-#Flutter
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export PATH=$PATH:$JAVA_HOME/bin
-export PATH=$PATH:~/flutter/bin
-export PATH=$PATH:~/Android/cmdline-tools/latest/bin
-export ANDROID_HOME="$HOME/Android"
-export ANDROID_SDK_ROOT="$ANDROID_SDK_ROOT"
-export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
 case "$OSTYPE" in
     darwin*)
@@ -256,3 +248,15 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+#Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
+#Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+if [ $SHLVL = 1 ] ; then
+  (fcitx-autostart > /dev/null 2>&1 &)
+  xset -r 49  > /dev/null 2>&1
+fi
+#Added by bash script: end

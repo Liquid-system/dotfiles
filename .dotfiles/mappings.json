@@ -1,9 +1,10 @@
 {
-    ".zimrc": "~/.zimrc",
-    ".czrc": "~/.czrc",
-    ".gdbinit": "~/.gdbinit",
-    "nvim": "~/.config/nvim",
-    "helix": "~/.config/helix",
-    "zellij": "~/.config/zellij",
-    "git": "~/.config/git"
+  ".zimrc": "~/.zimrc",
+  ".czrc": "~/.czrc",
+  ".gdbinit": "~/.gdbinit",
+  "nvim": "~/.config/nvim",
+  "helix": "~/.config/helix",
+  "zellij": "~/.config/zellij",
+  "git": "~/.config/git",
+  "gh/config.yml": "~/.confg/gh/config.yml"
 }

@@ -13,3 +13,4 @@ export PATH="$HOME/.poetry/bin:$PATH"
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/MIKANOS/mikanos/kernel/kernel.elf'
 
 . "$HOME/.cargo/env"
+
