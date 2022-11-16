@@ -157,7 +157,11 @@ require("jetpack.packer").startup(function(use)
 	}
 	--カラースキーム
 	use {
+		"EdenEast/nightfox.nvim",
+		config = color.nightfox,
+	}
+	--[[ use {
 		"folke/tokyonight.nvim",
 		config = color.tokyonight,
-	}
+	} ]]
 end)
