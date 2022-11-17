@@ -43,6 +43,9 @@ mason.setup_handlers {
 		elseif server == "denols" then
 			opts.autostart = true
 			opts.init_options = { lint = true, unstable = true }
+		elseif server == "clangd" then
+			opts.autostart = true
+			opts.on_attach = on_attach_disable_format
 		elseif server == "rust_analyzer" then
 			opts.settings = {
 				["rust-analyzer"] = {
