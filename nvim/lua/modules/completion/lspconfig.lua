@@ -1,6 +1,6 @@
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 vim.lsp.handlers["textDocument/publishDiagnostics"] =
-	vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
+vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, { virtual_text = false })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "single",
 })
@@ -28,10 +28,6 @@ local function on_attach_disable_format(client, buffer)
 	on_attach(client, buffer)
 end
 
-local function detected_root_dir(root_dir)
-	return not not (root_dir(vim.api.nvim_buf_get_name(0), vim.api.nvim_get_current_buf()))
-end
-
 require("mason").setup()
 local mason = require "mason-lspconfig"
 local lspconfig = require "lspconfig"
@@ -47,17 +43,7 @@ mason.setup_handlers {
 		opts.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 		opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
 		opts.capabilities.offsetEncoding = { "utf-16" }
-		if server == "tsserver" or server == "eslint" then
-			opts.autostart = true
-			opts.on_attach = on_attach_disable_format
-		elseif server == "denols" then
-			opts.autostart = true
-			opts.init_options = { lint = true, unstable = true }
-		elseif server == "clangd" then
-			opts.autostart = true
-			opts.on_attach = on_attach_disable_format
-		elseif server == "rust_analyzer" then
-			opts.autostart = true
+		if server == "rust_analyzer" then
 			opts.settings = {
 				["rust-analyzer"] = {
 					imports = {
@@ -77,7 +63,6 @@ mason.setup_handlers {
 				},
 			}
 		elseif server == "jsonls" then
-			opts.autostart = true
 			opts.settings = {
 				json = {
 					schemas = require("schemastore").json.schemas(),

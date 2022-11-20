@@ -1,13 +1,17 @@
 local M = {}
-
-M.neon = function()
-	require "modules.colorScheme.neon"
+--[[
+function M.gen_func(path, modules)
+  local files = vim.fn.readdir(path)
+  for key, filename in pairs(files) do
+    modules[key] = function()
+      require(path .. filename)
+    end
+  end
+  return modules
 end
-
-M.tokyonight = function()
-	require "modules.colorScheme.tokyonight"
-end
+return M
+]]
 M.nightfox = function()
-	require "modules.colorScheme.nightfox"
+  require "modules.colorScheme.nightfox"
 end
 return M

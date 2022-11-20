@@ -69,7 +69,10 @@ keymap("n", "<Leader>/", function()
 end, { expr = true })
 
 keymap("x", "<Leader>/", "<Plug>(comment_toggle_blockwise_visual)")
-
+-- 語尾に追加
+keymap("n", "<leader>a", function()
+    require('Comment.api').insert.linewise.eol(require('Comment.config'):get())
+end)
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -91,8 +94,14 @@ M.on_attach = function(client, bufnr)
     keymap("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
     keymap("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
     keymap("n", "gr", vim.lsp.buf.references, bufopts)
-    keymap("n", "<space>f", function()
-        vim.lsp.buf.format { async = true }
+    keymap("n", "<space>f", function(bufnr)
+        vim.lsp.buf.format({
+            async = true,
+            bufnr = bufnr,
+            filter = function(client)
+                return client.name == "null-ls"
+            end
+        })
     end, bufopts)
     keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
     keymap("n", "K", vim.lsp.buf.hover, bufopts)

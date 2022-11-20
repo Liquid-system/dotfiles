@@ -33,18 +33,18 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
 -- tab時の見かけのスペース数
-opt.tabstop = 4
+opt.tabstop = 2
 -- 自動的に挿入される量
-opt.shiftwidth = 4
---タブ入力時に空白を展開
-opt.expandtab = true
+opt.shiftwidth = 2
 -- インデント
 opt.autoindent = true
 opt.smartindent = true
+opt.smarttab = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)
 opt.expandtab = true
-
+--行の改行を防ぐ
+opt.linebreak = true
 -- 制御文字を表示
 opt.list = true
 -- 制御文字をカスタマイズ
@@ -62,8 +62,6 @@ vim.opt.listchars = {
     extends = "❯",
     precedes = "❮",
 }
---行の改行を防ぐ
-opt.linebreak = true
 -- ノーマルモードから出るまでの時間を短縮
 vim.opt.ttimeoutlen = 10
 -- 改行時の自動コメントアウトを無効にする

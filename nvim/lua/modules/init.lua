@@ -64,8 +64,6 @@ require("packer").startup(function(use)
 	use {
 		"lukas-reineke/indent-blankline.nvim",
 		config = editor.indent_blankline,
-		opt = true,
-		after = "nvim-treesitter",
 	}
 	-- htmlのタグ
 	use {
