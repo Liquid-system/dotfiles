@@ -102,6 +102,8 @@ export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
+export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
+export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 
 case "$OSTYPE" in
     darwin*)

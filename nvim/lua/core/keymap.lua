@@ -112,7 +112,7 @@ end
 keymap("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
-keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+--keymap("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
 -- Diagnsotic jump can use `<c-o>` to jump back
