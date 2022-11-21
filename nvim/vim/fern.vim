@@ -42,3 +42,5 @@ autocmd! *
 autocmd FileType fern call glyph_palette#apply()
 autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
+" string or an array of string
+let g:scorpeon_extensions_path = expand('~/.cache/scorpeon/extensions')

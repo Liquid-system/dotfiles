@@ -158,8 +158,4 @@ require("packer").startup(function(use)
 		"EdenEast/nightfox.nvim",
 		config = color.nightfox,
 	}
-	--[[ use {
-		"folke/tokyonight.nvim",
-		config = color.tokyonight,
-	} ]]
 end)

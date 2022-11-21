@@ -23,11 +23,6 @@ end
 
 local on_attach = require("core.keymap").on_attach
 
-local function on_attach_disable_format(client, buffer)
-	client.server_capabilities.documentFormattingProvider = false
-	on_attach(client, buffer)
-end
-
 require("mason").setup()
 local mason = require "mason-lspconfig"
 local lspconfig = require "lspconfig"
@@ -43,7 +38,13 @@ mason.setup_handlers {
 		opts.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 		opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
 		opts.capabilities.offsetEncoding = { "utf-16" }
-		if server == "rust_analyzer" then
+		if server == "clangd" then
+			opts.cmd = {
+				"clangd",
+				"--background-index",
+				"--clang-tidy",
+			}
+		elseif server == "rust_analyzer" then
 			opts.settings = {
 				["rust-analyzer"] = {
 					imports = {
