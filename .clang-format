@@ -1,0 +1,62 @@
+---
+Language:        Cpp
+# BasedOnStyle:  Google
+Standard:        Auto
+ColumnLimit:     80
+
+## =========================
+##  Align
+## =========================
+# ファイル解析によるポインタ位置のフォーマットをしない
+DerivePointerAlignment:       false
+# int* const * x = NULL; のようにフォーマット
+PointerAlignment:             Left
+SpaceAroundPointerQualifiers: After
+# int& x;
+ReferenceAlignment:           Left
+AlignTrailingComments:        true
+# 代入・宣言・マクロ・ビットフィールドはコメントをまたいで揃える
+# 空行区切りの場合は揃えない
+AlignConsecutiveMacros:       AcrossComments
+AlignConsecutiveBitFields:    AcrossComments
+AlignConsecutiveAssignments:  AcrossComments
+AlignConsecutiveDeclarations: AcrossComments
+
+## =========================
+##  Break
+## =========================
+BinPackArguments:  false
+BinPackParameters: true
+BreakBeforeBraces: Attach
+BreakConstructorInitializers: BeforeColon
+# 3項演算子の : や ? を行末に
+BreakBeforeTernaryOperators: false
+AlwaysBreakBeforeMultilineStrings: false
+
+## =========================
+##  Indentation
+## =========================
+IndentWidth:          2
+# case文はインデントする
+IndentCaseLabels:     true
+# private/publicなどはスペース1つでインデント
+AccessModifierOffset: -1
+# 名前空間の部分はインデントなし
+NamespaceIndentation: None
+# 配列などの初期化時、行末にカンマを挿入する
+InsertTrailingCommas: Wrapped
+
+## =========================
+##  Short
+## =========================
+AllowShortEnumsOnASingleLine:        true
+AllowShortLoopsOnASingleLine:        false
+# ブロック {} は短くても1行にまとめない
+AllowShortBlocksOnASingleLine:       Never
+# ラムダ式と関数は空 {} の場合と宣言時以外に1行まとめを試みる
+AllowShortLambdasOnASingleLine:      Inline
+AllowShortFunctionsOnASingleLine:    Inline
+# 短いcase文は1行に
+AllowShortCaseLabelsOnASingleLine:   true
+# elseがない短いifのみ1行まとめ
+AllowShortIfStatementsOnASingleLine: WithoutElse
