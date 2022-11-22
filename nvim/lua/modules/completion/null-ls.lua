@@ -41,6 +41,8 @@ local sources = {
   -- shell
   b.diagnostics.shellcheck,
   b.formatting.shfmt,
+  -- editorconfig
+  b.diagnostics.editorconfig_checker,
   --envを表示
   b.hover.printenv,
 }
