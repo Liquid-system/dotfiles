@@ -44,5 +44,6 @@ autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
 
 if exists("g:neovide")
+  let g:neovide_cursor_antialiasing = v:true
   let g:neovide_scroll_animation_length = 0
 endif
