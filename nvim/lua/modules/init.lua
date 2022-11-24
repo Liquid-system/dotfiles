@@ -6,12 +6,11 @@ local command = require "modules.command"
 local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
-vim.cmd [[packadd packer.nvim]]
---vim.cmd "packadd vim-jetpack"
-require("packer").startup(function(use)
+--vim.cmd [[packadd packer.nvim]]
+vim.cmd "packadd vim-jetpack"
+require("jetpack.packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
 	use { "tani/vim-jetpack", opt = 1 } -- bootstrap
-	use { "wbthomason/packer.nvim", opt = 1 } -- bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "onsails/lspkind.nvim" }
 	use { "nvim-lua/plenary.nvim" }
@@ -46,19 +45,16 @@ require("packer").startup(function(use)
 		event = "InsertEnter",
 		config = lsp.luaship,
 	}
-	--ツール
+	use { "b0o/schemastore.nvim" }
+
 	use {
 		"jose-elias-alvarez/null-ls.nvim",
 		config = lsp.null_ls,
 	}
-
-	use { "b0o/schemastore.nvim" }
-	--editor
 	--treesitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		config = editor.treesitter,
-		run = "TSUpdate",
 	}
 	-- インデント
 	use {
@@ -134,7 +130,6 @@ require("packer").startup(function(use)
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
 	use { "lambdalisue/glyph-palette.vim" }
 	use { "lambdalisue/nerdfont.vim" }
-
 	--バッファ
 	--スクリーンショット
 	use {
