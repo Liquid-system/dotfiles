@@ -58,6 +58,9 @@ mason.setup_handlers {
 				"clangd",
 				"--background-index",
 				"--clang-tidy",
+				"--completion-style=bundled",
+				"--cross-file-rename",
+				"--header-insertion=iwyu",
 			}
 		elseif server == "rust_analyzer" then
 			opts.settings = {
