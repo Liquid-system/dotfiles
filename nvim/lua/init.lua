@@ -1,4 +1,3 @@
-vim.g.jetpack_copy_method = "copy"
 local ui = require "modules.ui"
 local lsp = require "modules.completion"
 local editor = require "modules.editor"
@@ -6,11 +5,10 @@ local command = require "modules.command"
 local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
---vim.cmd [[packadd packer.nvim]]
-vim.cmd "packadd vim-jetpack"
-require("jetpack.packer").startup(function(use)
+vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function(use)
 	use { "lewis6991/impatient.nvim" }
-	use { "tani/vim-jetpack", opt = 1 } -- bootstrap
+	use { "wbthomason/packer.nvim", opt = 1 } --bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "onsails/lspkind.nvim" }
 	use { "nvim-lua/plenary.nvim" }
@@ -153,4 +151,5 @@ require("jetpack.packer").startup(function(use)
 		"EdenEast/nightfox.nvim",
 		config = color.nightfox,
 	}
+
 end)
