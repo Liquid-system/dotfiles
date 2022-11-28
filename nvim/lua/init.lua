@@ -1,7 +1,8 @@
 vim.cmd [[packadd packer.nvim]]
-
+-- vim.cmd('packadd vim-jetpack')
 require("packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
+	-- use { 'tani/vim-jetpack', opt = 1 } -- bootstrap
 	use { "wbthomason/packer.nvim", opt = 1 } --bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
 	use { "onsails/lspkind.nvim" }
@@ -127,7 +128,7 @@ require("packer").startup(function(use)
 	}
 	use {
 		"j-hui/fidget.nvim",
-		event = "BufEnter",
+		--event = "BufEnter",
 		config = function()
 			require("modules.ui.finget")
 		end
