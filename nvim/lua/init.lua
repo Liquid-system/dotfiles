@@ -1,10 +1,3 @@
-local ui = require "modules.ui"
-local lsp = require "modules.completion"
-local editor = require "modules.editor"
-local command = require "modules.command"
-local tools = require "modules.tools"
-local color = require "modules.colorScheme"
-
 vim.cmd [[packadd packer.nvim]]
 
 require("packer").startup(function(use)
@@ -20,12 +13,16 @@ require("packer").startup(function(use)
 	}
 	use {
 		"neovim/nvim-lspconfig",
-		config = lsp.lspconfig,
+		config = function()
+			require("modules.completion.lspconfig")
+		end
 	}
 	use {
 		"glepnir/lspsaga.nvim",
 		branch = "main",
-		config = lsp.lspsaga,
+		config = function()
+			require("modules.completion.lspsaga")
+		end
 	}
 	-- cmp
 	use {
@@ -36,31 +33,40 @@ require("packer").startup(function(use)
 	use { "hrsh7th/cmp-path" }
 	use { "hrsh7th/cmp-nvim-lsp-signature-help" }
 	use { "hrsh7th/cmp-nvim-lua" }
-	use { "hrsh7th/cmp-cmdline", config = lsp.cmp }
+	use { "hrsh7th/cmp-cmdline",
+		config = function()
+			require("modules.completion.cmp")
+		end }
 	--スニペット
 	use { "saadparwaiz1/cmp_luasnip" }
-	use { "PaterJason/cmp-conjure" }
 	use {
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
-		config = lsp.luaship,
+		config = function()
+			require("modules.completion.luasnip")
+		end
 	}
-	use { "Olical/conjure" }
 	use { "b0o/schemastore.nvim" }
 
 	use {
 		"jose-elias-alvarez/null-ls.nvim",
-		config = lsp.null_ls,
+		config = function()
+			require("modules.completion.null-ls")
+		end
 	}
 	--treesitter
 	use {
 		"nvim-treesitter/nvim-treesitter",
-		config = editor.treesitter,
+		config = function()
+			require("modules.editor.treesitter")
+		end,
 	}
 	-- インデント
 	use {
 		"lukas-reineke/indent-blankline.nvim",
-		config = editor.indent_blankline,
+		config = function()
+			require("modules.editor.indent_blankline")
+		end,
 	}
 	-- htmlのタグ
 	use {
@@ -71,12 +77,22 @@ require("packer").startup(function(use)
 		"p00f/nvim-ts-rainbow",
 	}
 	use {
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		config = function()
+			require("modules.editor.telescope")
+		end,
+		opt = true,
+	}
+	use {
 		"folke/neodev.nvim",
 		ft = "lua",
 	}
 	use {
 		"mattn/emmet-vim",
-		config = tools.emmet,
+		config = function()
+			require("modules.tools.emmet-vim")
+		end,
 		ft = "html",
 	}
 	--コメント
@@ -84,45 +100,56 @@ require("packer").startup(function(use)
 	--ユーティリティ
 	use {
 		"max397574/better-escape.nvim",
-		config = tools.better_escape,
+		config = function()
+			require("modules.tools.better_escape")
+		end
 	}
 	use {
 		"Pocco81/auto-save.nvim",
-		config = tools.auto_save,
+		config = function()
+			require("modules.tools.auto-save")
+		end
 	}
 	use {
 		"kylechui/nvim-surround",
-		config = tools.surround,
+		config = function()
+			require("modules.tools.surround")
+		end
 	}
 	use { "cohama/lexima.vim", event = "InsertEnter" }
 	use { "christoomey/vim-tmux-navigator", opt = true }
 	--ui
 	use {
 		"folke/trouble.nvim",
-		config = ui.trouble,
+		config = function()
+			require("modules.ui.trouble")
+		end
 	}
 	use {
 		"j-hui/fidget.nvim",
 		event = "BufEnter",
-		config = ui.finget,
+		config = function()
+			require("modules.ui.finget")
+		end
 	}
 	use {
 		"glepnir/dashboard-nvim",
-		config = ui.dashboard,
+		config = function()
+			require("modules.ui.dashboard")
+		end
 	}
 	use {
 		"nvim-lualine/lualine.nvim",
-		config = ui.lualine,
+		config = function()
+			require("modules.ui.lualine")
+		end
 	}
 	use {
 		"akinsho/bufferline.nvim",
 		tag = "v3.1.0",
-		config = ui.bufferline,
-	}
-	use {
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
-		opt = true,
+		config = function()
+			require("modules.ui.bufferline")
+		end
 	}
 	--フォーマッタ
 	use { "gpanders/editorconfig.nvim", ft = "editorconfig" }
@@ -135,23 +162,31 @@ require("packer").startup(function(use)
 	--スクリーンショット
 	use {
 		"narutoxy/silicon.lua",
-		config = command.silicon,
+		config = function()
+			require("modules.command.silicon")
+		end,
 		opt = true,
 	}
 	-- リサイズ
 	use {
 		"simeji/winresizer",
-		config = command.winresizer,
 		cmd = "WinResizerStartResize",
+		config = function()
+			require("modules.command.winresizer")
+		end
 	}
 	use {
 		"norcalli/nvim-colorizer.lua",
 		cmd = "ColorizerToggle",
-		config = command.colorizer,
+		config = function()
+			require("modules.command.colorizer")
+		end
 	}
 	--カラースキーム
 	use {
 		"EdenEast/nightfox.nvim",
-		config = color.nightfox,
+		config = function()
+			require "modules.colorScheme.nightfox"
+		end
 	}
 end)
