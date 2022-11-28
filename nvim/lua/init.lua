@@ -6,7 +6,8 @@ local tools = require "modules.tools"
 local color = require "modules.colorScheme"
 
 vim.cmd [[packadd packer.nvim]]
-return require('packer').startup(function(use)
+
+require("packer").startup(function(use)
 	use { "lewis6991/impatient.nvim" }
 	use { "wbthomason/packer.nvim", opt = 1 } --bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
@@ -38,11 +39,13 @@ return require('packer').startup(function(use)
 	use { "hrsh7th/cmp-cmdline", config = lsp.cmp }
 	--スニペット
 	use { "saadparwaiz1/cmp_luasnip" }
+	use { "PaterJason/cmp-conjure" }
 	use {
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
 		config = lsp.luaship,
 	}
+	use { "Olical/conjure" }
 	use { "b0o/schemastore.nvim" }
 
 	use {
@@ -151,5 +154,4 @@ return require('packer').startup(function(use)
 		"EdenEast/nightfox.nvim",
 		config = color.nightfox,
 	}
-
 end)
