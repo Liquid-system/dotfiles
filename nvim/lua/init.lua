@@ -5,7 +5,6 @@ require("packer").startup(function(use)
 	-- use { 'tani/vim-jetpack', opt = 1 } -- bootstrap
 	use { "wbthomason/packer.nvim", opt = 1 } --bootstrap
 	use { "kyazdani42/nvim-web-devicons" }
-	use { "onsails/lspkind.nvim" }
 	use { "nvim-lua/plenary.nvim" }
 	--lsp
 	use "williamboman/mason.nvim"
@@ -28,6 +27,7 @@ require("packer").startup(function(use)
 	-- cmp
 	use {
 		"hrsh7th/nvim-cmp",
+		requires = "onsails/lspkind.nvim",
 	}
 	use { "hrsh7th/cmp-nvim-lsp" }
 	use { "hrsh7th/cmp-buffer" }
@@ -171,6 +171,7 @@ require("packer").startup(function(use)
 	use { "lambdalisue/fern-renderer-nerdfont.vim" }
 	use { "lambdalisue/glyph-palette.vim" }
 	use { "lambdalisue/nerdfont.vim" }
+	use { "lambdalisue/readablefold.vim" }
 	--バッファ
 	--スクリーンショット
 	use {
