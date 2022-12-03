@@ -1,6 +1,7 @@
 local opt = vim.opt
 opt.number = true
 opt.title = true
+opt.termguicolors = true
 opt.inccommand = "split" -- 検索時の強調表示
 opt.shellslash = true -- Windowsでパスの区切り文字をスラッシュで扱う
 opt.showmatch.matchtime = 1 -- 対応する括弧やブレースを表示

@@ -17,6 +17,13 @@ on_event = "InsertEnter"
 lua_post_source = '''
 require "modules.tools.surround"
 '''
+
+[[plugins]]
+repo = "glepnir/lspsaga.nvim"
+lua_post_source = '''
+require "modules.completion.lspsaga"
+'''
+
 # 言語ごと
 [[plugins]]
 repo = "gpanders/editorconfig.nvim"
@@ -37,13 +44,14 @@ on_ft = "html"
 repo = "norcalli/nvim-colorizer.lua"
 on_cmd = "ColorizerToggle"
 lua_post_source = '''
-require "modules.command.colorizer"
+require("colorizer").setup()
 '''
 
 # リサイズ
 [[plugins]]
 repo = "simeji/winresizer"
 on_cmd = "WinResizerStartResize"
-lua_post_source = '''
-require "modules.command.winresizer"
+hook_post_source = '''
+let g:winresizer_start_key = "<C-s>"
+let g:winresizer_vert_resize = 1
 '''

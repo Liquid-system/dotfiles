@@ -15,13 +15,13 @@ local M = {}
 
 local keymap = vim.keymap.set
 local default_opts = { silent = true, noremap = true }
+-- leaderキーをspaceに変更
+vim.g.mapleader = " "
 
 -- F5でluaを実行
 keymap("n", "<F5>", "<cmd>luafile %<CR>", default_opts)
 -- jjでノーマルモードへ移行
 keymap("i", "jj", "<ESC>", default_opts)
--- leaderキーをspaceに変更
-vim.g.mapleader = " "
 -- 表示行と論理行を入れ替える
 keymap("n", "k", "gk", default_opts)
 keymap("n", "gk", "k", default_opts)
@@ -63,16 +63,15 @@ keymap("n", "<Leader>e", "<Cmd>TroubleToggle<CR>", default_opts)
 --ESC2回で点滅が消える
 keymap("n", "<ESC><ESC>", "<Cmd>nohl<CR>", default_opts)
 
---コメント
 keymap("n", "<Leader>/", function()
     return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
 end, { expr = true })
 
 keymap("x", "<Leader>/", "<Plug>(comment_toggle_blockwise_visual)")
--- 語尾に追加
 keymap("n", "<leader>a", function()
     require('Comment.api').insert.linewise.eol(require('Comment.config'):get())
 end)
+
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)

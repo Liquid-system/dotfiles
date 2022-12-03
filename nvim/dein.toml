@@ -1,5 +1,8 @@
 [[plugins]]
 repo = "lewis6991/impatient.nvim"
+lua_source = '''
+require('impatient')
+'''
 [[plugins]]
 repo = "Shougo/dein.vim"
 [[plugins]]
@@ -10,7 +13,6 @@ repo = "onsails/lspkind.nvim"
 repo = "nvim-lua/plenary.nvim"
 
 # lsp
-
 [[plugins]]
 repo = "williamboman/mason.nvim"
 
@@ -23,15 +25,10 @@ lua_add = '''
 require "modules.completion.lspconfig"
 '''
 
-[[plugins]]
-repo = "glepnir/lspsaga.nvim"
-lua_add = '''
-require "modules.completion.lspsaga"
-'''
 # cmp
-
 [[plugins]]
 repo = "hrsh7th/nvim-cmp"
+depends = "lspkind.nvim"
 [[plugins]]
 repo = "hrsh7th/cmp-nvim-lsp"
 [[plugins]]
@@ -47,8 +44,10 @@ repo = "hrsh7th/cmp-cmdline"
 lua_add = '''
 require "modules.completion.cmp"
 '''
+
 [[plugins]]
 repo = "saadparwaiz1/cmp_luasnip"
+
 #スニペット
 [[plugins]]
 repo = "L3MON4D3/LuaSnip"
@@ -69,6 +68,7 @@ require "modules.completion.null-ls"
 #treesitter
 [[plugins]]
 repo = "nvim-treesitter/nvim-treesitter"
+hook_post_update = "TSUpdate"
 lua_add = '''
 require "modules.editor.treesitter"
 '''
@@ -96,6 +96,7 @@ require("hlargs").setup()
 #コメント
 [[plugins]]
 repo = "numToStr/Comment.nvim"
+
 #ユーティリティ
 [[plugins]]
 repo = "max397574/better-escape.nvim"
@@ -115,6 +116,7 @@ repo = "christoomey/vim-tmux-navigator"
 #ui
 [[plugins]]
 repo = "folke/trouble.nvim"
+depends = "nvim-web-devicons"
 lua_add = '''
 require "modules.ui.trouble"
 '''
@@ -133,6 +135,7 @@ require "modules.ui.dashboard"
 
 [[plugins]]
 repo = "nvim-lualine/lualine.nvim"
+depends = "nvim-web-devicons"
 lua_add = '''
 require "modules.ui.lualine"
 '''
@@ -159,12 +162,17 @@ repo = "lambdalisue/readablefold.vim"
 [[plugins]]
 repo = "narutoxy/silicon.lua"
 lua_add = '''
-require "modules.command.silicon"
+local keymap = vim.keymap.set
+require("silicon").setup {}
+keymap("v", "<Leader>li", function()
+  require("silicon").visualise_api {}
+end)
 '''
 
 #カラースキーム
 [[plugins]]
 repo = "EdenEast/nightfox.nvim"
 lua_add = '''
-require "modules.colorScheme.nightfox"
+require("nightfox").setup {}
+vim.cmd "colorscheme nightfox"
 '''

@@ -38,6 +38,8 @@ local sources = {
   b.formatting.sql_formatter,
   --json
   b.formatting.jq,
+  --toml
+  b.formatting.taplo,
   -- shell
   b.diagnostics.shellcheck,
   b.formatting.shfmt,
