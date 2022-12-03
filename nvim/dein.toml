@@ -75,23 +75,20 @@ require "modules.editor.treesitter"
 # インデント
 [[plugins]]
 repo = "lukas-reineke/indent-blankline.nvim"
-depends = "nvim-treesitter"
 lua_add = '''
 require "modules.editor.indent_blankline"
 '''
 # htmlのタグ
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
-depends = "nvim-treesitter"
 
 #括弧の色
 [[plugins]]
 repo = "p00f/nvim-ts-rainbow"
-depends = "nvim-treesitter"
 
 [[plugins]]
 repo = "m-demare/hlargs.nvim"
-depends = "nvim-treesitter"
+
 lua_add = '''
 require("hlargs").setup()
 '''
