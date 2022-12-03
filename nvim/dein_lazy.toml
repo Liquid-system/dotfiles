@@ -1,0 +1,49 @@
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+on_cmd = 'Telescope'
+depends = "plenary.nvim"
+lua_post_source = '''
+require "modules.editor.telescope"
+'''
+
+#tools
+[[plugins]]
+repo = "cohama/lexima.vim"
+on_event = "InsertEnter"
+
+[[plugins]]
+repo = "machakann/vim-sandwich"
+on_event = "InsertEnter"
+lua_post_source = '''
+require "modules.tools.surround"
+'''
+# 言語ごと
+[[plugins]]
+repo = "gpanders/editorconfig.nvim"
+on_ft = "editorconfig"
+
+[[plugins]]
+repo = "folke/neodev.nvim"
+on_ft = "lua"
+
+[[plugins]]
+repo = "mattn/emmet-vim"
+lua_post_source = '''
+require "modules.tools.emmet-vim"
+'''
+on_ft = "html"
+
+[[plugins]]
+repo = "norcalli/nvim-colorizer.lua"
+on_cmd = "ColorizerToggle"
+lua_post_source = '''
+require "modules.command.colorizer"
+'''
+
+# リサイズ
+[[plugins]]
+repo = "simeji/winresizer"
+on_cmd = "WinResizerStartResize"
+lua_post_source = '''
+require "modules.command.winresizer"
+'''

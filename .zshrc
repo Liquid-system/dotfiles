@@ -244,13 +244,6 @@ alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 #Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
 #Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
 export GTK_IM_MODULE=fcitx
@@ -262,3 +255,4 @@ if [ $SHLVL = 1 ] ; then
   xset -r 49  > /dev/null 2>&1
 fi
 #Added by bash script: end
+[ -f "/home/liquid_system/.ghcup/env" ] && source "/home/liquid_system/.ghcup/env" # ghcup-env

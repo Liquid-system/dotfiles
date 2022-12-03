@@ -38,6 +38,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 local on_attach = require("core.keymap").on_attach
 
+require 'lspconfig'.hls.setup {
+	on_attach = on_attach,
+}
 require("mason").setup()
 local mason = require "mason-lspconfig"
 local lspconfig = require "lspconfig"

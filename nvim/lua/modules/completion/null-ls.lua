@@ -48,5 +48,4 @@ local sources = {
 }
 null_ls.setup({
   sources = sources,
-  debug = true,
 })
