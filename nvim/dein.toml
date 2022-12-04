@@ -3,14 +3,6 @@ repo = "lewis6991/impatient.nvim"
 lua_source = '''
 require('impatient')
 '''
-[[plugins]]
-repo = "Shougo/dein.vim"
-[[plugins]]
-repo = "kyazdani42/nvim-web-devicons"
-[[plugins]]
-repo = "onsails/lspkind.nvim"
-[[plugins]]
-repo = "nvim-lua/plenary.nvim"
 
 # lsp
 [[plugins]]
@@ -29,6 +21,9 @@ require "modules.completion.lspconfig"
 [[plugins]]
 repo = "hrsh7th/nvim-cmp"
 depends = "lspkind.nvim"
+lua_add = '''
+require "modules.completion.cmp"
+'''
 [[plugins]]
 repo = "hrsh7th/cmp-nvim-lsp"
 [[plugins]]
@@ -41,10 +36,6 @@ repo = "hrsh7th/cmp-nvim-lsp-signature-help"
 repo = "hrsh7th/cmp-nvim-lua"
 [[plugins]]
 repo = "hrsh7th/cmp-cmdline"
-lua_add = '''
-require "modules.completion.cmp"
-'''
-
 [[plugins]]
 repo = "saadparwaiz1/cmp_luasnip"
 
@@ -58,6 +49,7 @@ require "modules.completion.luasnip"
 
 [[plugins]]
 repo = "b0o/schemastore.nvim"
+
 [[plugins]]
 repo = "jose-elias-alvarez/null-ls.nvim"
 depends = "plenary.nvim"
@@ -88,14 +80,9 @@ repo = "p00f/nvim-ts-rainbow"
 
 [[plugins]]
 repo = "m-demare/hlargs.nvim"
-
 lua_add = '''
 require("hlargs").setup()
 '''
-
-#コメント
-[[plugins]]
-repo = "numToStr/Comment.nvim"
 
 #ユーティリティ
 [[plugins]]
@@ -109,9 +96,6 @@ repo = "Pocco81/auto-save.nvim"
 lua_add = '''
 require "modules.tools.auto-save"
 '''
-
-[[plugins]]
-repo = "christoomey/vim-tmux-navigator"
 
 #ui
 [[plugins]]
@@ -142,6 +126,7 @@ require "modules.ui.lualine"
 
 [[plugins]]
 repo = "akinsho/bufferline.nvim"
+depends = "nvim-web-devicons"
 lua_add = '''
 require "modules.ui.bufferline"
 '''

@@ -4,11 +4,10 @@ require "core.autocmd"
 require "core.disable"
 require "core.options"
 
-vim.api.nvim_set_var('dein#auto_recache', 1)
-
 local cache_dir = vim.fn.expand('~/.local/share/nvim/dein')
 local dein_dir = cache_dir .. '/dein'
 local dein_repo_dir = dein_dir .. '/repos/github.com/Shougo/dein.vim'
+vim.api.nvim_set_var('dein#auto_recache', 1)
 
 if not string.match(vim.o.runtimepath, '/dein.vim') then
   if vim.fn.isdirectory(dein_repo_dir) ~= 1 then
@@ -39,4 +38,4 @@ if vim.fn.len(removed_plugins) > 0 then
 end
 
 require "core.keymap"
-vim.api.nvim_exec("runtime! vim/*.vim", false)
+vim.api.nvim_exec("runtime! vim/fern.vim", false)

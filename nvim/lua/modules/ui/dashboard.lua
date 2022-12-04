@@ -56,6 +56,6 @@ db.custom_center = {
     icon = "  ",
     desc = "Update Plugins          ",
     shortcut = "  ",
-    action = "call dein#install()",
+    action = "DeinUpdate",
   },
 }

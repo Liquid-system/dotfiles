@@ -1,12 +1,34 @@
 [[plugins]]
+repo = "Shougo/dein.vim"
+[[plugins]]
+repo = "wsdjeg/dein-ui.vim"
+depends = "dein.vim"
+on_cmd = "DeinUpdate"
+
+# 依存関係
+[[plugins]]
+repo = "kyazdani42/nvim-web-devicons"
+
+[[plugins]]
+repo = "onsails/lspkind.nvim"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+
+[[plugins]]
 repo = "nvim-telescope/telescope.nvim"
-on_cmd = 'Telescope'
+on_cmd = "Telescope"
 depends = "plenary.nvim"
 lua_post_source = '''
 require "modules.editor.telescope"
 '''
 
 #tools
+#コメント
+[[plugins]]
+repo = "numToStr/Comment.nvim"
+on_event = "BufRead"
+
 [[plugins]]
 repo = "cohama/lexima.vim"
 on_event = "InsertEnter"
@@ -20,6 +42,7 @@ require "modules.tools.surround"
 
 [[plugins]]
 repo = "glepnir/lspsaga.nvim"
+on_event = "BufRead"
 lua_post_source = '''
 require "modules.completion.lspsaga"
 '''
@@ -35,11 +58,10 @@ on_ft = "lua"
 
 [[plugins]]
 repo = "mattn/emmet-vim"
+on_ft = "html"
 lua_post_source = '''
 require "modules.tools.emmet-vim"
 '''
-on_ft = "html"
-
 [[plugins]]
 repo = "norcalli/nvim-colorizer.lua"
 on_cmd = "ColorizerToggle"

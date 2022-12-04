@@ -63,47 +63,46 @@ keymap("n", "<Leader>e", "<Cmd>TroubleToggle<CR>", default_opts)
 --ESC2回で点滅が消える
 keymap("n", "<ESC><ESC>", "<Cmd>nohl<CR>", default_opts)
 
+-- コメント
 keymap("n", "<Leader>/", function()
-    return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
+	return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
 end, { expr = true })
 
 keymap("x", "<Leader>/", "<Plug>(comment_toggle_blockwise_visual)")
 keymap("n", "<leader>a", function()
-    require('Comment.api').insert.linewise.eol(require('Comment.config'):get())
+	require("Comment.api").insert.linewise.eol(require("Comment.config"):get())
 end)
-
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
 -- lspの設定
 M.on_attach = function(client, bufnr)
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    keymap("n", "gD", vim.lsp.buf.declaration, bufopts)
-    keymap("n", "gi", vim.lsp.buf.implementation, bufopts)
-    keymap("n", "gd", vim.lsp.buf.definition, bufopts)
-    keymap("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-    keymap("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-    keymap("n", "<space>wl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    keymap("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-    keymap("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-    keymap("n", "gr", vim.lsp.buf.references, bufopts)
-    keymap("n", "<space>f", function(bufnr)
-        vim.lsp.buf.format({
-            async = true,
-            bufnr = bufnr,
-            filter = function(client)
-                return client.name == "null-ls"
-            end
-        })
-    end, bufopts)
-    keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-    keymap("n", "K", vim.lsp.buf.hover, bufopts)
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	keymap("n", "gD", vim.lsp.buf.declaration, bufopts)
+	keymap("n", "gi", vim.lsp.buf.implementation, bufopts)
+	keymap("n", "gd", vim.lsp.buf.definition, bufopts)
+	keymap("n", "<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+	keymap("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+	keymap("n", "<space>wl", function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts)
+	keymap("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	keymap("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	keymap("n", "gr", vim.lsp.buf.references, bufopts)
+	keymap("n", "<space>f", function(bufnr)
+		vim.lsp.buf.format {
+			async = true,
+			bufnr = bufnr,
+			filter = function(client)
+				return client.name == "null-ls"
+			end,
+		}
+	end, bufopts)
+	keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	keymap("n", "K", vim.lsp.buf.hover, bufopts)
 end
 
 --lspsaga
@@ -119,10 +118,10 @@ keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 -- Only jump to error
 keymap("n", "[E", function()
-    require("lspsaga.diagnostic").goto_prev { severity = vim.diagnostic.severity.ERROR }
+	require("lspsaga.diagnostic").goto_prev { severity = vim.diagnostic.severity.ERROR }
 end, { silent = true })
 keymap("n", "]E", function()
-    require("lspsaga.diagnostic").goto_next { severity = vim.diagnostic.severity.ERROR }
+	require("lspsaga.diagnostic").goto_next { severity = vim.diagnostic.severity.ERROR }
 end, { silent = true })
 keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
 --keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
