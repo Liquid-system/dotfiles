@@ -104,27 +104,15 @@ export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
+export COLORTERM=truecolor
 
-case "$OSTYPE" in
-    darwin*)
-        (( ${+commands[gdate]} )) && alias date='gdate'
-        (( ${+commands[gls]} )) && alias ls='gls'
-        (( ${+commands[gmkdir]} )) && alias mkdir='gmkdir'
-        (( ${+commands[gcp]} )) && alias cp='gcp'
-        (( ${+commands[gmv]} )) && alias mv='gmv'
-        (( ${+commands[grm]} )) && alias rm='grm'
-        (( ${+commands[gdu]} )) && alias du='gdu'
-        (( ${+commands[ghead]} )) && alias head='ghead'
-        (( ${+commands[gtail]} )) && alias tail='gtail'
-        (( ${+commands[gsed]} )) && alias sed='gsed'
-        (( ${+commands[ggrep]} )) && alias grep='ggrep'
-        (( ${+commands[gfind]} )) && alias find='gfind'
-        (( ${+commands[gdirname]} )) && alias dirname='gdirname'
-        (( ${+commands[gxargs]} )) && alias xargs='gxargs'
-    ;;
-esac
+#OSごとにファイルを分割
+[ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
+#マシンごとにファイルを分割
+[ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
 
 fpath+=~/.zfunc
+
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
 alias n='nvim'
 alias cxx='g++ -std=c++17 -Wall -O2 '
@@ -192,9 +180,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 if [[ $(command -v exa) ]]; then
-	alias e='exa --icons --colour=always'
-	alias l=e
-	alias ls=e
+	alias ls='exa --icons --colour=always'
+  alias la='exa -1'
 fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -211,12 +198,6 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_AUTOSUGGEST_STRATEGY=history
 #zsh補完を無効化する
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="rm *"
-
-#zshrcの自動コンパイル
-if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
-   zcompile ~/.zshrc
-fi
-
 
 fix_wsl2_interop() {
 for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
@@ -238,21 +219,10 @@ local cmd=${line%% *}
 ]]
 }
 
-export COLORTERM=truecolor
-
-alias luamake=/home/liquid_system/lua-language-server/3rd/luamake/luamake
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-#Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
-#Added by bash script from https://astherier.com/blog/2021/07/windows11-wsl2-wslg-japanese/
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export DefaultIMModule=fcitx
-if [ $SHLVL = 1 ] ; then
-  (fcitx-autostart > /dev/null 2>&1 &)
-  xset -r 49  > /dev/null 2>&1
+#zshrcの自動コンパイル
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+   zcompile ~/.zshrc
 fi
-#Added by bash script: end
-[ -f "/home/liquid_system/.ghcup/env" ] && source "/home/liquid_system/.ghcup/env" # ghcup-env

@@ -2,8 +2,6 @@ zmodule environment
 zmodule git
 zmodule input
 zmodule termtitle
-# Utility aliases and functions. Adds colour to ls, grep and less.
-zmodule utility
 # asciishipで最後のコマンドの実行にかかった時間を表示
 zmodule duration-info
 zmodule git-info
