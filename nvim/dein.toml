@@ -1,58 +1,8 @@
+# 速度上昇
 [[plugins]]
 repo = "lewis6991/impatient.nvim"
 lua_add = '''
 require('impatient')
-'''
-
-# lsp
-[[plugins]]
-repo = "williamboman/mason.nvim"
-[[plugins]]
-repo = "williamboman/mason-lspconfig.nvim"
-[[plugins]]
-repo = "neovim/nvim-lspconfig"
-depends = "impatient.nvim"
-lua_add = '''
-require "modules.completion.lspconfig"
-'''
-
-[[plugins]]
-repo = "jose-elias-alvarez/null-ls.nvim"
-on_event = "LspAttach"
-depends = "plenary.nvim"
-lua_add = '''
-require "modules.completion.null-ls"
-'''
-
-# cmp
-[[plugins]]
-repo = "hrsh7th/nvim-cmp"
-depends = "impatient.nvim"
-lua_add = '''
-require "modules.completion.cmp"
-'''
-[[plugins]]
-repo = "hrsh7th/cmp-nvim-lsp"
-[[plugins]]
-repo = "hrsh7th/cmp-buffer"
-[[plugins]]
-repo = "hrsh7th/cmp-path"
-[[plugins]]
-repo = "hrsh7th/cmp-nvim-lsp-signature-help"
-[[plugins]]
-repo = "hrsh7th/cmp-nvim-lua"
-[[plugins]]
-repo = "hrsh7th/cmp-cmdline"
-[[plugins]]
-repo = "saadparwaiz1/cmp_luasnip"
-[[plugins]]
-repo = "b0o/schemastore.nvim"
-
-#スニペット
-[[plugins]]
-repo = "L3MON4D3/LuaSnip"
-lua_add = '''
-require "modules.completion.luasnip"
 '''
 
 #treesitter
@@ -72,11 +22,10 @@ require "modules.editor.indent_blankline"
 # htmlのタグ
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
-
 #括弧の色
 [[plugins]]
 repo = "p00f/nvim-ts-rainbow"
-
+#引数の色付け
 [[plugins]]
 repo = "m-demare/hlargs.nvim"
 lua_add = '''
@@ -84,7 +33,6 @@ require("hlargs").setup()
 '''
 
 #ユーティリティ
-
 #コメント
 [[plugins]]
 repo = "numToStr/Comment.nvim"
@@ -143,6 +91,7 @@ require "modules.ui.bufferline"
 #ファイラ―
 [[plugins]]
 repo = "lambdalisue/fern.vim"
+hook_add = "runtime vim/fern.vim"
 [[plugins]]
 repo = "lambdalisue/fern-renderer-nerdfont.vim"
 [[plugins]]
@@ -151,8 +100,6 @@ repo = "lambdalisue/glyph-palette.vim"
 repo = "lambdalisue/nerdfont.vim"
 [[plugins]]
 repo = "lambdalisue/readablefold.vim"
-
-
 
 #カラースキーム
 [[plugins]]

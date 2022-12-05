@@ -1,1 +1,54 @@
+# lsp
+[[plugins]]
+repo = "williamboman/mason.nvim"
+[[plugins]]
+repo = "williamboman/mason-lspconfig.nvim"
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+depends = "impatient.nvim"
+lua_add = '''
+require "modules.completion.lspconfig"
+'''
 
+# フォーマッタ―
+[[plugins]]
+repo = "jose-elias-alvarez/null-ls.nvim"
+on_event = "LspAttach"
+depends = "plenary.nvim"
+lua_add = '''
+require "modules.completion.null-ls"
+'''
+
+# cmp
+[[plugins]]
+repo = "hrsh7th/nvim-cmp"
+depends = "impatient.nvim"
+lua_add = '''
+require "modules.completion.cmp"
+'''
+[[plugins]]
+repo = "hrsh7th/cmp-nvim-lsp"
+[[plugins]]
+repo = "hrsh7th/cmp-buffer"
+[[plugins]]
+repo = "hrsh7th/cmp-path"
+[[plugins]]
+repo = "hrsh7th/cmp-nvim-lsp-signature-help"
+[[plugins]]
+repo = "hrsh7th/cmp-nvim-lua"
+[[plugins]]
+repo = "hrsh7th/cmp-cmdline"
+[[plugins]]
+repo = "saadparwaiz1/cmp_luasnip"
+
+#スニペット
+[[plugins]]
+repo = "L3MON4D3/LuaSnip"
+lua_add = '''
+require "modules.completion.luasnip"
+'''
+
+# json
+[[plugins]]
+repo = "b0o/schemastore.nvim"
+depends = "nvim-lspconfig"
