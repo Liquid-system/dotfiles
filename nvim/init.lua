@@ -20,6 +20,7 @@ if (vim.fn['dein#load_state'](dein_dir) == 1) then
   local dein_toml_dir = vim.fn.expand('~/.config/nvim')
   local dein_toml = dein_toml_dir .. '/dein.toml'
   local dein_lazy = dein_toml_dir .. '/dein_lazy.toml'
+  local dein_lsp = dein_toml_dir .. '/dein_lsp.toml'
   vim.call('dein#begin', dein_dir)
   vim.fn['dein#load_toml'](dein_toml, { lazy = 0 })
   vim.fn['dein#load_toml'](dein_lazy, { lazy = 1 })

@@ -1,26 +1,33 @@
 [[plugins]]
 repo = "lewis6991/impatient.nvim"
-lua_source = '''
+lua_add = '''
 require('impatient')
 '''
 
 # lsp
 [[plugins]]
 repo = "williamboman/mason.nvim"
-
 [[plugins]]
 repo = "williamboman/mason-lspconfig.nvim"
-
 [[plugins]]
 repo = "neovim/nvim-lspconfig"
+depends = "impatient.nvim"
 lua_add = '''
 require "modules.completion.lspconfig"
+'''
+
+[[plugins]]
+repo = "jose-elias-alvarez/null-ls.nvim"
+on_event = "LspAttach"
+depends = "plenary.nvim"
+lua_add = '''
+require "modules.completion.null-ls"
 '''
 
 # cmp
 [[plugins]]
 repo = "hrsh7th/nvim-cmp"
-depends = "lspkind.nvim"
+depends = "impatient.nvim"
 lua_add = '''
 require "modules.completion.cmp"
 '''
@@ -38,28 +45,20 @@ repo = "hrsh7th/cmp-nvim-lua"
 repo = "hrsh7th/cmp-cmdline"
 [[plugins]]
 repo = "saadparwaiz1/cmp_luasnip"
+[[plugins]]
+repo = "b0o/schemastore.nvim"
 
 #スニペット
 [[plugins]]
 repo = "L3MON4D3/LuaSnip"
-on_event = "InsertEnter"
 lua_add = '''
 require "modules.completion.luasnip"
-'''
-
-[[plugins]]
-repo = "b0o/schemastore.nvim"
-
-[[plugins]]
-repo = "jose-elias-alvarez/null-ls.nvim"
-depends = "plenary.nvim"
-lua_add = '''
-require "modules.completion.null-ls"
 '''
 
 #treesitter
 [[plugins]]
 repo = "nvim-treesitter/nvim-treesitter"
+depends = "impatient.nvim"
 hook_post_update = "TSUpdate"
 lua_add = '''
 require "modules.editor.treesitter"
@@ -85,6 +84,22 @@ require("hlargs").setup()
 '''
 
 #ユーティリティ
+
+#コメント
+[[plugins]]
+repo = "numToStr/Comment.nvim"
+lua_add = '''
+-- コメント
+vim.keymap.set("n", "<Leader>/", function()
+	return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"
+end, { expr = true })
+
+vim.keymap.set("x", "<Leader>/", "<Plug>(comment_toggle_blockwise_visual)")
+vim.keymap.set("n", "<leader>a", function()
+	require("Comment.api").insert.linewise.eol(require("Comment.config"):get())
+end)
+'''
+
 [[plugins]]
 repo = "max397574/better-escape.nvim"
 lua_add = '''
@@ -103,12 +118,6 @@ repo = "folke/trouble.nvim"
 depends = "nvim-web-devicons"
 lua_add = '''
 require "modules.ui.trouble"
-'''
-
-[[plugins]]
-repo = "j-hui/fidget.nvim"
-lua_add = '''
-require "modules.ui.finget"
 '''
 
 [[plugins]]
@@ -143,16 +152,7 @@ repo = "lambdalisue/nerdfont.vim"
 [[plugins]]
 repo = "lambdalisue/readablefold.vim"
 
-#スクリーンショット
-[[plugins]]
-repo = "narutoxy/silicon.lua"
-lua_add = '''
-local keymap = vim.keymap.set
-require("silicon").setup {}
-keymap("v", "<Leader>li", function()
-  require("silicon").visualise_api {}
-end)
-'''
+
 
 #カラースキーム
 [[plugins]]

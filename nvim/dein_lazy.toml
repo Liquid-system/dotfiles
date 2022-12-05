@@ -1,5 +1,6 @@
 [[plugins]]
 repo = "Shougo/dein.vim"
+
 [[plugins]]
 repo = "wsdjeg/dein-ui.vim"
 depends = "dein.vim"
@@ -8,12 +9,18 @@ on_cmd = "DeinUpdate"
 # 依存関係
 [[plugins]]
 repo = "kyazdani42/nvim-web-devicons"
+lazy = 1
+on_lua = ["nvim-web-devicons"]
 
 [[plugins]]
 repo = "onsails/lspkind.nvim"
+lazy = 1
+on_lua = ["lspkind"]
 
 [[plugins]]
 repo = "nvim-lua/plenary.nvim"
+lazy = 1
+on_lua = ["plenary"]
 
 [[plugins]]
 repo = "nvim-telescope/telescope.nvim"
@@ -24,10 +31,6 @@ require "modules.editor.telescope"
 '''
 
 #tools
-#コメント
-[[plugins]]
-repo = "numToStr/Comment.nvim"
-on_event = "BufRead"
 
 [[plugins]]
 repo = "cohama/lexima.vim"
@@ -42,9 +45,20 @@ require "modules.tools.surround"
 
 [[plugins]]
 repo = "glepnir/lspsaga.nvim"
-on_event = "BufRead"
+on_event = "LspAttach"
 lua_post_source = '''
 require "modules.completion.lspsaga"
+'''
+
+[[plugins]]
+repo = "j-hui/fidget.nvim"
+on_event = "LspAttach"
+lua_post_source = '''
+require("fidget").setup {
+ text = {
+    spinner = "clock",
+  },
+}
 '''
 
 # 言語ごと
@@ -67,6 +81,17 @@ repo = "norcalli/nvim-colorizer.lua"
 on_cmd = "ColorizerToggle"
 lua_post_source = '''
 require("colorizer").setup()
+'''
+
+#スクリーンショット
+[[plugins]]
+repo = "narutoxy/silicon.lua"
+on_event = "BufRead"
+lua_post_source = '''
+require("silicon").setup {}
+vim.keymap.set("v", "<Leader>li", function()
+  require("silicon").visualise_api {}
+end)
 '''
 
 # リサイズ
