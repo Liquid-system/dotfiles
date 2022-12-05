@@ -10,10 +10,9 @@ lua_add = '''
 require "modules.completion.lspconfig"
 '''
 
-# フォーマッタ―
+# フォーマッタ―・リンター
 [[plugins]]
 repo = "jose-elias-alvarez/null-ls.nvim"
-on_event = "LspAttach"
 depends = "plenary.nvim"
 lua_add = '''
 require "modules.completion.null-ls"

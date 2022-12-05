@@ -13,18 +13,22 @@ hook_post_update = "TSUpdate"
 lua_add = '''
 require "modules.editor.treesitter"
 '''
+
 # インデント
 [[plugins]]
 repo = "lukas-reineke/indent-blankline.nvim"
 lua_add = '''
 require "modules.editor.indent_blankline"
 '''
+
 # htmlのタグ
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
+
 #括弧の色
 [[plugins]]
 repo = "p00f/nvim-ts-rainbow"
+
 #引数の色付け
 [[plugins]]
 repo = "m-demare/hlargs.nvim"
@@ -33,6 +37,7 @@ require("hlargs").setup()
 '''
 
 #ユーティリティ
+
 #コメント
 [[plugins]]
 repo = "numToStr/Comment.nvim"
@@ -62,13 +67,6 @@ require "modules.tools.auto-save"
 
 #ui
 [[plugins]]
-repo = "folke/trouble.nvim"
-depends = "nvim-web-devicons"
-lua_add = '''
-require "modules.ui.trouble"
-'''
-
-[[plugins]]
 repo = "glepnir/dashboard-nvim"
 lua_add = '''
 require "modules.ui.dashboard"
@@ -81,12 +79,6 @@ lua_add = '''
 require "modules.ui.lualine"
 '''
 
-[[plugins]]
-repo = "akinsho/bufferline.nvim"
-depends = "nvim-web-devicons"
-lua_add = '''
-require "modules.ui.bufferline"
-'''
 
 #ファイラ―
 [[plugins]]

@@ -33,6 +33,15 @@ require "modules.editor.telescope"
 '''
 
 #tools
+
+[[plugins]]
+repo = "akinsho/bufferline.nvim"
+depends = "nvim-web-devicons"
+on_event = "BufRead"
+lua_post_source = '''
+require "modules.ui.bufferline"
+'''
+
 [[plugins]]
 repo = "cohama/lexima.vim"
 on_event = "InsertEnter"
@@ -50,6 +59,14 @@ repo = "glepnir/lspsaga.nvim"
 on_event = "LspAttach"
 lua_post_source = '''
 require "modules.completion.lspsaga"
+'''
+
+[[plugins]]
+repo = "folke/trouble.nvim"
+depends = "nvim-web-devicons"
+on_event = "LspAttach"
+lua_post_source = '''
+require "modules.ui.trouble"
 '''
 
 [[plugins]]
