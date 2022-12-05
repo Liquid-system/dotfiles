@@ -1,6 +1,7 @@
 # プラグインマネージャー
 [[plugins]]
 repo = "Shougo/dein.vim"
+lazy = 1
 
 [[plugins]]
 repo = "wsdjeg/dein-ui.vim"
@@ -43,6 +44,7 @@ lua_post_source = '''
 require "modules.tools.surround"
 '''
 
+# LSP
 [[plugins]]
 repo = "glepnir/lspsaga.nvim"
 on_event = "LspAttach"
@@ -77,6 +79,8 @@ lua_post_source = '''
 require "modules.tools.emmet-vim"
 '''
 
+# コマンドツール
+# 色の設定
 [[plugins]]
 repo = "norcalli/nvim-colorizer.lua"
 on_cmd = "ColorizerToggle"
