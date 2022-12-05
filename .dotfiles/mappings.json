@@ -1,5 +1,6 @@
 {
   ".zimrc": "~/.zimrc",
+  ".zshrc_Darwin": "~/.zshrc_Darwin",
   ".czrc": "~/.czrc",
   ".gdbinit": "~/.gdbinit",
   "nvim": "~/.config/nvim",
