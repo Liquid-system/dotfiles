@@ -1,0 +1,26 @@
+# breaking: 破壊的な変更
+# build:	  ビルド
+# ci:	      CI
+# chore:    ビルドやツール変更
+# docs:	    ドキュメント
+# feat:	    新機能
+# fix:	    バグフィックス
+# perf:	    パフォーマンス
+# refactor:	リファクタリング
+# revert:	  コミット取り消し（git revert）
+# style:    コードスタイル修正
+# test:	    テスト
+# See-also: 参考にしたURLを貼る
+
+# [optional body]
+
+# ==== The Seven Rules ====
+# １  タイトルの後は1行空けて本文を書く
+# ２  タイトルを50字以内におさめる
+# ３  タイトルの文頭を大文字にする
+# ４  タイトルの文末にピリオドを付けない
+# ５  タイトルは命令形で記述する
+# ６  本文は1行あたり72字以内におさめる
+# ７  本文では「どのように」ではなく「何を」と「なぜ」を説明する 
+#
+# for https://www.conventionalcommits.org/ja/v1.0.0/

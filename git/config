@@ -10,7 +10,7 @@
 [color]
     ui = true
 [safe]
-    directory = /home/liquid_system/neovim
+    directory = ~/neovim
 [init]
     defaultBranch = main
 [interactive]
@@ -23,3 +23,5 @@
     side-by-side = true
     navigate = true    # use n and N to move between diff sections
     light = false 
+[commit]
+	template = ~/.gitmessage
