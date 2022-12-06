@@ -12,14 +12,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	command = "setlocal noundofile",
 })
 
---インサートmodeで開始するgitcommit
-vim.api.nvim_create_augroup("bufcheck", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	group = "bufcheck",
-	pattern = { "gitcommit", "gitrebase" },
-	command = "startinsert | 1",
-})
-
 -- fingetのエラーを防ぐ
 vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
 
