@@ -1,8 +1,8 @@
 [core]
 	editor = nvim
 	symlinks = true
-    pager = delta
-    autocrlf = input #CRLFを自動変換
+  pager = delta
+  autocrlf = input #CRLFを自動変換
 [add.interactive]
     useBuiltin = false
 [merge]
