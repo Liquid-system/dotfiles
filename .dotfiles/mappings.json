@@ -3,6 +3,7 @@
   ".zshrc_Darwin": "~/.zshrc_Darwin",
   ".czrc": "~/.czrc",
   ".gdbinit": "~/.gdbinit",
+  ".gitmessage": "~/.gitmessage",
   "nvim": "~/.config/nvim",
   "helix": "~/.config/helix",
   "zellij": "~/.config/zellij",
