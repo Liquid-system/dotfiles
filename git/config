@@ -1,5 +1,5 @@
 [core]
-	editor = nvim -c \"set fenc=utf-8\"
+	editor = nvim
 	symlinks = true
     pager = delta
     autocrlf = input #CRLFを自動変換
