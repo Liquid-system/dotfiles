@@ -44,7 +44,9 @@ repo = "saadparwaiz1/cmp_luasnip"
 [[plugins]]
 repo = "L3MON4D3/LuaSnip"
 lua_add = '''
-require "modules.completion.luasnip"
+require("luasnip.loaders.from_vscode").lazy_load {
+  paths = { "./friendly-snippets" },
+}
 '''
 
 # json
