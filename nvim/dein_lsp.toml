@@ -10,14 +10,6 @@ lua_add = '''
 require "modules.completion.lspconfig"
 '''
 
-# フォーマッタ―・リンター
-[[plugins]]
-repo = "jose-elias-alvarez/null-ls.nvim"
-depends = "plenary.nvim"
-lua_add = '''
-require "modules.completion.null-ls"
-'''
-
 # cmp
 [[plugins]]
 repo = "hrsh7th/nvim-cmp"
@@ -40,9 +32,18 @@ repo = "hrsh7th/cmp-cmdline"
 [[plugins]]
 repo = "saadparwaiz1/cmp_luasnip"
 
+# フォーマッタ―・リンター
+[[plugins]]
+repo = "jose-elias-alvarez/null-ls.nvim"
+depends = ["plenary.nvim", "impatient.nvim"]
+lua_add = '''
+require "modules.completion.null-ls"
+'''
+
 #スニペット
 [[plugins]]
 repo = "L3MON4D3/LuaSnip"
+depends = "impatient.nvim"
 lua_add = '''
 require("luasnip.loaders.from_vscode").lazy_load {
   paths = { "./friendly-snippets" },
