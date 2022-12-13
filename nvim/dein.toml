@@ -1,3 +1,7 @@
+# プラグインマネージャー
+[[plugins]]
+repo = "Shougo/dein.vim"
+
 # 速度上昇
 [[plugins]]
 repo = "lewis6991/impatient.nvim"

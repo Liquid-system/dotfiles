@@ -1,7 +1,6 @@
 # プラグインマネージャー
 [[plugins]]
 repo = "Shougo/dein.vim"
-lazy = 1
 
 [[plugins]]
 repo = "wsdjeg/dein-ui.vim"
