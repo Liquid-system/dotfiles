@@ -7,5 +7,6 @@ git clone --recursive git@github.com:Liquid-system/dotfiles.git
 go install github.com/rhysd/dotfiles@latest
 dotfiles link
 ```
-
+フォント
+HackGen Console NF Regular
 
