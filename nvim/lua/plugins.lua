@@ -1,6 +1,8 @@
 return {
   "lambdalisue/readablefold.vim",
-  { "windwp/nvim-ts-autotag",
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "html", "xml" },
     config = function()
       require('nvim-ts-autotag').setup()
     end,
