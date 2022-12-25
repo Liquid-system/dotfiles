@@ -3,10 +3,6 @@ local M = {
   dev = false,
   build = ":TSUpdate",
   event = "BufReadPost",
-  dependencies = {
-    "lukas-reineke/indent-blankline.nvim",
-    "windwp/nvim-ts-autotag",
-  },
 }
 
 function M.config()

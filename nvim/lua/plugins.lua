@@ -1,10 +1,15 @@
 return {
   "lambdalisue/readablefold.vim",
-  { "p00f/nvim-ts-rainbow",
+  { "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
+  {
+    "p00f/nvim-ts-rainbow",
     event = "BufReadPost",
   },
   {
-
     "m-demare/hlargs.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
