@@ -79,7 +79,6 @@ return {
       "lambdalisue/fern-renderer-nerdfont.vim",
       "lambdalisue/glyph-palette.vim",
       "lambdalisue/nerdfont.vim",
-      "lambdalisue/readablefold.vim"
     },
     config = function()
       vim.cmd("runtime vim/fern.vim")
