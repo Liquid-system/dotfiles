@@ -12,7 +12,6 @@
 # breaking: 破壊的な変更
 # build:    ビルド
 # See-also: 参考にしたURLを貼る
-#
 # ==== Emojis ====
 # :bug:         バグ修正 (fix)
 # :+1:          機能改善 (fix/feat)
@@ -27,7 +26,6 @@
 # :shower:      不要な機能・使われなくなった機能の削除 (refactor)
 # :green_heart: テストやCIの修正・改善 (test)
 # :up:          依存パッケージなどのアップデート (chore)
-#
 # ==== The Seven Rules ====
 # １  タイトルの後は1行空けて本文を書く
 # ２  タイトルを50字以内におさめる
@@ -36,5 +34,4 @@
 # ５  タイトルは命令形で記述する
 # ６  本文は1行あたり72字以内におさめる
 # ７  本文では「どのように」ではなく「何を」と「なぜ」を説明する 
-#
 # for https://www.conventionalcommits.org/ja/v1.0.0/
