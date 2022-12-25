@@ -8,18 +8,16 @@ local M = {
 	},
 }
 function M.config()
-	require("mason").setup()
-	local mason = require "mason-lspconfig"
-	local lspconfig = require "lspconfig"
-
-	mason.setup {
-		automatic_installation = true,
-	}
-
 	local function on_attach(client, bufnr)
 		require("plugins.lsp.keys").setup(client, bufnr)
 	end
 
+	require("mason").setup()
+	local mason = require "mason-lspconfig"
+	local lspconfig = require "lspconfig"
+	mason.setup {
+		automatic_installation = true,
+	}
 	mason.setup_handlers {
 		function(server)
 			local opts = {}
