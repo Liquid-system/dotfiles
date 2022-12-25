@@ -1,6 +1,10 @@
 return {
   "lambdalisue/readablefold.vim",
   {
+    "machakann/vim-sandwich",
+    event = "InsertEnter",
+  },
+  {
     "windwp/nvim-ts-autotag",
     ft = { "html", "xml" },
     config = function()
@@ -31,13 +35,6 @@ return {
           spinner = "clock",
         },
       }
-    end
-  },
-  {
-    "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup {}
-      vim.cmd "colorscheme nightfox"
     end
   },
   {
@@ -82,6 +79,14 @@ return {
     },
     config = function()
       vim.cmd("runtime vim/fern.vim")
+    end
+  },
+  --カラースキーム
+  {
+    "EdenEast/nightfox.nvim",
+    config = function()
+      require("nightfox").setup {}
+      vim.cmd "colorscheme nightfox"
     end
   }
 }

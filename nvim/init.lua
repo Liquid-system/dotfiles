@@ -4,9 +4,8 @@ vim.g.loaded_perl_provider = 0
 require "core.config"
 require "core.autocmd"
 require "core.options"
+require "core.keymap"
 
--- leaderキーをspaceに変更
-vim.g.mapleader = " "
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system {
@@ -45,5 +44,3 @@ require("lazy").setup("plugins", {
 		},
 	},
 })
-
-require "core.keymap"

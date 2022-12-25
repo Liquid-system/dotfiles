@@ -14,6 +14,8 @@
 local keymap = vim.keymap.set
 local default_opts = { silent = true, noremap = true }
 
+-- leaderキーをspaceに変更
+vim.g.mapleader = " "
 -- F5でluaを実行
 keymap("n", "<F5>", "<cmd>luafile %<CR>", default_opts)
 -- jjでノーマルモードへ移行
