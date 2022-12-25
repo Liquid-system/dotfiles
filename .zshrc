@@ -92,8 +92,6 @@ export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.pypy3/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=~/.goApp/bin:$PATH
-export PATH=$PATH:~/.local/bin
-export PATH="$HOME/.poetry/bin:$PATH"
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:~/.zig
@@ -106,6 +104,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 export COLORTERM=truecolor
+PYTHONPATH="/home/liquid-system/.local/lib/python3.11/site-packages:${PYTHONPATH}"
 
 #OSごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
