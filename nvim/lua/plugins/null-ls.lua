@@ -19,7 +19,7 @@ function M.config()
     b.formatting.rustfmt,
     --CMake
     --b.diagnostics.cmake_lint,
-    b.diagnostics.checkmake,
+    -- b.diagnostics.checkmake,
     b.formatting.cmake_format,
     -- markdown
     b.formatting.markdownlint,

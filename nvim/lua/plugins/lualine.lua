@@ -6,7 +6,7 @@ local M = {
 function M.config()
 	require("lualine").setup {
 		options = {
-			theme = "nord",
+			theme = "iceberg",
 			component_separators = "｜",
 			section_separators = { left = "", right = "" },
 		},

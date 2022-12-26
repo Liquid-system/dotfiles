@@ -60,7 +60,7 @@ function M.config()
 			icon = "  ",
 			desc = "Update Plugins          ",
 			shortcut = "  ",
-			action = "DeinUpdate",
+			action = "Lazy",
 		},
 	}
 end

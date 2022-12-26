@@ -104,7 +104,8 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 export COLORTERM=truecolor
-PYTHONPATH="/home/liquid-system/.local/lib/python3.11/site-packages:${PYTHONPATH}"
+#語尾の%を非表示
+export PROMPT_EOL_MARK=''
 
 #OSごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`

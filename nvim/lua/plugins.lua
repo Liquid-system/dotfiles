@@ -77,6 +77,7 @@ return {
       "lambdalisue/glyph-palette.vim",
       "lambdalisue/nerdfont.vim",
     },
+    keys = "<Leader>n",
     config = function()
       vim.cmd("runtime vim/fern.vim")
     end
