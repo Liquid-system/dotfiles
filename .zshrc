@@ -91,7 +91,7 @@ export PATH=$PATH:~/.yarn/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.pypy3/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=~/.goApp/bin:$PATH
+export PATH=$PATH~/.goApp/bin:$PATH
 export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
 export GOPATH=$HOME/.go
 export PATH=$PATH:~/.zig
@@ -100,7 +100,6 @@ export TMUX_TMPDIR=/tmp
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
-
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 export COLORTERM=truecolor
@@ -182,7 +181,7 @@ fi
 
 if [[ $(command -v exa) ]]; then
 	alias ls='exa --icons --colour=always'
-  alias la='exa -1'
+  alias la='exa -a --icons --colour=always'
 fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
