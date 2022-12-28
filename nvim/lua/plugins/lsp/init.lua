@@ -4,7 +4,7 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"b0o/schemastore.nvim"
+		"b0o/schemastore.nvim",
 	},
 }
 function M.config()
@@ -13,6 +13,9 @@ function M.config()
 	end
 
 	require("mason").setup()
+	require("mason-lspconfig").setup {
+		automatic_installation = false,
+	}
 	local mason = require "mason-lspconfig"
 	local lspconfig = require "lspconfig"
 	mason.setup {
@@ -22,7 +25,8 @@ function M.config()
 		function(server)
 			local opts = {}
 			opts.on_attach = on_attach
-			opts.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+			opts.capabilities =
+				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 			opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
 			opts.capabilities.offsetEncoding = { "utf-16" }
 			if server == "clangd" then
