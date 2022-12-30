@@ -86,20 +86,19 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-export PATH=$PATH:$HOME/.npm-global/bin
-export PATH=$PATH:$HOME/.yarn/bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.pypy3/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/.goApp/bin
-export PATH=$PATH:$HOME/.zig
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/zls
+export PATH=$HOME/.npm-global/bin:$PATH
+export PATH=$HOME/.yarn/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.pypy3/bin:$PATH
+export PATH=$HOME/.zig:$PATH
+export PATH=$HOME/.go/bin:$PATH
+export PATH=$HOME/zls:$PATH
+
+export PATH=/usr/local/go/bin:$PATH
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
+export CPATH=$CPATH:~/edk2/MdePkg/Include
+export CPATH=$CPATH:~/edk2/MdePkg/Include/X64
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
