@@ -86,25 +86,25 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-export PATH=$PATH:~/.npm-global/bin
-export PATH=$PATH:~/.yarn/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/.pypy3/bin
+export PATH=$PATH:$HOME/.npm-global/bin
+export PATH=$PATH:$HOME/.yarn/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.pypy3/bin
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH~/.goApp/bin:$PATH
-export CPPFLAGS LDFLAGS PKG_CONFIG_PATH
+export PATH=$PATH:$HOME/.goApp/bin
+export PATH=$PATH:$HOME/.zig
 export GOPATH=$HOME/.go
-export PATH=$PATH:~/.zig
 export PATH=$PATH:$GOPATH/bin
-export TMUX_TMPDIR=/tmp
+export PATH=$PATH:$HOME/zls
 export DENO_INSTALL="/home/liquid_system/.deno"
-export PATH=$PATH:~/zls
 export PATH="$DENO_INSTALL/bin:$PATH"
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
 export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
+export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
 export PROMPT_EOL_MARK=''
+#./configure --prefix=$STOWでビルド
 
 #OSごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
