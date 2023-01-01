@@ -76,17 +76,19 @@ function M.config()
 		automatic_installation = false,
 	}
 
-	local lsp_opts = {}
-	lsp_opts.capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-	lsp_opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
-	lsp_opts.capabilities.offsetEncoding = { "utf-16" }
 
 	mason.setup_handlers {
 		function(server_name)
+			local opts = {}
+			opts.capabilities =
+			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+			opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
+			opts.capabilities.offsetEncoding = { "utf-16" }
+
 			require("lspconfig")[server_name].setup {
 				on_attach = on_attach,
 				settings = servers[server_name],
-				lsp_opts,
+				opts
 			}
 		end,
 	}
