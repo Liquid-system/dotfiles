@@ -1,12 +1,12 @@
 local M = {
-  "mattn/emmet-vim",
-  ft = "html"
+	"mattn/emmet-vim",
+	ft = "html",
 }
 vim.g.user_emmet_settings = {
-  variables = {
-    lang = "ja",
-  },
+	variables = {
+		lang = "ja",
+	},
 }
-vim.g.user_emmet_leader_key = '<C-d>'
+vim.g.user_emmet_leader_key = "<C-d>"
 
 return M

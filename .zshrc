@@ -89,10 +89,8 @@ unset key
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.pypy3/bin:$PATH
 export PATH=$HOME/.zig:$PATH
 export PATH=$HOME/.go/bin:$PATH
-export PATH=$HOME/zls:$PATH
 
 export PATH=/usr/local/go/bin:$PATH
 export DENO_INSTALL="/home/liquid_system/.deno"
