@@ -4,7 +4,7 @@ local M = {
 	event = "LspAttach",
 }
 function M.config()
-	require("trouble").setup {}
+	require("trouble").setup({})
 end
 
 return M

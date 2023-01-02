@@ -3,7 +3,7 @@ local M = {
 	cmd = { "Telescope" },
 }
 function M.config()
-	require("telescope").setup {
+	require("telescope").setup({
 		preview = {
 			mime_hook = function(filepath, bufnr, opts)
 				local is_image = function(filepath)
@@ -51,7 +51,7 @@ function M.config()
 				},
 			},
 		},
-	}
+	})
 end
 
 return M

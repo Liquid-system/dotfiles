@@ -2,16 +2,11 @@ local M = {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
 	},
 }
 function M.config()
-	local function on_attach(client, bufnr)
-		require("plugins.lsp.keys").setup(client, bufnr)
-	end
-
 	local servers = {
 		clangd = {
 			cmd = {
@@ -68,30 +63,30 @@ function M.config()
 		},
 	}
 
-	require("mason").setup()
-	local mason = require "mason-lspconfig"
+	local mason = require("mason-lspconfig")
 
-	mason.setup {
+	mason.setup({
 		ensure_installed = vim.tbl_keys(servers),
 		automatic_installation = false,
-	}
+	})
 
+	local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	capabilities.textDocument.completion.completionItem.snippetSupport = true
+	capabilities.offsetEncoding = { "utf-16" }
 
-	mason.setup_handlers {
+	local function on_attach(client, bufnr)
+		require("plugins.lsp.keys").setup(client, bufnr)
+	end
+
+	mason.setup_handlers({
 		function(server_name)
-			local opts = {}
-			opts.capabilities =
-			require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-			opts.capabilities.textDocument.completion.completionItem.snippetSupport = true
-			opts.capabilities.offsetEncoding = { "utf-16" }
-
-			require("lspconfig")[server_name].setup {
+			require("lspconfig")[server_name].setup({
 				on_attach = on_attach,
+				capabilities = capabilities,
 				settings = servers[server_name],
-				opts
-			}
+			})
 		end,
-	}
+	})
 end
 
 return M

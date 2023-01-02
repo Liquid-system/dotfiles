@@ -4,7 +4,7 @@ local M = {
 	dependencies = "nvim-tree/nvim-web-devicons",
 }
 function M.config()
-	require("lualine").setup {
+	require("lualine").setup({
 		options = {
 			theme = "iceberg",
 			component_separators = "｜",
@@ -19,7 +19,7 @@ function M.config()
 				{ "location", separator = { right = "" }, left_padding = 2 },
 			},
 		},
-	}
+	})
 end
 
 return M

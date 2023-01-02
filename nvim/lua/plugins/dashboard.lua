@@ -2,12 +2,12 @@ local M = {
 	"glepnir/dashboard-nvim",
 }
 function M.config()
-	local db = require "dashboard"
+	local db = require("dashboard")
 	--footer
 	local function footer()
 		local v = vim.version()
-		local datetime = os.date "     %Y-%m-%d   %H:%M:%S"
-		local platform = vim.fn.has "win32" == 1 and "" or ""
+		local datetime = os.date("     %Y-%m-%d   %H:%M:%S")
+		local platform = vim.fn.has("win32") == 1 and "" or ""
 		return string.format("%s v%d.%d.%d %s", datetime, v.major, v.minor, v.patch, platform)
 	end
 

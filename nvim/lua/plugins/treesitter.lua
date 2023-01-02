@@ -6,7 +6,7 @@ local M = {
 }
 
 function M.config()
-	require("nvim-treesitter.configs").setup {
+	require("nvim-treesitter.configs").setup({
 		highlight = {
 			enable = true,
 		},
@@ -19,6 +19,6 @@ function M.config()
 			max_file_lines = nil, -- Do not enable for files with more than n lines, int
 		},
 		ensure_installed = "all",
-	}
+	})
 end
 return M
