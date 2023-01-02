@@ -30,3 +30,10 @@ if vim.fn.has "persistent_undo" then
   vim.opt.undodir = target_path
   vim.opt.undofile = true
 end
+
+--マウスの設定
+vim.cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
+vim.cmd.aunmenu { "PopUp.-1-" }
+
+--表示を英語にする
+vim.api.nvim_command "language messages C"
