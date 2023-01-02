@@ -1,5 +1,4 @@
 zmodule environment
-zmodule git
 zmodule input
 zmodule termtitle
 # asciishipで最後のコマンドの実行にかかった時間を表示
@@ -10,8 +9,8 @@ zmodule eriner
 zmodule archive
 # Additional completion definitions for Zsh.
 zmodule zsh-users/zsh-completions --fpath src
-zmodule completion #この部分を最後にする
+zmodule completion 
 zmodule zsh-users/zsh-syntax-highlighting # sourced after completion
 zmodule zsh-users/zsh-history-substring-search  # sourced after zsh-syntax-highlighting
-zmodule zsh-users/zsh-autosuggestions # sourced last
+zmodule zsh-users/zsh-autosuggestions 
 

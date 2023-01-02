@@ -91,12 +91,13 @@ export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.zig:$PATH
 export PATH=$HOME/.go/bin:$PATH
-
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH=/usr/local/go/bin:$PATH
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export CPATH=$CPATH:~/edk2/MdePkg/Include
-export CPATH=$CPATH:~/edk2/MdePkg/Include/X64
+export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
+export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
@@ -107,7 +108,7 @@ export PROMPT_EOL_MARK=''
 [ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
 #マシンごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
-
+#補完を有効にする
 fpath+=~/.zfunc
 
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
@@ -145,7 +146,6 @@ setopt correct
 # jjで抜ける
 bindkey "jj" vi-cmd-mode
 # Use modern completion system
-
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -160,7 +160,6 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
@@ -180,16 +179,11 @@ if [[ $(command -v exa) ]]; then
 	alias ls='exa --icons --colour=always'
   alias la='exa -a --icons --colour=always'
 fi
+
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-
-# export DISPLAY=`hostname`.mshome.net:0.0
-
-. "$HOME/.cargo/env"
-
 ZSH_DISABLE_COMPFIX="true"
-
 
 #ヒストリで補完する
 ZSH_AUTOSUGGEST_STRATEGY=history
@@ -215,9 +209,6 @@ local cmd=${line%% *}
 	&& ${cmd} != (m|man)
 ]]
 }
-
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 #zshrcの自動コンパイル
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
