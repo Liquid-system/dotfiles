@@ -9,7 +9,7 @@ M.signs = {
 
 function M.setup()
   vim.diagnostic.config {
-    virtual_text = false,
+    -- virtual_text = false,
     signs = {
       active = M.signs, -- show signs
     },

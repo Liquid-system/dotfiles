@@ -7,6 +7,17 @@ local M = {
   },
 }
 function M.config()
+  require "mason"
+  require("plugins.lsp.diagnostics").setup()
+
+  local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.offsetEncoding = { "utf-16" }
+
+  local mason = require "mason-lspconfig"
+  mason.setup {
+    automatic_installation = false,
+  }
   local servers = {
     clangd = {
       cmd = {
@@ -62,17 +73,6 @@ function M.config()
       },
     },
   }
-  require "mason"
-  local mason = require "mason-lspconfig"
-  mason.setup {
-    --遅い
-    --ensure_installed = vim.tbl_keys(servers),
-    automatic_installation = false,
-  }
-  local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.offsetEncoding = { "utf-16" }
-
   mason.setup_handlers {
     function(server_name)
       require("lspconfig")[server_name].setup {
