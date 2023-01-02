@@ -62,26 +62,23 @@ function M.config()
       },
     },
   }
-
+  require "mason"
   local mason = require "mason-lspconfig"
-
   mason.setup {
-    ensure_installed = vim.tbl_keys(servers),
+    --遅い
+    --ensure_installed = vim.tbl_keys(servers),
     automatic_installation = false,
   }
-
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.offsetEncoding = { "utf-16" }
 
-  local function on_attach(client, bufnr)
-    require("plugins.lsp.keys").setup(client, bufnr)
-  end
-
   mason.setup_handlers {
     function(server_name)
       require("lspconfig")[server_name].setup {
-        on_attach = on_attach,
+        on_attach = function(client, bufnr)
+          require("plugins.lsp.keys").setup(client, bufnr)
+        end,
         capabilities = capabilities,
         settings = servers[server_name],
       }
