@@ -4,10 +4,10 @@ local M = {
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
     "onsails/lspkind.nvim",
+    --"hrsh7th/cmp-nvim-lsp-signature-help"
   },
 }
 function M.config()
@@ -95,7 +95,6 @@ function M.config()
     sources = {
       { name = "nvim_lsp" },
       { name = "luasnip" },
-      { name = "nvim_lsp_signature_help" },
       { name = "buffer" },
       { name = "nvim_lua" },
       { name = "path" },

@@ -37,3 +37,7 @@ vim.cmd.aunmenu { "PopUp.-1-" }
 
 --表示を英語にする
 vim.api.nvim_command "language messages C"
+
+--クライアント設定
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
