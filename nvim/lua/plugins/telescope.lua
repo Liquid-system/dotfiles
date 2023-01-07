@@ -30,7 +30,6 @@ function M.config()
       end,
     },
     defaults = {
-      -- ....
     },
     pickers = {
       find_files = {

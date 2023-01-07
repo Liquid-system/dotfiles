@@ -18,7 +18,7 @@ function M.config()
     --rust
     b.formatting.rustfmt,
     --CMake
-    --b.diagnostics.cmake_lint,
+    -- b.diagnostics.cmake_lint,
     -- b.diagnostics.checkmake,
     b.formatting.cmake_format,
     -- markdown
@@ -26,6 +26,7 @@ function M.config()
     b.formatting.markdown_toc,
     -- go
     b.formatting.goimports,
+    b.formatting.gofmt,
     --javascript
     b.diagnostics.eslint,
     b.code_actions.eslint,

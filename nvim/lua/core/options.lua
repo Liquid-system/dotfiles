@@ -68,7 +68,7 @@ vim.opt.ttimeoutlen = 10
 opt.formatoptions:remove { "r", "o" }
 opt.formatoptions:append { "M", "j" }
 -- クリップボード
-opt.clipboard = "unnamed"
+opt.clipboard = { "unnamed", "unnamedplus" }
 -- 折り畳みを有効
 opt.wrap = true
 -- 仮想編集を有効
@@ -76,7 +76,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
@@ -85,7 +85,7 @@ opt.termguicolors = true
 -- shadafileに書き込まない
 vim.opt.shadafile = "NONE"
 --fold
-vim.o.foldcolumn = "0" -- '0' is not bad
+vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true

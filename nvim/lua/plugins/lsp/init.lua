@@ -13,7 +13,6 @@ function M.config()
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   capabilities.offsetEncoding = { "utf-16" }
-
   local mason = require "mason-lspconfig"
   mason.setup {
     automatic_installation = false,
@@ -73,6 +72,7 @@ function M.config()
       },
     },
   }
+
   mason.setup_handlers {
     function(server_name)
       require("lspconfig")[server_name].setup {

@@ -1,1 +1,1 @@
-return require "plugins.colorScheme.tokyonight"
+return require "plugins.colorScheme.nightfox"

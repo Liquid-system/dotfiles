@@ -7,6 +7,7 @@ function M.config()
   require("lualine").setup {
     options = {
       theme = "iceberg",
+      globalstatus = true,
       component_separators = "｜",
       section_separators = { left = "", right = "" },
     },

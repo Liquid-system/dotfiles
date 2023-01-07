@@ -1,5 +1,4 @@
 return {
-  "lambdalisue/readablefold.vim",
   {
     "machakann/vim-sandwich",
     event = "InsertEnter",
@@ -10,10 +9,6 @@ return {
     config = function()
       require("nvim-ts-autotag").setup()
     end,
-  },
-  {
-    "p00f/nvim-ts-rainbow",
-    event = "BufReadPost",
   },
   {
     "cohama/lexima.vim",
@@ -29,10 +24,6 @@ return {
         },
       }
     end,
-  },
-  {
-    "gpanders/editorconfig.nvim",
-    ft = "editorconfig",
   },
   {
     "folke/neodev.nvim",
@@ -51,16 +42,6 @@ return {
     config = function()
       vim.g.winresizer_start_key = "<C-s>"
       vim.g.winresizer_vert_resize = 1
-    end,
-  },
-  {
-    "narutoxy/silicon.lua",
-    event = "BufRead",
-    config = function()
-      require("silicon").setup {}
-      vim.keymap.set("v", "<Leader>li", function()
-        require("silicon").visualise_api {}
-      end)
     end,
   },
   {
