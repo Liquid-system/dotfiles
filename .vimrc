@@ -1,8 +1,9 @@
- if has('vim_starting')
-	 "挿入モード時に非点滅の縦棒タイプのカーソル
-    let &t_SI .= "\e[6 q"
-    "置換モード時に非点滅の下線タイプのカーソル
-	let &t_SR .= "\e[4 q"
+vim9script
+if has('vim_starting')
+	 # 挿入モード時に非点滅の縦棒タイプのカーソル
+    var &t_SI .= "\e[6 q"
+   # 置換モード時に非点滅の下線タイプのカーソル
+	  var  &t_SR .= "\e[4 q"
 endif
 set number
 set title
@@ -11,87 +12,85 @@ syntax on
 set encoding=utf-8
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
-" 表示行と論理行を入れ替える
+# 表示行と論理行を入れ替える
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
-" ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
+# ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
 vnoremap < <gv
 vnoremap > >gv
-" leaderキーの設定
+# leaderキーの設定
 let mapleader = "\<space>"
-" 英語表示
+# 英語表示
 language messages C
 set termguicolors
 filetype on
-" Windowsでパスの区切り文字をスラッシュで扱う
+# Windowsでパスの区切り文字をスラッシュで扱う
 set shellslash
-" 対応する括弧やブレースを表示
+# 対応する括弧やブレースを表示
 set showmatch matchtime=1
-" yでコピーした時にクリップボードに入る
+ yでコピーした時にクリップボードに入る
 set clipboard+=unnamed
 set guioptions+=a
-" クリップボード設定
+# クリップボード設定
 set clipboard=unnamed
-" 対応する括弧を強調表示
+# 対応する括弧を強調表示
 set showmatch
-" スワップファイルを作成しない
+# スワップファイルを作成しない
 set noswapfile
-" 改行時の自動コメントアウトを無効にする
+# 改行時の自動コメントアウトを無効にする
 set formatoptions-=ro
 set mouse=a
-" バックスペース
+# バックスペース
 set backspace=indent,eol,start
-" ファイルエンコーディング
+# ファイルエンコーディング
 set fenc=utf-8
 set fileformats=unix,dos,mac
-" スペースの追加
+# スペースの追加
 set virtualedit=onemore
-" 検索系
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+# 検索系
+# 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索する
+# 検索文字列に大文字が含まれている場合は区別して検索する
 set smartcase
-" 検索文字列入力時に順次対象文字列にヒットさせる
+# 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
-" 検索時に最後まで行ったら最初に戻る
+# 検索時に最後まで行ったら最初に戻る
 set wrapscan
-" 検索語をハイライト表示
+# 検索語をハイライト表示
 set hlsearch
-" tabで補完
+# tabで補完
 set nocompatible
-" コマンドラインの補完
+# コマンドラインの補完
 set wildmode=list:longest
-" vimからファイルを開くときにタブを表示する
+# vimからファイルを開くときにタブを表示する
 set wildmenu wildmode=list:full
-" キーの待ち時間設定
+# キーの待ち時間設定
 set timeoutlen=250
-" 空白をスペース4文分にする
+# 空白をスペース4文分にする
 set shiftwidth=4
-" タブを4文字分にする
+# タブを4文字分にする
 set tabstop=4
-" 不要なコメント開始文字削除
-" マルチバイト文字前後のスペース削除
+# 不要なコメント開始文字削除
+# マルチバイト文字前後のスペース削除
 set fo+=j
-set fo+=M 
-" インサートモード中でも移動する
+set fo+=M
+# インサートモード中でも移動する
 imap <C-h> <Left>
 imap <C-l> <Right>
-" ヤンクした内容が上書きされないようにする
-noremap PP "0p
-" コマンドで削除した時はヤンクしない
+# コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
 vnoremap df "_dd
 nnoremap df "_dd
-" コピペ時の自動インデント
+# コピペ時の自動インデント
 nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
 
-" 編集箇所のカーソルを記憶
+# 編集箇所のカーソルを記憶
 if has("autocmd")
   augroup redhat
     " In text files, always limit the width of text to 78 characters
@@ -104,7 +103,7 @@ if has("autocmd")
   augroup END
 endif
 
-" 不要なデフォルトプラグインの停止
+# 不要なデフォルトプラグインの停止
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
 let g:loaded_tarPlugin         = 1
@@ -120,48 +119,37 @@ let g:loaded_netrw             = 1
 let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
-" 画面間でのカーソルの移動
+# 画面間でのカーソルの移動
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
-" タブの移動
+# タブの移動
 tabnext
 nnoremap <silent> tl :tabnext<CR>
 nnoremap <silent> th :tabprevious<CR>
 
-" dein
-" Quick start
-" Add the dein installation directory into runtimepath
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-call dein#begin('~/.cache/dein')
-
-" Add or remove your plugins here like this:
-call dein#add('wsdjeg/dein-ui.vim', { "on_cmd" : "DeinUpdate" })
-call dein#add('vim-jp/vimdoc-ja')
-call dein#add('itchyny/lightline.vim')
-call dein#add('tpope/vim-surround')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('preservim/nerdcommenter')
-call dein#add('jiangmiao/auto-pairs')
-call dein#add('lambdalisue/nerdfont.vim')
-call dein#add('lambdalisue/fern.vim')
-call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
-call dein#add('lambdalisue/glyph-palette.vim')
-call dein#add('lambdalisue/fern-hijack.vim')
-call dein#add('vim-scripts/vim-auto-save')
-" カラースキーム
-call dein#add('wadackel/vim-dogrun')
-" Required
-
-call dein#end()
+packadd vim-jetpack
+call jetpack#begin()
+Jetpack 'vim-jp/vimdoc-ja'
+Jetpack 'itchyny/lightline.vim'
+Jetpack 'tpope/vim-surround'
+Jetpack 'easymotion/vim-easymotion'
+Jetpack 'preservim/nerdcommenter'
+Jetpack 'jiangmiao/auto-pairs'
+Jetpack 'lambdalisue/nerdfont.vim'
+Jetpack 'lambdalisue/fern.vim'
+Jetpack 'lambdalisue/fern-renderer-nerdfont.vim'
+Jetpack 'lambdalisue/glyph-palette.vim'
+Jetpack 'lambdalisue/fern-hijack.vim'
+Jetpack 'vim-scripts/vim-auto-save'
+Jetpack 'wadackel/vim-dogrun'
+call jetpack#end()
 
 " NerdCommenter
 " keep cursor column when JK motion
 
-let g:EasyMotion_startofline = 0 
+let g:EasyMotion_startofline = 0
 let g:NERDCreateDefaultMappings = 1
 nmap <Leader>/ <Plug>NERDCommenterToggle
 vmap <Leader>/ <Plug>NERDCommenterSexy
@@ -343,24 +331,7 @@ augroup switch_auto_save
   au BufEnter * call s:auto_save_detect()
 augroup END
 
-" gitcommitのスペルcheck自動有効化
-augroup GitSpellCheck
-autocmd!
-autocmd FileType gitcommit setlocal spell
-augroup END
 " colorscheme
 syntax enable
 colorscheme dogrun
 
-" 自動リムーブ
-call map(dein#check_clean(), "delete(v:val, 'rf')")
-let s:removed_plugins = dein#check_clean()
-if len(s:removed_plugins) > 0
-  call map(s:removed_plugins, "delete(v:val, 'rf')")
-  call dein#recache_runtimepath()
-endif
-" If you want to install not installed plugins on startup.
-let g:dein#auto_recache = 1
-if dein#check_install()
-  call dein#install()
-endif

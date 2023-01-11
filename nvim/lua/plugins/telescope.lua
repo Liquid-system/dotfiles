@@ -29,8 +29,7 @@ function M.config()
         end
       end,
     },
-    defaults = {
-    },
+    defaults = {},
     pickers = {
       find_files = {
         mappings = {

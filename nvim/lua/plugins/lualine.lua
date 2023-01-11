@@ -1,10 +1,8 @@
-local M = {
+return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   dependencies = "nvim-tree/nvim-web-devicons",
-}
-function M.config()
-  require("lualine").setup {
+  opts = {
     options = {
       theme = "iceberg",
       globalstatus = true,
@@ -20,7 +18,5 @@ function M.config()
         { "location", separator = { right = "" }, left_padding = 2 },
       },
     },
-  }
-end
-
-return M
+  },
+}

@@ -1,9 +1,9 @@
 local M = {
-  "EdenEast/nightfox.nvim",
+	"EdenEast/nightfox.nvim",
 }
 function M.config()
-  require("nightfox").setup {}
-  vim.cmd "colorscheme nightfox"
+	require("nightfox").setup({})
+	vim.cmd("colorscheme nightfox")
 end
 
 return M

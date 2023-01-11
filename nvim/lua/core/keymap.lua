@@ -43,13 +43,8 @@ vim.keymap.set("n", "P", "]P", default_opts)
 vim.keymap.set("n", "]p", "p", default_opts)
 vim.keymap.set("n", "]P", "P", default_opts)
 -- 画面間でのカーソルの移動
+vim.keymap.set("n", "<Leader>w", "<C-w>", default_opts)
 vim.keymap.set("n", "<Leader>j", "<C-w>j", default_opts)
 vim.keymap.set("n", "<Leader>k", "<C-w>k", default_opts)
 vim.keymap.set("n", "<Leader>h", "<C-w>h", default_opts)
 vim.keymap.set("n", "<Leader>l", "<C-w>l", default_opts)
-
--- タブライン
-vim.keymap.set("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", default_opts)
-vim.keymap.set("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", default_opts)
--- タブの移動
-vim.keymap.set("n", "<Leader>e", "<cmd>TroubleToggle<CR>", default_opts)
