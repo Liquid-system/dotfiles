@@ -12,7 +12,6 @@
 't' Terminal
 --]]
 local default_opts = { silent = true, noremap = true }
-
 -- leaderキーをspaceに変更
 vim.g.mapleader = " "
 -- F5でluaを実行
