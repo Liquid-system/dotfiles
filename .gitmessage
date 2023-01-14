@@ -5,6 +5,7 @@
 # docs:     ドキュメント
 # feat:     新機能
 # fix:      バグフィックス
+# remove:   ファイルの削除
 # perf:     パフォーマンス
 # refactor: リファクタリング
 # revert:   コミット取り消し（git revert）
