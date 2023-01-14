@@ -63,7 +63,7 @@ vim.opt.listchars = {
   -- precedes = "❮",
 }
 -- ノーマルモードから出るまでの時間を短縮
-vim.opt.ttimeoutlen = 10
+vim.opt.ttimeoutlen = 1
 -- 改行時の自動コメントアウトを無効にする
 opt.formatoptions:remove { "r", "o" }
 opt.formatoptions:append { "M", "j" }

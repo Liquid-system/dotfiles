@@ -5,6 +5,10 @@ return {
     config = true,
   },
   {
+    "folke/neodev.nvim",
+    ft = "lua",
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPost",
     opts = {
@@ -53,10 +57,6 @@ return {
     init = function()
       vim.keymap.set("n", "<Leader>e", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
     end,
-  },
-  {
-    "folke/neodev.nvim",
-    ft = "lua",
   },
   {
     "lambdalisue/fern.vim",

@@ -7,6 +7,7 @@ return {
   },
   config = function()
     require "mason"
+    require("neodev")
     require("plugins.lsp.diagnostics").setup()
     local keys = function(client, bufnr)
       require("plugins.lsp.keys").keys(client, bufnr)

@@ -1,14 +1,13 @@
 return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
-  config = function()
-    require("lspsaga").init_lsp_saga {
-      code_action_lightbulb = { enable = false },
-      symbol_in_winbar = {
-        in_custom = true,
-      },
-    }
-  end,
+  opts = {
+    code_action_lightbulb = { enable = false },
+    symbol_in_winbar = {
+      in_custom = true,
+    },
+  }
+  ,
   init = function()
     -- Lsp finder find the symbol definition implement reference
     vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
@@ -26,12 +25,12 @@ return {
     vim.keymap.set("n", "]E", function()
       require("lspsaga.diagnostic").goto_next { severity = vim.diagnostic.severity.ERROR }
     end, { silent = true })
+    -- Callhierarchy
+    vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+    vim.keymap.set("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
     vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
-    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+    --vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
     -- Float terminal
-    vim.keymap.set("n", "<leader>i", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
-    -- if you want pass somc cli command into terminal you can do like this
-    -- close floaterm
-    vim.keymap.set("t", "<leader>i", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+    vim.keymap.set({ "n", "t" }, "<leader>i", "<cmd>Lspsaga term_toggle<CR>")
   end,
 }
