@@ -6,18 +6,19 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
-    require "mason"
-    require("neodev")
-    require("plugins.lsp.diagnostics").setup()
-    local keys = function(client, bufnr)
-      require("plugins.lsp.keys").keys(client, bufnr)
-    end
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.offsetEncoding = { "utf-16" }
+
+    require("plugins.lsp.diagnostics").setup()
     require("mason-lspconfig").setup {
       automatic_installation = false,
     }
+
+    local keys = function(client, bufnr)
+      require("plugins.lsp.keys").keys(client, bufnr)
+    end
+
     require("mason-lspconfig").setup_handlers {
       function(server_name)
         require("lspconfig")[server_name].setup {
@@ -73,6 +74,7 @@ return {
         }
       end,
       ["sumneko_lua"] = function()
+        require("neodev")
         require("lspconfig").sumneko_lua.setup {
           on_attach = keys,
           capabilities = capabilities,
