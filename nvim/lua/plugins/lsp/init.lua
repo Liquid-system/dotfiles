@@ -3,7 +3,6 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "williamboman/mason-lspconfig.nvim",
-    "b0o/schemastore.nvim",
   },
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -62,12 +61,14 @@ return {
         }
       end,
       ["jsonls"] = function()
+        local status, schemastore = pcall(require, "schemastore")
+        if (not status) then return end
         require("lspconfig").jsonls.setup {
           on_attach = keys,
           capabilities = capabilities,
           settings = {
             json = {
-              schemas = require("schemastore").json.schemas(),
+              schemas = schemastore.json.schemas(),
               validate = { enable = true },
             },
           },

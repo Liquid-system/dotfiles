@@ -1,5 +1,9 @@
 return {
   {
+    "b0o/schemastore.nvim",
+    lazy = "true"
+  },
+  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     config = true,
