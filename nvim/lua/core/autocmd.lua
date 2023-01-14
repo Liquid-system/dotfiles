@@ -12,10 +12,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = "setlocal noundofile",
 })
 
--- fingetのエラーを防ぐ
+-- fidgetのエラーを防ぐ
 vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] })
 
--- カーソル位置
+-- ジャンプ先でカーソル位置の復元
 local group = vim.api.nvim_create_augroup("jump_last_position", { clear = true })
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()

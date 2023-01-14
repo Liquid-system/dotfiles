@@ -1,6 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
-  event = "LspAttach",
+  event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -23,16 +23,7 @@ return {
         { "│", hl_name },
       }
     end
-
-    local cmp_window = require "cmp.utils.window"
-    cmp_window.info_ = cmp_window.info
-    cmp_window.info = function(self)
-      local info = self:info_()
-      info.scrollable = false
-      return info
-    end
-
-    local options = {
+    cmp.setup {
       window = {
         completion = {
           border = border "CmpBorder",
@@ -99,7 +90,6 @@ return {
         { name = "path" },
       },
     }
-    cmp.setup(options)
     -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),

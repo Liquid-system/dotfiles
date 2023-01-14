@@ -2,12 +2,13 @@ return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
   opts = {
-    code_action_lightbulb = { enable = false },
-    symbol_in_winbar = {
-      in_custom = true,
+    lightbulb = {
+      enable = false,
     },
-  }
-  ,
+    symbol_in_winbar = {
+      separator = '',
+    },
+  },
   init = function()
     -- Lsp finder find the symbol definition implement reference
     vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })

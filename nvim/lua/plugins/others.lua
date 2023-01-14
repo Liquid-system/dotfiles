@@ -28,7 +28,7 @@ return {
   {
     "max397574/better-escape.nvim",
     opts = {
-      mapping = { "jk", "jj", "kj" },
+      mapping = { "jj", "jk", "kj" },
     },
   },
   {
@@ -65,9 +65,10 @@ return {
       "lambdalisue/glyph-palette.vim",
       "lambdalisue/nerdfont.vim",
     },
-    keys = "<Leader>n",
+    --keys = "<Leader>n",
     config = function()
       vim.cmd "runtime vim/fern.vim"
     end,
   },
+  "lambdalisue/fern-hijack.vim",
 }

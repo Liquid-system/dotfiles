@@ -12,12 +12,11 @@
 't' Terminal
 --]]
 local default_opts = { silent = true, noremap = true }
--- leaderキーをspaceに変更
-vim.g.mapleader = " "
+
+-- jjでノーマルモードへ移行
+--vim.keymap.set("i", "jj", "<ESC>", default_opts)
 -- F5でluaを実行
 vim.keymap.set("n", "<F5>", "<cmd>luafile %<CR>", default_opts)
--- jjでノーマルモードへ移行
-vim.keymap.set("i", "jj", "<ESC>", default_opts)
 --ESC2回で点滅が消える
 vim.keymap.set("n", "<ESC><ESC>", "<cmd>nohl<CR>", default_opts)
 -- 表示行と論理行を入れ替える
@@ -41,7 +40,12 @@ vim.keymap.set("n", "p", "]p", default_opts)
 vim.keymap.set("n", "P", "]P", default_opts)
 vim.keymap.set("n", "]p", "p", default_opts)
 vim.keymap.set("n", "]P", "P", default_opts)
--- 画面間でのカーソルの移動
+-- バッファサイズの変更
+vim.keymap.set("n", "<Up>", "<cmd>resize -1<cr>", default_opts)
+vim.keymap.set("n", "<Down>", "<cmd>resize +1<cr>", default_opts)
+vim.keymap.set("n", "<Left>", "<cmd>vertical resize -1<cr>", default_opts)
+vim.keymap.set("n", "<Right>", "<cmd>vertical resize +1<cr>", default_opts)
+-- バッファ間のカーソルの移動
 vim.keymap.set("n", "<Leader>w", "<C-w>", default_opts)
 vim.keymap.set("n", "<Leader>j", "<C-w>j", default_opts)
 vim.keymap.set("n", "<Leader>k", "<C-w>k", default_opts)
