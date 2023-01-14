@@ -2,10 +2,10 @@ return {
   keys = function(client, buffer)
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true })
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true })
 
-    local bufopts = { noremap = true, silent = true, buffer = buffer }
+    local bufopts = { silent = true, buffer = buffer }
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)

@@ -1,7 +1,7 @@
 return {
   {
     "b0o/schemastore.nvim",
-    lazy = "true"
+    lazy = "true",
   },
   {
     "williamboman/mason.nvim",
@@ -72,6 +72,9 @@ return {
     --keys = "<Leader>n",
     config = function()
       vim.cmd "runtime vim/fern.vim"
+    end,
+    init = function()
+      vim.keymap.set("n", "<Leader>n", "<cmd>:Fern . -drawer -reveal=% -toggle<CR>")
     end,
   },
   "lambdalisue/fern-hijack.vim",

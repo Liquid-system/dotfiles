@@ -26,8 +26,6 @@ return {
       footer(),
       "",
     }
-    --db.preview_command = "ueberzug"
-    --db.preview_file_path = "/home/liquid_system/.dotfile/nvim/static/neovim.cat"
     db.preview_file_height = 11
     db.preview_file_width = 70
     db.preview_file_height = 11
@@ -37,7 +35,8 @@ return {
     icon = "  ",
     desc = "New file                                    ",
     action = "e",
-  }, ]]
+  },
+  ]]
       {
         icon = "  ",
         desc = "Quit NVIM                 ",
