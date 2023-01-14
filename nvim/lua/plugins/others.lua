@@ -62,20 +62,5 @@ return {
       vim.keymap.set("n", "<Leader>e", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
     end,
   },
-  {
-    "lambdalisue/fern.vim",
-    dependencies = {
-      "lambdalisue/fern-renderer-nerdfont.vim",
-      "lambdalisue/glyph-palette.vim",
-      "lambdalisue/nerdfont.vim",
-    },
-    --keys = "<Leader>n",
-    config = function()
-      vim.cmd "runtime vim/fern.vim"
-    end,
-    init = function()
-      vim.keymap.set("n", "<Leader>n", "<cmd>:Fern . -drawer -reveal=% -toggle<CR>")
-    end,
-  },
   "lambdalisue/fern-hijack.vim",
 }
