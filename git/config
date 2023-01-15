@@ -1,27 +1,27 @@
 [core]
-	editor = nvim
-	symlinks = true
+  editor = nvim
+  symlinks = true
   pager = delta
   autocrlf = input #CRLFを自動変換
 [add.interactive]
-    useBuiltin = false
+  useBuiltin = false
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
 [color]
-    ui = true
+  ui = true
 [safe]
-    directory = ~/neovim
+  directory = ~/neovim
 [init]
-    defaultBranch = main
+  defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [include]
-    path = ~/.themes.gitconfig
-    path = ~/.gitconfig.local
+  path = ~/.themes.gitconfig
+  path = ~/.gitconfig.local
 [delta]
-    features = zebra-dark 
-    side-by-side = true
-    navigate = true    # use n and N to move between diff sections
-    light = false 
+  features = zebra-dark 
+  side-by-side = true
+  navigate = true    # use n and N to move between diff sections
+  light = false 
 [commit]
-	template = ~/.gitmessage
+  template = ~/.gitmessage

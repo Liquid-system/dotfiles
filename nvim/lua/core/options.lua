@@ -58,7 +58,9 @@ precedes: ウィンドウの幅が狭くて左に省略された文字がある�
 nbsp: 不可視のスペース]]
 vim.opt.listchars = {
   tab = " ",
-  }
+  trail = "·",
+  --eol = ""
+}
 -- ノーマルモードから出るまでの時間を短縮
 vim.opt.ttimeoutlen = 1
 -- 改行時の自動コメントアウトを無効にする
