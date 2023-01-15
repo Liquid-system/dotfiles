@@ -17,20 +17,22 @@ return {
 		vim.g["fern#renderer"] = "nerdfont"
 		vim.g["fern#renderer#nerdfont#indent_markers"] = 1
 		vim.g["fern#default_hidden"] = 1
-		local palette = vim.api.nvim_create_augroup("my-glyph-palette", { clear = true })
-		vim.api.nvim_create_autocmd("User", {
+
+		local palette = vim.api.nvim_create_augroup("palette", { clear = true })
+		vim.api.nvim_create_autocmd("FileType", {
 			group = palette,
 			pattern = "fern",
 			callback = function()
-				vim.fn["glyph_palette#apply"]()
+				vim.call("glyph_palette#apply")
 			end
 		})
-		vim.api.nvim_create_autocmd("User", {
+		vim.api.nvim_create_autocmd("FileType", {
 			group = palette,
 			pattern = { "nerdtree", "startify" },
 			callback = function()
-				vim.fn["glyph_palette#apply"]()
+				vim.call("glyph_palette#apply")
 			end
 		})
+
 	end
 }

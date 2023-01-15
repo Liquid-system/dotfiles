@@ -7,6 +7,6 @@ return {
     },
     hint_enable = false,
     toggle_key = "<C-k>",
-    select_signature_key = "<C-n>",
+    select_signature_key = "<C-l>",
   },
 }

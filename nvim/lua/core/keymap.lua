@@ -27,9 +27,6 @@ vim.keymap.set("n", "gj", "j", default_opts)
 -- ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
 vim.keymap.set("v", "<", "<gv", default_opts)
 vim.keymap.set("v", ">", ">gv", default_opts)
--- インサートモード中でも移動する
-vim.keymap.set("i", "<C-h>", "<Left>", default_opts)
-vim.keymap.set("i", "<C-l", "<Right>", default_opts)
 -- ヤンクした内容が上書きされないようにする
 vim.keymap.set("n", "PP", '"0p', default_opts)
 -- コマンドで削除した時はヤンクしない
