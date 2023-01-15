@@ -57,7 +57,7 @@ extends: ウィンドウの幅が狭くて右に省略された文字がある�
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
 vim.opt.listchars = {
-  tab = "",
+  tab = " ",
   }
 -- ノーマルモードから出るまでの時間を短縮
 vim.opt.ttimeoutlen = 1
