@@ -46,7 +46,7 @@ opt.expandtab = true
 --行の改行を防ぐ
 opt.linebreak = true
 -- 制御文字を表示
--- opt.list = true
+opt.list = true
 -- 制御文字をカスタマイズ
 --[[
 tab: タブ
@@ -57,11 +57,8 @@ extends: ウィンドウの幅が狭くて右に省略された文字がある�
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
 vim.opt.listchars = {
-  -- tab = "▸▹┊",
-  -- trail = "-",
-  -- extends = "❯",
-  -- precedes = "❮",
-}
+  tab = "",
+  }
 -- ノーマルモードから出るまでの時間を短縮
 vim.opt.ttimeoutlen = 1
 -- 改行時の自動コメントアウトを無効にする
@@ -76,7 +73,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true

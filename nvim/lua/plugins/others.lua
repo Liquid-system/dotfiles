@@ -1,4 +1,5 @@
 return {
+  "lambdalisue/fern-hijack.vim",
   {
     "b0o/schemastore.nvim",
     lazy = "true",
@@ -62,5 +63,4 @@ return {
       vim.keymap.set("n", "<Leader>e", "<cmd>TroubleToggle<CR>", { silent = true, noremap = true })
     end,
   },
-  "lambdalisue/fern-hijack.vim",
 }
