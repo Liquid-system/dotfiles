@@ -2,14 +2,21 @@ local opt = vim.opt
 opt.number = true
 opt.title = true
 opt.termguicolors = true
-opt.inccommand = "split" -- 検索時の強調表示
-opt.shellslash = true -- Windowsでパスの区切り文字をスラッシュで扱う
-opt.showmatch.matchtime = 1 -- 対応する括弧やブレースを表示
+-- 検索時の強調表示
+opt.inccommand = "split"
+-- Windowsでパスの区切り文字をスラッシュで扱う
+opt.shellslash = true
+-- 対応する括弧やブレースを表示
+opt.showmatch.matchtime = 1
 --opt.guioptions:append({"a"})
 -- クリップボード設定
-opt.clipboard = "unnamedplus" -- yでコピーした時にクリップボードに入る
-opt.showmatch = true -- 対応する括弧を強調表示
-opt.swapfile = false -- スワップファイルを作成しない
+opt.clipboard = "unnamedplus"
+-- 対応する括弧を強調表示
+opt.showmatch = true
+-- スワップファイルを作成しない
+opt.swapfile = false
+-- shadafileに書き込まない
+vim.opt.shadafile = "NONE"
 opt.mouse = "a" -- マウス
 opt.fenc = "utf-8" -- ファイルエンコーディング
 opt.fileformats = { "unix", "dos", "mac" }
@@ -56,7 +63,7 @@ space: 半角スペース
 extends: ウィンドウの幅が狭くて右に省略された文字がある記号
 precedes: ウィンドウの幅が狭くて左に省略された文字がある記号
 nbsp: 不可視のスペース]]
-vim.opt.listchars = {
+opt.listchars = {
   tab = " ",
   trail = "·",
   --eol = ""
@@ -80,9 +87,7 @@ opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 英語表示
---vim.api.nvim_command "language messages en_US.UTF-8"
--- shadafileに書き込まない
-vim.opt.shadafile = "NONE"
+vim.api.nvim_command "language messages C"
 --fold
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
@@ -92,3 +97,6 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- 行を跨いで移動出来る様にする
 opt.whichwrap = "b,s,h,l,[,],<,>,~"
+--マウスの設定
+vim.cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
+vim.cmd.aunmenu { "PopUp.-1-" }
