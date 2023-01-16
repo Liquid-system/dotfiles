@@ -1,26 +1,17 @@
 return {
   "lambdalisue/fern-hijack.vim",
   {
-    "b0o/schemastore.nvim",
-    lazy = "true",
-  },
-  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     config = true,
   },
   {
-    "folke/neodev.nvim",
-    ft = "lua",
+    "b0o/schemastore.nvim",
+    lazy = "true",
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPost",
-    opts = {
-      space_char_blankline = " ",
-      show_current_context = true,
-      show_current_context_start = true,
-    },
+    "folke/neodev.nvim",
+    ft = "lua",
   },
   {
     "machakann/vim-sandwich",

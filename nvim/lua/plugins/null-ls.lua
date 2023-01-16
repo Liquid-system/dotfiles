@@ -50,7 +50,7 @@ return {
         --envを表示
         b.hover.printenv,
         -- zig
-        b.formatting.zigfmt
+        b.formatting.zigfmt,
       },
     }
   end,
