@@ -1,3 +1,3 @@
 return {
-  require "plugins.colorScheme.gruvbox",
+  require "plugins.theme.gruvbox",
 }

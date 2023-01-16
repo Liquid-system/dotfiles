@@ -5,9 +5,6 @@ return {
     local null_ls = require "null-ls"
     local b = null_ls.builtins
     null_ls.setup {
-      on_attach = function(client, bufnr)
-        require("plugins.lsp.keys").keys(client, bufnr)
-      end,
       sources = {
         -- Lua
         b.formatting.stylua,
