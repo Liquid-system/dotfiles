@@ -33,8 +33,8 @@ return {
     config = true,
   },
   {
-    "cohama/lexima.vim",
-    event = "InsertEnter",
+    "m4xshen/autoclose.nvim",
+    config = true,
   },
   {
     "j-hui/fidget.nvim",

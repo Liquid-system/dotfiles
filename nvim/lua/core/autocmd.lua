@@ -39,13 +39,12 @@ vim.api.nvim_create_autocmd("VimLeavePre", { command = [[silent! FidgetClose]] }
 vim.api.nvim_create_autocmd({ "TermClose", "TermLeave", "FocusGained" }, { command = "checktime" })
 
 -- ファイルを開いた時に、カーソルの場所を復元する
-local group = vim.api.nvim_create_augroup("jump_last_position", { clear = true })
-vim.api.nvim_create_autocmd("BufReadPost", {
-  group = group,
+vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
-    local row, col = unpack(vim.api.nvim_buf_get_mark(0, '"'))
-    if { row, col } ~= { 0, 0 } then
-      vim.api.nvim_win_set_cursor(0, { row, 0 })
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
 })
