@@ -1,6 +1,10 @@
 return {
   "lambdalisue/fern-hijack.vim",
   {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime"
+  },
+  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     config = true,

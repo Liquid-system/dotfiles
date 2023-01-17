@@ -74,7 +74,7 @@ vim.opt.ttimeoutlen = 1
 opt.formatoptions:remove { "r", "o" }
 opt.formatoptions:append { "M", "j" }
 -- クリップボード
-opt.clipboard = { "unnamed", "unnamedplus" }
+--opt.clipboard = "unnamedplus"
 -- 折り畳みを有効
 opt.wrap = true
 -- 仮想編集を有効

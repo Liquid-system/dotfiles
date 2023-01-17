@@ -14,14 +14,14 @@ if vim.loop.os_uname().sysname == "Darwin" then
   }
 elseif vim.fn.has "wsl" == 1 then
   vim.g.clipboard = {
-    name = "win32yank-wsl",
+    name = "WSLClipboard",
     copy = {
-      ["+"] = "win32yank.exe -i --crlf",
-      ["*"] = "win32yank.exe -i --crlf",
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
     },
     paste = {
-      ["+"] = "win32yank.exe -o --lf",
-      ["*"] = "win32yank.exe -o --lf",
+      ["+"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace('`r', ''))",
+      ["*"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace('`r', ''))",
     },
     cache_enabled = 0,
   }
