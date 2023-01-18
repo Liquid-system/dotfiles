@@ -48,6 +48,12 @@ return {
         spinner = "clock",
       },
     },
+    init = function()
+      -- エラーを防ぐ
+      vim.api.nvim_create_autocmd("VimLeavePre", {
+        command = [[silent! FidgetClose]],
+      })
+    end
   },
   {
     "folke/trouble.nvim",
