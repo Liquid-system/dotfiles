@@ -97,8 +97,6 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH=/usr/local/go/bin:$PATH
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include
-export CPATH=$CPATH:$HOME/edk2/MdePkg/Include/X64
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
