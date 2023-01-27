@@ -58,7 +58,6 @@ set hlsearch
 set nocompatible
 " コマンドラインの補完
 set wildmode=list:longest
-" vimからファイルを開くときにタブを表示する
 set wildmenu wildmode=list:full
 " キーの待ち時間設定
 set timeoutlen=250
@@ -117,10 +116,13 @@ nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
 
+" プラグイン
 packadd vim-jetpack
 call jetpack#begin()
+Jetpack 'tani/vim-jetpack', {'opt': 1} "bootstrap
 Jetpack 'vim-jp/vimdoc-ja'
-Jetpack 'itchyny/lightline.vim'
+Jetpack 'vim-airline/vim-airline'
+Jetpack 'vim-airline/vim-airline-themes'
 Jetpack 'tpope/vim-surround'
 Jetpack 'easymotion/vim-easymotion'
 Jetpack 'preservim/nerdcommenter'
@@ -175,73 +177,11 @@ augroup END
 
 " lightline
 set laststatus=2
-let g:lightline = {
-        \ 'colorscheme':'dogrun',
-        \ 'mode_map': {'c': 'NORMAL'},
-        \ 'active': {
-        \   'left': [ ['mode','paste' ],['readonly','fugitive','filename'],['method']],
-        \   'right':[['percent'],['fileformat'],['fileencoding'],['filetype'],['cocstatus']]
-        \ },
-        \ 'component_function': {
-        \   'modified': 'LightlineModified',
-        \   'readonly': 'LightlineReadonly',
-        \   'fugitive': 'LightlineFugitive',
-        \   'filename': 'LightlineFilename',
-        \   'fileformat': 'LightlineFileformat',
-        \   'filetype': 'LightlineFiletype',
-        \   'fileencoding': 'LightlineFileencoding',
-        \   'mode': 'LightlineMode',
-        \   'method': 'NearestMethodOrFunction',
-        \   'cocstatus': 'coc#status'
-        \ }
-        \ }
-
-function! LightlineModified()
-  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! LightlineFilename()
-  return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'unite' ? unite#get_status_string() :
-        \  &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-        \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-   return fugitive#head()
-  else
-    return ''
-  endif
-endfunction
-
-function! LightlineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-  return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
 
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
