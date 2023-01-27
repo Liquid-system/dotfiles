@@ -1,8 +1,6 @@
 # Start configuration added by Zim install {{{
 # Remove older command from the history if a duplicate is to be added.
 setopt HIST_IGNORE_ALL_DUPS
-# vimキーバインドにする
-bindkey -v
 
 # Prompt for spelling correction of commands.
 setopt CORRECT
@@ -78,12 +76,16 @@ source ${ZIM_HOME}/init.zsh
 #
 
 zmodload -F zsh/terminfo +p:terminfo
+# vimキーバインドにする
+bindkey -v
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
 for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
 for key ('k') bindkey -M vicmd ${key} history-substring-search-up
 for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
+# jjで抜ける
+bindkey "jj" vi-cmd-mode
 # }}} End configuration added by Zim install
 
 export PATH=$HOME/.npm-global/bin:$PATH
@@ -126,7 +128,6 @@ eval "$(gh completion -s zsh)"
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 # Set up the prompt
 setopt histignorealldups sharehistory
-
 # 重複を記録しない
 setopt hist_ignore_dups
 # ヒストリに追加されるコマンド行が古いものと同じなら古いものを削除
@@ -142,8 +143,6 @@ setopt auto_cd
 setopt +o nomatch
 # コマンド訂正
 setopt correct
-# jjで抜ける
-bindkey "jj" vi-cmd-mode
 # Use modern completion system
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' auto-description 'specify: %d'

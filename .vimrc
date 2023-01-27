@@ -1,96 +1,87 @@
-vim9script
-if has('vim_starting')
-	 # 挿入モード時に非点滅の縦棒タイプのカーソル
-    var &t_SI .= "\e[6 q"
-   # 置換モード時に非点滅の下線タイプのカーソル
-	  var  &t_SR .= "\e[4 q"
-endif
 set number
 set title
 set hidden
 syntax on
+filetype on
+filetype plugin indent on
+tabnext
 set encoding=utf-8
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
-# 表示行と論理行を入れ替える
+" 表示行を論理行に置き換える
 nnoremap k gk
-nnoremap gk k
 nnoremap j gj
-nnoremap gj j
-# ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
+nnoremap 0 g0
+nnoremap ^ g^
+nnoremap $ g$
+" ビジュアルモードで < > キーによるインデント後にビジュアルモードが解除されないようにする
 vnoremap < <gv
 vnoremap > >gv
-# leaderキーの設定
+ " leaderキーの設定
 let mapleader = "\<space>"
-# 英語表示
+" 英語表示
 language messages C
 set termguicolors
-filetype on
-# Windowsでパスの区切り文字をスラッシュで扱う
+" Windowsでパスの区切り文字をスラッシュで扱う
 set shellslash
-# 対応する括弧やブレースを表示
+" 対応する括弧やブレースを表示
 set showmatch matchtime=1
- yでコピーした時にクリップボードに入る
+" yでコピーした時にクリップボードに入る
 set clipboard+=unnamed
 set guioptions+=a
-# クリップボード設定
-set clipboard=unnamed
-# 対応する括弧を強調表示
+" 対応する括弧を強調表示
 set showmatch
-# スワップファイルを作成しない
+" スワップファイルを作成しない
 set noswapfile
-# 改行時の自動コメントアウトを無効にする
+" 改行時の自動コメントアウトを無効にする
 set formatoptions-=ro
 set mouse=a
-# バックスペース
+" バックスペース
 set backspace=indent,eol,start
-# ファイルエンコーディング
+" ファイルエンコーディング
 set fenc=utf-8
 set fileformats=unix,dos,mac
-# スペースの追加
+" スペースの追加
 set virtualedit=onemore
-# 検索系
-# 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+" 検索系
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
-# 検索文字列に大文字が含まれている場合は区別して検索する
+" 検索文字列に大文字が含まれている場合は区別して検索する
 set smartcase
-# 検索文字列入力時に順次対象文字列にヒットさせる
+" 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
-# 検索時に最後まで行ったら最初に戻る
+" 検索時に最後まで行ったら最初に戻る
 set wrapscan
-# 検索語をハイライト表示
+" 検索語をハイライト表示
 set hlsearch
-# tabで補完
+" tabで補完
 set nocompatible
-# コマンドラインの補完
+" コマンドラインの補完
 set wildmode=list:longest
-# vimからファイルを開くときにタブを表示する
+" vimからファイルを開くときにタブを表示する
 set wildmenu wildmode=list:full
-# キーの待ち時間設定
+" キーの待ち時間設定
 set timeoutlen=250
-# 空白をスペース4文分にする
+" 空白をスペース4文分にする
 set shiftwidth=4
-# タブを4文字分にする
+" タブを4文字分にする
 set tabstop=4
-# 不要なコメント開始文字削除
-# マルチバイト文字前後のスペース削除
+" 不要なコメント開始文字削除
+" マルチバイト文字前後のスペース削除
 set fo+=j
 set fo+=M
-# インサートモード中でも移動する
-imap <C-h> <Left>
-imap <C-l> <Right>
-# コマンドで削除した時はヤンクしない
+" コマンドで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
 vnoremap df "_dd
 nnoremap df "_dd
-# コピペ時の自動インデント
+" コピペ時の自動インデント
 nnoremap p ]p
 nnoremap P ]P
 nnoremap ]p p
 nnoremap ]P P
 
-# 編集箇所のカーソルを記憶
+" 編集箇所のカーソルを記憶
 if has("autocmd")
   augroup redhat
     " In text files, always limit the width of text to 78 characters
@@ -103,7 +94,7 @@ if has("autocmd")
   augroup END
 endif
 
-# 不要なデフォルトプラグインの停止
+" 不要なデフォルトプラグインの停止
 let g:loaded_gzip              = 1
 let g:loaded_tar               = 1
 let g:loaded_tarPlugin         = 1
@@ -119,15 +110,12 @@ let g:loaded_netrw             = 1
 let g:loaded_netrwPlugin       = 1
 let g:loaded_netrwSettings     = 1
 let g:loaded_netrwFileHandlers = 1
-# 画面間でのカーソルの移動
+" 画面間でのカーソルの移動
+nnoremap <Leader>  <C-w>
 nnoremap <Leader>l <C-w>l
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
-# タブの移動
-tabnext
-nnoremap <silent> tl :tabnext<CR>
-nnoremap <silent> th :tabprevious<CR>
 
 packadd vim-jetpack
 call jetpack#begin()
@@ -148,7 +136,6 @@ call jetpack#end()
 
 " NerdCommenter
 " keep cursor column when JK motion
-
 let g:EasyMotion_startofline = 0
 let g:NERDCreateDefaultMappings = 1
 nmap <Leader>/ <Plug>NERDCommenterToggle
@@ -167,7 +154,8 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><Leader>h <Plug>(easymotion-linebackward)
 
 "Fern
-" 隠しファイルを表示する
+nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=17 -toggle<CR>
+
 let g:fern#default_hidden=1
 let g:fern#renderer#default#leading = "│"
 let g:fern#renderer#default#root_symbol = "┬ "
@@ -175,68 +163,15 @@ let g:fern#renderer#default#leaf_symbol = "├─ "
 let g:fern#renderer#default#collapsed_symbol = "├─ "
 let g:fern#renderer#default#expanded_symbol = "├┬ "
 let g:fern#renderer = "nerdfont"
-"隠しファイルを表示する
+let g:fern#renderer#nerdfont#indent_markers = 1
 let g:fern#default_hidden=1
 let g:fern#renderer#nerdfont#indent_markers = 1
-function! s:init_fern() abort
-  nmap <buffer><expr>
-      \ <Plug>(fern-my-expand-or-collapse)
-      \ fern#smart#leaf(
-      \   "\<Plug>(fern-action-collapse)",
-      \   "\<Plug>(fern-action-expand)",
-      \   "\<Plug>(fern-action-collapse)",
-      \ )
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-expand-or-enter)
-        \ fern#smart#drawer(
-        \   "\<Plug>(fern-open-or-expand)",
-        \   "\<Plug>(fern-open-or-enter)",
-        \ )
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-collapse-or-leave)
-        \ fern#smart#drawer(
-        \   "\<Plug>(fern-action-collapse)",
-        \   "\<Plug>(fern-action-leave)",
-        \ )
-  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
-  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-enter)
-  nmap <buffer><nowait> h <Plug>(fern-my-collapse-or-leave)
-endfunction
-
-function! s:fern_preview_init() abort
-nmap <buffer><expr>
-      \ <Plug>(fern-my-preview-or-nop)
-      \ fern#smart#leaf(
-      \   "\<Plug>(fern-action-open:edit)\<C-w>p",
-      \   "",
-      \ )
-nmap <buffer><expr> j
-      \ fern#smart#drawer(
-      \   "j\<Plug>(fern-my-preview-or-nop)",
-      \   "j",
-      \ )
-nmap <buffer><expr> k
-      \ fern#smart#drawer(
-      \   "k\<Plug>(fern-my-preview-or-nop)",
-      \   "k",
-      \ )
-endfunction
-
-augroup my-fern-preview
-autocmd! *
-autocmd FileType fern call s:fern_preview_init()
-augroup END
-
-
-nnoremap <silent> <C-n> :Fern . -drawer -reveal=% -width=17 -toggle<CR>
-nnoremap <silent> <Leader>n :Fern . -drawer -reveal=% -width=17 -toggle<CR>
 
 augroup my-glyph-palette
   autocmd! *
   autocmd FileType fern call glyph_palette#apply()
   autocmd FileType nerdtree,startify call glyph_palette#apply()
 augroup END
-
 
 " lightline
 set laststatus=2
@@ -307,8 +242,6 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
-" Required:
-filetype plugin indent on
 
 " autosave
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -334,4 +267,3 @@ augroup END
 " colorscheme
 syntax enable
 colorscheme dogrun
-
