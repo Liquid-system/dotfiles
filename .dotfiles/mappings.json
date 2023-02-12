@@ -4,6 +4,7 @@
   ".czrc": "~/.czrc",
   ".gdbinit": "~/.gdbinit",
   ".gitmessage": "~/.gitmessage",
+  ".hyper.js": "~/.hyper.js",
   "nvim": "~/.config/nvim",
   "helix": "~/.config/helix",
   "zellij": "~/.config/zellij",
