@@ -74,29 +74,24 @@ source ${ZIM_HOME}/init.zsh
 #
 # zsh-history-substring-search
 #
-
 zmodload -F zsh/terminfo +p:terminfo
 # vimキーバインドにする
-bindkey -v
+bindkey -e
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
 for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
-# jjで抜ける
-bindkey "jj" vi-cmd-mode
 # }}} End configuration added by Zim install
 
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.zig:$PATH
-export PATH=$HOME/.go/bin:$PATH
 export PATH=$HOME/.local/build/Python-3.11.1/bin:$PATH
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-export PATH=/usr/local/go/bin:$PATH
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export TMUX_TMPDIR=/tmp
@@ -212,3 +207,8 @@ local cmd=${line%% *}
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
+
+# pnpm
+export PNPM_HOME="/home/liquidsystem/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

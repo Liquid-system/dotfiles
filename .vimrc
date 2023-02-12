@@ -1,10 +1,13 @@
+autocmd WinEnter    * set cursorline
+autocmd WinLeave    * set nocursorline
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
 set number
 set title
 set hidden
 syntax on
 filetype on
 filetype plugin indent on
-tabnext
 set encoding=utf-8
 scriptencoding utf-8
 inoremap <silent> jj <ESC>
