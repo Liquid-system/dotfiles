@@ -1,3 +1,9 @@
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+LDFLAGS="-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++"
+
 (( ${+commands[gdate]} )) && alias date='gdate'
 (( ${+commands[gls]} )) && alias ls='gls'
 (( ${+commands[gmkdir]} )) && alias mkdir='gmkdir'

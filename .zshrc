@@ -98,13 +98,14 @@ export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
 export PROMPT_EOL_MARK=''
-#./configure --prefix=$STOWでビルド
 
 #OSごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
 #マシンごとにファイルを分割
 [ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
 #補完を有効にする
+autoload -U compinit
+compinit -u
 fpath+=~/.zfunc
 
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
@@ -168,9 +169,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-if [[ $(command -v exa) ]]; then
-	alias ls='exa --icons --colour=always'
-  alias la='exa -a --icons --colour=always'
+if [[ $(command -v eza) ]]; then
+	alias ls='eza --icons --colour=always'
+  alias la='eza -a --icons --colour=always'
 fi
 
 # colored GCC warnings and errors
@@ -183,13 +184,6 @@ ZSH_AUTOSUGGEST_STRATEGY=history
 #zsh補完を無効化する
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="rm *"
 
-fix_wsl2_interop() {
-for i in $(pstree -np -s $$ | grep -o -E '[0-9]+'); do
-	if [[ -e "/run/WSL/${i}_interop" ]]; then
-		export WSL_INTEROP=/run/WSL/${i}_interop
-	fi
-done
-}
 
 zshaddhistory() {
 local line=${1%%$'\n'}
@@ -212,3 +206,11 @@ fi
 export PNPM_HOME="/home/liquidsystem/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# bun completions
+[ -s "/Users/liquid_system/.bun/_bun" ] && source "/Users/liquid_system/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
