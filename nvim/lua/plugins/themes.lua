@@ -3,7 +3,11 @@ return {
     "ellisonleao/gruvbox.nvim",
     lazy = true,
     opts = {
-      italic = false,
+      italic = {
+        strings = false,
+        operators = false,
+        comments = false,
+      },
       overrides = {
         SignColumn = { bg = "#282828" },
       },
