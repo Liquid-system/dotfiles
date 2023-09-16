@@ -94,6 +94,8 @@ export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
@@ -112,11 +114,7 @@ alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_q
 alias n='nvim'
 alias cxx='g++ -std=c++17 -Wall -O2 '
 alias cxxg='g++ -std=c++17 -Wall -O2 -g -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover -D_GLIBCXX_DEBUG'
-
-function open() { cmd.exe /c start $(wslpath -w $1) }
-
 . "$HOME/.cargo/env"
-
 # gh
 eval "$(gh completion -s zsh)"
 
@@ -206,11 +204,3 @@ fi
 export PNPM_HOME="/home/liquidsystem/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-
-# bun completions
-[ -s "/Users/liquid_system/.bun/_bun" ] && source "/Users/liquid_system/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
