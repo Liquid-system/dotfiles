@@ -96,6 +96,7 @@ export DENO_INSTALL="/home/liquid_system/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$HOME/.swift/usr/bin:$PATH
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
@@ -206,4 +207,6 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # bun completions
-[ -s "/Users/liquid_system/.bun/_bun" ] && source "/Users/liquid_system/.bun/_bun"
+[ -s "/home/liquidsystem/.bun/_bun" ] && source "/home/liquidsystem/.bun/_bun"
+
+[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
