@@ -28,9 +28,8 @@ return {
           "additionalTextEdits",
         },
       },
-    }
-
-    require("neoconf").setup {}
+        }
+    
     require("mason-lspconfig").setup {
       automatic_installation = false,
     }
@@ -123,7 +122,6 @@ return {
         }
       end,
       ["lua_ls"] = function()
-        require "neodev".setup()
         require("lspconfig")["lua_ls"].setup {
           capabilities = capabilities,
           settings = {

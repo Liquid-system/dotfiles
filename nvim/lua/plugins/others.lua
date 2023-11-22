@@ -1,6 +1,5 @@
 return {
     "lambdalisue/fern-hijack.vim",
-    "folke/neoconf.nvim",
     {
         "williamboman/mason.nvim",
         cmd = "Mason",
@@ -11,10 +10,6 @@ return {
     {
         "b0o/schemastore.nvim",
         lazy = "true",
-    },
-    {
-        "folke/neodev.nvim",
-        ft = "lua",
     },
     {
         "machakann/vim-sandwich",

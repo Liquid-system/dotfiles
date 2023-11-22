@@ -204,3 +204,6 @@ fi
 export PNPM_HOME="/home/liquidsystem/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+# bun completions
+[ -s "/Users/liquid_system/.bun/_bun" ] && source "/Users/liquid_system/.bun/_bun"
