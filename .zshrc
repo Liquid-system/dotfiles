@@ -97,6 +97,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=$HOME/.swift/usr/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示

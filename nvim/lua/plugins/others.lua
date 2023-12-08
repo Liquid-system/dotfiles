@@ -41,15 +41,6 @@ return {
         "m4xshen/autoclose.nvim",
         config = true,
     },
-    --[[ {
-        "j-hui/fidget.nvim",
-        event = "LspAttach",
-        opts = {
-            text = {
-                spinner = "meter",
-            },
-        },
-    }, ]]
     {
         "lewis6991/gitsigns.nvim",
         config = true,

@@ -97,10 +97,10 @@ opt.helplang = { "ja", "en" }
 -- 英語表示
 -- vim.api.nvim_command "language messages C"
 --fold
-vim.o.foldcolumn = "0"
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+opt.fillchars = { fold = " " }
+opt.foldmethod = "indent"
+opt.foldenable = false
+opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 --マウスの設定
