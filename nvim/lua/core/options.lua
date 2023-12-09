@@ -2,6 +2,7 @@ local opt = vim.opt
 opt.number = true
 opt.title = true
 opt.termguicolors = true
+opt.ambiwidth = "single"
 opt.cmdheight = 0
 opt.signcolumn = "yes"
 opt.background = "dark"
@@ -10,17 +11,15 @@ opt.clipboard = { "unnamed", "unnamedplus" }
 opt.inccommand = "split"
 -- Windowsでパスの区切り文字をスラッシュで扱う
 opt.shellslash = true
--- 対応する括弧やブレースを表示
-opt.showmatch.matchtime = 1
---opt.guioptions:append({"a"})
 -- 対応する括弧を強調表示
 opt.showmatch = true
+opt.matchtime = 1
 -- スワップファイルを作成しない
 opt.swapfile = false
 -- shadafileに書き込まない
-vim.opt.shadafile = "NONE"
-opt.mouse = "a" -- マウス
-opt.fenc = "utf-8" -- ファイルエンコーディング
+opt.shadafile = "NONE"
+opt.mouse = "a"
+opt.fenc = "utf-8"
 opt.fileformats = { "unix", "dos", "mac" }
 -- 検索系
 -- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -82,7 +81,7 @@ opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true

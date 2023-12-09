@@ -35,6 +35,12 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 -- ファイル変更時に警告を発する
 vim.api.nvim_create_autocmd({ "TermClose", "TermLeave", "FocusGained" }, { command = "checktime" })
 
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  pattern = "Makefile",
+  callback = function()
+    vim.opt.smarttab = false
+  end
+})
 -- ファイルを開いた時に、カーソルの場所を復元する
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()

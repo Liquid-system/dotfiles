@@ -6,7 +6,15 @@ return {
     { "hrsh7th/cmp-path",         event = "InsertEnter" },
     { "hrsh7th/cmp-cmdline",      event = "ModeChanged" },
     { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-    { "onsails/lspkind.nvim",     event = "InsertEnter" },
+    {
+      "onsails/lspkind.nvim",
+      event = "InsertEnter",
+      config = function()
+        require('lspkind').init({
+          preset = 'codicons',
+        })
+      end,
+    },
     --"hrsh7th/cmp-nvim-lsp-signature-help, event = 'InsertEnter'},
   },
   config = function()
@@ -48,7 +56,7 @@ return {
       mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping.scroll_docs( -4),
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping {
           i = cmp.mapping.abort(),
@@ -73,8 +81,8 @@ return {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif require("luasnip").jump( -1).jumpable( -1) then
-            require("luasnip").jump( -1)
+          elseif require("luasnip").jump(-1).jumpable(-1) then
+            require("luasnip").jump(-1)
           else
             fallback()
           end

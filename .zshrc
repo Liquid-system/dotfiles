@@ -75,17 +75,16 @@ source ${ZIM_HOME}/init.zsh
 # zsh-history-substring-search
 #
 zmodload -F zsh/terminfo +p:terminfo
-# vimキーバインドにする
-bindkey -e
+
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
 for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.zig:$PATH
 export PATH=$HOME/.local/build/Python-3.11.1/bin:$PATH
 export VOLTA_HOME="$HOME/.volta"
@@ -117,8 +116,6 @@ alias n='nvim'
 alias cxx='g++ -std=c++17 -Wall -O2 '
 alias cxxg='g++ -std=c++17 -Wall -O2 -g -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover -D_GLIBCXX_DEBUG'
 . "$HOME/.cargo/env"
-# gh
-eval "$(gh completion -s zsh)"
 
 # lsコマンドで表示されるファイルの色を変更する
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
