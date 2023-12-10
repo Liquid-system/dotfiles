@@ -2,11 +2,16 @@ local opt = vim.opt
 opt.number = true
 opt.title = true
 opt.termguicolors = true
-opt.ambiwidth = "single"
+--opt.ambiwidth = "double"
 opt.cmdheight = 0
+opt.textwidth = 0
 opt.signcolumn = "yes"
 opt.background = "dark"
 opt.clipboard = { "unnamed", "unnamedplus" }
+-- tab時の見かけのスペース数
+opt.tabstop = 2
+-- 自動的に挿入される量
+opt.shiftwidth = 2
 -- 検索時の強調表示
 opt.inccommand = "split"
 -- Windowsでパスの区切り文字をスラッシュで扱う
@@ -40,10 +45,6 @@ opt.matchtime = 1
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
 opt.timeoutlen = 250
--- tab時の見かけのスペース数
-opt.tabstop = 2
--- 自動的に挿入される量
-opt.shiftwidth = 2
 -- インデント
 opt.autoindent = true
 opt.smartindent = true

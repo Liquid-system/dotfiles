@@ -48,8 +48,8 @@ return {
         --toml
         b.formatting.taplo,
         -- shell
-        --b.diagnostics.shellcheck,
-        --b.formatting.shfmt,
+        b.diagnostics.shellcheck,
+        b.formatting.shfmt,
         --envを表示
         --b.hover.printenv,
         -- zig

@@ -4,6 +4,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   config = function()
+    require("plugins.lsp.diagnostics").setup()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     capabilities.textDocument.completion.completionItem = {
@@ -28,13 +29,17 @@ return {
         },
       },
     }
-
-    require("plugins.lsp.diagnostics").setup()
-
     local lspconfig = require('lspconfig')
     lspconfig.pylsp.setup { capabilities = capabilities, }
-    lspconfig.svelte.setup { capabilities = capabilities, }
+    lspconfig.svelte.setup { capabilities = capabilities }
+    lspconfig.zls.setup { capabilities = capabilities }
+    lspconfig.html.setup {
+      capabilities = capabilities,
+    }
+    lspconfig.cssls.setup { capabilities = capabilities }
+    lspconfig.bashls.setup { capabilities = capabilities }
     lspconfig.clangd.setup {
+      capabilities = capabilities,
       cmd = {
         "clangd",
         "--background-index",
