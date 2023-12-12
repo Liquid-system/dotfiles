@@ -111,6 +111,7 @@ autoload -U compinit
 compinit -u
 fpath+=~/.zfunc
 
+alias rm=trash-put
 alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
 alias n='nvim'
 alias cxx='g++ -std=c++17 -Wall -O2 '
