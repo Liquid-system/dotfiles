@@ -37,6 +37,7 @@ return {
       capabilities = capabilities,
     }
     lspconfig.cssls.setup { capabilities = capabilities }
+    lspconfig.biome.setup { capabilities = capabilities }
     lspconfig.bashls.setup { capabilities = capabilities }
     lspconfig.clangd.setup {
       capabilities = capabilities,
@@ -91,6 +92,9 @@ return {
           },
           procMacro = {
             enable = true,
+          },
+          checkOnSave = {
+            command = "clippy",
           },
         },
       },

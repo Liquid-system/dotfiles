@@ -30,15 +30,10 @@ return {
         -- go
         b.formatting.goimports,
         b.formatting.gofmt,
-        --javascript
-        b.diagnostics.eslint,
-        b.code_actions.eslint,
         --yaml
         b.formatting.yamlfmt,
         --CSS
         b.formatting.stylelint,
-        --Prettier
-        b.formatting.prettier,
         --pug
         b.diagnostics.puglint,
         --sql

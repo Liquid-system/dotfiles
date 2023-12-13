@@ -5,8 +5,9 @@ return {
         lazy = "true",
     },
     {
-        "machakann/vim-sandwich",
-        event = "InsertEnter",
+        "kylechui/nvim-surround",
+        event = "VeryLazy",
+        config = true,
     },
     {
         "Pocco81/auto-save.nvim",
