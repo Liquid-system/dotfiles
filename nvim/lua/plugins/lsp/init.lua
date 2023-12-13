@@ -33,11 +33,9 @@ return {
     lspconfig.pylsp.setup { capabilities = capabilities, }
     lspconfig.svelte.setup { capabilities = capabilities }
     lspconfig.zls.setup { capabilities = capabilities }
-    lspconfig.html.setup {
-      capabilities = capabilities,
-    }
+    lspconfig.html.setup { capabilities = capabilities }
     lspconfig.cssls.setup { capabilities = capabilities }
-    lspconfig.biome.setup { capabilities = capabilities }
+    lspconfig.biome.setup { cmd = { "npx", 'biome', 'lsp-proxy' }, }
     lspconfig.bashls.setup { capabilities = capabilities }
     lspconfig.clangd.setup {
       capabilities = capabilities,
@@ -55,7 +53,6 @@ return {
     }
     lspconfig.denols.setup {
       capabilities = capabilities,
-      root_dir = require("lspconfig").util.root_pattern "deno.json",
       init_options = {
         lint = true,
         unstable = true,
@@ -73,7 +70,6 @@ return {
     lspconfig.tsserver.setup {
       capabilities = capabilities,
       single_file_support = false,
-      root_dir = require("lspconfig").util.root_pattern "package.json",
     }
     lspconfig.rust_analyzer.setup {
       capabilities = capabilities,

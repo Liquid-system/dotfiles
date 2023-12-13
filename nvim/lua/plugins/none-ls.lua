@@ -8,6 +8,8 @@ return {
     local b = require("null-ls").builtins
     require("null-ls").setup {
       sources = {
+        --スペルチェック
+        b.diagnostics.codespell,
         -- Lua
         b.formatting.stylua,
         --python3
@@ -20,6 +22,8 @@ return {
         b.formatting.uncrustify,
         --rust
         b.formatting.rustfmt,
+        -- javascript
+        b.formatting.biome,
         --CMake
         -- b.diagnostics.cmake_lint,
         -- b.diagnostics.checkmake,
