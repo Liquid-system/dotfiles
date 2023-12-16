@@ -19,7 +19,7 @@ return {
         b.diagnostics.pylint,
         --clang
         b.formatting.clang_format,
-        b.formatting.uncrustify,
+        --b.formatting.uncrustify,
         --rust
         b.formatting.rustfmt,
         -- javascript

@@ -1,19 +1,3 @@
-local signs = {
-  Error = " ",
-  Warn = " ",
-  Hint = " ",
-  Info = " ",
-}
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, {
-    text = icon,
-    texthl = hl,
-    numhl = hl,
-    linehl = hl,
-  })
-end
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
     border = "rounded",
@@ -30,10 +14,24 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 return {
   setup = function()
     vim.diagnostic.config {
-      signs = true,
       update_in_insert = true,
       underline = true,
       severity_sort = true,
+      signs = {
+        text = { "", "", "", "" },
+        numhl = {
+          "DiagnosticSignError",
+          "DiagnosticSignWarn",
+          "DiagnosticSignInfo",
+          "DiagnosticSignHint",
+        },
+        linehl = {
+          "DiagnosticSignError",
+          "DiagnosticSignWarn",
+          "DiagnosticSignInfo",
+          "DiagnosticSignHint",
+        },
+      },
       float = {
         focusable = true,
         style = "minimal",

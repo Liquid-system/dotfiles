@@ -1,5 +1,15 @@
 return {
   {
+    "ellisonleao/gruvbox.nvim",
+    opts = {
+      italic = {
+        strings = false,
+        operators = false,
+        comments = false,
+      },
+    },
+  },
+  {
     "EdenEast/nightfox.nvim",
     lazy = true,
     config = true,
@@ -44,7 +54,10 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    lazy = true,
+    init = function()
+      vim.cmd "colorscheme tokyonight"
+    end,
+    priority = 1000,
     opts = {
       style = "Moon",
       transparent = true,
@@ -55,7 +68,7 @@ return {
         functions = {},
         variables = {},
         sidebars = "dark", -- style for sidebars, see below
-        floats = "dark", -- style for floating windows
+        floats = "dark",   -- style for floating windows
       },
     },
   },
