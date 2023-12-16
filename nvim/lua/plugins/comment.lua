@@ -1,6 +1,13 @@
 return {
   "numToStr/Comment.nvim",
-  config = true,
+  event = "UIEnter",
+  dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+  opts = {
+    enable_autocmd = false,
+    pre_hook = function()
+      require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+    end,
+  },
   init = function()
     vim.keymap.set("n", "<Leader>/", function()
       return vim.v.count == 0 and "<Plug>(comment_toggle_linewise_current)" or "<Plug>(comment_toggle_linewise_count)"

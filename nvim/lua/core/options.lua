@@ -3,6 +3,7 @@ opt.number = true
 opt.title = true
 opt.termguicolors = true
 --opt.ambiwidth = "double"
+opt.updatetime = 100
 opt.cmdheight = 0
 opt.textwidth = 0
 opt.signcolumn = "yes"
@@ -15,13 +16,11 @@ opt.shiftwidth = 2
 -- 検索時の強調表示
 opt.inccommand = "split"
 -- Windowsでパスの区切り文字をスラッシュで扱う
-opt.shellslash = true
+--opt.shellslash = true
 -- 対応する括弧を強調表示
 opt.showmatch = true
 opt.matchtime = 1
--- スワップファイルを作成しない
 opt.swapfile = false
--- shadafileに書き込まない
 opt.shadafile = "NONE"
 opt.mouse = "a"
 opt.fenc = "utf-8"
@@ -75,8 +74,6 @@ opt.ttimeoutlen = 1
 -- 改行時の自動コメントアウトを無効にする
 opt.formatoptions:remove { "r", "o" }
 opt.formatoptions:append { "M", "j" }
--- 折り畳みを有効
-opt.wrap = true
 -- 仮想編集を有効
 opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
@@ -94,8 +91,8 @@ opt.undofile = true
 -- ファイル末尾の記号を消す
 opt.fillchars:append "eob: "
 opt.helplang = { "ja", "en" }
--- 英語表示
--- vim.api.nvim_command "language messages C"
+-- 折り畳みを有効
+opt.wrap = true
 --fold
 opt.fillchars = { fold = " " }
 opt.foldmethod = "indent"

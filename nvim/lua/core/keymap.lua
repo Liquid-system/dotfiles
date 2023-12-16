@@ -84,8 +84,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         async = true,
         bufnr = bufnr,
         filter = function(client)
-          return client.name == "null-ls"
-        end,
+          if client.supports_method("textDocument/formatting") then
+            return client.name ~= "null-ls"
+          else
+            return client.name == "null-ls"
+          end
+        end
       }
     end, opts)
   end,

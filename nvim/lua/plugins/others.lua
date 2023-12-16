@@ -26,12 +26,6 @@ return {
         },
     },
     {
-        "windwp/nvim-ts-autotag",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        config = true,
-        event = 'InsertEnter',
-    },
-    {
         "m4xshen/autoclose.nvim",
         config = true,
     },
