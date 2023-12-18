@@ -23,7 +23,8 @@ opt.matchtime = 1
 opt.swapfile = false
 opt.shadafile = "NONE"
 opt.mouse = "a"
-opt.fenc = "utf-8"
+opt.fileencoding = "utf-8"
+opt.spelllang = "en_us"
 opt.fileformats = { "unix", "dos", "mac" }
 -- 検索系
 -- 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -91,7 +92,6 @@ opt.undofile = true
 -- ファイル末尾の記号を消す
 opt.fillchars:append "eob: "
 opt.helplang = { "ja", "en" }
--- 折り畳みを有効
 opt.wrap = true
 --fold
 opt.fillchars = { fold = " " }
