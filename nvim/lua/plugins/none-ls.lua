@@ -23,14 +23,20 @@ return {
         --rust
         b.formatting.rustfmt,
         -- javascript
-        b.formatting.biome.with {
+        b.diagnostics.eslint.with {
           condition = function(dir)
-            return not (dir.has_file { "biome.json" })
+            return dir.has_file { ".eslintrc", ".eslintrc.cjs", ".eslintrc.js" }
+          end,
+        },
+        b.formatting.biome.with {
+          prefer_local = "node_modules/.bin",
+          condition = function(dir)
+            return dir.has_file { "biome.json" }
           end,
         },
         b.formatting.deno_fmt.with {
           condition = function(dir)
-            return not (dir.has_file { ".prettierrc", ".prettierrc.js", "deno.json", "deno.jsonc" })
+            return dir.has_file { "deno.json", "deno.jsonc" }
           end,
         },
         b.formatting.prettier.with {
