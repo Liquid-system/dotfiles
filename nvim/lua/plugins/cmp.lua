@@ -2,21 +2,21 @@ return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    { "hrsh7th/cmp-buffer",       event = "InsertEnter" },
-    { "hrsh7th/cmp-path",         event = "InsertEnter" },
-    { "hrsh7th/cmp-cmdline",      event = "ModeChanged" },
-    { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-    { "uga-rosa/cmp-dictionary",  event = "InsertEnter" },
+    { "hrsh7th/cmp-buffer",                  event = "InsertEnter" },
+    { "hrsh7th/cmp-path",                    event = "InsertEnter" },
+    { "hrsh7th/cmp-cmdline",                 event = "ModeChanged" },
+    { "saadparwaiz1/cmp_luasnip",            event = "InsertEnter" },
+    { "uga-rosa/cmp-dictionary",             event = "InsertEnter" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
     {
       "onsails/lspkind.nvim",
       event = "InsertEnter",
       config = function()
-        require('lspkind').init({
-          preset = 'codicons',
+        require("lspkind").init({
+          preset = "codicons",
         })
       end,
     },
-    --"hrsh7th/cmp-nvim-lsp-signature-help, event = 'InsertEnter'},
   },
   config = function()
     local cmp = require "cmp"
@@ -59,10 +59,7 @@ return {
         ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping {
-          i = cmp.mapping.abort(),
-          c = cmp.mapping.close(),
-        },
+        ["<C-Space>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,

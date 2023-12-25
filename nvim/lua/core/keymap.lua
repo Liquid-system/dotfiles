@@ -36,8 +36,8 @@ vim.keymap.set("n", "P", "]P", default_opts)
 vim.keymap.set("n", "]p", "p", default_opts)
 vim.keymap.set("n", "]P", "P", default_opts) ]]
 -- バッファサイズの変更
-vim.keymap.set("n", "<Up>", "<cmd>resize +1<CR>", default_opts)
-vim.keymap.set("n", "<Down>", "<cmd>resize -1<CR>", default_opts)
+vim.keymap.set("n", "<Up>", "<cmd>resize -1<CR>", default_opts)
+vim.keymap.set("n", "<Down>", "<cmd>resize +1<CR>", default_opts)
 vim.keymap.set("n", "<Left>", "<cmd>vertical resize -1<CR>", default_opts)
 vim.keymap.set("n", "<Right>", "<cmd>vertical resize +1<CR>", default_opts)
 -- バッファ間のカーソルの移動
@@ -67,7 +67,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -79,7 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<space>fd", function(bufnr)
+    vim.keymap.set("n", "<space>ff", function(bufnr)
       vim.lsp.buf.format {
         async = true,
         bufnr = bufnr, filter = function(client)

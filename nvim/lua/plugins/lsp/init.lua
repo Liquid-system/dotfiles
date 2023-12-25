@@ -49,24 +49,8 @@ return {
         "--completion-style=detailed",
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
-      },
-    }
-    lspconfig.denols.setup {
-      capabilities = capabilities,
-      init_options = {
-        lint = true,
-        unstable = true,
-        suggest = {
-          imports = {
-            hosts = {
-              ["https://deno.land"] = true,
-              ["https://cdn.nest.land"] = true,
-              ["https://crux.land"] = true,
-            },
-          },
-        },
-      },
-    }
+      } }
+    lspconfig.denols.setup { capabilities = capabilities }
     lspconfig.tsserver.setup {
       capabilities = capabilities,
       single_file_support = false,

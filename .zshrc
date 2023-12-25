@@ -209,3 +209,5 @@ export PATH="$PNPM_HOME:$PATH"
 [ -s "/home/liquidsystem/.bun/_bun" ] && source "/home/liquidsystem/.bun/_bun"
 
 [ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,7 +1,3 @@
-autocmd WinEnter    * set cursorline
-autocmd WinLeave    * set nocursorline
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
 set number
 set title
 set hidden
