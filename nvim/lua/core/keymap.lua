@@ -78,7 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    vim.keymap.set("n", "<space>ff", function(bufnr)
+    vim.keymap.set("n", "<space>f", function(bufnr)
       vim.lsp.buf.format {
         async = true,
         bufnr = bufnr, filter = function(client)
@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
       }
     end, opts)
-    vim.keymap.set("n", "<space>f", function(bufnr)
+    vim.keymap.set("n", "<space>ff", function(bufnr)
       vim.lsp.buf.format {
         async = true,
         bufnr = bufnr,

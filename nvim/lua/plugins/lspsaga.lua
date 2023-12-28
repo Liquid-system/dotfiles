@@ -1,6 +1,9 @@
 return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
+  dependencies = {
+    "nvim-tree/nvim-web-devicons"
+  },
   opts = {
     lightbulb = {
       enable = false,
@@ -11,7 +14,6 @@ return {
   },
   init = function()
     -- Lsp finder find the symbol definition implement reference
-    vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
     vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
     vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
     --vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
@@ -30,7 +32,7 @@ return {
     vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { silent = true })
     vim.keymap.set("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { silent = true })
     -- vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
-    --vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
     -- Float terminal
     vim.keymap.set({ "n", "t" }, "<leader>i", "<cmd>Lspsaga term_toggle<CR>")
   end,

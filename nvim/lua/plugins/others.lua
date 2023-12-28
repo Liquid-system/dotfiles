@@ -10,16 +10,6 @@ return {
     config = true,
   },
   {
-    "Pocco81/auto-save.nvim",
-    opts = {
-      execution_message = {
-        message = function() -- message to print on save
-          return ""
-        end,
-      },
-    },
-  },
-  {
     "max397574/better-escape.nvim",
     opts = {
       mapping = { "jj", "jk", "kj" },

@@ -13,6 +13,16 @@ return {
         -- Lua
         b.formatting.stylua,
         --python3
+        b.formatting.ruff_format.with {
+          condition = function(dir)
+            return dir.has_file { "ruff.toml", ".ruff.toml" }
+          end
+        },
+        b.diagnostics.ruff.with {
+          condition = function(dir)
+            return dir.has_file { "ruff.toml", ".ruff.toml" }
+          end
+        },
         b.formatting.isort,
         b.formatting.black,
         b.diagnostics.mypy,
@@ -29,7 +39,7 @@ return {
           end,
         },
         b.formatting.biome.with {
-          prefer_local = "node_modules/.bin",
+          only_local = "node_modules/.bin",
           condition = function(dir)
             return dir.has_file { "biome.json" }
           end,
