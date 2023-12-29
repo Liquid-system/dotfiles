@@ -207,9 +207,6 @@ export PATH="$PNPM_HOME:$PATH"
 # bun completions
 [ -s "/home/liquidsystem/.bun/_bun" ] && source "/home/liquidsystem/.bun/_bun"
 
-[ -f ~/.inshellisense/key-bindings.zsh ] && source ~/.inshellisense/key-bindings.zsh
-
-
 # Wasmer
 export WASMER_DIR="/home/liquidsystem/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
