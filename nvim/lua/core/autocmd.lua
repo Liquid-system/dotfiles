@@ -29,17 +29,17 @@ vim.api.nvim_create_autocmd("FileType", {
 -- リサイズ時の調整
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
-    vim.cmd "tabdo wincmd ="
+    vim.cmd("tabdo wincmd =")
   end,
 })
 -- ファイル変更時に警告を発する
 vim.api.nvim_create_autocmd({ "TermClose", "TermLeave", "FocusGained" }, { command = "checktime" })
 
-vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "Makefile",
   callback = function()
     vim.opt.smarttab = false
-  end
+  end,
 })
 -- ファイルを開いた時に、カーソルの場所を復元する
 vim.api.nvim_create_autocmd("BufReadPost", {

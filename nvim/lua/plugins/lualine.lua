@@ -2,7 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
-    local lualine = require "lualine"
+    local lualine = require("lualine")
     local colors = {
       bg = "#202328",
       fg = "#bbc2cf",
@@ -19,13 +19,13 @@ return {
 
     local conditions = {
       buffer_not_empty = function()
-        return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+        return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
       end,
       hide_in_width = function()
         return vim.fn.winwidth(0) > 80
       end,
       check_git_workspace = function()
-        local filepath = vim.fn.expand "%:p:h"
+        local filepath = vim.fn.expand("%:p:h")
         local gitdir = vim.fn.finddir(".git", filepath .. ";")
         return gitdir and #gitdir > 0 and #gitdir < #filepath
       end,
@@ -75,7 +75,7 @@ return {
       table.insert(config.sections.lualine_x, component)
     end
 
-    ins_left {
+    ins_left({
       -- mode component
       function()
         local mode_state = vim.api.nvim_get_mode().mode
@@ -116,13 +116,13 @@ return {
         return { fg = mode_color[vim.api.nvim_get_mode().mode] }
       end,
       padding = { left = 2, right = 2 },
-    }
-    ins_left {
+    })
+    ins_left({
       "filetype",
       icon_only = true,
       color = { fg = colors.magenta },
-    }
-    ins_left {
+    })
+    ins_left({
       "filename",
       cond = conditions.buffer_not_empty,
       symbols = {
@@ -132,23 +132,23 @@ return {
         newfile = "", -- Text to show for newly created file before first write
       },
       color = { fg = colors.magenta },
-    }
+    })
 
-    ins_left {
+    ins_left({
       "branch",
       icon = "",
       color = { fg = colors.violet },
-    }
-    ins_left {
+    })
+    ins_left({
       "progress",
       color = { fg = colors.fg },
-    }
+    })
 
-    ins_left {
+    ins_left({
       "searchcount",
       icon = "",
-    }
-    ins_left {
+    })
+    ins_left({
       "diagnostics",
       sources = { "nvim_diagnostic" },
       symbols = {
@@ -161,11 +161,11 @@ return {
         color_warn = { fg = colors.yellow },
         color_info = { fg = colors.cyan },
       },
-    }
+    })
 
     -- Insert mid section. You can make any number of sections in neovim :)
     -- for lualine it's any number greater then 2
-    ins_right {
+    ins_right({
       "diff",
       symbols = {
         added = " ",
@@ -178,12 +178,12 @@ return {
         removed = { fg = colors.red },
       },
       cond = conditions.hide_in_width,
-    }
-    ins_right {
+    })
+    ins_right({
       -- Lsp server name .
       function()
-        local msg = 'No Active Lsp'
-        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+        local msg = "No Active Lsp"
+        local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
         local clients = vim.lsp.get_active_clients()
         if next(clients) == nil then
           return msg
@@ -196,30 +196,30 @@ return {
         end
         return msg
       end,
-      icon = ' LSP:',
+      icon = " LSP:",
       color = { fg = colors.orange },
-    }
-    ins_left {
+    })
+    ins_left({
       function()
         return "%="
       end,
-    }
-    ins_right {
+    })
+    ins_right({
       -- filesize component
       "filesize",
       cond = conditions.buffer_not_empty,
       color = { fg = colors.green },
-    }
-    ins_right {
+    })
+    ins_right({
       "o:encoding", -- option component same as &encoding in viml
       fmt = string.upper,
       cond = conditions.hide_in_width,
       color = { fg = colors.green },
-    }
-    ins_right {
+    })
+    ins_right({
       "location",
       color = { fg = colors.green },
-    }
+    })
     lualine.setup(config)
   end,
 }

@@ -2,7 +2,7 @@ return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
   opts = {
     lightbulb = {
@@ -23,10 +23,10 @@ return {
     vim.keymap.set("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
     -- Only jump to error
     vim.keymap.set("n", "[E", function()
-      require("lspsaga.diagnostic").goto_prev { severity = vim.diagnostic.severity.ERROR }
+      require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
     end, { silent = true })
     vim.keymap.set("n", "]E", function()
-      require("lspsaga.diagnostic").goto_next { severity = vim.diagnostic.severity.ERROR }
+      require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, { silent = true })
     -- Callhierarchy
     vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { silent = true })

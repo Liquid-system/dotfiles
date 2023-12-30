@@ -26,7 +26,7 @@ return {
       zig = { "zigfmt" },
       json = { { "jq", "jsonnetfmt" } },
       yaml = { "yamlfmt" },
-      toml = { "taplo" }
+      toml = { "taplo" },
     },
     formatters = {
       deno_fmt = {

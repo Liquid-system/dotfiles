@@ -59,10 +59,10 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
@@ -78,5 +78,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-  end
+  end,
 })

@@ -2,11 +2,11 @@ return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    { "hrsh7th/cmp-buffer",                  event = "InsertEnter" },
-    { "hrsh7th/cmp-path",                    event = "InsertEnter" },
-    { "hrsh7th/cmp-cmdline",                 event = "ModeChanged" },
-    { "saadparwaiz1/cmp_luasnip",            event = "InsertEnter" },
-    { "uga-rosa/cmp-dictionary",             event = "InsertEnter" },
+    { "hrsh7th/cmp-buffer", event = "InsertEnter" },
+    { "hrsh7th/cmp-path", event = "InsertEnter" },
+    { "hrsh7th/cmp-cmdline", event = "ModeChanged" },
+    { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
+    { "uga-rosa/cmp-dictionary", event = "InsertEnter" },
     { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
     {
       "onsails/lspkind.nvim",
@@ -19,7 +19,7 @@ return {
     },
   },
   config = function()
-    local cmp = require "cmp"
+    local cmp = require("cmp")
     local function border(hl_name)
       return {
         { "╭", hl_name },
@@ -33,14 +33,14 @@ return {
       }
     end
 
-    cmp.setup {
+    cmp.setup({
       window = {
         completion = {
-          border = border "CmpBorder",
+          border = border("CmpBorder"),
           winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
         },
         documentation = {
-          border = border "CmpDocBorder",
+          border = border("CmpDocBorder"),
         },
       },
       snippet = {
@@ -49,10 +49,10 @@ return {
         end,
       },
       formatting = {
-        format = require("lspkind").cmp_format {
+        format = require("lspkind").cmp_format({
           maxwidth = 50,
           ellipsis_char = "...",
-        },
+        }),
       },
       mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -60,10 +60,10 @@ return {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm {
+        ["<CR>"] = cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
-        },
+        }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -95,11 +95,9 @@ return {
         { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
-        { name = "dictionary",
-          keyword_length = 2, },
+        { name = "dictionary", keyword_length = 2 },
       },
-
-    }
+    })
 
     -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ "/", "?" }, {

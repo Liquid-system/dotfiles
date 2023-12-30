@@ -73,24 +73,24 @@ opt.listchars = {
 -- ノーマルモードから出るまでの時間を短縮
 opt.ttimeoutlen = 1
 -- 改行時の自動コメントアウトを無効にする
-opt.formatoptions:remove { "r", "o" }
-opt.formatoptions:append { "M", "j" }
+opt.formatoptions:remove({ "r", "o" })
+opt.formatoptions:append({ "M", "j" })
 -- 仮想編集を有効
 opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 行を跨いで移動出来る様にする
 opt.whichwrap = "b,s,h,l,[,],<,>,~"
 -- undoの永続化
-opt.undodir = vim.fn.stdpath "state"
+opt.undodir = vim.fn.stdpath("state")
 opt.undofile = true
 -- ファイル末尾の記号を消す
-opt.fillchars:append "eob: "
+opt.fillchars:append("eob: ")
 opt.helplang = { "ja", "en" }
 opt.wrap = true
 --fold
@@ -101,5 +101,5 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 --マウスの設定
-vim.cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
-vim.cmd.aunmenu { "PopUp.-1-" }
+vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })
+vim.cmd.aunmenu({ "PopUp.-1-" })

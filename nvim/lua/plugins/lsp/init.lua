@@ -30,16 +30,16 @@ return {
       },
     }
     local lspconfig = require("lspconfig")
-    lspconfig.pylsp.setup { capabilities = capabilities }
-    lspconfig.gopls.setup { capabilities = capabilities }
-    lspconfig.svelte.setup { capabilities = capabilities }
-    lspconfig.html.setup { capabilities = capabilities }
-    lspconfig.cssls.setup { capabilities = capabilities }
+    lspconfig.pylsp.setup({ capabilities = capabilities })
+    lspconfig.gopls.setup({ capabilities = capabilities })
+    lspconfig.svelte.setup({ capabilities = capabilities })
+    lspconfig.html.setup({ capabilities = capabilities })
+    lspconfig.cssls.setup({ capabilities = capabilities })
     --lspconfig.sqls.setup { capabilities = capabilities }
-    lspconfig.biome.setup { cmd = { "npx", 'biome', 'lsp-proxy' }, }
-    lspconfig.bashls.setup { capabilities = capabilities }
-    lspconfig.zls.setup { capabilities = capabilities }
-    lspconfig.clangd.setup {
+    lspconfig.biome.setup({ cmd = { "npx", "biome", "lsp-proxy" } })
+    lspconfig.bashls.setup({ capabilities = capabilities })
+    lspconfig.zls.setup({ capabilities = capabilities })
+    lspconfig.clangd.setup({
       capabilities = capabilities,
       cmd = {
         "clangd",
@@ -51,13 +51,14 @@ return {
         "--completion-style=detailed",
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
-      } }
-    lspconfig.denols.setup { capabilities = capabilities }
-    lspconfig.tsserver.setup {
+      },
+    })
+    lspconfig.denols.setup({ capabilities = capabilities })
+    lspconfig.tsserver.setup({
       capabilities = capabilities,
       single_file_support = false,
-    }
-    lspconfig.rust_analyzer.setup {
+    })
+    lspconfig.rust_analyzer.setup({
       capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
@@ -80,13 +81,13 @@ return {
           },
         },
       },
-    }
+    })
 
     local status, schemastore = pcall(require, "schemastore")
     if not status then
       return
     end
-    lspconfig.jsonls.setup {
+    lspconfig.jsonls.setup({
       capabilities = capabilities,
       settings = {
         json = {
@@ -94,16 +95,16 @@ return {
           validate = { enable = true },
         },
       },
-    }
-    lspconfig.lua_ls.setup {
+    })
+    lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_init = function(client)
         local path = client.workspace_folders[1].name
-        if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
-          client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+        if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+          client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
             Lua = {
               runtime = {
-                version = 'LuaJIT'
+                version = "LuaJIT",
               },
               diagnostics = {
                 globals = { "vim" },
@@ -111,14 +112,14 @@ return {
               workspace = {
                 checkThirdParty = false,
                 -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                library = vim.api.nvim_get_runtime_file("", true)
-              }
-            }
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+            },
           })
           client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
         end
         return true
-      end
-    }
+      end,
+    })
   end,
 }

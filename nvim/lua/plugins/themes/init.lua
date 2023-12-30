@@ -55,7 +55,7 @@ return {
   {
     "folke/tokyonight.nvim",
     init = function()
-      vim.cmd "colorscheme tokyonight"
+      vim.cmd("colorscheme tokyonight")
     end,
     priority = 1000,
     opts = {
@@ -68,7 +68,7 @@ return {
         functions = {},
         variables = {},
         sidebars = "dark", -- style for sidebars, see below
-        floats = "dark",   -- style for floating windows
+        floats = "dark", -- style for floating windows
       },
     },
   },
