@@ -9,7 +9,7 @@ return {
       css = { "stylelint" },
       cmake = { "cmakelint" },
       markdown = { "markdownlint" },
-      sh = { "	shellcheck" },
+      sh = { "shellcheck" },
     }
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
