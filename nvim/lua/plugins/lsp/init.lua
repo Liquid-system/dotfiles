@@ -29,16 +29,16 @@ return {
         },
       },
     }
-    local lspconfig = require('lspconfig')
-    lspconfig.pylsp.setup { capabilities = capabilities, }
+    local lspconfig = require("lspconfig")
+    lspconfig.pylsp.setup { capabilities = capabilities }
+    lspconfig.gopls.setup { capabilities = capabilities }
     lspconfig.svelte.setup { capabilities = capabilities }
-    lspconfig.zls.setup { capabilities = capabilities }
     lspconfig.html.setup { capabilities = capabilities }
     lspconfig.cssls.setup { capabilities = capabilities }
     --lspconfig.sqls.setup { capabilities = capabilities }
     lspconfig.biome.setup { cmd = { "npx", 'biome', 'lsp-proxy' }, }
     lspconfig.bashls.setup { capabilities = capabilities }
-    --lspconfig.zls.setup { capabilities = capabilities }
+    lspconfig.zls.setup { capabilities = capabilities }
     lspconfig.clangd.setup {
       capabilities = capabilities,
       cmd = {
