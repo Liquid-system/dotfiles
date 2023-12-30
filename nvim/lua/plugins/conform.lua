@@ -14,16 +14,17 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", { "black", "ruff_format" } },
+      python = { "isort", "autoflake", { "black", "ruff_format" } },
       javascript = { { "biome", "prettier", "deno_fmt" } },
       c = { "clang_format" },
       cpp = { "clang_format" },
       cmake = { "cmake_format" },
       rust = { "rustfmt" },
       go = { "gofmt", "goimports" },
+      swift = { "swift_format" },
       sql = { "sql_formatter" },
       zig = { "zigfmt" },
-      json = { "jq" },
+      json = { { "jq", "jsonnetfmt" } },
       yaml = { "yamlfmt" },
       toml = { "taplo" }
     },
