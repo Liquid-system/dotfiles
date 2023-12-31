@@ -15,10 +15,6 @@ require("lazy").setup("plugins", {
   performance = {
     rtp = {
       disable_plugins = {
-        "netrw",
-        "netrwPlugin",
-        "netrwSettings",
-        "netrwFileHandlers",
         "gzip",
         "zip",
         "zipPlugin",

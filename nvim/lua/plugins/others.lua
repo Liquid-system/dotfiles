@@ -1,5 +1,4 @@
 return {
-  "lambdalisue/fern-hijack.vim",
   {
     "b0o/schemastore.nvim",
     lazy = "true",

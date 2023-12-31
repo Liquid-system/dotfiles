@@ -31,8 +31,6 @@ return {
     -- Callhierarchy
     vim.keymap.set("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", { silent = true })
     vim.keymap.set("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", { silent = true })
-    -- vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true })
-    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
     -- Float terminal
     vim.keymap.set({ "n", "t" }, "<leader>i", "<cmd>Lspsaga term_toggle<CR>")
   end,

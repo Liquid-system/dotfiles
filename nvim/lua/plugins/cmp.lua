@@ -2,15 +2,14 @@ return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    { "hrsh7th/cmp-buffer", event = "InsertEnter" },
-    { "hrsh7th/cmp-path", event = "InsertEnter" },
-    { "hrsh7th/cmp-cmdline", event = "ModeChanged" },
-    { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-    { "uga-rosa/cmp-dictionary", event = "InsertEnter" },
-    { "hrsh7th/cmp-nvim-lsp-signature-help", event = "InsertEnter" },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-cmdline" },
+    { "saadparwaiz1/cmp_luasnip" },
+    { "uga-rosa/cmp-dictionary" },
+    { "hrsh7th/cmp-nvim-lsp-signature-help" },
     {
       "onsails/lspkind.nvim",
-      event = "InsertEnter",
       config = function()
         require("lspkind").init({
           preset = "codicons",
@@ -92,7 +91,6 @@ return {
       sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
         { name = "dictionary", keyword_length = 2 },
@@ -115,6 +113,7 @@ return {
         { name = "cmdline" },
       }),
     })
+
     local dict = require("cmp_dictionary")
     dict.setup({
       exact = 2,
