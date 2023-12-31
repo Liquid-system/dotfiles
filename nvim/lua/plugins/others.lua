@@ -1,7 +1,14 @@
 return {
   {
+    "luukvbaal/nnn.nvim",
+    opts = {
+      auto_close = true,
+      replace_netrw = "explorer",
+    }
+  },
+  {
     "b0o/schemastore.nvim",
-    lazy = "true",
+    lazy = true,
   },
   {
     "kylechui/nvim-surround",

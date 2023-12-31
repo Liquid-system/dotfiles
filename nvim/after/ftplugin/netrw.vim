@@ -1,3 +1,10 @@
+let g:netrw_sizestyle="H"
+let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
+let g:netrw_preview=1
+let g:netrw_liststyle = 3
+let g:netrw_keepdir = 0
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 nmap <buffer> l <CR>
 nmap <buffer> h -
 let g:NetrwIsOpen=0

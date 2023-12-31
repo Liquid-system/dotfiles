@@ -99,6 +99,7 @@ export PATH=$HOME/.swift/usr/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
+export NNN_USE_EDITOR=nvim
 #語尾の%を非表示
 export PROMPT_EOL_MARK=''
 

@@ -28,6 +28,7 @@
   "lush.nvim": { "branch": "main", "commit": "e8a58f36c256af65cda36878f6f2024a612154c3" },
   "neon": { "branch": "main", "commit": "7765aaa7d1cd3804176140644640766e4411c766" },
   "nightfox.nvim": { "branch": "main", "commit": "fcf699bef2b2731c840a5746113c3dd31a9cb813" },
+  "nnn.nvim": { "branch": "master", "commit": "4616ec65eb0370af548e356c3ec542c1b167b415" },
   "nvim-cmp": { "branch": "main", "commit": "538e37ba87284942c1d76ed38dd497e54e65b891" },
   "nvim-lint": { "branch": "master", "commit": "3ffa176628fe49e74f47992757016b7371a9b86b" },
   "nvim-lspconfig": { "branch": "master", "commit": "9bedcfed749755e43fc8bed46f85ce2044fe3b77" },

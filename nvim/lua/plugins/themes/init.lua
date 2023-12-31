@@ -55,7 +55,7 @@ return {
   {
     "folke/tokyonight.nvim",
     init = function()
-      vim.cmd("colorscheme tokyonight")
+      vim.cmd("colorscheme tokyonight-moon")
     end,
     priority = 1000,
     opts = {
