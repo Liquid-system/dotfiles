@@ -2,9 +2,13 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
+    {
+      "b0o/schemastore.nvim",
+      lazy = true,
+    },
   },
   config = function()
-    require("plugins.lsp.diagnostics").setup()
+    require("plugins.lsp.diagnostics")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     capabilities.textDocument.completion.completionItem = {
@@ -83,15 +87,11 @@ return {
       },
     })
 
-    local status, schemastore = pcall(require, "schemastore")
-    if not status then
-      return
-    end
     lspconfig.jsonls.setup({
       capabilities = capabilities,
       settings = {
         json = {
-          schemas = schemastore.json.schemas(),
+          schemas = require("schemastore").json.schemas(),
           validate = { enable = true },
         },
       },

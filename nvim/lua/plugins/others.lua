@@ -1,14 +1,13 @@
 return {
   {
     "luukvbaal/nnn.nvim",
+    keys = {
+      { "<Leader>n", "<cmd>NnnExplorer<CR>" },
+    },
     opts = {
       auto_close = true,
       replace_netrw = "explorer",
-    }
-  },
-  {
-    "b0o/schemastore.nvim",
-    lazy = true,
+    },
   },
   {
     "kylechui/nvim-surround",
