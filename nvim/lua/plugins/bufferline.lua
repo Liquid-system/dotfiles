@@ -8,7 +8,7 @@ return {
     },
   },
   keys = {
-    { "<Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true, noremap = true } },
-    { "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true, noremap = true } },
+    { "<Tab>", "<cmd>BufferLineCycleNext<CR>", { silent = true, noremap = true, desc = "BufferNext" } },
+    { "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { silent = true, noremap = true, desc = "BufferPrev" } },
   },
 }

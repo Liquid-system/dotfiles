@@ -1,10 +1,64 @@
 return {
   "monaqa/dial.nvim",
   keys = {
-    { "<C-a>", mode = { "n", "v" } },
-    { "<C-x>", mode = { "n", "v" } },
-    { "g<C-a>", mode = "v" },
-    { "g<C-x>", mode = "v" },
+    {
+      "<C-a>",
+      function()
+        require("dial.map").manipulate("increment", "normal")
+      end,
+      { noremap = true },
+    },
+    {
+      "<C-x>",
+      function()
+        require("dial.map").manipulate("decrement", "normal")
+      end,
+      { noremap = true },
+    },
+    {
+      "g<C-a>",
+      function()
+        require("dial.map").manipulate("increment", "gnormal")
+      end,
+    },
+    {
+      "g<C-x>",
+      function()
+        require("dial.map").manipulate("decrement", "gnormal")
+      end,
+    },
+    {
+      "<C-a>",
+      function()
+        require("dial.map").manipulate("increment", "visual")
+      end,
+      "v",
+      { noremap = true },
+    },
+    {
+      "<C-x>",
+      function()
+        require("dial.map").manipulate("decrement", "visual")
+      end,
+      "v",
+      { noremap = true },
+    },
+    {
+      "g<C-a>",
+      function()
+        require("dial.map").manipulate("increment", "gvisual")
+      end,
+      "v",
+      { noremap = true },
+    },
+    {
+      "g<C-x>",
+      function()
+        require("dial.map").manipulate("decrement", "gvisual")
+      end,
+      "v",
+      { noremap = true },
+    },
   },
   config = function()
     local augend = require("dial.augend")
@@ -48,11 +102,5 @@ return {
         }),
       },
     })
-    vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), { noremap = true })
-    vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), { noremap = true })
-    vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), { noremap = true })
-    vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), { noremap = true })
-    vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), { noremap = true })
-    vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), { noremap = true })
   end,
 }
