@@ -1,15 +1,5 @@
 return {
   {
-    "luukvbaal/nnn.nvim",
-    keys = {
-      { "<Leader>n", "<cmd>NnnExplorer<CR>" },
-    },
-    opts = {
-      auto_close = true,
-      replace_netrw = "explorer",
-    },
-  },
-  {
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = true,
