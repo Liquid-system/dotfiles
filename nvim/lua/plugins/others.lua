@@ -1,5 +1,10 @@
 return {
   {
+    "folke/which-key.nvim",
+    cmd = "WhichKey",
+    config = true,
+  },
+  {
     "kylechui/nvim-surround",
     event = "VeryLazy",
     config = true,
@@ -17,5 +22,10 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     config = true,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = true,
+    event = "InsertEnter",
   },
 }

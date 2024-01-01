@@ -7,18 +7,10 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       event = "CursorMoved",
     },
-    {
-      "windwp/nvim-ts-autotag",
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-      config = true,
-      event = "InsertEnter",
-    },
   },
   config = function()
     require("nvim-treesitter.configs").setup({
       highlight = { enable = true },
-      indent = { enable = true },
-      autotag = { enable = true },
       auto_install = false,
       ensure_installed = "all",
       textobjects = {
