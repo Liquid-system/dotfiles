@@ -199,11 +199,6 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
    zcompile ~/.zshrc
 fi
 
-# pnpm
-export PNPM_HOME="/home/liquidsystem/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-
 # bun completions
 [ -s "/home/liquidsystem/.bun/_bun" ] && source "/home/liquidsystem/.bun/_bun"
 

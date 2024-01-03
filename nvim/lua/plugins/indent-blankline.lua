@@ -9,7 +9,6 @@ return {
         "dashboard",
         "Trouble",
         "lazy",
-        "fern",
       },
     },
   },

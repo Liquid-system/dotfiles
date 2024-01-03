@@ -19,5 +19,10 @@ return {
   },
   opts = {
     on_attach = tree_keys,
+    filters = {
+      git_ignored = true,
+      dotfiles = false,
+      custom = { "^.git$", "node_modules"},
+    },
   },
 }

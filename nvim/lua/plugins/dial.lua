@@ -1,10 +1,10 @@
 return {
   "monaqa/dial.nvim",
   keys = {
-    { "<C-a>",  mode = { "n", "v" } },
-    { "<C-x>",  mode = { "n", "v" } },
-    { "g<C-a>", mode = "v" },
-    { "g<C-x>", mode = "v" },
+    { "<C-a>", mode = { "n", "v" }, desc = "dial Up" },
+    { "<C-x>", mode = { "n", "v" }, desc = "dial Down" },
+    { "g<C-a>", mode = "v", desc = "dial Up" },
+    { "g<C-x>", mode = "v", desc = "dial Down" },
   },
   config = function()
     local augend = require("dial.augend")
@@ -20,7 +20,7 @@ return {
         }),
         augend.constant.new({
           elements = { "and", "or" },
-          word = true,   -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
+          word = true, -- if false, "sand" is incremented into "sor", "doctor" into "doctand", etc.
           cyclic = true, -- "or" is incremented into "and".
         }),
         augend.constant.new({

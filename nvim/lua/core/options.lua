@@ -44,11 +44,11 @@ opt.matchtime = 1
 -- cmp 設定
 opt.completeopt = { "menu", "menuone", "noselect" }
 -- キーの待ち時間設定
-opt.timeoutlen = 250
+opt.timeout = true
+opt.timeoutlen = 300
 -- インデント
 opt.autoindent = true
 opt.smartindent = true
-opt.smarttab = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)
 opt.expandtab = true
@@ -81,7 +81,6 @@ opt.virtualedit = "onemore"
 opt.visualbell = true
 opt.wildignore =
   ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
-opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 行を跨いで移動出来る様にする

@@ -34,6 +34,7 @@ return {
       },
     }
     local lspconfig = require("lspconfig")
+    lspconfig.cmake.setup({ capabilities = capabilities })
     lspconfig.pylsp.setup({ capabilities = capabilities })
     lspconfig.gopls.setup({ capabilities = capabilities })
     lspconfig.svelte.setup({ capabilities = capabilities })
