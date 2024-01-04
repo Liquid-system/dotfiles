@@ -16,10 +16,6 @@ return {
     },
   },
   {
-    "m4xshen/autoclose.nvim",
-    config = true,
-  },
-  {
     "lewis6991/gitsigns.nvim",
     config = true,
   },
