@@ -2,6 +2,7 @@ return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
+    { "onsails/lspkind.nvim" },
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { "hrsh7th/cmp-cmdline" },
@@ -12,14 +13,6 @@ return {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
       config = true,
-    },
-    {
-      "onsails/lspkind.nvim",
-      config = function()
-        require("lspkind").init({
-          preset = "codicons",
-        })
-      end,
     },
   },
   config = function()
@@ -53,6 +46,7 @@ return {
       },
       formatting = {
         format = require("lspkind").cmp_format({
+          preset = "codicons",
           maxwidth = 50,
           ellipsis_char = "...",
         }),
