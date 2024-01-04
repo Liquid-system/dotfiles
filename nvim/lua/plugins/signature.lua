@@ -9,7 +9,7 @@ return {
     hint_enable = false,
     toggle_key = "<C-k>",
     select_signature_key = "<C-n>",
-    floating_window_off_x = 5,         -- adjust float windows x position.
+    floating_window_off_x = 5, -- adjust float windows x position.
     floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
       local pumheight = vim.o.pumheight
       local winline = vim.fn.winline() -- line number in the window

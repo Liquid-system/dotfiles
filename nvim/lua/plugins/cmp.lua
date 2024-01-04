@@ -9,9 +9,9 @@ return {
     { "uga-rosa/cmp-dictionary" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
     {
-      'windwp/nvim-autopairs',
+      "windwp/nvim-autopairs",
       event = "InsertEnter",
-      config = true
+      config = true,
     },
     {
       "onsails/lspkind.nvim",
@@ -116,14 +116,12 @@ return {
       }, {
         { name = "cmdline" },
       }),
-        })
+    })
 
-    cmp.event:on(
-      'confirm_done', function()
-        require('nvim-autopairs.completion.cmp').on_confirm_done()
-      end
-        )
-    
+    cmp.event:on("confirm_done", function()
+      require("nvim-autopairs.completion.cmp").on_confirm_done()
+    end)
+
     local dict = require("cmp_dictionary")
     dict.setup({
       exact = 2,
