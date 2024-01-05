@@ -1,5 +1,10 @@
 return {
   {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+  {
     "folke/which-key.nvim",
     cmd = "WhichKey",
     config = true,

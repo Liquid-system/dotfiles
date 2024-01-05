@@ -1,6 +1,7 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
+    lazy = true,
     opts = {
       italic = {
         strings = false,
@@ -16,22 +17,24 @@ return {
   },
   {
     "rose-pine/neovim",
-    name = "rose-pine",
     lazy = true,
+    name = "rose-pine",
+
     opts = {
       disable_italics = true,
     },
   },
   {
     "uloco/bluloco.nvim",
-    dependencies = "rktjmp/lush.nvim",
     lazy = true,
+    dependencies = "rktjmp/lush.nvim",
+
     config = true,
   },
   {
     "catppuccin/nvim",
-    name = "catppuccin",
     lazy = true,
+    name = "catppuccin",
     opts = {
       flavour = "latte",
       no_italic = true,
@@ -54,9 +57,7 @@ return {
   },
   {
     "folke/tokyonight.nvim",
-    init = function()
-      vim.cmd("colorscheme tokyonight-moon")
-    end,
+    lazy = true,
     priority = 1000,
     opts = {
       style = "Moon",
@@ -66,7 +67,7 @@ return {
         comments = { italic = false },
         keywords = { italic = false },
         sidebars = "dark", -- style for sidebars, see below
-        floats = "dark", -- style for floating windows
+        floats = "dark",   -- style for floating windows
       },
     },
   },

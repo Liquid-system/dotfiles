@@ -9,36 +9,10 @@ return {
     { "saadparwaiz1/cmp_luasnip" },
     { "uga-rosa/cmp-dictionary" },
     { "hrsh7th/cmp-nvim-lsp-signature-help" },
-    {
-      "windwp/nvim-autopairs",
-      event = "InsertEnter",
-      config = true,
-    },
   },
   config = function()
     local cmp = require("cmp")
-    local function border(hl_name)
-      return {
-        { "╭", hl_name },
-        { "─", hl_name },
-        { "╮", hl_name },
-        { "│", hl_name },
-        { "╯", hl_name },
-        { "─", hl_name },
-        { "╰", hl_name },
-        { "│", hl_name },
-      }
-    end
     cmp.setup({
-      window = {
-        completion = {
-          border = border("CmpBorder"),
-          winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-        },
-        documentation = {
-          border = border("CmpDocBorder"),
-        },
-      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
