@@ -102,9 +102,9 @@ export COLORTERM=truecolor
 export PROMPT_EOL_MARK=''
 
 #OSごとにファイルを分割
-[ -f $ZDOTDIR/.zshrc_`uname` ] && . $ZDOTDIR/.zshrc_`uname`
+[ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`
 #マシンごとにファイルを分割
-[ -f $ZDOTDIR/.zshrc_local ] && . $ZDOTDIR/.zshrc_local
+[ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
 #補完を有効にする
 autoload -U compinit
 compinit -u

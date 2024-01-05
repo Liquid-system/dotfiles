@@ -1,6 +1,7 @@
 {
   ".zimrc": "~/.zimrc",
   ".zshrc_Darwin": "~/.zshrc_Darwin",
+  ".zshrc_Linux": "~/.zshrc_Linux",
   ".czrc": "~/.czrc",
   ".gdbinit": "~/.gdbinit",
   ".gitmessage": "~/.gitmessage",

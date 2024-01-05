@@ -27,6 +27,7 @@ return {
       json = { { "jq", "jsonnetfmt" } },
       yaml = { "yamlfmt" },
       toml = { "taplo" },
+      ["_"] = { "trim_whitespace", "trim_newlines" },
     },
     formatters = {
       deno_fmt = {
