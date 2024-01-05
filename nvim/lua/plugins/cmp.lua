@@ -13,6 +13,16 @@ return {
   config = function()
     local cmp = require("cmp")
     cmp.setup({
+      window = {
+        completion = cmp.config.window.bordered({
+          completeopt = "menu,menuone,preview",
+          border = "rounded",
+          winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+        }),
+        documentation = cmp.config.window.bordered({
+          border = "rounded",
+        }),
+      },
       snippet = {
         expand = function(args)
           require("luasnip").lsp_expand(args.body)
