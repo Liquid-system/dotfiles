@@ -7,4 +7,4 @@ require("core.config")
 require("core.autocmd")
 require("core.keymap")
 
-vim.cmd("colorscheme tokyonight-moon")
+vim.cmd.colorscheme("tokyonight-moon")
