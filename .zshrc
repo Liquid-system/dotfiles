@@ -213,5 +213,3 @@ export PATH="$WASMTIME_HOME/bin:$PATH"
 # luarocks
 export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;$HOME/.luarocks/share/lua/5.1/?/init.lua;;"
 export LUA_CPATH="$HOME/.luarocks/lib/lua/5.1/?.so;;"
-
-eval "$(mcfly init zsh)"
