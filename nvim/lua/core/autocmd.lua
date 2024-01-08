@@ -69,3 +69,13 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- 改行時のコメントアウトを無効
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("disable_comment", { clear = true }),
+  callback = function()
+    vim.opt_local.formatoptions:remove({ "r", "o" })
+    vim.opt_local.formatoptions:append({ "M", "j" })
+  end,
+})

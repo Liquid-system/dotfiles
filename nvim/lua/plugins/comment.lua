@@ -5,7 +5,7 @@ return {
   opts = {
     enable_autocmd = false,
     toggler = {
-      line = '<Leader>/',
+      line = "<Leader>/",
     },
     extra = {
       eol = "<Leader>a",
