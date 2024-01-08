@@ -33,11 +33,6 @@ vim.keymap.set("v", ">", ">gv", default_opts)
 -- コマンドで削除した時はヤンクしない
 vim.keymap.set("n", "x", '"_x', default_opts)
 vim.keymap.set("v", "x", '"_x', default_opts)
--- コピペ時の自動インデント
---[[ vim.keymap.set("n", "p", "]p", opt)
-vim.keymap.set("n", "P", "]P", opt)
-vim.keymap.set("n", "]p", "p", opt)
-vim.keymap.set("n", "]P", "P", opt) ]]
 -- バッファサイズの変更
 vim.keymap.set("n", "<Up>", "<cmd>resize -1<CR>", opts("Resize UP"))
 vim.keymap.set("n", "<Down>", "<cmd>resize +1<CR>", opts("Resize Down"))

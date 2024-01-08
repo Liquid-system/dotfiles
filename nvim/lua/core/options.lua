@@ -72,15 +72,12 @@ opt.listchars = {
 }
 -- ノーマルモードから出るまでの時間を短縮
 opt.ttimeoutlen = 1
--- 改行時の自動コメントアウトを無効にする
-opt.formatoptions:remove({ "r", "o" })
-opt.formatoptions:append({ "M", "j" })
 -- 仮想編集を有効
 opt.virtualedit = "onemore"
 -- -エラー時の音を画面表示に
 opt.visualbell = true
 opt.wildignore =
-  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.fileencoding = "utf-8"
 opt.termguicolors = true
 -- 行を跨いで移動出来る様にする
