@@ -19,9 +19,12 @@ return {
     "rose-pine/neovim",
     lazy = true,
     name = "rose-pine",
-
     opts = {
-      disable_italics = true,
+      styles = {
+        bold = true,
+        italic = false,
+        transparency = false,
+      },
     },
   },
   {
@@ -67,7 +70,7 @@ return {
         comments = { italic = false },
         keywords = { italic = false },
         sidebars = "dark", -- style for sidebars, see below
-        floats = "dark", -- style for floating windows
+        floats = "dark",   -- style for floating windows
       },
     },
   },

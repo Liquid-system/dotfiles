@@ -4,6 +4,7 @@ return {
   config = function()
     require("lint").linters_by_ft = {
       ["*"] = { "codespell" },
+      c = { "clangtidy" },
       python = { "ruff", "mypy", "pylint" },
       javascript = { "eslint" },
       css = { "stylelint" },
