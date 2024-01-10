@@ -8,7 +8,6 @@ return {
     },
   },
   config = function()
-    require("plugins.lsp.diagnostics")
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     capabilities.textDocument.completion.completionItem = {
