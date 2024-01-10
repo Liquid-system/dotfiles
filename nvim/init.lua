@@ -3,8 +3,6 @@ vim.loader.enable()
 vim.g.mapleader = " "
 require("core.lazy")
 require("core.options")
-require("core.config")
 require("core.autocmd")
 require("core.keymap")
-
 vim.cmd.colorscheme("tokyonight-moon")

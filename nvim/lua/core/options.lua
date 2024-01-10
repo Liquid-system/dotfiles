@@ -2,7 +2,6 @@ local opt = vim.opt
 opt.number = true
 opt.title = true
 opt.termguicolors = true
---opt.ambiwidth = "double"
 opt.updatetime = 100
 opt.cmdheight = 0
 opt.textwidth = 0
