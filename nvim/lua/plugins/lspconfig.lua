@@ -40,9 +40,12 @@ return {
     lspconfig.html.setup({ capabilities = capabilities })
     lspconfig.cssls.setup({ capabilities = capabilities })
     lspconfig.sqls.setup({ capabilities = capabilities })
-    lspconfig.biome.setup({ cmd = { "npx", "biome", "lsp-proxy" } })
     lspconfig.bashls.setup({ capabilities = capabilities })
     lspconfig.zls.setup({ capabilities = capabilities })
+    lspconfig.biome.setup({
+      capabilities = capabilities,
+      cmd = { "bunx", "biome", "lsp-proxy" },
+    })
     lspconfig.clangd.setup({
       capabilities = capabilities,
       cmd = {
@@ -111,8 +114,7 @@ return {
               },
               workspace = {
                 checkThirdParty = false,
-                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                library = vim.api.nvim_get_runtime_file("", true),
+                library = { vim.env.VIMRUNTIME },
               },
             },
           })
