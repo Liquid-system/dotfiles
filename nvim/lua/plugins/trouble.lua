@@ -3,7 +3,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   event = "LspAttach",
   keys = {
-    { "<Leader>e", "<cmd>TroubleToggle<CR>", desc = "diagnostic" },
+    { "<Leader>e", "<cmd>TroubleToggle<CR>", desc = "Trouble" },
   },
   config = true,
 }

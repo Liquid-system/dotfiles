@@ -63,20 +63,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local function lsp_opts(desc)
+    local function lsp(desc)
+      if desc then
+        desc = "LSP: " .. desc
+      end
       return { desc = desc, buffer = ev.buf }
     end
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, lsp_opts("signature"))
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, lsp_opts("declaration"))
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, lsp_opts("implementation"))
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp_opts("definition"))
-    vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, lsp_opts("add_workspace_folder"))
-    vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, lsp_opts("remove_workspace_folder"))
-    vim.keymap.set("n", "<space>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, lsp_opts("list_workspace_folders"))
-    vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, lsp_opts("type_definition"))
-    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, lsp_opts("code_action"))
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, lsp_opts("references"))
+    vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, lsp("[R]e[n]ame"))
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, lsp("signature"))
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, lsp("[G]oto [D]eclaration"))
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, lsp("[G]oto [I]mplementation"))
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp("[G]oto [D]efinition"))
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, lsp("[G]oto [R]eferences"))
+    vim.keymap.set("n", "<Leader>wa", vim.lsp.buf.add_workspace_folder, lsp("[W]orkspace [A]dd folder"))
+    vim.keymap.set("n", "<Leader>wr", vim.lsp.buf.remove_workspace_folder, lsp("[W]orkspace [R]emove folder"))
+    vim.keymap.set("n", "<Leader>wl", function()
+      vim.notify(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, lsp("[Workspace] [L]ist folders"))
+    vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, lsp("type [D]efinition"))
+    vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, lsp("[C]ode [A]ction"))
   end,
 })
