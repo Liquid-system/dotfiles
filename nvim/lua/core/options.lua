@@ -5,7 +5,7 @@ opt.termguicolors = true
 opt.updatetime = 100
 opt.cmdheight = 0
 opt.textwidth = 0
-opt.signcolumn = "yes"
+opt.signcolumn = "auto"
 opt.background = "dark"
 opt.clipboard = { "unnamed", "unnamedplus" }
 -- tab時の見かけのスペース数
@@ -15,7 +15,6 @@ opt.shiftwidth = 2
 -- 検索時の強調表示
 opt.inccommand = "split"
 -- Windowsでパスの区切り文字をスラッシュで扱う
---opt.shellslash = true
 -- 対応する括弧を強調表示
 opt.showmatch = true
 opt.matchtime = 1
