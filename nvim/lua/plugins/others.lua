@@ -1,16 +1,24 @@
 return {
   {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    config = true
+  },
+  {
     "uga-rosa/cmp-dictionary",
     dependencies = { "hrsh7th/nvim-cmp" },
     opts = {
       paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
-      exact_length = 2,
-      first_case_insensitive = true,
-      document = {
-        enable = true,
-        command = { "wn", "${label}", "-over" },
-      },
     }
+  },
+  {
+    "okuuva/auto-save.nvim",                  -- optional for lazy loading on command
+    event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+    opts = {
+      execution_message = {
+        enabled = false
+      },
+    },
   },
   {
     "windwp/nvim-autopairs",

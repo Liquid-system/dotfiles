@@ -2,10 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    {
-      "b0o/schemastore.nvim",
-      lazy = true,
-    },
+    "b0o/schemastore.nvim"
   },
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()

@@ -110,10 +110,11 @@ autoload -U compinit
 compinit -u
 fpath+=~/.zfunc
 
-alias mikan='cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf'
+alias mikan="cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf"
 alias n='nvim'
-alias cxx='g++ -std=c++17 -Wall -O2 '
-alias cxxg='g++ -std=c++17 -Wall -O2 -g -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover -D_GLIBCXX_DEBUG'
+alias e="explorer.exe"
+alias cxx="g++ -std=c++17 -Wall -O2"
+alias cxxg="g++ -std=c++17 -Wall -O2 -g -Wall -Wextra -Wshadow -Wconversion -Wfloat-equal -Wno-char-subscripts -ftrapv -fsanitize=address,undefined -fno-omit-frame-pointer -fno-sanitize-recover -D_GLIBCXX_DEBUG"
 . "$HOME/.cargo/env"
 
 # lsコマンドで表示されるファイルの色を変更する
