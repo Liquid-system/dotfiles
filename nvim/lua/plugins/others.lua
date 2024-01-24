@@ -6,7 +6,6 @@ return {
   },
   {
     "uga-rosa/cmp-dictionary",
-    dependencies = { "hrsh7th/nvim-cmp" },
     opts = {
       paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
     }
@@ -49,5 +48,13 @@ return {
     "windwp/nvim-ts-autotag",
     config = true,
     event = "InsertEnter",
+  },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    config = true
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "CursorMoved",
   },
 }

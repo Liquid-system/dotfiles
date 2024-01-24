@@ -3,10 +3,7 @@ return {
   build = ":TSUpdate",
   event = "UIEnter",
   dependencies = {
-    {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      event = "CursorMoved",
-    },
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
   config = function()
     require("nvim-treesitter.configs").setup({
