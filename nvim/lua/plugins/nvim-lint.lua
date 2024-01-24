@@ -11,7 +11,7 @@ return {
       cmake = { "cmakelint" },
       markdown = { "markdownlint" },
       sh = { "shellcheck" },
-      zsh = { "zsh" }
+      zsh = { "zsh" },
     }
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       callback = function()
