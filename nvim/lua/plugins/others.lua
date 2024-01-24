@@ -1,6 +1,7 @@
 return {
   {
     "uga-rosa/cmp-dictionary",
+    dependencies = { "hrsh7th/nvim-cmp" },
     opts = {
       paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
       exact_length = 2,
