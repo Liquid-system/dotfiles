@@ -1,5 +1,17 @@
 return {
   {
+    "uga-rosa/cmp-dictionary",
+    opts = {
+      paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
+      exact_length = 2,
+      first_case_insensitive = true,
+      document = {
+        enable = true,
+        command = { "wn", "${label}", "-over" },
+      },
+    }
+  },
+  {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = true,
