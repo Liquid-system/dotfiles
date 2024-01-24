@@ -2,20 +2,20 @@ return {
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    config = true
+    config = true,
   },
   {
     "uga-rosa/cmp-dictionary",
     opts = {
       paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
-    }
+    },
   },
   {
-    "okuuva/auto-save.nvim",                  -- optional for lazy loading on command
+    "okuuva/auto-save.nvim", -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
     opts = {
       execution_message = {
-        enabled = false
+        enabled = false,
       },
     },
   },
@@ -50,8 +50,8 @@ return {
     event = "InsertEnter",
   },
   {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    config = true
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = true,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
