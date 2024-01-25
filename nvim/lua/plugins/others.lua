@@ -6,13 +6,14 @@ return {
   },
   {
     "uga-rosa/cmp-dictionary",
+    event = "InsertEnter",
     opts = {
       paths = { vim.fn.stdpath("data") .. "/dictionary/en.dict" },
     },
   },
   {
-    "okuuva/auto-save.nvim", -- optional for lazy loading on command
-    event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+    "okuuva/auto-save.nvim",
+    event = { "InsertLeave", "TextChanged" },
     opts = {
       execution_message = {
         enabled = false,
