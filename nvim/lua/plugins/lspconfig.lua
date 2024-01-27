@@ -39,6 +39,7 @@ return {
     lspconfig.sqls.setup({ capabilities = capabilities })
     lspconfig.bashls.setup({ capabilities = capabilities })
     lspconfig.zls.setup({ capabilities = capabilities })
+    lspconfig.denols.setup({ capabilities = capabilities })
     lspconfig.biome.setup({
       capabilities = capabilities,
       cmd = { "bunx", "biome", "lsp-proxy" },
@@ -57,7 +58,6 @@ return {
         "--header-insertion=iwyu",
       },
     })
-    lspconfig.denols.setup({ capabilities = capabilities })
     lspconfig.tsserver.setup({
       capabilities = capabilities,
       single_file_support = false,

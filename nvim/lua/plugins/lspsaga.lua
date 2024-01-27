@@ -20,7 +20,6 @@ return {
     { "<Leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true } },
     { "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true } },
     { "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true } },
-    -- Only jump to error
     {
       "[E",
       function()
