@@ -52,7 +52,7 @@ return {
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    config = true,
+    opts = { enable_autocmd = false },
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",

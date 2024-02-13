@@ -12,10 +12,14 @@ return {
     },
   },
   opts = {
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_fallback = true,
+    },
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "autoflake", { "black", "ruff_format" } },
-      javascript = { { "biome", "prettier", "deno_fmt" } },
+      javascript = { { "biome-check", "prettier", "deno_fmt" } },
       c = { "clang_format" },
       cpp = { "clang_format" },
       cmake = { "cmake_format" },

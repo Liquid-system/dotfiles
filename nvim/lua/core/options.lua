@@ -1,9 +1,9 @@
 local opt = vim.opt
 opt.number = true
 opt.title = true
+opt.cmdheight = 0
 opt.termguicolors = true
 opt.updatetime = 100
-opt.cmdheight = 0
 opt.textwidth = 0
 opt.signcolumn = "auto"
 opt.background = "dark"
