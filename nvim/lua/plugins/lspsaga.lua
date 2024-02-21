@@ -15,7 +15,6 @@ return {
   keys = {
     { "<Leader>ca", "<cmd>Lspsaga code_action<CR>", { mode = { "n", "v" }, silent = true } },
     { "<Leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true } },
-    { "gd", "<cmd>Lspsaga peek_definition<CR>", { silent = true } },
     { "<Leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true } },
     { "<Leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true } },
     { "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true } },

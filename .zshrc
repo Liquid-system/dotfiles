@@ -82,6 +82,7 @@ for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search
 unset key
 # }}} End configuration added by Zim install
 
+export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/.yarn/bin:$PATH
@@ -100,7 +101,7 @@ export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
 export PROMPT_EOL_MARK=''
-
+export CHROME_EXECUTABLE=/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe
 #OSごとにファイルを分割
 [ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`
 #マシンごとにファイルを分割
