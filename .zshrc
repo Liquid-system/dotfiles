@@ -101,7 +101,6 @@ export TMUX_TMPDIR=/tmp
 export COLORTERM=truecolor
 #語尾の%を非表示
 export PROMPT_EOL_MARK=''
-export CHROME_EXECUTABLE=/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe
 #OSごとにファイルを分割
 [ -f $HOME/.zshrc_`uname` ] && . $HOME/.zshrc_`uname`
 #マシンごとにファイルを分割
