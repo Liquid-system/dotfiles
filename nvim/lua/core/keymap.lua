@@ -16,6 +16,8 @@ local function opts(desc)
 end
 
 local default_opts = { silent = true, noremap = true }
+-- コメントアウト
+vim.keymap.set("n", "gc", "<Leader>/", default_opts)
 --ESCで点滅が消える
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR><ESC>", opts("No highlight search"))
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts("Exit the terminal"))
