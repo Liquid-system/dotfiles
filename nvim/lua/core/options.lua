@@ -1,7 +1,7 @@
 local opt = vim.opt
 opt.number = true
 opt.title = true
-opt.cmdheight = 0
+opt.cmdheight = 1
 opt.termguicolors = true
 opt.updatetime = 100
 opt.textwidth = 0
