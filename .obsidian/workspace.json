@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "ce06418c712f5697",
+    "type": "split",
+    "children": [
+      {
+        "id": "53eccef6bb9095b2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7c268d00289fa08c",
+            "type": "leaf",
+            "state": {
+              "type": "thino_view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "52eefbdf709cb1fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "597b348504ae0e1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f13a9edcacdfc80c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5876b26c4201c915",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6ab157663a73d58d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d2028864c7355084",
+    "type": "split",
+    "children": [
+      {
+        "id": "0494a139311d5f08",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2ab4d2cd3e9942d7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "無題のファイル.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "926e7fbad3f76af7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "無題のファイル.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "578000e4886ffd51",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "36d6f353af760624",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "無題のファイル.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "command-palette:コマンドパレットを開く": false,
+      "obsidian-memos:Thino": false
+    }
+  },
+  "active": "7c268d00289fa08c",
+  "lastOpenFiles": [
+    "無題のファイル.md",
+    "daily/2024-07-29.md",
+    "daily",
+    "名称未設定フォルダ",
+    "2024-07-29.md",
+    "無題のファイル.canvas"
+  ]
+}
