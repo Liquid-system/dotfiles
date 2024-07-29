@@ -81,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "無題のファイル.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "無題のファイル.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "無題のファイル.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -140,7 +136,7 @@
       "obsidian-memos:Thino": false
     }
   },
-  "active": "7c268d00289fa08c",
+  "active": "f13a9edcacdfc80c",
   "lastOpenFiles": [
     "無題のファイル.md",
     "daily/2024-07-29.md",
