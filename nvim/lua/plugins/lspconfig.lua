@@ -58,7 +58,7 @@ return {
         "--header-insertion=iwyu",
       },
     })
-    lspconfig.tsserver.setup({
+    lspconfig.ts_ls.setup({
       capabilities = capabilities,
       single_file_support = false,
     })
