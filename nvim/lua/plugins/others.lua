@@ -16,7 +16,9 @@ return {
     event = { "InsertLeave", "TextChanged" },
     opts = {
       execution_message = {
-        enabled = false,
+        message = function() -- message to print on save
+          return("")
+        end
       },
     },
   },

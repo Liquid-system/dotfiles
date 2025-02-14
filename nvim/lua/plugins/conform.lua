@@ -13,6 +13,7 @@ return {
   },
   opts = {
     format_on_save = {},
+    format_after_save = {},
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "autoflake", "black", "ruff_format", stop_after_first = true },

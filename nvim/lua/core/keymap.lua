@@ -17,7 +17,8 @@ end
 
 local default_opts = { silent = true, noremap = true }
 -- コメントアウト
-vim.keymap.set("n", "gc", "<Leader>/", default_opts)
+vim.keymap.set("n", "<Leader>/", "gcc", { silent = true, remap = true })
+vim.keymap.set("n", "<Leader>/", "gc", { silent = true, remap = true })
 --ESCで点滅が消える
 vim.keymap.set("n", "<ESC>", "<CMD>nohlsearch<CR><ESC>", opts("No highlight search"))
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], opts("Exit the terminal"))
@@ -55,6 +56,7 @@ vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev se
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- LSP
+vim.keymap.set("i", "<C-k>", "<C-s>", { silent = true, remap = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts("Pre diagnostic"))
 

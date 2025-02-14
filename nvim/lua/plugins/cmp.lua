@@ -7,7 +7,6 @@ return {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
   },
   config = function()
     local cmp = require("cmp")
@@ -69,7 +68,7 @@ return {
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "path" },
-        { name = "dictionary", keyword_length = 2 },
+        { name = "dictionary",             keyword_length = 2 },
       },
     })
 
