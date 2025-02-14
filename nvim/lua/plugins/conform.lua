@@ -12,14 +12,11 @@ return {
     },
   },
   opts = {
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_fallback = true,
-    },
+    format_on_save = {},
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "autoflake", { "black", "ruff_format" } },
-      javascript = { { "biome-check", "prettier", "deno_fmt" } },
+      python = { "isort", "autoflake", "black", "ruff_format", stop_after_first = true },
+      javascript = { "biome-check", "prettier", "deno_fmt", stop_after_first = true },
       c = { "clang_format" },
       cpp = { "clang_format" },
       cmake = { "cmake_format" },
@@ -28,7 +25,7 @@ return {
       swift = { "swift_format" },
       sql = { "sql_formatter" },
       zig = { "zigfmt" },
-      json = { { "jq", "jsonnetfmt" } },
+      json = { "jq", "jsonnetfmt", stop_after_first = true },
       yaml = { "yamlfmt" },
       toml = { "taplo" },
       ["_"] = { "trim_whitespace", "trim_newlines" },

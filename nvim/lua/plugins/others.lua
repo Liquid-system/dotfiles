@@ -36,12 +36,6 @@ return {
     config = true,
   },
   {
-    "max397574/better-escape.nvim",
-    opts = {
-      mapping = { "kj", "jj" },
-    },
-  },
-  {
     "lewis6991/gitsigns.nvim",
     config = true,
   },
