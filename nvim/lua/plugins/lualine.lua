@@ -68,7 +68,6 @@ return {
     end
 
     ins_left({
-      -- mode component
       function()
         local mode_state = vim.api.nvim_get_mode().mode
         if mode_state == ("i" or "ic" or "ix") then
