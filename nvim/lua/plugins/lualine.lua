@@ -10,6 +10,7 @@ local colors = {
   magenta = "#c678dd",
   blue = "#51afef",
   red = "#ec5f67",
+  gray = "#808080",
 }
 return {
   "nvim-lualine/lualine.nvim",
@@ -85,9 +86,9 @@ return {
         local mode_color = {
           n = colors.red,
           i = colors.blue,
-          v = colors.blue,
+          v = colors.gray,
           [""] = colors.blue,
-          V = colors.blue,
+          V = colors.gray,
           c = colors.magenta,
           no = colors.red,
           s = colors.orange,
