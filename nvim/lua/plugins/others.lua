@@ -2,7 +2,11 @@ return {
   {
     "shellRaining/hlchunk.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = true,
+    opts = {
+      chunk = {
+        enable = true,
+      },
+    },
   },
   {
     "j-hui/fidget.nvim",
