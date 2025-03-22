@@ -1,5 +1,10 @@
 return {
   {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = true,
+  },
+  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = true,
@@ -17,8 +22,8 @@ return {
     opts = {
       execution_message = {
         message = function() -- message to print on save
-          return("")
-        end
+          return ""
+        end,
       },
     },
   },

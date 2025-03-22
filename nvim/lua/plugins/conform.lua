@@ -16,7 +16,7 @@ return {
     format_after_save = nil,
     formatters_by_ft = {
       lua = { "stylua" },
-      python = { "isort", "autoflake", "black", "ruff_format", stop_after_first = true },
+      python = { "black", "isort", "autoflake", "ruff_format", stop_after_first = true },
       javascript = { "biome-check", "prettier", "deno_fmt", stop_after_first = true },
       c = { "clang_format" },
       cpp = { "clang_format" },

@@ -1,7 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  event = "UIEnter",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
