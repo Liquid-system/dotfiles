@@ -1,14 +1,5 @@
 return {
   {
-    "shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      chunk = {
-        enable = true,
-      },
-    },
-  },
-  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = true,

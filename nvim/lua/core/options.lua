@@ -6,6 +6,7 @@ opt.termguicolors = true
 opt.updatetime = 100
 opt.textwidth = 0
 opt.signcolumn = "auto"
+opt.winborder = "rounded"
 opt.background = "dark"
 opt.clipboard = { "unnamed", "unnamedplus" }
 -- tab時の見かけのスペース数
