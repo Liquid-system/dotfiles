@@ -30,16 +30,24 @@ return {
       },
     }
     local lspconfig = require("lspconfig")
-    lspconfig.cmake.setup({ capabilities = capabilities })
-    lspconfig.pylsp.setup({ capabilities = capabilities })
-    lspconfig.gopls.setup({ capabilities = capabilities })
-    lspconfig.svelte.setup({ capabilities = capabilities })
-    lspconfig.html.setup({ capabilities = capabilities })
-    lspconfig.cssls.setup({ capabilities = capabilities })
-    lspconfig.sqls.setup({ capabilities = capabilities })
-    lspconfig.bashls.setup({ capabilities = capabilities })
-    lspconfig.zls.setup({ capabilities = capabilities })
-    lspconfig.denols.setup({ capabilities = capabilities })
+    local lsps = {
+      "cmake",
+      "pylsp",
+      "gopls",
+      "svelte",
+      "html",
+      "cssls",
+      "sqls",
+      "bashls",
+      "zls",
+      "dartls",
+      "denols",
+      "docker_compose_language_service",
+    }
+    for _, lsp in pairs(lsps) do
+      lspconfig[lsp].setup({ capabilities = capabilities })
+    end
+
     lspconfig.biome.setup({
       capabilities = capabilities,
       cmd = { "bunx", "biome", "lsp-proxy" },
