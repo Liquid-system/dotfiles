@@ -1,7 +1,7 @@
 vim.diagnostic.config({
   virtual_lines = false,
   virtual_text = {
-    prefix = "󰐂",
+    prefix = "󰐂 ",
   },
   update_in_insert = false,
   underline = true,
