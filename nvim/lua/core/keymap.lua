@@ -17,7 +17,8 @@ end
 
 local default_opts = { silent = true, noremap = true }
 -- Esc
-vim.keymap.set("i", "kj", "<ESC>", opts("tab"))
+vim.keymap.set("i", "kj", "<ESC>", default_opts)
+vim.keymap.set("i", "jj", "<ESC>", default_opts)
 -- コメントアウト
 vim.keymap.set("n", "<Leader>/", "gcc", { silent = true, remap = true })
 vim.keymap.set("n", "<Leader>/", "gc", { silent = true, remap = true })
