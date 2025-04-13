@@ -8,18 +8,23 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
-      "ts_ls",
-      "cmake",
-      "pylsp",
-      "gopls",
-      "svelte",
-      "html",
-      "cssls",
-      "sqls",
+      "jsonls",
       "bashls",
-      "zls",
+      "biome",
+      "cmake",
+      "cssls",
       "dartls",
+      "denols",
       "docker_compose_language_service",
+      "gopls",
+      "html",
+      "lua_ls",
+      "pylsp",
+      "rust_analyzer",
+      "sqls",
+      "svelte",
+      "ts_ls",
+      "zls",
     }
     for _, lsp in pairs(lsps) do
       vim.lsp.enable(lsp, {
@@ -52,9 +57,6 @@ return {
       },
     }
     )
-    vim.lsp.enable("clangd", {
-      capabilities = capabilities,
-    })
     vim.lsp.config(
       "rust_analyzer", {
         capabilities = capabilities,
@@ -82,7 +84,7 @@ return {
       }
     )
 
-    vim.lsp.config('jsonls', {
+    vim.lsp.config("jsonls", {
       capabilities = capabilities,
       settings = {
         json = {
