@@ -7,10 +7,10 @@ return {
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
-    local lsps = {
-      "jsonls",
+        local lsps = {
       "bashls",
       "biome",
+      "clangd",
       "cmake",
       "cssls",
       "dartls",
@@ -18,6 +18,7 @@ return {
       "docker_compose_language_service",
       "gopls",
       "html",
+      "jsonls",
       "lua_ls",
       "pylsp",
       "rust_analyzer",
