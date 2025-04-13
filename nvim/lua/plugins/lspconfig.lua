@@ -7,30 +7,8 @@ return {
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
-    capabilities.textDocument.completion.completionItem = {
-      documentationFormat = {
-        "markdown",
-        "plaintext",
-      },
-      snippetSupport = true,
-      preselectSupport = true,
-      insertReplaceSupport = true,
-      labelDetailsSupport = true,
-      deprecatedSupport = true,
-      commitCharactersSupport = true,
-      tagSupport = {
-        valueSet = { 1 },
-      },
-      resolveSupport = {
-        properties = {
-          "documentation",
-          "detail",
-          "additionalTextEdits",
-        },
-      },
-    }
-    local lspconfig = require("lspconfig")
     local lsps = {
+      "ts_ls",
       "cmake",
       "pylsp",
       "gopls",
@@ -41,18 +19,25 @@ return {
       "bashls",
       "zls",
       "dartls",
-      "denols",
       "docker_compose_language_service",
     }
     for _, lsp in pairs(lsps) do
-      lspconfig[lsp].setup({ capabilities = capabilities })
+      vim.lsp.enable(lsp, {
+        capabilities = capabilities,
+      })
     end
-
-    lspconfig.biome.setup({
-      capabilities = capabilities,
-      cmd = { "bunx", "biome", "lsp-proxy" },
-    })
-    lspconfig.clangd.setup({
+    vim.lsp.config(
+      "denols", {
+        capabilities = capabilities,
+        single_file_support = false,
+      })
+    vim.lsp.config(
+      "biome", {
+        capabilities = capabilities,
+        cmd = { "bunx", "biome", "lsp-proxy" },
+      }
+    )
+    vim.lsp.config("clangd", {
       capabilities = capabilities,
       cmd = {
         "clangd",
@@ -65,37 +50,39 @@ return {
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
       },
-    })
-    lspconfig.ts_ls.setup({
+    }
+    )
+    vim.lsp.enable("clangd", {
       capabilities = capabilities,
-      single_file_support = false,
     })
-    lspconfig.rust_analyzer.setup({
-      capabilities = capabilities,
-      settings = {
-        ["rust-analyzer"] = {
-          imports = {
-            granularity = {
-              group = "module",
+    vim.lsp.config(
+      "rust_analyzer", {
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            imports = {
+              granularity = {
+                group = "module",
+              },
+              prefix = "self",
             },
-            prefix = "self",
-          },
-          cargo = {
-            buildScripts = {
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
               enable = true,
             },
-          },
-          procMacro = {
-            enable = true,
-          },
-          checkOnSave = {
-            command = "clippy",
+            checkOnSave = {
+              command = "clippy",
+            },
           },
         },
-      },
-    })
+      }
+    )
 
-    lspconfig.jsonls.setup({
+    vim.lsp.config('jsonls', {
       capabilities = capabilities,
       settings = {
         json = {
@@ -104,7 +91,8 @@ return {
         },
       },
     })
-    lspconfig.lua_ls.setup({
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
       on_init = function(client)
         local path = client.workspace_folders[1].name
         if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
@@ -113,8 +101,6 @@ return {
 
         client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
           runtime = {
-            -- Tell the language server which version of Lua you're using
-            -- (most likely LuaJIT in the case of Neovim)
             version = "LuaJIT",
           },
           -- Make the server aware of Neovim runtime files
