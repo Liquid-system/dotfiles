@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return { desc = desc, buffer = ev.buf }
     end
     vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, lsp("[R]e[n]ame"))
-    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, lsp("signature"))
+    vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, lsp("signature"))
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, lsp("[G]oto [D]eclaration"))
     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, lsp("[G]oto [I]mplementation"))
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, lsp("[G]oto [D]efinition"))

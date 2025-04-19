@@ -1,5 +1,27 @@
 return {
   {
+    'cordx56/rustowl',
+    ft = "rust",
+    opts = {
+      client = {
+        on_attach = function(_, buffer)
+          vim.keymap.set('n', '<leader>o', function()
+            require('rustowl').toggle(buffer)
+          end, { buffer = buffer, desc = 'Toggle RustOwl' })
+        end
+      },
+    },
+  },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     config = true,
