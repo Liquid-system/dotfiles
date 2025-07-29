@@ -10,5 +10,6 @@ vim.api.nvim_create_autocmd("User", {
     require("core.autocmd")
     require("core.keymap")
     require("core.lsp")
+    require("core.clipbord")
   end,
 })
