@@ -91,3 +91,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, lsp("[C]ode [A]ction"))
   end,
 })
+
+-- 関数定義：コメントトグル処理
+local function toggle_comment()
+  -- ノーマルモード用（現在行）
+  vim.cmd.normal("gcc")
+end
+
+local function toggle_comment_visual()
+  -- ビジュアル選択範囲に対してコメント処理
+  local esc = vim.api.nvim_replace_termcodes("<Esc>", true, false, true)
+  vim.api.nvim_feedkeys(esc, "x", false)
+  vim.cmd.normal("gc")
+end
+
+vim.keymap.set("n", "<leader>/", toggle_comment, { desc = "Toggle comment (normal mode)" })
+vim.keymap.set("v", "<leader>/", toggle_comment_visual, { desc = "Toggle comment (visual mode)" })

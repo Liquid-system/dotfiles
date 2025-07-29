@@ -5,7 +5,7 @@ return {
     require("lint").linters_by_ft = {
       ["*"] = { "codespell" },
       c = { "clangtidy" },
-      python = { "ruff", "mypy", "pylint" },
+      python = { "ruff", "pylint" },
       javascript = { "eslint" },
       css = { "stylelint" },
       cmake = { "cmakelint" },

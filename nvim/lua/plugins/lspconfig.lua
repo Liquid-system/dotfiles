@@ -8,6 +8,7 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
+      --"denols",
       --"pylsp",
       "bashls",
       "biome",
@@ -15,7 +16,6 @@ return {
       "cmake",
       "cssls",
       "dartls",
-      "denols",
       "docker_compose_language_service",
       "gopls",
       "html",
@@ -25,6 +25,7 @@ return {
       "rust_analyzer",
       "sqls",
       "svelte",
+      "tailwindcss",
       "ts_ls",
       "zls",
     }
@@ -33,11 +34,6 @@ return {
         capabilities = capabilities,
       })
     end
-    vim.lsp.config(
-      "denols", {
-        capabilities = capabilities,
-        single_file_support = false,
-      })
     vim.lsp.config(
       "biome", {
         capabilities = capabilities,
