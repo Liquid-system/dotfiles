@@ -34,12 +34,10 @@ return {
         capabilities = capabilities,
       })
     end
-    vim.lsp.config(
-      "biome", {
-        capabilities = capabilities,
-        cmd = { "bunx", "biome", "lsp-proxy" },
-      }
-    )
+    vim.lsp.config("biome", {
+      capabilities = capabilities,
+      cmd = { "bunx", "biome", "lsp-proxy" },
+    })
     vim.lsp.config("clangd", {
       capabilities = capabilities,
       cmd = {
@@ -53,34 +51,31 @@ return {
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
       },
-    }
-    )
-    vim.lsp.config(
-      "rust_analyzer", {
-        capabilities = capabilities,
-        settings = {
-          ["rust-analyzer"] = {
-            imports = {
-              granularity = {
-                group = "module",
-              },
-              prefix = "self",
+    })
+    vim.lsp.config("rust_analyzer", {
+      capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          imports = {
+            granularity = {
+              group = "module",
             },
-            cargo = {
-              buildScripts = {
-                enable = true,
-              },
-            },
-            procMacro = {
+            prefix = "self",
+          },
+          cargo = {
+            buildScripts = {
               enable = true,
             },
-            checkOnSave = {
-              command = "clippy",
-            },
+          },
+          procMacro = {
+            enable = true,
+          },
+          check = {
+            command = "clippy",
           },
         },
-      }
-    )
+      },
+    })
 
     vim.lsp.config("jsonls", {
       capabilities = capabilities,
