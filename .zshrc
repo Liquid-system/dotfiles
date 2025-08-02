@@ -108,8 +108,7 @@ export PROMPT_EOL_MARK=''
 [ -f $HOME/.zshrc_local ] && . $HOME/.zshrc_local
 #補完を有効にする
 autoload -U compinit
-compinit -u
-fpath+=~/.zfunc
+fpath=(~/.zfunc $fpath)
 
 alias mikan="cd $HOME/edk2&&source edksetup.sh&&build&&$HOME/osbook/devenv/run_qemu.sh Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi $HOME/workspace/mikanos/kernel/kernel.elf"
 alias n='nvim'
@@ -202,14 +201,6 @@ fi
 
 # bun completions
 [ -s "/home/liquidsystem/.bun/_bun" ] && source "/home/liquidsystem/.bun/_bun"
-
-# Wasmer
-export WASMER_DIR="/home/liquidsystem/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-export WASMTIME_HOME="$HOME/.wasmtime"
-
-export PATH="$WASMTIME_HOME/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # luarocks

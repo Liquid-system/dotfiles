@@ -2,6 +2,7 @@ zmodule environment
 zmodule input
 zmodule termtitle
 # asciishipで最後のコマンドの実行にかかった時間を表示
+zmodule prompt-pwd
 zmodule duration-info
 zmodule git-info
 zmodule eriner
