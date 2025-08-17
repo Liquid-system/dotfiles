@@ -82,7 +82,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 
 
-vim.api.nvim_create_autocmd('VimEnter', {
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.py",
   callback = function()
     local venv_path = vim.fn.getcwd() .. '/.venv'
     if vim.fn.isdirectory(venv_path) == 1 then
