@@ -79,16 +79,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.formatoptions:append({ "M", "j" })
   end,
 })
-
-
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = "*.py",
-  callback = function()
-    local venv_path = vim.fn.getcwd() .. '/.venv'
-    if vim.fn.isdirectory(venv_path) == 1 then
-      vim.env.VIRTUAL_ENV = venv_path
-      vim.env.PATH = venv_path .. '/bin:' .. vim.env.PATH
-    end
-  end
-})
