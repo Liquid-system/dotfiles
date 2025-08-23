@@ -30,10 +30,11 @@ return {
       "zls",
     }
     for _, lsp in pairs(lsps) do
-      vim.lsp.enable(lsp, {
-        capabilities = capabilities,
-      })
+      vim.lsp.enable(lsp)
     end
+    vim.lsp.config("*", {
+      capabilities = capabilities,
+    })
     vim.lsp.config("biome", {
       capabilities = capabilities,
       cmd = { "bunx", "biome", "lsp-proxy" },
