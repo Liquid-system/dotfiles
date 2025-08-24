@@ -10,6 +10,7 @@ return {
       css = { "stylelint" },
       cmake = { "cmakelint" },
       markdown = { "markdownlint" },
+      rust = { "clippy" },
       sh = { "shellcheck" },
       zsh = { "zsh" },
     }
