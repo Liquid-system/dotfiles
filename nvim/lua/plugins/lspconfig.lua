@@ -5,6 +5,7 @@ return {
     "b0o/schemastore.nvim",
   },
   config = function()
+    vim.lsp.inline_completion.enable(true)
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
@@ -12,6 +13,7 @@ return {
       --"pylsp",
       "bashls",
       "biome",
+      "copilot",
       "clangd",
       "cmake",
       "cssls",
