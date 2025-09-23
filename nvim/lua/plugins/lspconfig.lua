@@ -9,7 +9,7 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
-      --"denols",
+      "denols",
       --"pylsp",
       "bashls",
       "biome",
