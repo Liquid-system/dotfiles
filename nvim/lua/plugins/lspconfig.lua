@@ -9,15 +9,13 @@ return {
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
-      "denols",
-      --"pylsp",
       "bashls",
       "biome",
-      -- "copilot",
       "clangd",
       "cmake",
       "cssls",
       "dartls",
+      "denols",
       "docker_compose_language_service",
       "gopls",
       "html",
@@ -25,11 +23,14 @@ return {
       "lua_ls",
       "pyright",
       "rust_analyzer",
+      "sourcekit",
       "sqls",
       "svelte",
       "tailwindcss",
       "ts_ls",
       "zls",
+      -- "copilot",
+      --"pylsp",
     }
     for _, lsp in pairs(lsps) do
       vim.lsp.enable(lsp)
