@@ -6,6 +6,7 @@ return {
   },
   config = function()
     -- vim.lsp.inline_completion.enable(true)
+    -- vim.lsp.document_color.enable(true, 0, { style = "virtual" })
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
     local lsps = {
