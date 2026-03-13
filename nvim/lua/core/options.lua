@@ -1,5 +1,6 @@
 local opt = vim.opt
 opt.number = true
+opt.relativenumber = true
 opt.title = true
 opt.cmdheight = 1
 opt.termguicolors = true
@@ -94,7 +95,8 @@ opt.foldmethod = "indent"
 opt.foldenable = false
 opt.foldlevel = 99
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+vim.o.winborder = "rounded"
 
 --マウスの設定
 vim.cmd.aunmenu({ "PopUp.How-to\\ disable\\ mouse" })

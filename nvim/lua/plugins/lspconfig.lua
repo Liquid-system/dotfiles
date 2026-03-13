@@ -17,6 +17,7 @@ return {
       "cssls",
       "dartls",
       "denols",
+      "bashls",
       "docker_compose_language_service",
       "gopls",
       "html",

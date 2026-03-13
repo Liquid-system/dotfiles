@@ -10,5 +10,6 @@
   "helix": "~/.config/helix",
   "zellij": "~/.config/zellij",
   "git": "~/.config/git",
-  "gh/config.yml": "~/.confg/gh/config.yml"
+  "gh/config.yml": "~/.confg/gh/config.yml",
+  "claude/settings.json": "~/.claude/settings.json"
 }

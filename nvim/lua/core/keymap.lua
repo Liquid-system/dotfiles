@@ -59,7 +59,6 @@ vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev se
 vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- LSP
-vim.keymap.set("i", "<C-k>", "<C-s>", { silent = true, remap = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts("Next diagnostic"))
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts("Pre diagnostic"))
 
