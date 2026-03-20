@@ -1,17 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "enableAllProjectMcpServers": false,
-  "enabledMcpjsonServers": [
-    "context7"
-  ],
-  "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
-  },
-  "language": "japanese",
-  "model": "opus",
   "permissions": {
     "allow": [
       "Bash(npm run lint)",
@@ -58,10 +46,6 @@
       "Bash(tee *)",
       "Write(/tmp/**)"
     ],
-    "ask": [
-      "Bash(git push *)",
-      "Bash(git reset:*)"
-    ],
     "deny": [
       "Bash(sudo:*)",
       "Bash(su *)",
@@ -75,7 +59,6 @@
       "Bash(find * -delete*)",
       "Bash(rsync * --delete*)",
       "Bash(git push:*)",
-      "Bash(git commit:*)",
       "Bash(git reset:*)",
       "Bash(git rebase:*)",
       "Bash(git rm:*)",
@@ -115,6 +98,7 @@
       "Bash(* ~/.git-credentials)",
       "Bash(* ~/.netrc)",
       "Bash(* ~/.npmrc)",
+      "Bash(* .Secret*)",
       "Edit(~/.zshrc)",
       "Write(~/.zshrc)",
       "Edit(~/.bashrc)",
@@ -124,10 +108,26 @@
       "Bash(psql:*)",
       "Bash(mysql:*)"
     ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git reset:*)"
+    ],
     "disableBypassPermissionsMode": "disable"
   },
+  "enableAllProjectMcpServers": false,
+  "enabledMcpjsonServers": [
+    "context7"
+  ],
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true
+  },
+  "language": "japanese",
   "sandbox": {
-    "autoAllowBashIfSandboxed": true,
-    "enabled": true
-  }
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true
+  },
+  "model": "opus"
 }

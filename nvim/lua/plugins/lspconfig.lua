@@ -22,7 +22,6 @@ return {
       "gopls",
       "html",
       "jsonls",
-      "lua_ls",
       "pyright",
       "rust_analyzer",
       "sourcekit",
@@ -91,6 +90,23 @@ return {
           validate = { enable = true },
         },
       },
+    })
+    vim.lsp.config("lua_ls", {
+      settings = {
+        Lua = {
+          runtime = {
+            version = 'LuaJIT',
+          },
+          workspace = {
+            library = {
+              vim.env.VIMRUNTIME,
+            }
+          },
+          diagnostics = {
+            globals = { "vim" }
+          }
+        }
+      }
     })
   end,
 }
