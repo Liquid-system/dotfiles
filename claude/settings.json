@@ -114,6 +114,7 @@
     ],
     "disableBypassPermissionsMode": "disable"
   },
+  "model": "opusplan",
   "enableAllProjectMcpServers": false,
   "enabledMcpjsonServers": [
     "context7"
@@ -128,6 +129,5 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true
-  },
-  "model": "opus"
+  }
 }
