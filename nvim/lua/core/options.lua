@@ -9,10 +9,6 @@ opt.signcolumn = "auto"
 opt.winborder = "rounded"
 opt.background = "dark"
 opt.clipboard = { "unnamed", "unnamedplus" }
--- tab時の見かけのスペース数
-opt.tabstop = 2
--- 自動的に挿入される量
-opt.shiftwidth = 2
 -- 検索時の強調表示
 opt.inccommand = "split"
 -- Windowsでパスの区切り文字をスラッシュで扱う
@@ -51,6 +47,9 @@ opt.smartindent = true
 -- 改行時にtabをスペースに変換
 -- (インサート時に(Ctrl+v)+tabでtab挿入)
 opt.expandtab = true
+opt.tabstop = 2      -- タブ文字を何スペース幅で表示するか
+opt.shiftwidth = 2   -- >> や o での自動インデント幅
+opt.softtabstop = 2  -- 挿入モードでTabキーを押したときのスペース数
 --行の改行を防ぐ
 opt.linebreak = true
 -- 制御文字を表示

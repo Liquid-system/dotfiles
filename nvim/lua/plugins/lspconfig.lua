@@ -1,7 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
   },
   config = function()
@@ -9,11 +8,12 @@ return {
     -- vim.lsp.document_color.enable(true, 0, { style = "virtual" })
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     capabilities.offsetEncoding = { "utf-16" }
+
     local lsps = {
       "bashls",
       "biome",
-      "clangd",
       "cmake",
+      "clangd",
       "cssls",
       "dartls",
       "denols",
@@ -49,7 +49,6 @@ return {
         "clangd",
         "--background-index",
         "--pch-storage=memory",
-        "--query-driver=/usr/bin/clang++,/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
         "--clang-tidy",
         "--all-scopes-completion",
         "--completion-style=detailed",
